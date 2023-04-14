@@ -1,0 +1,196 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 0 20px;
+    background-color: #222;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+    .logo{
+        font-weight: bold;
+        cursor: pointer;
+
+        .logo-main {
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .image-logo {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+            }
+
+            .image-logo:hover {
+                transition: color 0.2s;
+                filter: drop-shadow(0 0 10px #ffff00) drop-shadow(0 0 50px #ffff00);
+                transform-origin: top;
+            }
+
+            .logo-text {
+                color: #1E90FF;
+                font-size: 1.5rem;
+            }
+
+            .logo-text:hover {
+                color: chartreuse;
+                transition: color 0.2s;
+                filter: drop-shadow(0 0 10px #fec603) drop-shadow(0 0 50px #fec603);
+                transform-origin: top;
+            }
+        }
+    }
+    .nav {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        .nav-link {
+            text-decoration: none;
+
+            .nav-item {
+                position: relative;
+                font-size: 16px;
+                font-weight: bold;
+                margin: 0 20px;
+                cursor: pointer;
+                transition: color 0.2s;
+                color: #fff;
+            }
+  
+            .nav-item:hover {
+                color: #ffff00;
+            }
+
+            .nav-item.active {
+                color: #ffff00;
+                transition: color 0.2s;
+                filter: drop-shadow(0 0 10px #fec603) drop-shadow(0 0 50px #fec603);
+                transform-origin: top;
+            }
+
+            .nav-item::before {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                width: 0;
+                height: 2px;
+                background-color: #ffff00;
+                transition: width 0.2s, left 0.2s;
+                transform: translateX(0%);
+            }
+                
+            .nav-item:hover::before,
+            .nav-item.active::before {
+                width: 100%;
+                left: 0;
+            }
+                
+            .nav-item:not(:hover)::before {
+                width: 0;
+                left: 50%;
+            }
+        }
+    }
+
+    .search {
+        position: relative;
+
+        input[type="text"] {
+            width: 200px;
+            height: 25px;
+            padding: 5px 30px 5px 10px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            background-color: #fff;
+            cursor: pointer;
+        }
+
+        button {
+            position: absolute;
+            top: 50%;
+            right: 1px;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        button:hover {
+            color: #fa0;
+        }
+    }
+
+    .auth {
+        display: flex;
+        align-items: center;
+
+        .btn-sign-in,
+        .btn-sign-up {
+            width: 100px;
+            height: 30px;
+            margin-left: 10px;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .btn-sign-in {
+            background-color: darkkhaki;
+            color: #fff;
+        }
+
+        .btn-sign-up {
+            background-color: chocolate;
+            color: #fff;
+        }
+    
+        .btn-sign-in:hover {
+            background-color: #fa0;
+            color: #222;
+        }
+
+        .btn-sign-up:hover {
+            background-color: deepskyblue;
+            color: #222;
+        }
+
+        .language {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+
+            .icon-lang {
+                margin-left: 10px;
+                color: #fff;
+                font-size: 1.5rem;
+                width: 100%;
+                height: 100%;
+            }
+
+            .icon-lang:hover {
+                color: chartreuse;
+            }
+        }
+
+        .language:hover {
+            transition: color 0.2s;
+            filter: drop-shadow(0 0 10px #ffff00) drop-shadow(0 0 50px #ffff00);
+            transform-origin: top;
+        }
+    }
+}
