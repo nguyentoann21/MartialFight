@@ -1,11 +1,11 @@
 import Header from './Header';
 import Footer from './Footer';
 
-function MainLayout() {
+function MainLayout({ children }) {
     return(
         <>
             <Header />
-            <div>Hello</div>
+            <main className='main-container'> { children } </main>
             <Footer />
         </>
     );

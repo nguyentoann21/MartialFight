@@ -36,13 +36,18 @@ function Header() {
             </li>
         </Link>
         <Link to='/heros' className='nav-link'>
-            <li className={`nav-item ${activeTab === 'Heros' ? 'active' : ''}`} onClick={() => handleTabClick('Heros')}>
-                Heros
+            <li className={`nav-item ${activeTab === 'Heroes' ? 'active' : ''}`} onClick={() => handleTabClick('Heroes')}>
+                Heroes
             </li>
         </Link>
         <Link to='/blog' className='nav-link'>
             <li className={`nav-item ${activeTab === 'Blogs' ? 'active' : ''}`} onClick={() => handleTabClick('Blogs')}>
                 Blogs
+            </li>
+        </Link>
+        <Link to='/guide' className='nav-link'>
+            <li className={`nav-item ${activeTab === 'Guide' ? 'active' : ''}`} onClick={() => handleTabClick('Guide')}>
+                Guide
             </li>
         </Link>
         <Link to='/about-us' className='nav-link'>

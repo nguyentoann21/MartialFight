@@ -101,9 +101,9 @@
         position: relative;
 
         input[type="text"] {
-            width: 200px;
+            width: 90%;
             height: 25px;
-            padding: 5px 30px 5px 10px;
+            padding: 2px 10px;
             border: none;
             border-radius: 20px;
             outline: none;
@@ -113,8 +113,8 @@
 
         button {
             position: absolute;
-            top: 50%;
-            right: 1px;
+            top: 55%;
+            right: 0;
             transform: translateY(-50%);
             width: 40px;
             height: 40px;
