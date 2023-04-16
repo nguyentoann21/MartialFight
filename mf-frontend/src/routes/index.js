@@ -1,5 +1,6 @@
 import Home from '../pages/Home';
 import Admin from '../pages/Admin';
+import Login from '../pages/User/login';
 import NotFound404 from '../pages/NotFound404';
 import { MainLayout } from '../components/Layouts';
 
@@ -22,6 +23,12 @@ const publicRoutes = [
         name: 'admin',
         component: Admin,
         //layout: LayoutAdmin
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: Login,
+        layout: null
     }
 ];
 

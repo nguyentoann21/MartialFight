@@ -17,7 +17,7 @@ function Footer() {
           <h3>Contact Us</h3>
           <ul>
             <li>
-                <MdEmail /> Email: mplkingofworld@game.com
+                <MdEmail /> Email: mplkingofworld@gmail.com
             </li>
             <li>
                 <MdPhone /> Phone: 0762871115

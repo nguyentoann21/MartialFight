@@ -1,0 +1,104 @@
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f1f1f1;
+}
+
+.login-form {
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  border-radius: 5px;
+  animation: slideInUp 0.5s ease;
+  }
+  
+  @keyframes slideInUp {
+  from {
+  opacity: 0;
+  transform: translateY(50px);
+  }
+  
+  to {
+  opacity: 1;
+  transform: translateY(0px);
+  }
+  }
+  
+  .login-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  }
+  
+  .form-group {
+  margin-bottom: 20px;
+  }
+  
+  .form-group input[type="email"],
+  .form-group input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid #eaeaea;
+  background-color: #f9f9f9;
+  font-size: 16px;
+  color: #333;
+  }
+  
+  .password-wrapper {
+  position: relative;
+  }
+  
+  .password-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  cursor: pointer;
+  }
+  
+  .forgot-password {
+  display: flex;
+  align-items: center;
+  }
+  
+  .forgot-password a {
+  color: #333;
+  text-decoration: none;
+  }
+  
+  .icon {
+  margin-left: 5px;
+  color: #999;
+  }
+  
+  .register-link {
+  color: #187bcd;
+  }
+  
+  .checkbox input[type="checkbox"] {
+  margin-right: 10px;
+  }
+  
+  .checkbox label {
+  color: #999;
+  font-size: 14px;
+  }
+  
+  button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #187bcd;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  }
+  
+  button[type="submit"]:hover {
+  background-color: #13599e;
+  }
