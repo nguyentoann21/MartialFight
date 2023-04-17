@@ -37,7 +37,7 @@
   
   .form-group input[type="email"],
   .form-group input[type="password"] {
-  width: 100%;
+  width: 90%;
   padding: 10px;
   border: none;
   border-bottom: 1px solid #eaeaea;
@@ -45,18 +45,22 @@
   font-size: 16px;
   color: #333;
   }
+
+  .forgot-remember {
+    display: flex;
+    justify-content: space-between;
+  }
   
   .password-wrapper {
   position: relative;
   }
   
   .password-icon {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #999;
-  cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
   }
   
   .forgot-password {

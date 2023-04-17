@@ -35,7 +35,7 @@ function Header() {
                 Shop
             </li>
         </Link>
-        <Link to='/heros' className='nav-link'>
+        <Link to='/heroes' className='nav-link'>
             <li className={`nav-item ${activeTab === 'Heroes' ? 'active' : ''}`} onClick={() => handleTabClick('Heroes')}>
                 Heroes
             </li>
@@ -63,8 +63,8 @@ function Header() {
         </button>
       </div>
       <div className="auth">
-        <button className="btn-sign-in">Sign In</button>
-        <button className="btn-sign-up">Sign Up</button>
+        <button className="btn-sign-in" onClick={() => window.location.href='/sign-in'}>Sign In</button>
+        <button className="btn-sign-up" onClick={() => window.location.href='/sign-up'}>Sign Up</button>
         <div className='language'>
           <FaGlobe className='icon-lang' />
           {/* <span>EN/VN</span> */}

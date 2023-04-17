@@ -1,0 +1,116 @@
+.register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  }
+  
+  .register-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .input-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .input-group input,
+  .input-group select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .input-group input.animate-on-hover:hover,
+  .input-group select.animate-on-hover:hover {
+    border-color: #0099ff;
+  }
+  
+  .input-group input.animate-on-click:focus,
+  .input-group select.animate-on-click:focus {
+    outline: none;
+    border-color: #0099ff;
+    box-shadow: 0px 0px 5px rgba(0, 153, 255, 0.5);
+    transition: box-shadow 0.2s ease-in-out;
+  }
+  
+  .radio-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .radio-group label {
+    margin-right: 10px;
+  }
+  
+  .radio-group input[type="radio"] {
+    margin-right: 5px;
+  }
+  
+  .radio-group input[type="radio"].animate-on-hover:hover + label {
+    color: #0099ff;
+  }
+  
+  .radio-group input[type="radio"].animate-on-click:focus + label {
+    outline: none;
+    color: #0099ff;
+    box-shadow: 0px 0px 5px rgba(0, 153, 255, 0.5);
+    transition: box-shadow 0.2s ease-in-out;
+  }
+  
+  .register-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    background-color: #0099ff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .register-btn.animate-on-hover:hover {
+    background-color: #0080ff;
+  }
+  
+  .register-btn.animate-on-click:focus {
+    outline: none;
+    background-color: #0080ff;
+    box-shadow: 0px 0px 5px rgba(0, 153, 255, 0.5);
+    transition: box-shadow 0.2s ease-in-out;
+  }
+  
+  .sign-in-link {
+    margin-top: 20px;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .sign-in-link a {
+    color: #0099ff;
+    text-decoration: none;
+  }
+  
+  .sign-in-link a:hover {
+    text-decoration: underline;
+  }
+  

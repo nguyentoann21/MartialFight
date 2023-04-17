@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaEye, FaEyeSlash, FaQuestionCircle } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaQuestionCircle, FaGoogle, FaFacebook, FaTwitter } from "react-icons/fa";
 import "./login.css";
 
 
@@ -40,20 +40,23 @@ const Login = () => {
               onChange={(event) => setPassword(event.target.value)}
               required
             />
-            {showPassword ? <FaEyeSlash className="password-icon"
-              onClick={togglePasswordVisibility} /> : <FaEye className="password-icon"
-              onClick={togglePasswordVisibility} />}
-              
+            <span className="password-icon" onClick={togglePasswordVisibility}>
+            { showPassword ? <FaEyeSlash /> : <FaEye /> }
+            </span>
+          </div>
+        </div>
+        <div className="form-group forgot-remember">
+          <div className="checkbox">
+            <input type="checkbox" id="remember-me" />
+            <label htmlFor="remember-me">Remember me</label>
+          </div>
+          <div className="forgot-password">
+            <FaQuestionCircle className="icon" />
+            <a href="/">&nbsp;Forgot Password</a>
           </div>
         </div>
         <div className="form-group">
           <button type="submit">Login</button>
-        </div>
-        <div className="form-group">
-          <div className="forgot-password">
-            <a href="/">Forgot Password?</a>
-            <FaQuestionCircle className="icon" />
-          </div>
         </div>
         <div className="form-group">
           <p>
@@ -63,10 +66,12 @@ const Login = () => {
             </a>
           </p>
         </div>
-        <div className="form-group">
-          <div className="checkbox">
-            <input type="checkbox" id="remember-me" />
-            <label htmlFor="remember-me">Remember me</label>
+        <div className="form-group social-login">
+          <span>Or login with:</span>
+          <div className="social-icons">
+            <FaFacebook />
+            <FaGoogle />
+            <FaTwitter />
           </div>
         </div>
       </form>

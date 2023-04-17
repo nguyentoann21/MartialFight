@@ -55,7 +55,7 @@ function Footer() {
         </div>
       </div>
       <div className='footer-mark'>
-        <p>&copy; 2023 Couple D5 Man Company welcome</p>
+        <p>&copy;Copyright 2023 That D5 Man Company</p>
       </div>
     </div>
   );
