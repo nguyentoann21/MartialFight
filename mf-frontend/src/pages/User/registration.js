@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import './registration.css';
 
 const Registration = () => {
@@ -12,174 +11,96 @@ const Registration = () => {
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
 
-  const handleInputChange = (event) => {
-    const target = event.target;
-    const name = target.name;
-    const value = target.value;
-
-    switch (name) {
-      case "avatar":
-        setAvatar(value);
-        break;
-      case "email":
-        setEmail(value);
-        break;
-      case "fullname":
-        setFullname(value);
-        break;
-      case "password":
-        setPassword(value);
-        break;
-      case "rePassword":
-        setRePassword(value);
-        break;
-      case "gender":
-        setGender(value);
-        break;
-      case "address":
-        setAddress(value);
-        break;
-      case "phone":
-        setPhone(value);
-        break;
-      default:
-        break;
-    }
+  const handleAvatarChange = (event) => {
+    setAvatar(event.target.value);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // handle form submission here
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handleFullnameChange = (event) => {
+    setFullname(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleRePasswordChange = (event) => {
+    setRePassword(event.target.value);
+  };
+
+  const handleGenderChange = (event) => {
+    setGender(event.target.value);
+  };
+
+  const handleAddressChange = (event) => {
+    setAddress(event.target.value);
+  };
+
+  const handlePhoneChange = (event) => {
+    setPhone(event.target.value);
   };
 
   return (
-    <div className="register">
-      <form onSubmit={handleSubmit}>
-        <div className="input-group">
-          <label htmlFor="avatar">Avatar:</label>
-          <input
-            type="text"
-            name="avatar"
-            id="avatar"
-            value={avatar}
-            onChange={handleInputChange}
-            className="animate-on-hover"
-          />
+    <div className="register-page">
+      <div className="register-form">
+        <div className="avatar">
+          <label>
+            <input type="file" accept="image/*" onChange={handleAvatarChange} />
+            <img src={avatar} alt="avatar" />
+          </label>
         </div>
-
-        <div className="input-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            value={email}
-            onChange={handleInputChange}
-            className="animate-on-hover"
-          />
+        <div className="form-groups">
+          <label>Email:</label>
+          <input type="email" value={email} onChange={handleEmailChange} />
         </div>
-
-        <div className="input-group">
-          <label htmlFor="fullname">Full Name:</label>
-          <input
-            type="text"
-            name="fullname"
-            id="fullname"
-            value={fullname}
-            onChange={handleInputChange}
-            className="animate-on-hover"
-          />
+        <div className="form-groups">
+          <label>Fullname:</label>
+          <input type="text" value={fullname} onChange={handleFullnameChange} />
         </div>
-
-        <div className="input-group">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            value={password}
-            onChange={handleInputChange}
-            className="animate-on-hover"
-          />
+        <div className="form-groups">
+          <label>Password:</label>
+          <input type="password" value={password} onChange={handlePasswordChange} />
         </div>
-
-        <div className="input-group">
-          <label htmlFor="rePassword">Re-Enter Password:</label>
-          <input
-            type="password"
-            name="rePassword"
-            id="rePassword"
-            value={rePassword}
-            onChange={handleInputChange}
-            className="animate-on-hover"
-          />
-        </div>
-
-        <div className="input-group">
-          <label htmlFor="gender">Gender:</label>
-          <div className="gender-radio-group">
-            <label>
-              <input
-                type="radio"
-                name="gender"
-                id="gender-male"
-                value="male"
-                checked={gender === "male"}
-                onChange={handleInputChange}
-                className="animate-on-click"
-              />
-              Male
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="gender"
-                id="gender-female"
-                value="female"
-            checked={gender === "female"}
-            onChange={handleInputChange}
-            className="animate-on-click"
-          />
+        <div className="form-groups">
+          <label>Re-Password:</label>
+          <input type="password" value={rePassword} onChange={handleRePasswordChange      } />
+    </div>
+    <div className="form-groups">
+      <label>Gender:</label>
+      <div>
+        <label>
+          <input type="radio" name="gender" value="male" checked={gender === "male"} onChange={handleGenderChange} />
+          Male
+        </label>
+        <label>
+          <input type="radio" name="gender" value="female" checked={gender === "female"} onChange={handleGenderChange} />
           Female
         </label>
       </div>
     </div>
-
-    <div className="input-group">
-      <label htmlFor="address">Address:</label>
-      <select
-        name="address"
-        id="address"
-        value={address}
-        onChange={handleInputChange}
-        className="animate-on-hover"
-      >
-        <option value="">Choose an address</option>
-        <option value="Ha Noi">Ha Noi</option>
-        <option value="Ho Chi Minh">Ho Chi Minh</option>
-        {/* add more options here */}
+    <div className="form-groups">
+      <label>Address:</label>
+      <select value={address} onChange={handleAddressChange}>
+        <option value="">-- Select a province --</option>
+        <option value="Hanoi">Hanoi</option>
+        <option value="HoChiMinhCity">Ho Chi Minh City</option>
+        <option value="DaNang">Da Nang</option>
+        {/* ... */}
       </select>
     </div>
-
-    <div className="input-group">
-      <label htmlFor="phone">Phone:</label>
-      <input
-        type="tel"
-        name="phone"
-        id="phone"
-        value={phone}
-        onChange={handleInputChange}
-        className="animate-on-hover"
-      />
+    <div className="form-groups">
+      <label>Phone:</label>
+      <input type="tel" value={phone} onChange={handlePhoneChange} />
     </div>
-
-    <button type="submit" className="register-btn animate-on-click">
-      Register
-    </button>
-  </form>
-
-  <div className="sign-in-link">
-    Already have an account? <Link to="/sign-in">Sign in</Link>
+    <div className="form-groups">
+      <button type="submit">Register</button>
+    </div>
+    <div className="link-to-signin">
+    <a href="/signin">Already have an account? Sign in</a>
+  </div>
   </div>
 </div>
 );

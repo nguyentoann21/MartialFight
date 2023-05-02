@@ -1,82 +1,88 @@
 import React, { useState } from "react";
-import { FaEye, FaEyeSlash, FaQuestionCircle, FaGoogle, FaFacebook, FaTwitter } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { FaFacebook, FaTwitter, FaInstagram, FaGoogle } from "react-icons/fa";
 import "./login.css";
 
-
-const Login = () => {
+function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
-  };
-
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
+  const [rememberMe, setRememberMe] = useState(false);
 
   return (
-    <div className="login-wrapper">
-      <form onSubmit={handleSubmit} className="login-form">
+    <div className="login-page">
+      <div className="login-form">
         <h2>Login</h2>
-        <div className="form-group">
+        <div className="form-group-text">
+          <label htmlFor="email">Email</label>
           <input
             type="email"
-            placeholder="Email"
+            id="email"
+            name="email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
+            placeholder="Enter your email"
             required
           />
         </div>
-        <div className="form-group">
-          <div className="password-wrapper">
-            <input
-              type={showPassword ? "text" : "password"}
-              placeholder="Password"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-              required
-            />
-            <span className="password-icon" onClick={togglePasswordVisibility}>
-            { showPassword ? <FaEyeSlash /> : <FaEye /> }
-            </span>
-          </div>
+        <div className="form-group-text">
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            placeholder="Enter your password"
+            required
+          />
         </div>
-        <div className="form-group forgot-remember">
-          <div className="checkbox">
-            <input type="checkbox" id="remember-me" />
+        <div className="form-group-text">
+          <div className="remember-me">
+            <input
+              type="checkbox"
+              id="remember-me"
+              name="remember-me"
+              checked={rememberMe}
+              onChange={(event) => setRememberMe(event.target.checked)}
+            />
             <label htmlFor="remember-me">Remember me</label>
           </div>
-          <div className="forgot-password">
-            <FaQuestionCircle className="icon" />
-            <a href="/">&nbsp;Forgot Password</a>
-          </div>
+          <Link to="/forgot-password" id="forgot-password-link">
+            Forgot password?
+          </Link>
         </div>
-        <div className="form-group">
+        <div className="form-group-text">
           <button type="submit">Login</button>
         </div>
-        <div className="form-group">
-          <p>
-            Don't have an account?{" "}
-            <a href="/" className="register-link">
-              Register
-            </a>
-          </p>
-        </div>
-        <div className="form-group social-login">
-          <span>Or login with:</span>
-          <div className="social-icons">
-            <FaFacebook />
-            <FaGoogle />
-            <FaTwitter />
+
+        <div>
+          <p className="social-connections-text">Or Sign in with: </p>
+          <div className="social-connections">
+            <div className="social">
+              <FaGoogle />
+              <span>&nbsp;Google</span>
+            </div>
+            <div className="social">
+              <FaFacebook />
+              <span>&nbsp;Facebook</span>
+            </div>
+            <div className="social">
+              <FaTwitter />
+              <span>&nbsp;Twitter</span>
+            </div>
+            <div className="social">
+              <FaInstagram />
+              <span>&nbsp;Instagram</span>
+            </div>
           </div>
         </div>
-      </form>
+        <p className="line-bottom"></p>
+        <div className="link-to-register">
+          Don't have an account? <Link to="/register">Register here</Link>
+        </div>
+      </div>
     </div>
   );
-};
+}
 
 export default Login;

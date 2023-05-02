@@ -1,116 +1,110 @@
-.register-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
-  }
+.register-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
   
   .register-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 400px;
-    padding: 30px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s;
+  width: 450px;
   }
   
-  .input-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
+  .register-form:hover {
+  transform: scale(1.05);
   }
   
-  .input-group label {
-    margin-bottom: 5px;
-    font-weight: bold;
+  .avatar {
+  text-align: center;
+  margin-bottom: 20px;
   }
   
-  .input-group input,
-  .input-group select {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+  .avatar label {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
   }
   
-  .input-group input.animate-on-hover:hover,
-  .input-group select.animate-on-hover:hover {
-    border-color: #0099ff;
+  .avatar label img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   }
   
-  .input-group input.animate-on-click:focus,
-  .input-group select.animate-on-click:focus {
-    outline: none;
-    border-color: #0099ff;
-    box-shadow: 0px 0px 5px rgba(0, 153, 255, 0.5);
-    transition: box-shadow 0.2s ease-in-out;
+  .avatar label::before {
+  content: "+";
+  font-size: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.3s;
   }
   
-  .radio-group {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  .avatar label:hover::before {
+  opacity: 1;
   }
   
-  .radio-group label {
-    margin-right: 10px;
+  .form-groups {
+  display: flex;
+  margin-bottom: 20px;
   }
   
-  .radio-group input[type="radio"] {
-    margin-right: 5px;
+  .form-groups label {
+  font-weight: bold;
   }
   
-  .radio-group input[type="radio"].animate-on-hover:hover + label {
-    color: #0099ff;
+  .form-groups input,
+  .form-groups select {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  
   }
   
-  .radio-group input[type="radio"].animate-on-click:focus + label {
-    outline: none;
-    color: #0099ff;
-    box-shadow: 0px 0px 5px rgba(0, 153, 255, 0.5);
-    transition: box-shadow 0.2s ease-in-out;
+  .form-groups input:focus,
+  .form-groups select:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   }
-  
-  .register-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
+
+  .form-groups button {
+    background-color: #007bff;
     color: #fff;
-    background-color: #0099ff;
     border: none;
     border-radius: 5px;
+    padding: 10px;
     cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-  }
-  
-  .register-btn.animate-on-hover:hover {
-    background-color: #0080ff;
-  }
-  
-  .register-btn.animate-on-click:focus {
-    outline: none;
-    background-color: #0080ff;
-    box-shadow: 0px 0px 5px rgba(0, 153, 255, 0.5);
-    transition: box-shadow 0.2s ease-in-out;
-  }
-  
-  .sign-in-link {
+    transition: background-color 0.3s;
+    }
+    
+    .form-groups button:hover {
+    background-color: #0069d9;
+    }
+    
+    .link-to-signin {
     margin-top: 20px;
-    font-size: 14px;
     text-align: center;
-  }
-  
-  .sign-in-link a {
-    color: #0099ff;
+    }
+    
+    .link-to-signin a {
+    color: #007bff;
     text-decoration: none;
-  }
-  
-  .sign-in-link a:hover {
-    text-decoration: underline;
-  }
-  
+    transition: color 0.3s;
+    }
+    
+    .link-to-signin a:hover {
+    color: #0069d9;
+    }
