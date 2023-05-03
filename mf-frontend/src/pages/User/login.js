@@ -1,84 +1,91 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { FaFacebook, FaTwitter, FaInstagram, FaGoogle } from "react-icons/fa";
-import "./login.css";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { FaTimes, FaFacebook, FaTwitter, FaGoogle, FaEye, FaEyeSlash } from 'react-icons/fa';
+import './login.scss';
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleShowPassword = () => {
+    setShowPassword(prev => !prev);
+  };
 
   return (
-    <div className="login-page">
-      <div className="login-form">
-        <h2>Login</h2>
-        <div className="form-group-text">
-          <label htmlFor="email">Email</label>
+    <div className='login-page'>
+      <div className='login-form'>
+        <div className='close-login'>
+          <Link to='/' className='close-icons'><FaTimes /></Link>
+        </div>
+        <h2>Sign In</h2>
+        <div className='form-group-login'>
+          <label htmlFor='email'>Email</label>
           <input
-            type="email"
-            id="email"
-            name="email"
+            type='email'
+            id='email'
+            name='email'
             value={email}
             onChange={(event) => setEmail(event.target.value)}
-            placeholder="Enter your email"
+            placeholder='Enter your email'
             required
           />
         </div>
-        <div className="form-group-text">
-          <label htmlFor="password">Password</label>
+        <div className='form-group-login'>
+          <label htmlFor='password'>Password</label>
           <input
-            type="password"
-            id="password"
-            name="password"
+            type={showPassword? 'text': 'password'}
+            id='password'
+            name='password'
             value={password}
             onChange={(event) => setPassword(event.target.value)}
-            placeholder="Enter your password"
+            placeholder='Enter your password'
             required
           />
+          <div className='password-icons' type='button' onClick={handleShowPassword}>
+            {showPassword ? <FaEyeSlash /> : <FaEye />}
+          </div>
         </div>
-        <div className="form-group-text">
-          <div className="remember-me">
+        <div className='form-group-login'>
+          <div className='remember-me'>
             <input
-              type="checkbox"
-              id="remember-me"
-              name="remember-me"
+              type='checkbox'
+              id='remember-me'
+              name='remember-me'
               checked={rememberMe}
               onChange={(event) => setRememberMe(event.target.checked)}
             />
-            <label htmlFor="remember-me">Remember me</label>
+            <label htmlFor='remember-me'>Remember me</label>
           </div>
-          <Link to="/forgot-password" id="forgot-password-link">
+          <Link to='/forgot-password' id='forgot-password-link'>
             Forgot password?
           </Link>
         </div>
-        <div className="form-group-text">
-          <button type="submit">Login</button>
+        <div className='form-group-login'>
+          <button type='submit'>Sign In</button>
         </div>
 
-        <div>
-          <p className="social-connections-text">Or Sign in with: </p>
-          <div className="social-connections">
-            <div className="social">
+        <div className='form-group-login'>
+          <p className='social-connections-text'>Or Sign in with: </p>
+          <div className='social-connections'>
+            <div className='social' id='google'>
               <FaGoogle />
               <span>&nbsp;Google</span>
             </div>
-            <div className="social">
+            <div className='social' id='facebook'>
               <FaFacebook />
               <span>&nbsp;Facebook</span>
             </div>
-            <div className="social">
+            <div className='social' id='twitter'>
               <FaTwitter />
               <span>&nbsp;Twitter</span>
             </div>
-            <div className="social">
-              <FaInstagram />
-              <span>&nbsp;Instagram</span>
-            </div>
           </div>
         </div>
-        <p className="line-bottom"></p>
-        <div className="link-to-register">
-          Don't have an account? <Link to="/register">Register here</Link>
+        <p className='line-bottom'></p>
+        <div className='link-to-sign-up'>
+          Don't have an account? <Link to='/sign-up'>Sign Up here!</Link>
         </div>
       </div>
     </div>

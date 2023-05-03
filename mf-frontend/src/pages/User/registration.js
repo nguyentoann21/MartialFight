@@ -99,7 +99,7 @@ const Registration = () => {
       <button type="submit">Register</button>
     </div>
     <div className="link-to-signin">
-    <a href="/signin">Already have an account? Sign in</a>
+    <a href="/sign-in">Already have an account? Sign in</a>
   </div>
   </div>
 </div>

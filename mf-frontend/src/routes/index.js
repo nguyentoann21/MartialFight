@@ -9,7 +9,7 @@ import AboutUs from '../pages/AboutUs';
 import Login from '../pages/User/login';
 import Registration from '../pages/User/registration';
 import NotFound404 from '../pages/NotFound404';
-import { MainLayout } from '../components/Layouts';
+import { MainLayout, UserLayout } from '../components/Layouts';
 
 
 const publicRoutes = [
@@ -71,13 +71,13 @@ const publicRoutes = [
         path: '/sign-in',
         name: 'sign-in',
         component: Login,
-        layout: null
+        layout: UserLayout
     },
     {
         path: '/sign-up',
         name: 'sign-up',
         component: Registration,
-        layout: null
+        layout: UserLayout
     }
 ];
 
