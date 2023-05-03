@@ -31,6 +31,7 @@ function Login() {
             placeholder='Enter your email'
             required
           />
+          <span id='email'></span>
         </div>
         <div className='form-group-login'>
           <label htmlFor='password'>Password</label>
@@ -46,6 +47,7 @@ function Login() {
           <div className='password-icons' type='button' onClick={handleShowPassword}>
             {showPassword ? <FaEyeSlash /> : <FaEye />}
           </div>
+          <span id='password'></span>
         </div>
         <div className='form-group-login'>
           <div className='remember-me'>
