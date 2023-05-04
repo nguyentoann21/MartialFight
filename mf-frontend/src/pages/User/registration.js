@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import { FaTimes, FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import "./registration.scss";
+import React, { useState } from 'react';
+import { FaTimes, FaEye, FaEyeSlash } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import './registration.scss';
 
 const Registration = () => {
   const [avatar, setAvatar] = useState(
-    "https://icon-library.com/images/insert-image-icon/insert-image-icon-14.jpg"
+    'https://icon-library.com/images/insert-image-icon/insert-image-icon-14.jpg'
   );
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const [rePassword, setRePassword] = useState("");
-  const [gender, setGender] = useState("");
-  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+  const [rePassword, setRePassword] = useState('');
+  const [gender, setGender] = useState('');
+  const [phone, setPhone] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showRePassword, setShowRePassword] = useState(false);
 
@@ -53,145 +53,145 @@ const Registration = () => {
   };
 
   return (
-    <div className="register-page">
-      <div className="register-form">
-        <div className="close-register">
-          <Link to="/" className="close-icons">
+    <div className='register-page'>
+      <div className='register-form'>
+        <div className='close-register'>
+          <Link to='/' className='close-icons'>
             <FaTimes />
           </Link>
         </div>
         <h2>Sign Up</h2>
-        <div className="avatar">
+        <div className='avatar'>
           <label>
             <input
-              type="file"
-              accept="image/*"
+              type='file'
+              accept='image/*'
               onChange={handleAvatarChange}
               hidden
             />
-            <img src={avatar} alt="avatar" />
+            <img src={avatar} alt='avatar' />
           </label>
         </div>
-        <div className="register-form-input">
-          <div className="form-group-register">
-            <label htmlFor="email">Email</label>
+        <div className='register-form-input'>
+          <div className='form-group-register'>
+            <label htmlFor='email'>Email</label>
             <input
-              type="email"
-              id="email"
-              name="email"
+              type='email'
+              id='email'
+              name='email'
               value={email}
               onChange={handleEmailChange}
-              placeholder="Enter your email"
+              placeholder='Enter your email'
               required
             />
-            <span id="email"></span>
+            <span id='email'></span>
           </div>
-          <div className="form-group-register">
-            <label htmlFor="name">Name</label>
+          <div className='form-group-register'>
+            <label htmlFor='name'>Name</label>
             <input
-              type="name"
-              id="name"
-              name="name"
+              type='name'
+              id='name'
+              name='name'
               value={name}
               onChange={handleNameChange}
-              placeholder="Enter your name"
+              placeholder='Enter your name'
               required
             />
-            <span id="name"></span>
+            <span id='name'></span>
           </div>
-          <div className="form-group-register">
-            <label htmlFor="password">Password</label>
+          <div className='form-group-register'>
+            <label htmlFor='password'>Password</label>
             <input
-              type={showPassword ? "text" : "password"}
-              id="password"
-              name="password"
+              type={showPassword ? 'text' : 'password'}
+              id='password'
+              name='password'
               value={password}
               onChange={handlePasswordChange}
-              placeholder="Enter your password"
+              placeholder='Enter your password'
               required
             />
             <div
-              className="password-icons"
-              type="button"
+              className='password-icons'
+              type='button'
               onClick={handleShowPassword}
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </div>
-            <span id="password"></span>
+            <span id='password'></span>
           </div>
-          <div className="form-group-register">
-            <label htmlFor="rePassword">Re-Password</label>
+          <div className='form-group-register'>
+            <label htmlFor='rePassword'>Re-Password</label>
             <input
-              type={showRePassword ? "text" : "password"}
-              id="rePassword"
-              name="rePassword"
+              type={showRePassword ? 'text' : 'password'}
+              id='rePassword'
+              name='rePassword'
               value={rePassword}
               onChange={handleRePasswordChange}
-              placeholder="Enter your re-password"
+              placeholder='Enter your re-password'
               required
             />
             <div
-              className="password-icons"
-              type="button"
+              className='password-icons'
+              type='button'
               onClick={handleShowRePassword}
             >
               {showRePassword ? <FaEyeSlash /> : <FaEye />}
             </div>
-            <span id="re-password"></span>
+            <span id='re-password'></span>
           </div>
-          <div className="form-group-register" id="gender">
+          <div className='form-group-register' id='gender'>
             <label>Gender</label>
-            <div className="male-female">
+            <div className='male-female'>
               <label>
                 <input
-                  type="radio"
-                  name="gender"
-                  value="male"
-                  checked={gender === "male"}
+                  type='radio'
+                  name='gender'
+                  value='male'
+                  checked={gender === 'male'}
                   onChange={handleGenderChange}
                 />
                 Male
               </label>
               <label>
                 <input
-                  type="radio"
-                  name="gender"
-                  value="female"
-                  checked={gender === "female"}
+                  type='radio'
+                  name='gender'
+                  value='female'
+                  checked={gender === 'female'}
                   onChange={handleGenderChange}
                 />
                 Female
               </label>
               <label>
                 <input
-                  type="radio"
-                  name="gender"
-                  value="other"
-                  checked={gender === "other"}
+                  type='radio'
+                  name='gender'
+                  value='other'
+                  checked={gender === 'other'}
                   onChange={handleGenderChange}
                 />
                 Other
               </label>
             </div>
           </div>
-          <div className="form-group-register">
-            <label htmlFor="phone" id="phone-number">Phone</label>
+          <div className='form-group-register'>
+            <label htmlFor='phone' id='phone-number'>Phone</label>
             <input
-              type="tel"
-              id="phone"
-              name="phone"
+              type='tel'
+              id='phone'
+              name='phone'
               value={phone}
               onChange={handlePhoneChange}
-              placeholder="Enter your phone"
+              placeholder='Enter your phone'
               required
             />
-            <span id="phone"></span>
+            <span id='phone'></span>
           </div>
         </div>
         <div className='form-group-button'>
           <button type='submit'>Sign Up</button>
         </div>
-        <div className="link-to-sign-in">
+        <div className='link-to-sign-in'>
           Already have an account?&nbsp;<Link to='/sign-in'>Sign in here!</Link>
         </div>
       </div>
