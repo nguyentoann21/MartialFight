@@ -84,7 +84,7 @@ const publicRoutes = [
         path: '/profile',
         name: 'profile',
         component: Profile,
-        layout: null
+        layout: UserLayout
     }
 ];
 

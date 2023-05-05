@@ -16,6 +16,10 @@ const Profile = () => {
     window.location.href = '/change-password';
   };
 
+  const handleLogout = () => {
+    console.log('logout');
+  };
+
   const handleSaveProfile = () => {
     console.log('Save');
   };
@@ -115,7 +119,10 @@ const Profile = () => {
             <button onClick={handleSaveProfile} className='save'>
               Save
             </button>
-            <button onClick={handlePasswordChangeClick} className='change-password'>Change Password</button>
+            <button onClick={handlePasswordChangeClick} className='change-password'>
+              Change Password
+            </button>
+            <button onClick={handleLogout} className='logout'>Logout</button>
           </div>
         </div>
       </div>

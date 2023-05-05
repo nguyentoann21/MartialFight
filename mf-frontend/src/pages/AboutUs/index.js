@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import './aboutUs.scss';
 const members = [
   {
-    name: 'John Doe',
-    role: 'CEO',
-    lang: 'English',
-    image: 'https://i.pinimg.com/736x/94/3f/cf/943fcf1ad73de4334e083475d1ab9541.jpg',
-    facebook: 'https://www.facebook.com/johndoe',
+    name: 'S-Chat Key',
+    role: 'Dev Fresher',
+    lang: 'C#, JavaScript, Java',
+    image: 'https://scontent.fsgn5-5.fna.fbcdn.net/v/t39.30808-6/321503457_5895494533830248_5065466886470833900_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=174925&_nc_ohc=jxDovRsELCYAX_NHf03&_nc_ht=scontent.fsgn5-5.fna&oh=00_AfDLgrdfqL9T8Udmt3F9_Kw8pxc8qKU7xCW11F9bxK4YUQ&oe=645913A9',
+    facebook: 'https://www.facebook.com/nvt.2001.sw/',
   },
   {
     name: 'Jane Doe',

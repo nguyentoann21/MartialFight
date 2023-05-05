@@ -176,7 +176,7 @@
 
             .actions-content {
 
-                .save, .change-password {
+                .save, .change-password, .logout {
                     padding: 7px 15px;
                     margin: 0 5px;
                     border-radius: 5px;
@@ -203,8 +203,19 @@
 
                 .change-password:hover {
                     transform: scale(1.1);
-                    background-color: rgb(191, 207, 243);
+                    background-color: rgb(191, 207, 243);   
                     color: #000;
+                }
+
+                .logout {
+                    background-color: #8dff23e8;
+                    color: #000;
+                }
+
+                .logout:hover {
+                    transform: scale(1.1);
+                    background-color: rgb(240, 17, 17);
+                    color: #fff;
                 }
             }
         }
