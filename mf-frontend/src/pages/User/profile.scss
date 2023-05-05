@@ -1,0 +1,212 @@
+.profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: #fff;
+
+    .profile-form {
+        background-color: #292424bd;
+        padding: 30px 40px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s;
+        width: 800px;
+
+        .close-profile {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin-left: 90%;
+            transition: all 0.3s ease-in-out;
+    
+            .close-icons {
+                color: #fff !important;
+                font-size: 40px !important;
+            }
+        }
+    
+        .close-profile:hover {
+            transform: rotate(90deg);
+    
+            .close-icons {
+                transform: scale(1.2);
+                color: #ff0 !important;
+            }
+        }
+    
+        .avatar-container {
+            text-align: center;
+    
+            label {
+                display: inline-block;
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+                overflow: hidden;
+                position: relative;
+                cursor: pointer;
+    
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+    
+            label::before {
+                content: "+";
+                font-size: 30px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: rgba(0, 0, 0, 0.5);
+                color: #fff;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                transition: opacity 0.3s;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+    
+            label:hover::before {
+                opacity: 1;
+            }
+        }
+    
+        .profile-main {
+            display: flex;
+
+            .static-container {
+                display: flex;
+                flex-direction: column;
+                width: 30%;
+                padding: 0px 25px;
+                justify-content: center;
+    
+                .static-content {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    border-radius: 5px;
+                    border: 2px solid #ced4da;
+                    margin: 7px 0px;
+                    padding: 5px;
+                    background-color: rgb(113, 232, 236);
+            
+                    .static-label {
+                        min-width: 100px;
+                        font-weight: 700;
+                        margin-left: 30px;
+                        color: #000;
+                    }
+            
+                    p {
+                        font-weight: 500;
+                        color: #008;
+                        margin: 0 !important;
+                        padding: 0 !important;
+                    }
+                }
+            }
+        
+            .details-container {
+                width: 70%;
+                padding: 15px;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 5px;
+                margin-bottom: 20px;
+                justify-content: center;
+                align-items: center;
+
+                .details-row {
+                    
+
+                    .details-label {
+                        font-weight: 700;
+
+                    }
+
+                    .details-value {
+                        color: #e91818;
+                        input {
+                            width: 85%;
+                            border-radius: 5px;
+                            border: 1px solid #ced4da;
+                            padding: 10px;
+                            transition: transform 0.3s;
+                        }
+
+                        input:hover {
+                            transform: scale(1.05);
+                        }
+            
+                        input:focus {
+                            outline: none;
+                            border-color: #007bff;
+                            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+                        }
+
+                        select {
+                            width: 94%;
+                            border-radius: 5px;
+                            border: 1px solid #ced4da;
+                            padding: 10px;
+                            transition: transform 0.3s;
+                        }
+
+                        select:hover {
+                            transform: scale(1.05);
+                        }
+                    }
+                }
+            }
+        }
+    
+        .actions-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .actions-content {
+
+                .save, .change-password {
+                    padding: 7px 15px;
+                    margin: 0 5px;
+                    border-radius: 5px;
+                    font-weight: 700;
+                    color: #fff;
+                    border: 1px solid #ced4da;
+                    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+                    cursor: pointer;
+                }
+
+                .save {
+                    background-color: rgb(133, 133, 50);
+                }
+
+                .save:hover {
+                    transform: scale(1.1);
+                    background-color: rgb(29, 224, 111);
+                    color: #000;
+                }
+
+                .change-password {
+                    background-color: #2392c5;
+                }
+
+                .change-password:hover {
+                    transform: scale(1.1);
+                    background-color: rgb(191, 207, 243);
+                    color: #000;
+                }
+            }
+        }
+    }
+}

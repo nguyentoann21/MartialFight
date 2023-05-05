@@ -7,11 +7,11 @@
 
     .register-form {
         background-color: #f0f0f0;
-        padding: 20px;
+        padding: 30px;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         transition: transform 0.3s;
-        width: 800px;
+        width: 620px;
 
         .close-register {
             display: flex;
@@ -87,7 +87,7 @@
         .register-form-input {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 5px;
+            gap: 15px;
             margin-bottom: 20px;
 
             .form-group-register {

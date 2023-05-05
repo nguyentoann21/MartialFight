@@ -10,6 +10,7 @@ import Login from '../pages/User/login';
 import Registration from '../pages/User/registration';
 import NotFound404 from '../pages/NotFound404';
 import { MainLayout, UserLayout } from '../components/Layouts';
+import Profile from '../pages/User/profile';
 
 
 const publicRoutes = [
@@ -78,6 +79,12 @@ const publicRoutes = [
         name: 'sign-up',
         component: Registration,
         layout: UserLayout
+    },
+    {
+        path: '/profile',
+        name: 'profile',
+        component: Profile,
+        layout: null
     }
 ];
 
