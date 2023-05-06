@@ -1,4 +1,4 @@
-import './UserLayout.scss'
+import './user.scss'
 
 function UserLayout({ children }) {
     return(

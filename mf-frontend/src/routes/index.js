@@ -9,8 +9,9 @@ import AboutUs from '../pages/AboutUs';
 import Login from '../pages/User/login';
 import Registration from '../pages/User/registration';
 import NotFound404 from '../pages/NotFound404';
-import { MainLayout, UserLayout } from '../components/Layouts';
+import { MainLayout, RankLayout, UserLayout } from '../components/Layouts';
 import Profile from '../pages/User/profile';
+import ChangePassword from '../pages/User/password';
 
 
 const publicRoutes = [
@@ -36,7 +37,7 @@ const publicRoutes = [
         path: '/ranking',
         name: 'Ranking',
         component: Ranking,
-        layout: MainLayout
+        layout: RankLayout
     },
     {
         path: '/shop',
@@ -84,6 +85,12 @@ const publicRoutes = [
         path: '/profile',
         name: 'profile',
         component: Profile,
+        layout: UserLayout
+    },
+    {
+        path: '/change-password',
+        name: 'change-password',
+        component: ChangePassword,
         layout: UserLayout
     }
 ];
