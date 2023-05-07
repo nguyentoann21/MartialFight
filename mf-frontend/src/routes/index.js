@@ -12,6 +12,7 @@ import NotFound404 from '../pages/NotFound404';
 import { MainLayout, RankLayout, UserLayout } from '../components/Layouts';
 import Profile from '../pages/User/profile';
 import ChangePassword from '../pages/User/password';
+import ForgotPassword from '../pages/User/forgot';
 
 
 const publicRoutes = [
@@ -91,6 +92,12 @@ const publicRoutes = [
         path: '/change-password',
         name: 'change-password',
         component: ChangePassword,
+        layout: UserLayout
+    },
+    {
+        path: '/forgot-password',
+        name: 'forgot-password',
+        component: ForgotPassword,
         layout: UserLayout
     }
 ];
