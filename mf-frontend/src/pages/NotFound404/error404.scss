@@ -1,0 +1,46 @@
+.error-not-found-404 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px 0;
+    background-color: #222;
+
+    .error-not-found-container {
+        display: flex;
+        background-color: #f5f5f5;
+        padding: 40px 100px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 15px;    
+
+        .gif-video-404 {
+
+            img {
+                width: 300px;
+                height: 200px;
+            }
+        }
+    
+        .text-404 {
+            color: red;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start !important;
+            font-weight: bold;
+            margin: 0 30px;
+    
+            h1 {
+                font-size: 60px;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+    
+            h2 {
+                font-size: 30px;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+        }
+    }
+}
