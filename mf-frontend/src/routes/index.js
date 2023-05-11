@@ -9,7 +9,7 @@ import AboutUs from '../pages/AboutUs';
 import Login from '../pages/User/login';
 import Registration from '../pages/User/registration';
 import NotFound404 from '../pages/NotFound404';
-import { MainLayout, RankLayout, UserLayout } from '../components/Layouts';
+import { MainLayout, UserLayout } from '../components/Layouts';
 import Profile from '../pages/User/profile';
 import ChangePassword from '../pages/User/password';
 import ForgotPassword from '../pages/User/forgot';
@@ -38,7 +38,7 @@ const publicRoutes = [
         path: '/ranking',
         name: 'Ranking',
         component: Ranking,
-        layout: RankLayout
+        layout: MainLayout
     },
     {
         path: '/shop',

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { FaMedal } from 'react-icons/fa';
-import './rank.css';
+import './rank.scss';
 
-const leaderboardData = {
+const rankData = {
   levels: [
     { no: 1, name: 'John', level: 'Level 10' },
     { no: 2, name: 'Alice', level: 'Level 8' },
@@ -33,61 +33,82 @@ const Ranking = () => {
   };
 
   return (
-    <div className="leaderboard-container">
-      <div className="tabs-container">
-        <button
-          className={`tab ${activeTab === 'levels' ? 'active' : ''}`}
-          onClick={() => handleTabChange('levels')}
-        >
-          Level
-        </button>
-        <button
-          className={`tab ${activeTab === 'rankings' ? 'active' : ''}`}
-          onClick={() => handleTabChange('rankings')}
-        >
-          Rank
-        </button>
-        <button
-          className={`tab ${activeTab === 'challenges' ? 'active' : ''}`}
-          onClick={() => handleTabChange('challenges')}
-        >
-          Challenge
-        </button>
+    <div className='ranking-container'>
+      <div className='ranking-form'>
+        <div className='ranking-text'>
+          <img src='/assets/images/cups.png' alt='ranking' />
+          <h3>Leaderboard</h3>
+          <img src='/assets/images/cups.png' alt='ranking' />
+        </div>
+        <div className='tabs-container'>
+          <button
+            className={`tab ${activeTab === 'levels' ? 'active' : ''}`}
+            onClick={() => handleTabChange('levels')}
+          >
+            Level
+          </button>
+          <button
+            className={`tab ${activeTab === 'rankings' ? 'active' : ''}`}
+            onClick={() => handleTabChange('rankings')}
+          >
+            Rank
+          </button>
+          <button
+            className={`tab ${activeTab === 'challenges' ? 'active' : ''}`}
+            onClick={() => handleTabChange('challenges')}
+          >
+            Challenge
+          </button>
+        </div>
+        <div className='table-container'>
+          <table>
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>
+                  {activeTab === 'levels'
+                    ? 'Level'
+                    : activeTab === 'rankings'
+                    ? 'Rank'
+                    : 'Challenge'}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {rankData[activeTab].map((item) => (
+                <tr key={item.no}>
+                  <td>
+                    {item.no === 1 ? (
+                      <FaMedal className='gold' />
+                    ) : item.no === 2 ? (
+                      <FaMedal className='silver' />
+                    ) : item.no === 3 ? (
+                      <FaMedal className='bronze' />
+                    ) : (
+                      <FaMedal className='normal' />
+                    )}
+                  </td>
+                  <td>{item.name}</td>
+                  <td>
+                    {
+                      item[
+                        activeTab === 'levels'
+                          ? 'level'
+                          : activeTab === 'rankings'
+                          ? 'rank'
+                          : 'challenge'
+                      ]
+                    }
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-
-      <div className="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Rank</th>
-              <th>Name</th>
-              <th>{activeTab === 'levels' ? 'Level' : activeTab === 'rankings' ? 'Rank' : 'Challenge'}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {leaderboardData[activeTab].map((item) => (
-              <tr key={item.no}>
-                <td>
-                  {item.no === 1 ? (
-                    <FaMedal className='gold'/>
-                  ) : item.no === 2 ? (
-                    <FaMedal className='silver'/>
-                  ) : item.no === 3 ? (
-                    <FaMedal className='bronze'/>
-                  ) : (
-                    <div className="rank">{item.no}</div>
-                  )}
-                </td>
-                <td>{item.name}</td>
-                <td>{item[activeTab === 'levels' ? 'level' : activeTab === 'rankings' ? 'rank' : 'challenge']}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-</div>
+    </div>
   );
 };
 
 export default Ranking;
-
