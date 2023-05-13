@@ -1,0 +1,58 @@
+.trailer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    padding: 10px 0;
+
+    .trailer-content {
+        border-radius: 10px;    
+        color: #222;
+        max-width: 1200px;
+        max-height: 600px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+
+        video {
+            width: 90%;
+            height: 90%;
+            object-fit: contain;
+        }
+
+        .prev-trailer {
+            background-color: #505050;
+            border-radius: 5px;
+            position: absolute;
+            left: 9%;
+
+            svg {
+                font-size: 40px;
+                padding: 20px 0;
+                color: #f9f9f9;
+            }
+        }
+
+        .next-trailer {
+            background-color: #505050;
+            border-radius: 5px;
+            position: absolute;
+            right: 7.85%;
+
+            svg {
+                font-size: 40px;
+                padding: 20px 0;
+                color: #f9f9f9;
+            }
+        }
+
+        .prev-trailer:hover, .next-trailer:hover {
+            background-color: #ff0;
+            
+            svg {
+                color: #008;
+            }
+        }
+    }
+}

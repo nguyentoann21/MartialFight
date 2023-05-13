@@ -61,50 +61,55 @@ const Ranking = () => {
           </button>
         </div>
         <div className='table-container'>
-          <table>
-            <thead>
-              <tr>
-                <th>Rank</th>
-                <th>Name</th>
-                <th>
-                  {activeTab === 'levels'
-                    ? 'Level'
-                    : activeTab === 'rankings'
-                    ? 'Rank'
-                    : 'Challenge'}
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {rankData[activeTab].map((item) => (
-                <tr key={item.no}>
-                  <td>
-                    {item.no === 1 ? (
-                      <FaMedal className='gold' />
-                    ) : item.no === 2 ? (
-                      <FaMedal className='silver' />
-                    ) : item.no === 3 ? (
-                      <FaMedal className='bronze' />
-                    ) : (
-                      <FaMedal className='normal' />
-                    )}
-                  </td>
-                  <td>{item.name}</td>
-                  <td>
-                    {
-                      item[
-                        activeTab === 'levels'
-                          ? 'level'
-                          : activeTab === 'rankings'
-                          ? 'rank'
-                          : 'challenge'
-                      ]
-                    }
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          {
+            Object.keys(rankData).length === 0 ? (<div className='no-rank-list'>No ranking was found</div>) : 
+            (
+              <table>
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>
+                      {activeTab === 'levels'
+                        ? 'Level'
+                        : activeTab === 'rankings'
+                        ? 'Rank'
+                        : 'Challenge'}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {rankData[activeTab].map((item) => (
+                    <tr key={item.no}>
+                      <td>
+                        {item.no === 1 ? (
+                          <FaMedal className='gold' />
+                        ) : item.no === 2 ? (
+                          <FaMedal className='silver' />
+                        ) : item.no === 3 ? (
+                          <FaMedal className='bronze' />
+                        ) : (
+                          <FaMedal className='normal' />
+                        )}
+                      </td>
+                      <td>{item.name}</td>
+                      <td>
+                        {
+                          item[
+                            activeTab === 'levels'
+                              ? 'level'
+                              : activeTab === 'rankings'
+                              ? 'rank'
+                              : 'challenge'
+                          ]
+                        }
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )
+          }
         </div>
       </div>
     </div>

@@ -1,7 +1,11 @@
+import DownloadGame from "./download";
+import Trailer from "./trailer";
+
 function Home() {
     return(
         <>
-            <h1>Main Home</h1>
+            <Trailer />
+            <DownloadGame />
         </>
     );
 }

@@ -66,6 +66,13 @@
             width: 100%;
             overflow-x: auto;
 
+            .no-rank-list {
+                text-align: center;
+                font-size: 30px;
+                font-size: #ff0;
+                font-weight: 600;
+            }
+
             table {
                 border-collapse: collapse;
                 width: 100%;

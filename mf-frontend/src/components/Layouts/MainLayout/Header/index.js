@@ -57,7 +57,7 @@ function Header() {
         </Link>
       </ul>
       <div className="search">
-        <input type="text" placeholder="Search..." />
+        <input type="text" placeholder="Search hero by name..." />
         <button>
             <FaSearch />
         </button>

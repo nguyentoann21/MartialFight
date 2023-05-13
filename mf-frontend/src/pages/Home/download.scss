@@ -1,0 +1,36 @@
+.download-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .download-content {
+        display: flex;
+        padding: 5px 30px 7px 20px;
+        border: 3px solid #fff;
+        font-weight: 700;
+        border-radius: 30px;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(22, 141, 221);
+        margin: 20px 0 40px 0;
+
+        svg {
+            width: 30px !important;
+            height: 30px !important;
+        }
+
+        .download-text {
+            margin: 0 5px;
+            font-size: 26px;
+        }
+    }
+
+    .download-content:hover {
+        transition: color 0.4s;
+        filter: drop-shadow(0 0 100px #ff0) drop-shadow(0 0 50px #ff0);
+        transform-origin: bottom right;
+        background-color: #ff0;
+        color: #007;
+        border: 3px solid rgb(28, 72, 168);
+    }
+}
