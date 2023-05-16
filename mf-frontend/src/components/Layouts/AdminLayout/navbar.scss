@@ -1,0 +1,70 @@
+.navbar-container {
+    background-color: #333 !important;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column !important;
+    padding: 15px;
+    height: 100vh;
+    border-radius: 10px;
+
+    .navbar-top {
+        width: 100%;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        cursor: pointer;
+
+        h3 {
+            flex: 0 75%;
+            font-weight: 600 !important;
+        }
+
+        .top-icon {
+            flex: 0 25%;
+            display: flex !important;
+            justify-content: flex-end !important;
+            font-size: 22px !important;
+        }
+    }
+
+
+    img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    h4 {
+        font-weight: 600;
+    }
+
+    .navbar-main {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100%;
+        cursor: pointer;
+
+        .navbar-dashboard, .navbar-charts, .navbar-blogs, .navbar-items, .navbar-players, .navbar-profile, .navbar-logout {
+            font-weight: 500;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            padding: 5px 15px;
+            margin-top: 5px !important;
+            display: flex !important;
+            align-items: center !important;
+
+            svg {
+                font-size: 22px !important;
+                margin-right: 10px !important;
+            }
+
+            span {
+                font-size: 18px !important;
+            }
+        }
+    }
+}

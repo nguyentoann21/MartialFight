@@ -9,7 +9,7 @@ import AboutUs from '../pages/AboutUs';
 import Login from '../pages/User/login';
 import Registration from '../pages/User/registration';
 import NotFound404 from '../pages/NotFound404';
-import { MainLayout, UserLayout } from '../components/Layouts';
+import { AdminLayout, MainLayout, UserLayout } from '../components/Layouts';
 import Profile from '../pages/User/profile';
 import ChangePassword from '../pages/User/password';
 import ForgotPassword from '../pages/User/forgot';
@@ -68,7 +68,7 @@ const publicRoutes = [
         path: '/admin',
         name: 'admin',
         component: Admin,
-        //layout: LayoutAdmin
+        layout: AdminLayout
     },
     {
         path: '/sign-in',

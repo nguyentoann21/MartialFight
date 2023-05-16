@@ -1,8 +1,10 @@
+import './dashboard.scss';
+
 function Admin() {
     return(
-        <>
-            <h1>Admin</h1>
-        </>
+        <div className='dashboard-container'>
+            <h1>Admin dashboard</h1>
+        </div>
     );
 }
 
