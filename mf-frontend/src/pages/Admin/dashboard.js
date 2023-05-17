@@ -1,6 +1,6 @@
 import './dashboard.scss';
 
-function Admin() {
+const Dashboard = () => {
     return(
         <div className='dashboard-container'>
             <h1>Admin dashboard</h1>
@@ -8,4 +8,4 @@ function Admin() {
     );
 }
 
-export default Admin;
+export default Dashboard;

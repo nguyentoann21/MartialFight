@@ -1,6 +1,10 @@
 import Home from '../pages/Home';
-import Admin from '../pages/Admin';
+import AdminProfile from '../pages/Admin/profiles';
+import Dashboard from '../pages/Admin/dashboard';
 import Blogs from '../pages/Blogs';
+import BlogManagement from '../pages/Admin/blogs';
+import ItemsManagement from '../pages/Admin/items';
+import Player from '../pages/Admin/players';
 import Ranking from '../pages/Ranking';
 import Shop from '../pages/Shop';
 import Heroes from '../pages/Heroes';
@@ -13,6 +17,7 @@ import { AdminLayout, MainLayout, UserLayout } from '../components/Layouts';
 import Profile from '../pages/User/profile';
 import ChangePassword from '../pages/User/password';
 import ForgotPassword from '../pages/User/forgot';
+import Chart from '../pages/Admin/chart';
 
 
 const publicRoutes = [
@@ -65,9 +70,39 @@ const publicRoutes = [
         layout: MainLayout
     },
     {
-        path: '/admin',
-        name: 'admin',
-        component: Admin,
+        path: '/dashboard',
+        name: 'Dashboard',
+        component: Dashboard,
+        layout: AdminLayout
+    },
+    {
+        path: '/chart',
+        name: 'Chart-Management',
+        component: Chart,
+        layout: AdminLayout
+    },
+    {
+        path: '/blogs',
+        name: 'Blog-Management',
+        component: BlogManagement,
+        layout: AdminLayout
+    },
+    {
+        path: '/items',
+        name: 'Items-Management',
+        component: ItemsManagement,
+        layout: AdminLayout
+    },
+    {
+        path: '/player',
+        name: 'Players-Management',
+        component: Player,
+        layout: AdminLayout
+    },
+    {
+        path: '/admin-profile',
+        name: 'Admin-Profile',
+        component: AdminProfile,
         layout: AdminLayout
     },
     {

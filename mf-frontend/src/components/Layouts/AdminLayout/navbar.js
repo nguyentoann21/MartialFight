@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { FaBars, FaUser, FaKey, FaSignOutAlt, FaNewspaper, FaToolbox, FaChartLine, FaTachometerAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { FaUser, FaKey, FaSignOutAlt, FaNewspaper, FaToolbox, FaChartLine, FaTachometerAlt } from 'react-icons/fa';
 import './navbar.scss';
 
 const NavbarAdmin = () => {
@@ -18,42 +19,57 @@ const NavbarAdmin = () => {
     return(
         <div className='navbar-container'>
             <div className='navbar-top'>
-                <h3>Administrator Page</h3>
-                <div className='top-icon'>
-                    <FaBars />
-                </div>
+                <Link to='/dashboard'>
+                    <h3 className={`navbar-dashboard ${activeItem === 'Dashboard' ? 'active' : ''}`} onClick={() => handleActionClick('Dashboard')}>Admin management</h3>
+                </Link>
             </div>
-            <img src={avatar} alt='avatar' />
+            <Link to='/admin-profile'>
+                <img src={avatar} alt='avatar' className={`navbar-dashboard ${activeItem === 'Profile' ? 'active' : ''}`} onClick={() => handleActionClick('Profile')} />
+            </Link>
             <h4>Hello, Admin!</h4>
             <div className='navbar-main'>
-                <div className={`navbar-dashboard ${activeItem === 'Dashboard' ? 'active' : ''}`} onClick={() => handleActionClick('Dashboard')}>
-                    <FaTachometerAlt  />
-                    <span>Dashboard</span>
-                </div>
-                <div className={`navbar-charts ${activeItem === 'Charts' ? 'active' : ''}`} onClick={() => handleActionClick('Charts')}>
-                    <FaChartLine />
-                    <span>Charts</span>
-                </div>
-                <div className={`navbar-blogs ${activeItem === 'Blogs' ? 'active' : ''}`} onClick={() => handleActionClick('Blogs')}>
-                    <FaNewspaper />
-                    <span>Blogs</span>
-                </div>
-                <div className={`navbar-items ${activeItem === 'Items' ? 'active' : ''}`} onClick={() => handleActionClick('Items')}>
-                    <FaToolbox />
-                    <span>Items</span>
-                </div>
-                <div className={`navbar-players ${activeItem === 'Players' ? 'active' : ''}`} onClick={() => handleActionClick('Players')}>
-                    <FaUser />
-                    <span>Players</span>
-                </div>
-                <div className={`navbar-profile ${activeItem === 'Profile' ? 'active' : ''}`} onClick={() => handleActionClick('Profile')}>
-                    <FaKey />
-                    <span>Profile</span>
-                </div>
-                <div className={`navbar-logout ${activeItem === 'Logout' ? 'active' : ''}`} onClick={() => handleActionClick('Logout')}>
-                    <FaSignOutAlt/>
-                    <span>Logout</span>
-                </div>
+                <Link to='/dashboard'>
+                    <div className={`navbar-dashboard ${activeItem === 'Dashboard' ? 'active' : ''}`} onClick={() => handleActionClick('Dashboard')}>
+                        <FaTachometerAlt  />
+                        <span>Dashboard</span>
+                    </div>
+                </Link>
+                <Link to='/chart'>
+                    <div className={`navbar-charts ${activeItem === 'Charts' ? 'active' : ''}`} onClick={() => handleActionClick('Charts')}>
+                        <FaChartLine />
+                        <span>Charts</span>
+                    </div>
+                </Link>
+                <Link to='/blogs'>
+                    <div className={`navbar-blogs ${activeItem === 'Blogs' ? 'active' : ''}`} onClick={() => handleActionClick('Blogs')}>
+                        <FaNewspaper />
+                        <span>Blogs</span>
+                    </div>
+                </Link>
+                <Link to='/items'>
+                    <div className={`navbar-items ${activeItem === 'Items' ? 'active' : ''}`} onClick={() => handleActionClick('Items')}>
+                        <FaToolbox />
+                        <span>Items</span>
+                    </div>
+                </Link>
+                <Link to='/player'>
+                    <div className={`navbar-players ${activeItem === 'Players' ? 'active' : ''}`} onClick={() => handleActionClick('Players')}>
+                        <FaUser />
+                        <span>Players</span>
+                    </div>
+                </Link>
+                <Link to='/admin-profile'>
+                    <div className={`navbar-profile ${activeItem === 'Profile' ? 'active' : ''}`} onClick={() => handleActionClick('Profile')}>
+                        <FaKey />
+                        <span>Profile</span>
+                    </div>
+                </Link>
+                <Link to='/'>
+                    <div className={`navbar-logout ${activeItem === 'Logout' ? 'active' : ''}`} onClick={() => handleActionClick('Logout')}>
+                        <FaSignOutAlt/>
+                        <span>Logout</span>
+                    </div>
+                </Link>
             </div>
         </div>
     );

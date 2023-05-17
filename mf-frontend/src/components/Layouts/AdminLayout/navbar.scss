@@ -16,16 +16,22 @@
         align-items: center !important;
         cursor: pointer;
 
-        h3 {
-            flex: 0 75%;
-            font-weight: 600 !important;
-        }
+        a {
+            text-decoration: none;
+            color: #fff;
 
-        .top-icon {
-            flex: 0 25%;
-            display: flex !important;
-            justify-content: flex-end !important;
-            font-size: 22px !important;
+            h3 {
+                font-weight: 600 !important;
+                background-color: #f3e9e9 !important;
+                color: #333;
+                padding: 3px 10px !important;
+                border-radius: 10px !important;
+            }
+            
+            h3:hover {
+                background-color: rgb(230, 156, 9) !important;
+                color: #008 !important;
+            }
         }
     }
 
@@ -48,23 +54,64 @@
         width: 100%;
         cursor: pointer;
 
-        .navbar-dashboard, .navbar-charts, .navbar-blogs, .navbar-items, .navbar-players, .navbar-profile, .navbar-logout {
-            font-weight: 500;
-            border: 2px solid #fff;
-            border-radius: 10px;
-            padding: 5px 15px;
-            margin-top: 5px !important;
-            display: flex !important;
-            align-items: center !important;
+        a {
+            text-decoration: none !important;
+            background-color: #333 !important;
+            color: #fff;
 
-            svg {
-                font-size: 22px !important;
-                margin-right: 10px !important;
+            .navbar-dashboard, .navbar-charts, .navbar-blogs, .navbar-items, .navbar-players, .navbar-profile, .navbar-logout {
+                font-weight: 500;
+                border: 2px solid #fff;
+                border-radius: 10px;
+                padding: 5px 15px;
+                margin-top: 5px !important;
+                display: flex !important;
+                align-items: center !important;
+    
+                svg {
+                    font-size: 22px !important;
+                    margin-right: 10px !important;
+                }
+    
+                span {
+                    font-size: 18px !important;
+                }
             }
-
-            span {
-                font-size: 18px !important;
+    
+            .navbar-dashboard:hover,
+            .navbar-charts:hover, 
+            .navbar-blogs:hover, 
+            .navbar-items:hover, 
+            .navbar-players:hover, 
+            .navbar-profile:hover, 
+            .navbar-logout:hover {
+                background-color: rgb(222, 227, 231);
+                color: #222;
+                transform: scale(1.05);
+                border: 2px solid #222;
+                transition: 0.3s;
+            }
+    
+            .active {
+                background-color: #ff0 !important;
+                color: #333 !important;
+                transform: scale(1.05) !important;
+                border: 2px solid #333 !important;
+                transition: 0.3s !important;
+            }
+    
+            .active:hover {
+                background-color: #fa0 !important;
+                color: #222 !important;
+                transform: scale(1.05) !important;
+                border: 2px solid #222 !important;
+                transition: 0.3s !important;
             }
         }
     }
+}
+
+.navbar-container:hover {
+    transform: scale(1.005) !important;
+    transition: 0.3s;
 }

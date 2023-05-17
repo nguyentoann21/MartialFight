@@ -6,9 +6,17 @@ const DownloadGame = () => {
     return(
         <div className='download-container'>
             <div className='download-content'>
+                <div className='download-icons'>
+                    <FaStar />
+                    <FaStar />
+                </div>
                 <FaStar />
                 <div className='download-text'>Download</div>
                 <FaStar />
+                <div className='download-icons'>
+                    <FaStar />
+                    <FaStar />
+                </div>
             </div>
         </div>
     );

@@ -13,10 +13,22 @@
         justify-content: center;
         background-color: rgb(22, 141, 221);
         margin: 20px 0 40px 0;
+        min-width: 240px;
+        min-height: 40px;
+
+        .download-icons {
+            display: flex;
+            flex-direction: column;
+
+            svg {
+                width: 10px !important;
+                height: 10px !important;
+            }
+        }
 
         svg {
-            width: 30px !important;
-            height: 30px !important;
+            width: 16px !important;
+            height: 16px !important;
         }
 
         .download-text {
@@ -32,5 +44,23 @@
         background-color: #ff0;
         color: #007;
         border: 3px solid rgb(28, 72, 168);
+
+        .download-icons {
+
+            svg {
+                transform: scale(1.7) rotate(72deg) !important;
+                padding: 5px 0 !important;
+                transition: 0.3s;
+            }
+        }
+
+        svg {
+            transform: scale(0.8) rotate(72deg);
+            transition: 0.3s;
+        }
+
+        .download-text {
+            transition: 0.3s;
+        }
     }
 }
