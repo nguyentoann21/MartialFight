@@ -1,0 +1,89 @@
+.blog-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .search-bar {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+  }
+  
+  .blog-list {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .blog-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s;
+    cursor: pointer;
+  }
+  
+  .blog-item:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .blog-item:last-child {
+    border-bottom: none;
+  }
+  
+  .blog-item .blog-title {
+    font-weight: bold;
+    margin-left: 10px;
+  }
+  
+  .dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .dialog-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 100%;
+    max-height: 80%;
+    overflow-y: auto;
+    text-align: center;
+  }
+  
+  .dialog h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  
+  .dialog p {
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  
+  .dialog button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .dialog button:hover {
+    background-color: #555;
+  }
+  

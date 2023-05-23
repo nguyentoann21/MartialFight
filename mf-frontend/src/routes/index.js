@@ -6,7 +6,7 @@ import BlogManagement from '../pages/Admin/blogs';
 import ItemsManagement from '../pages/Admin/items';
 import Player from '../pages/Admin/players';
 import Ranking from '../pages/Ranking';
-import Shop from '../pages/Shop';
+import Items from '../pages/Items';
 import Heroes from '../pages/Heroes';
 import Guide from '../pages/Guide';
 import AboutUs from '../pages/AboutUs';
@@ -46,9 +46,9 @@ const publicRoutes = [
         layout: MainLayout
     },
     {
-        path: '/shop',
-        name: 'Shop',
-        component: Shop,
+        path: '/items',
+        name: 'Items',
+        component: Items,
         layout: MainLayout
     },
     {
