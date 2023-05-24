@@ -59,7 +59,7 @@ function Header() {
       <div className="search">
         <input type="text" placeholder="Search hero by name..." />
         <button>
-            <FaSearch />
+          <FaSearch />
         </button>
       </div>
       <div className="auth">
