@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaTimes, FaFacebook, FaTwitter, FaGoogle, FaEye, FaEyeSlash } from 'react-icons/fa';
+import { FaTimes, FaEye, FaEyeSlash } from 'react-icons/fa';
 import './login.scss';
 
 function Login() {
@@ -66,24 +66,6 @@ function Login() {
         </div>
         <div className='form-group-login'>
           <button type='submit'>Sign In</button>
-        </div>
-
-        <div className='form-group-login'>
-          <p className='social-connections-text'>Or Sign in with: </p>
-          <div className='social-connections'>
-            <div className='social' id='google'>
-              <FaGoogle />
-              <span>&nbsp;Google</span>
-            </div>
-            <div className='social' id='facebook'>
-              <FaFacebook />
-              <span>&nbsp;Facebook</span>
-            </div>
-            <div className='social' id='twitter'>
-              <FaTwitter />
-              <span>&nbsp;Twitter</span>
-            </div>
-          </div>
         </div>
         <p className='line-bottom'></p>
         <div className='link-to-sign-up'>

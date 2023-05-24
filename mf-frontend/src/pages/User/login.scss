@@ -106,53 +106,6 @@
                 color: #0056b3;
             }
             
-            .social-connections-text {
-                text-align: center;
-                font-weight: bold;
-            }
-
-            .social-connections {
-                display: flex;
-                justify-content: space-evenly;
-                align-items: center;
-
-                .social {
-                    margin: 0 5px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-
-                #google {
-                    color: #ea4335 !important;
-                    span {
-                        color: #ea4335 !important;
-                    }
-                }
-
-                #facebook {
-                    color: #4267b2 !important;
-                    span {
-                        color: #4267b2 !important;
-                    }
-                }
-
-                #twitter {
-                    color: #1da1f2 !important;
-                    span {
-                        color: #1da1f2 !important;
-                    }
-                }
-
-                #google:hover, #facebook:hover, #twitter:hover {
-                    cursor: pointer;
-                    color: #fa0 !important;
-                    span {
-                        color: #fa0 !important;
-                    }
-                }
-            }
-
             .password-icons {
                 width: 16px !important;
                 height: 21px !important;

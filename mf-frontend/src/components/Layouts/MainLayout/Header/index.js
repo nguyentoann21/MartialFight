@@ -30,9 +30,9 @@ function Header() {
                 Ranking
             </li>
         </Link>
-        <Link to='/shop' className='nav-link'>
-            <li className={`nav-item ${activeTab === 'Shop' ? 'active' : ''}`} onClick={() => handleTabClick('Shop')}>
-                Shop
+        <Link to='/items' className='nav-link'>
+            <li className={`nav-item ${activeTab === 'Items' ? 'active' : ''}`} onClick={() => handleTabClick('Items')}>
+                Items
             </li>
         </Link>
         <Link to='/heroes' className='nav-link'>
@@ -59,7 +59,7 @@ function Header() {
       <div className="search">
         <input type="text" placeholder="Search hero by name..." />
         <button>
-            <FaSearch />
+          <FaSearch />
         </button>
       </div>
       <div className="auth">
