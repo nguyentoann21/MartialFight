@@ -169,6 +169,12 @@
                                     font-size: 16px;
                                     font-weight: 500;
                                 }
+
+                                img {
+                                    width: 100% !important;
+                                    height: 100% !important;
+                                    object-fit: cover;
+                                }
                             }
     
                             .dialog-content-button {
@@ -215,7 +221,7 @@
                           
                         /* For Chrome, Safari, and Opera */
                         .dialog-content::-webkit-scrollbar-track {
-                            background-color: transparent; 
+                            background-color: transparent;
                         }
                     }
                 }
