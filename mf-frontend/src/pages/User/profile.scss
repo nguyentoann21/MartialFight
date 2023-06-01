@@ -2,7 +2,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
     color: #fff;
 
     .profile-form {
@@ -12,6 +11,7 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         transition: transform 0.3s;
         width: 800px;
+        margin: 3.55% 0;
 
         .close-profile {
             display: flex;
@@ -219,9 +219,5 @@
                 }
             }
         }
-    }
-
-    .profile-form:hover {
-        transform: scale(1.1);
     }
 }
