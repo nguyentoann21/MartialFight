@@ -7,7 +7,7 @@ import ItemsManagement from '../pages/Admin/items';
 import Player from '../pages/Admin/players';
 import Ranking from '../pages/Ranking';
 import Items from '../pages/Items';
-import Heroes from '../pages/Heroes';
+import Character from '../pages/Character';
 import Guide from '../pages/Guide';
 import AboutUs from '../pages/AboutUs';
 import Login from '../pages/User/login';
@@ -52,9 +52,9 @@ const publicRoutes = [
         layout: MainLayout
     },
     {
-        path: '/heroes',
-        name: 'Heroes',
-        component: Heroes,
+        path: '/character',
+        name: 'Character',
+        component: Character,
         layout: MainLayout
     },
     {
