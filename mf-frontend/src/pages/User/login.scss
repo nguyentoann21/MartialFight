@@ -2,7 +2,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
 
     .login-form {
         display: flex;
@@ -16,6 +15,9 @@
         transition: transform 0.3s;
         width: 400px;
         font-weight: 500 !important;
+        margin: 6.3% 0 !important;
+        max-width: 1366px;
+        max-height: 768px;
 
         .close-login {
             position: relative;
@@ -134,9 +136,5 @@
                 color: #0056b3;
             }
         }
-    }
-
-    .login-form:hover {
-        transform: scale(1.05);
     }
 }

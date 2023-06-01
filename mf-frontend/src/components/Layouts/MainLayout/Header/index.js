@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaSearch, FaGlobe } from 'react-icons/fa';
+import { FaGlobe } from 'react-icons/fa';
 import { ReactComponent as LogoGame } from '../../../../logo.svg';
 import { Link } from 'react-router-dom';
 import './header.scss';
@@ -56,12 +56,12 @@ function Header() {
             </li>
         </Link>
       </ul>
-      <div className="search">
-        <input type="text" placeholder="Search hero by name..." />
-        <button>
-          <FaSearch />
-        </button>
-      </div>
+        {/* <div className="search">
+          <input type="text" placeholder="Search hero by name..." />
+          <button>
+            <FaSearch />
+          </button>
+        </div> */}
       <div className="auth">
         <button className="btn-sign-in" onClick={() => window.location.href='/sign-in'}>Sign In</button>
         <button className="btn-sign-up" onClick={() => window.location.href='/sign-up'}>Sign Up</button>

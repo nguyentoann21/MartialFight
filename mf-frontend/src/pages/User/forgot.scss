@@ -2,23 +2,27 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     font-weight: 500;
 
     .form-input-email-verify {
-        padding: 20px 50px 50px 50px;
-        background-color: #f0f0f0;
+        padding: 40px 70px 50px 70px;
+        background-color: #808080;
         display: flex;
         flex-direction: column;
         border-radius: 10px;
+        margin: 10.81% 0 !important;
+        max-width: 1366px;
+        max-height: 768px;
+        width: 400px;
+        height: 235px;
 
         .close-forgot {
             position: relative;
-            margin-left: 80%;
+            margin-left: 92%;
             transition: all 0.3s ease-in-out;
 
             .close-icons {
-                color: #a10 !important;
+                color: #fa0 !important;
                 font-size: 40px !important;
                 
             }
@@ -28,7 +32,7 @@
             transform: rotate(90deg);
 
             .close-icons {
-                color: #fa0 !important;
+                color: #ff0 !important;
             }
         }
 
@@ -37,7 +41,7 @@
             font-size: 30px;
             margin: 0 !important;
             margin: 0 0 20px 0 !important;
-            color: #000088;
+            color: #f7f7f7;
         }
 
         label {
@@ -86,33 +90,35 @@
         }
     }
 
-    .form-input-email-verify:hover {
-        transform: scale(1.05);
-        transition: 0.3s;
-    }
-
     .form-input-code-verify {
-        background-color: #f0f0f0;
+        background-color: #808080;
         border-radius: 10px;
+        margin: 13.98% 0 !important;
+        max-width: 1366px;
+        max-height: 768px;
+        width: 700px;
+        height: 240px;
 
         .input-code-verify {
             display: flex;
             flex-direction: column;
-            padding: 20px 40px 40px 40px;
+            padding: 50px 40px 30px 40px;
 
             .input-code-verify-text {
-                color: #000088;
+                color: #fff;
+                text-align: center !important;
+                margin: 0 0 5px 0 !important;
 
                 span{
-                    color: rgb(7, 3, 66) !important;
+                    color: #ff0 !important;
                     margin: 0 !important;
                     font-style: normal !important;
                 }
             }
 
             label {
-                color: #000088;
-                margin-bottom: 2px;
+                color: #fff;
+                margin: 0 0 5px 12%;
             }
 
             input {
@@ -160,53 +166,43 @@
         }
     }
 
-    .form-input-code-verify:hover {
-        transform: scale(1.1);
-        transition: 0.9s;
-    }
-
     .form-input-reset-password {
-        padding: 20px 40px 30px 40px;
-        background-color: #f0f0f0;
+        max-width: 1366px;
+        max-height: 768px;
+        background-color: #fff;
+        margin-top: -5% !important;
         border-radius: 10px;
-        display: flex;
-        flex-direction: column;
-        min-width: 400px;
         
-
         .form-reset-password {
-            transform: none !important;
-
-            h4 {
-                font-weight: 600 !important;
-                color: red !important;
-            }
-
-            .error-reset-password {
-                color: red !important;
-                font-weight: 400 !important;
-                font-style: italic !important;
-            }
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
 
             .reset-password-input{
                 display: flex;
                 flex-direction: column;
+                width: 60%;
+                margin: 0 20% !important;
+                height: 100%;
 
                 h3 {
                     font-size: 30px;
                     text-align: center !important;
-                    color: #a10;
+                    color: #008;
                 }
     
                 label {
-                    color: #880000;
+                    color: #008;
                     margin-bottom: 2px;
                 }
     
                 input {
                     border-radius: 5px;
                     border: 1px solid #ced4da;
-                    padding: 10px 40px 10px 10px;
+                    padding: 10px 15px 10px 10px;
                     transition: transform 0.3s;
                 }
         
@@ -219,18 +215,12 @@
                     border-color: #007bff;
                     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
                 }
-    
-                span {
-                    color: red;
-                    font-style: italic;
-                    margin-left: 70px;
-                }
 
                 .password-icons {
                     width: 16px !important;
                     height: 21px !important;
                     position: relative;
-                    margin: -28px 0 20px 90% !important;
+                    margin: -28px 0 20px 92% !important;
                     cursor: pointer;
                 }
             }
@@ -239,7 +229,7 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                margin-top: 30px;
+                margin-bottom: 40px;
 
                 button {
                     padding: 7px;
@@ -260,33 +250,159 @@
             }
         }
 
-        .result-success {
-            transform: none !important;
-            text-decoration: none !important;
+        .dialog-overlay-s {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
             display: flex;
-            .success-icons {
-                img {
-                    width: 150px;
-                    height: 150px;
-                }
-            }
-            .success-text {
-                margin-left: 20px;
-                p {
-                    color: #008 !important;
-                }
-                a {
-                    text-decoration: none !important;
-                    span {
-                        color:#fa0 !important;
+            justify-content: center;
+            align-items: center;
+
+            .dialog-overlay-success {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                background-color: #fff;
+                width: 600px;
+                padding: 20px 80px;
+                border-radius: 10px;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+
+                .dialog-overlay-success-header {
+                    text-align: center !important;
+                    
+                    h3 {
+                        color: #008;
+                        font-weight: 700;
+                        font-size: 40px;
+                        margin: 0 !important;
+                        padding: 0 !important;
                     }
                 }
-            }  
-        }
-    }
+                
+                .dialog-overlay-success-content {
+                    margin-bottom: 5px;
+                    display: flex !important;
+                    
+                    .success-icons {
+                        
+                        a {
+                            text-decoration: none !important;
 
-    .form-input-reset-password:hover {
-        transform: scale(1.05);
-        transition: 0.3s;
+                            img {
+                                width: 150px !important;
+                                height: 150px !important;
+                            }
+                        }
+                    }
+
+                    .success-text {
+                        display: flex !important;
+                        flex-direction: column;
+                        justify-content: center !important;
+                        align-items: flex-start !important;
+                        margin-left: 20px;
+
+                        p {
+                            color: #009;
+                            margin: 0;
+                            padding: 0;
+                        }
+
+                        .success-button-s {
+                            margin-top: 20px;
+
+                            a {
+                                text-decoration: none !important;
+    
+                                span {
+                                    background-color: #333;
+                                    color: #fff;
+                                    cursor: pointer;
+                                    padding: 5px 30px 7px 30px;
+                                    border-radius: 5px;
+                                    border: none !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .dialog-overlay-e {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .dialog-overlay-error {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                background-color: #fff;
+                width: 600px;
+                height: 250px;
+                padding: 0 80px;
+                border-radius: 10px;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+
+                .dialog-overlay-error-header {
+
+                    h3 {
+                        color: red;
+                        font-weight: 700;
+                        font-size: 40px;
+                        margin: 0 !important;
+                        padding: 0 !important;
+                    }
+                }
+                
+                .dialog-overlay-error-content {
+                    margin-bottom: 5px;
+                    
+                    .error-reset-password {
+                        margin: 0;
+                        padding: 0;
+                        color: #008 !important;
+                    } 
+                }
+
+                .dialog-e-close {
+
+                    .dialog-e-close-button {
+                        background-color: #8cd448 !important;
+                        border: none !important;
+                        color: #222;
+                        font-weight: 600 !important;
+                        border-radius: 5px;
+                        padding: 7px 20px !important;
+                        cursor: pointer;
+                    }
+                }
+
+                .dialog-e-close:hover {
+
+                    .dialog-e-close-button {
+                        background-color: #007bff !important;
+                        border: none !important;
+                        color: #fff;
+                        font-weight: 600 !important;
+                        border-radius: 5px;
+                        padding: 7px 20px !important;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
     }
 }

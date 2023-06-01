@@ -40,13 +40,13 @@ const NavbarAdmin = () => {
                         <span>Charts</span>
                     </div>
                 </Link>
-                <Link to='/blogs'>
+                <Link to='/admin-blogs'>
                     <div className={`navbar-blogs ${activeItem === 'Blogs' ? 'active' : ''}`} onClick={() => handleActionClick('Blogs')}>
                         <FaNewspaper />
                         <span>Blogs</span>
                     </div>
                 </Link>
-                <Link to='/items'>
+                <Link to='/admin-items'>
                     <div className={`navbar-items ${activeItem === 'Items' ? 'active' : ''}`} onClick={() => handleActionClick('Items')}>
                         <FaToolbox />
                         <span>Items</span>

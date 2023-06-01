@@ -2,7 +2,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
     font-weight: 500;
 
     .register-form {
@@ -12,6 +11,9 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         transition: transform 0.3s;
         width: 620px;
+        margin: 1.5% 0 !important;
+        max-width: 1366px;
+        max-height: 768px;
 
         .close-register {
             display: flex;
@@ -131,10 +133,11 @@
                 .male-female {
                     display: flex !important;
                     justify-content: space-evenly;
+                    margin-top: 5px !important;
                 }
             }
 
-            #gender, #phone-number {
+            #gender, #username-field {
                 margin-top: -15px;
             }
         }
@@ -177,9 +180,5 @@
                 color: #0056b3;
             }
         }
-    }
-
-    .register-form:hover {
-        transform: scale(1.03);
     }
 }

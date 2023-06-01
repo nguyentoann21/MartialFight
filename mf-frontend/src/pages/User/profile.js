@@ -7,7 +7,7 @@ const Profile = () => {
   const [name, setName] = useState('S-Chat Key');
   const [email, setEmail] = useState('mplkingofworld@gmail.com');
   const [gender, setGender] = useState('Male');
-  const [phone, setPhone] = useState('(+84) 762 871 115');
+  const [phone, setPhone] = useState('nguyentoann21');
   const [avatarUrl, setAvatarUrl] = useState(
     'https://i.pinimg.com/736x/94/3f/cf/943fcf1ad73de4334e083475d1ab9541.jpg'
   );
@@ -107,7 +107,7 @@ const Profile = () => {
               </div>
             </div>
             <div className='details-row'>
-              <div className='details-label'>Phone</div>
+              <div className='details-label'>Username</div>
               <div className='details-value'>
                 <input type='tel' value={phone} onChange={handlePhoneChange} />
               </div>

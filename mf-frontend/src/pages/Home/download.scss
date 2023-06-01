@@ -1,66 +1,57 @@
-.download-container {
+.download-button-container {
     display: flex;
     justify-content: center;
     align-items: center;
 
     .download-content {
-        display: flex;
-        padding: 5px 30px 7px 20px;
-        border: 3px solid #fff;
-        font-weight: 700;
-        border-radius: 30px;
-        align-items: center;
-        justify-content: center;
-        background-color: rgb(22, 141, 221);
-        margin: 20px 0 40px 0;
-        min-width: 240px;
-        min-height: 40px;
+        position: relative;
+        width: 150px;
+        height: 150px;
+        margin-bottom: 30px;
 
-        .download-icons {
-            display: flex;
-            flex-direction: column;
-
+        .download-bg-image {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+    
+        .download-bg-image:hover {
+            opacity: 0.5;
+        }
+    
+        .download-icon {
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ccc;
+            border: none !important;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: opacity 0.3s ease-in-out;
+            outline: none;
+            padding: 5px 7px;
+    
             svg {
-                width: 10px !important;
-                height: 10px !important;
+                font-size: 20px;
+            }
+    
+            #check-icon {
+                color: #ff0;
             }
         }
-
-        svg {
-            width: 16px !important;
-            height: 16px !important;
-        }
-
-        .download-text {
-            margin: 0 5px;
-            font-size: 26px;
+    
+        .download-icon:hover {
+            background-color: #1b6edb;
+            color: #fff;
         }
     }
 
     .download-content:hover {
-        transition: color 0.4s;
-        filter: drop-shadow(0 0 100px #ff0) drop-shadow(0 0 50px #ff0);
-        transform-origin: bottom right;
-        background-color: #ff0;
-        color: #007;
-        border: 3px solid rgb(28, 72, 168);
-
-        .download-icons {
-
-            svg {
-                transform: scale(1.7) rotate(72deg) !important;
-                padding: 5px 0 !important;
-                transition: 0.3s;
-            }
-        }
-
-        svg {
-            transform: scale(0.8) rotate(72deg);
-            transition: 0.3s;
-        }
-
-        .download-text {
-            transition: 0.3s;
+        .download-bg-image {
+            opacity: 0.5;
         }
     }
 }
