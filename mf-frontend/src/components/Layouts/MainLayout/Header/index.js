@@ -1,11 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaGlobe } from 'react-icons/fa';
 import { ReactComponent as LogoGame } from '../../../../logo.svg';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './header.scss';
 
 function Header() {
-  const [activeTab, setActiveTab] = useState('Home');
+  const location = useLocation();
+
+  const getActiveTabFromPath = (path) => {
+    if (path === '/') return 'Home';
+    if (path === '/ranking') return 'Ranking';
+    if (path === '/items') return 'Items';
+    if (path === '/heroes') return 'Heroes';
+    if (path === '/blog') return 'Blogs';
+    if (path === '/guide') return 'Guide';
+    if (path === '/about-us') return 'About us';
+    return 'Home';
+  }
+
+  useEffect(() => {
+    setActiveTab(getActiveTabFromPath(location.pathname));
+  }, [location]);
+
+  const [activeTab, setActiveTab] = useState(getActiveTabFromPath(location.pathname));
 
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
