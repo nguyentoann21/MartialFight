@@ -82,13 +82,13 @@ const publicRoutes = [
         layout: AdminLayout
     },
     {
-        path: '/blogs',
+        path: '/admin-blogs',
         name: 'Blog-Management',
         component: BlogManagement,
         layout: AdminLayout
     },
     {
-        path: '/items',
+        path: '/admin-items',
         name: 'Items-Management',
         component: ItemsManagement,
         layout: AdminLayout

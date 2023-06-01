@@ -2,8 +2,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
-    height: 100vh;
     padding: 10px 0;
 
     .trailer-content {
@@ -14,6 +12,7 @@
         justify-content: center;
         align-items: center;
         display: flex;
+        margin: 30px 0 !important;
 
         video {
             width: 90%;

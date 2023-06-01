@@ -12,7 +12,7 @@ const Registration = () => {
   const [password, setPassword] = useState('');
   const [rePassword, setRePassword] = useState('');
   const [gender, setGender] = useState('');
-  const [phone, setPhone] = useState('');
+  const [username, setUsername] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showRePassword, setShowRePassword] = useState(false);
 
@@ -48,8 +48,8 @@ const Registration = () => {
     setGender(event.target.value);
   };
 
-  const handlePhoneChange = (event) => {
-    setPhone(event.target.value);
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
   };
 
   return (
@@ -174,18 +174,18 @@ const Registration = () => {
               </label>
             </div>
           </div>
-          <div className='form-group-register'>
-            <label htmlFor='phone' id='phone-number'>Phone</label>
+          <div className='form-group-register' id='username-field'>
+            <label htmlFor='username'>Username</label>
             <input
-              type='tel'
-              id='phone'
-              name='phone'
-              value={phone}
-              onChange={handlePhoneChange}
-              placeholder='Enter your phone'
+              type='text'
+              id='username'
+              name='username'
+              value={username}
+              onChange={handleUsernameChange}
+              placeholder='Enter your username'
               required
             />
-            <span id='phone'></span>
+            <span id='username'></span>
           </div>
         </div>
         <div className='form-group-button'>

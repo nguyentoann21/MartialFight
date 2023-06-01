@@ -5,7 +5,7 @@ const members = [
     name: 'S-Chat Key',
     role: 'Dev Fresher',
     lang: 'C#, JavaScript, Java',
-    image: 'https://scontent.fsgn5-5.fna.fbcdn.net/v/t39.30808-6/321503457_5895494533830248_5065466886470833900_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=174925&_nc_ohc=pO0nZ3NSjmwAX-kpbpv&_nc_ht=scontent.fsgn5-5.fna&oh=00_AfBiQ7bu44f6Zg9iySTcow4xWY-6SKqVdv1faJBVxOdBpQ&oe=6472C8E9',
+    image: '/assets/images/logo.jpg',
     facebook: 'https://www.facebook.com/nvt.2001.sw/',
   },
   {
