@@ -46,7 +46,7 @@ function Footer() {
           <h3>Legal</h3>
           <ul>
             <li>
-                <Link to='/private-policy' className='items-to'>Privacy Policy</Link>
+                <Link to='/privacy-policy' className='items-to'>Privacy Policy</Link>
             </li>
             <li>
                 <Link to='/terms-condition' className='items-to'>Terms &amp; Conditions</Link>

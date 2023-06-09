@@ -13,11 +13,13 @@ import AboutUs from '../pages/AboutUs';
 import Login from '../pages/User/login';
 import Registration from '../pages/User/registration';
 import NotFound404 from '../pages/NotFound404';
-import { AdminLayout, MainLayout, UserLayout } from '../components/Layouts';
+import { AdminLayout, MainLayout, RuleLayout, UserLayout } from '../components/Layouts';
 import Profile from '../pages/User/profile';
 import ChangePassword from '../pages/User/password';
 import ForgotPassword from '../pages/User/forgot';
-import Chart from '../pages/Admin/chart';
+import AdminChart from '../pages/Admin/adminchart';
+import Policy from '../pages/Rules/policy';
+import TermsAndConditions from '../pages/Rules/conditions';
 
 
 const publicRoutes = [
@@ -78,7 +80,7 @@ const publicRoutes = [
     {
         path: '/chart',
         name: 'Chart-Management',
-        component: Chart,
+        component: AdminChart,
         layout: AdminLayout
     },
     {
@@ -134,6 +136,18 @@ const publicRoutes = [
         name: 'forgot-password',
         component: ForgotPassword,
         layout: UserLayout
+    },
+    {
+        path: '/privacy-policy',
+        name: 'privacy-policy',
+        component: Policy,
+        layout: RuleLayout
+    },
+    {
+        path: '/terms-condition',
+        name: 'terms-condition',
+        component: TermsAndConditions,
+        layout: RuleLayout
     }
 ];
 

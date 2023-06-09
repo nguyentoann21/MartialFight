@@ -1,0 +1,25 @@
+.item-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .item-card {
+    display: flex;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: calc(30% - 20px);
+  }
+  
+  .item-image {
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+  }
+  
+  .item-info {
+    flex-grow: 1;
+  }
+  
+  /* Add additional styles as needed */
+  
