@@ -1,5 +1,5 @@
 import React from 'react';
-import { BarChart, Bar, LineChart, Line, PieChart, Pie, Cell, Tooltip } from 'recharts';
+import { BarChart, Bar, AreaChart, Area, PieChart, Pie, Cell, Tooltip } from 'recharts';
 import './chart.css'; // Import the CSS file
 
 const AdminChart = () => {
@@ -10,7 +10,7 @@ const AdminChart = () => {
     { name: 'D', value: 25 },
   ];
 
-  const dataLine = [
+  const dataArea = [
     { name: 'Jan', value1: 100, value2: 200, value3: 150 },
     { name: 'Feb', value1: 150, value2: 220, value3: 180 },
     { name: 'Mar', value1: 200, value2: 250, value3: 210 },
@@ -74,13 +74,13 @@ const AdminChart = () => {
         </div>
         <div className="row">
           <div className="chart">
-            <h2>Line Chart</h2>
-            <LineChart width={600} height={200} data={dataLine}>
-              <Line type="monotone" dataKey="value1" stroke="#8884d8" dot={false} />
-              <Line type="monotone" dataKey="value2" stroke="#82ca9d" dot={false} />
-              <Line type="monotone" dataKey="value3" stroke="#ffc658" dot={false} />
+            <h2>Area Chart</h2>
+            <AreaChart width={600} height={200} data={dataArea}>
+              <Area type="monotone" dataKey="value1" fill="#8884d8" stroke="#8884d8" />
+              <Area type="monotone" dataKey="value2" fill="#82ca9d" stroke="#82ca9d" />
+              <Area type="monotone" dataKey="value3" fill="#ffc658" stroke="#ffc658" />
               <Tooltip />
-            </LineChart>
+            </AreaChart>
           </div>
         </div>
       </div>
