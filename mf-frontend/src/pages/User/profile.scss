@@ -5,13 +5,15 @@
     color: #fff;
 
     .profile-form {
-        background-color: #292424bd;
-        padding: 30px 40px;
+        background-image: url('../../../public/assets/images/item-card.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        padding: 60px 80px;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         transition: transform 0.3s;
         width: 800px;
-        margin: 3.55% 0;
+        margin: 2% 0;
 
         .close-profile {
             display: flex;

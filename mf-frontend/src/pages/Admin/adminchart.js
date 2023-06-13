@@ -1,6 +1,15 @@
 import React from 'react';
-import { BarChart, Bar, LineChart, Line, PieChart, Pie, Cell, Tooltip } from 'recharts';
-import './chart.css'; // Import the CSS file
+import {
+  BarChart,
+  Bar,
+  AreaChart,
+  Area,
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+} from 'recharts';
+import './chart.scss';
 
 const AdminChart = () => {
   const dataBar = [
@@ -8,9 +17,11 @@ const AdminChart = () => {
     { name: 'B', value: 20 },
     { name: 'C', value: 15 },
     { name: 'D', value: 25 },
+    { name: 'E', value: 100 },
+    { name: 'F', value: 30 },
   ];
 
-  const dataLine = [
+  const dataArea = [
     { name: 'Jan', value1: 100, value2: 200, value3: 150 },
     { name: 'Feb', value1: 150, value2: 220, value3: 180 },
     { name: 'Mar', value1: 200, value2: 250, value3: 210 },
@@ -28,36 +39,44 @@ const AdminChart = () => {
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28'];
 
   return (
-    <div className="container">
+    <div className='admin-chart-container'>
       <h1>Charts</h1>
-      <div className="chart-container">
-        <div className="row">
-          <div className="chart">
+      <div className='chart-container'>
+        <div className='row'>
+          <div className='chart'>
             <h2>Bar Chart</h2>
-            <BarChart width={200} height={250} data={dataBar}>
-              <Bar dataKey="value" fill="#8884d8" />
+            <BarChart width={300} height={200} data={dataBar}>
+              <Bar dataKey='value' fill='#8884d8' />
               <Tooltip />
             </BarChart>
-          </div>
-          <div className="chart">
+          </div>  
+          <div className='chart'>
             <h2>Pie Chart</h2>
-            <PieChart width={400} height={300}>
+            <PieChart width={300} height={200}>
               <Pie
                 data={dataPie}
-                dataKey="value"
-                fill="#8884d8"
-                label={({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
+                dataKey='value'
+                fill='#8884d8'
+                label={({
+                  cx,
+                  cy,
+                  midAngle,
+                  innerRadius,
+                  outerRadius,
+                  percent,
+                }) => {
                   const RADIAN = Math.PI / 180;
-                  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+                  const radius =
+                    innerRadius + (outerRadius - innerRadius) * 0.5;
                   const x = cx + radius * Math.cos(-midAngle * RADIAN);
                   const y = cy + radius * Math.sin(-midAngle * RADIAN);
                   return (
                     <text
                       x={x}
                       y={y}
-                      fill="#8884d8"
+                      fill='#08252a'
                       textAnchor={x > cx ? 'start' : 'end'}
-                      dominantBaseline="central"
+                      dominantBaseline='central'
                     >
                       {`${(percent * 100).toFixed(0)}%`}
                     </text>
@@ -65,22 +84,40 @@ const AdminChart = () => {
                 }}
               >
                 {dataPie.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={COLORS[index % COLORS.length]}
+                  />
                 ))}
-                <Tooltip />
               </Pie>
+              <Tooltip />
             </PieChart>
           </div>
         </div>
-        <div className="row">
-          <div className="chart">
-            <h2>Line Chart</h2>
-            <LineChart width={600} height={200} data={dataLine}>
-              <Line type="monotone" dataKey="value1" stroke="#8884d8" dot={false} />
-              <Line type="monotone" dataKey="value2" stroke="#82ca9d" dot={false} />
-              <Line type="monotone" dataKey="value3" stroke="#ffc658" dot={false} />
+        <div className='row'>
+          <div className='chart'>
+            <h2>Area Chart</h2>
+            <AreaChart width={600} height={150} data={dataArea}>
+              <Area
+                type='monotone'
+                dataKey='value1'
+                fill='#8884d8'
+                stroke='#8884d8'
+              />
+              <Area
+                type='monotone'
+                dataKey='value2'
+                fill='#82ca9d'
+                stroke='#82ca9d'
+              />
+              <Area
+                type='monotone'
+                dataKey='value3'
+                fill='#ffc658'
+                stroke='#ffc658'
+              />
               <Tooltip />
-            </LineChart>
+            </AreaChart>
           </div>
         </div>
       </div>

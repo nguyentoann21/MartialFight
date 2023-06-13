@@ -61,7 +61,7 @@ const NavbarAdmin = () => {
                 <Link to='/admin-profile'>
                     <div className={`navbar-profile ${activeItem === 'Profile' ? 'active' : ''}`} onClick={() => handleActionClick('Profile')}>
                         <FaKey />
-                        <span>Profile</span>
+                        <span>Change Password</span>
                     </div>
                 </Link>
                 <Link to='/'>

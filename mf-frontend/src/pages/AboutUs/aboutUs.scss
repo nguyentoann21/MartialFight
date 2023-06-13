@@ -1,21 +1,22 @@
 .about-us-page {
-    padding: 20px 100px;
+    padding: 20px;
 
     .about-us {
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color: #dcdcdc;
+        background-image: url('../../../public/assets/images/member-card.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        color: #fff;
         border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         transition: transform 0.3s;
         font-weight: 700 !important;
-        padding: 20px;
-        color: #0000ff;
+        padding: 60px 20px;
     
         h1 {
-            font-size: 36px;
-            font-weight: bold;
+            font-size: 50px;
+            font-weight: 700;
             margin-bottom: 30px;
         }
     
@@ -37,10 +38,13 @@
                 cursor: pointer;
                 transition: all 0.3s ease;
                 width: 200px;
-                background-color: #222;
+                background-image: url('../../../public/assets/images/member-card.png');
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
                 padding: 60px 40px;
                 border-radius: 15px;
                 color: #fff;
+                gap: 30px;
     
                 img {
                     width: 150px;
@@ -65,9 +69,8 @@
             }
     
             .member:hover {
-                transform: scale(1.1);
-                background-color: #f4f12a;
-                color: #a10;
+                transform: scale(1.05);
+                color: #ff0;
                 transition: 0.4s;
             }
     

@@ -1,0 +1,47 @@
+.guide-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px 100px !important;
+
+    .guide-page-container {
+        display: flex;
+        flex-direction: column;
+        background-image: url('../../../public/assets/images/member-card.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        color: #fff;
+        padding: 80px 120px;
+        
+        .guide-title {
+            font-size: 50px;
+            font-weight: 700;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .guide-introduction, .guide-how-to-play,
+        .guide-character, .guide-skill, .guide-advice {
+            font-size: 30px;
+            font-weight: 700;
+            color: #ff0;
+            margin: 0 !important;
+            padding: 0 !important;
+            margin: 20px 0 !important;
+        }
+
+        .guide-introduction-content, .guide-how-to-play-content,
+        .guide-character-content, .guide-skill-content, .guide-advice-content {
+            font-size: 16px;
+            font-weight: 500;
+            color: #f0f0f0;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+    }
+}

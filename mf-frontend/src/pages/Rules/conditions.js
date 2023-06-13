@@ -1,10 +1,11 @@
 import React from 'react';
 import { FaHome } from 'react-icons/fa';
-import './conditions.css'; // Import the CSS file
+import { Link } from 'react-router-dom';
+import './conditions.scss';
 
 const TermsAndConditions = () => {
   return (
-    <div className="container"> {/* Add className here */}
+    <div className='terms-and-conditions-container'>
       <h1>Terms and Conditions</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel nibh eu ante fringilla faucibus.
@@ -30,7 +31,9 @@ const TermsAndConditions = () => {
         Curabitur venenatis, tellus eget rhoncus lobortis, ex lorem rhoncus enim, in tristique urna justo non risus.
       </p>
       <button>
-        <FaHome />
+        <Link to='/'>
+          <FaHome />
+        </Link>
       </button>
     </div>
   );

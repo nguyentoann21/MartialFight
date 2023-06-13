@@ -1,0 +1,46 @@
+.terms-and-conditions-container {
+    background-image: url('../../../public/assets/images/item-card.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    max-width: 750px !important;
+    padding: 60px !important;
+    border-radius: 10px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px 0;
+
+    h1 {
+        text-align: center;
+        font-weight: bold;
+        font-size: 40px;
+        margin: 0 !important;
+        padding: 0 !important;
+        color: #ff0;
+    }
+
+    p {
+        color: #fff;
+        padding: 0 30px !important;
+        font-weight: 500;
+    }
+
+    button {
+        background-color: #808080;
+        border: none !important;
+        border-radius: 50%;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+
+    a {
+        text-decoration: none;
+
+        svg {
+            font-size: 60px;
+            padding: 15px;
+            color: #fff;
+        }
+    }
+}
