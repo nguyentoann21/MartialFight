@@ -1,10 +1,11 @@
 import React from 'react';
 import { FaHome } from 'react-icons/fa';
-import './policy.css';
+import { Link } from 'react-router-dom';
+import './policy.scss';
 
 const Policy = () => {
   return (
-    <div>
+    <div className='privacy-policy-container'>
       <h1>Privacy Policy</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel nibh eu ante fringilla faucibus. 
@@ -30,7 +31,9 @@ const Policy = () => {
         Curabitur venenatis, tellus eget rhoncus lobortis, ex lorem rhoncus enim, in tristique urna justo non risus.
       </p>
       <button>
-        <FaHome />
+        <Link to='/'>
+          <FaHome />
+        </Link>
       </button>
     </div>
   );

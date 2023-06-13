@@ -8,8 +8,11 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: #f0f0f0;
-        padding: 20px 10px 50px 10px;
+        background-image: url('../../../public/assets/images/item-card.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        color: #f0f0f0;
+        padding: 40px 10px 50px 10px;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         transition: transform 0.3s;
@@ -69,7 +72,7 @@
 
             input:focus {
                 outline: none;
-                border-color: #007bff;
+                border-color: #fa0;
                 box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
             }
 
@@ -100,12 +103,12 @@
                 font-size: 14px;
                 text-align: right;
                 margin-bottom: 5px;
-                color: #007bff;
+                color: #fa0;
                 transition: color 0.3s;
             }
 
             #forgot-password-link:hover {
-                color: #0056b3;
+                color: #ff0;
             }
             
             .password-icons {
@@ -128,12 +131,12 @@
             font-size: 16px;
 
             a {
-                color: #007bff;
+                color: #fa0;
                 transition: color 0.3s;
             }
 
             a:hover {
-                color: #0056b3;
+                color: #ff0;
             }
         }
     }

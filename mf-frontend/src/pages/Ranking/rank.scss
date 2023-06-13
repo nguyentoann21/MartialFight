@@ -4,9 +4,11 @@
     align-items: center;    
 
     .ranking-form {
-        background-color: #555;
+        background-image: url('../../../public/assets/images/member-card.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
         border-radius: 10px;
-        padding: 20px 50px 50px 50px;
+        padding: 40px 100px 50px 100px;
         color: #fff;
         font-weight: 600;
         min-width: 600px;
@@ -23,9 +25,9 @@
             align-items: center;
 
             h3{
-                font-size: 40px;
+                font-size: 50px;
                 text-align: center;
-                color: #ff0;
+                color: #fff;
                 margin: 0 !important;
                 padding: 0 !important;
             }
@@ -74,7 +76,7 @@
             }
 
             table {
-                border-collapse: collapse;
+                border-collapse: separate;
                 width: 100%;
 
                 th, td {
@@ -86,8 +88,8 @@
                 
                 th {
                     font-weight: bold;
-                    background-color: #91efff;
-                    color: #333;
+                    background-color: #ccc;
+                    color: #222;
                 }
                 
                 td:first-child {

@@ -31,12 +31,12 @@ function Footer() {
           <h3>Follow Us</h3>
           <ul>
             <li>
-                <Link to='' className='items-to'>
+                <Link to='https://www.youtube.com/' className='items-to'>
                     <FaYoutube className='youtube-icon' /> Youtube
                 </Link>
             </li>
             <li>
-                <Link to='' className='items-to'>
+                <Link to='https://www.facebook.com/' className='items-to'>
                     <FaFacebookSquare className='facebook-icon' /> Facebook
                 </Link>
             </li>

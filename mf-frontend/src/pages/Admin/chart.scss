@@ -1,0 +1,46 @@
+.admin-chart-container {
+    max-width: 800px;
+
+    h1 {
+        text-align: center;
+        font-size: 36px;
+        margin: 0 !important;
+        padding: 0 !important;
+        margin-bottom: 15px !important;
+    }
+
+    .chart-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 10px;
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            
+            .chart {
+                position: relative;
+                flex: 1;
+                padding: 20px;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: center !important;
+                background-image: url('../../../public/assets/images/horizontal-card.png');
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+
+                h2 {
+                    color: #fff;
+                    margin: 10px 0 !important;
+                    padding: 0 !important;
+                }
+
+                &:hover {
+                    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,260 @@
+.admin-blog-container {
+    max-width: 800px;
+    margin: 0 !important;
+
+    h1 {
+        font-size: 36px;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    .admin-blog-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .admin-search-bar {
+            display: flex !important;
+            justify-content: flex-start !important;
+            align-items: center;
+            margin-bottom: 20px;
+    
+            input {
+                padding: 7px 15px;
+                border-radius: 10px;
+                border: 2px solid #333;
+                min-width: 400px !important;
+                color: #222;
+                font-weight: 600;
+            }
+    
+            .admin-search-icons {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: #009;
+                cursor: pointer;
+    
+                svg {
+                    position: absolute;
+                    margin-right: 3% !important ;
+                }
+            }
+        }
+
+        .admin-add-blog {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            
+            button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #fff;
+                border-radius: 10px;
+                border: none;
+                padding: 6px 15px;
+                font-size: 16px;
+                font-weight: 600;
+                cursor: pointer;
+
+                svg {
+                    font-size: 22px;
+                }
+            }
+
+            .dialog {
+                width: 600px;
+                height: 400px;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-image: url('../../../public/assets/images/item-card.png');
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+                color: #fff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+
+                input {
+                    width: 80%;
+                    margin-bottom: 10px;
+                    padding: 5px;
+                    border: 1px solid #ccc;
+                    border-radius: 3px;
+                }
+
+                textarea {
+                    width: 80%;
+                    margin-bottom: 10px;
+                    padding: 5px;
+                    border: 1px solid #ccc;
+                    border-radius: 3px;
+                }
+
+                .dialog-add-button-form {
+                    display: flex !important;
+                    justify-content: center;
+                    align-items: center;
+
+                    .close-add {
+                        width: 100px;
+                        background-color: #cc800f;
+                        color: #222;
+                        margin-right: 10px;
+                    }
+
+                    .close-add:hover {
+                        background-color: #a87220;
+                        color: #fff;
+                    }
+
+                    .handle-add {
+                        width: 120px;
+                        background-color: #0056b3;
+                        color: #222;
+                    }
+
+                    button {
+                        color: #fff;
+                        border: none;
+                        border-radius: 5px;
+                        cursor: pointer;
+                    }
+
+                    .handle-add:hover {
+                        background-color: #33c426ea;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+
+    .admin-blogs-no-data-found {
+        color: #ff0;
+        font-size: 30px;
+        font-weight: 700;
+        font-style: italic;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    table {
+        background-color: #fff;
+        color: #222;
+        width: 100%;
+        border-collapse: collapse;
+
+        .column-one {
+            width: 30%;
+        }
+
+        .column-two {
+            width: 60%;
+        }
+
+        .column-three {
+            width: 10%;
+        }
+
+        th, td {
+            padding: 5px;
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        td {
+            text-overflow: ellipsis !important;
+
+            h4 {
+                width: 220px;
+                text-overflow: ellipsis !important;
+                white-space: nowrap; 
+                font-size: 16px;
+                font-weight: 400;
+                margin: 0 !important;
+                padding: 0 !important;
+                overflow: hidden;
+            }
+
+            p {
+                width: 460px;
+                text-overflow: ellipsis !important;
+                white-space: nowrap; 
+                margin: 0 !important;
+                padding: 0 !important;
+                overflow: hidden;
+            }
+        }
+
+        .actions-column-three {
+            text-align: center;
+
+            button {
+                border: none;
+                background-color: transparent;
+
+                svg {
+                    color: #222;
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+
+    .pagination {
+        margin-top: 10px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .footer-page {  
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #222;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 3px 10px;
+            border-radius: 5px;
+
+            button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 5px;
+                border-radius: 50%;
+                border: none;
+                background-color: #cfabab;
+                margin: 0 2px;
+
+                svg {
+                    font-size: 18px;
+                }
+            }
+
+            .page-number {
+                margin: 0 5px;
+                font-size: 16px;
+                font-weight: 500;
+                color: #fff;
+            }
+        }
+    }
+}

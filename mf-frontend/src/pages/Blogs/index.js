@@ -47,17 +47,14 @@ const Blogs = () => {
   const [isEmptyInput, setIsEmptyInput] = useState(true);
   
 
-  // Filter blogs based on search term and sort by id in descending order
   const filteredBlogs = blogsData
     .filter(blog => blog.title.toLowerCase().includes(searchTerm.toLowerCase()))
-    .sort((a, b) => b.id - a.id); // Sort in descending order based on blog.id
+    .sort((a, b) => b.id - a.id); 
 
-  // Handle blog click and show the details
   const handleBlogClick = blog => {
     setSelectedBlog(blog);
   };
 
-  // Close the dialog/popup
   const handleCloseDialog = () => {
     setSelectedBlog(null);
   };
@@ -85,7 +82,6 @@ const Blogs = () => {
           </div>
           <div className='blogs-main'>
           {filteredBlogs.length === 0 ? (
-              // Check if filteredBlogs is empty
               <p className='blogs-no-data-found'>No data was found</p>
             ) : (
               <ul className='blogs-list'>

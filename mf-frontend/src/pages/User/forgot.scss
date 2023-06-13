@@ -6,7 +6,10 @@
 
     .form-input-email-verify {
         padding: 40px 70px 50px 70px;
-        background-color: #808080;
+        background-image: url('../../../public/assets/images/layout-card.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        color: #fff;
         display: flex;
         flex-direction: column;
         border-radius: 10px;
@@ -91,7 +94,10 @@
     }
 
     .form-input-code-verify {
-        background-color: #808080;
+        background-image: url('../../../public/assets/images/layout-card.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        color: #fff;
         border-radius: 10px;
         margin: 13.98% 0 !important;
         max-width: 1366px;
@@ -169,7 +175,10 @@
     .form-input-reset-password {
         max-width: 1366px;
         max-height: 768px;
-        background-color: #fff;
+        background-image: url('../../../public/assets/images/layout-card.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        color: #fff;
         margin-top: -5% !important;
         border-radius: 10px;
         
@@ -191,11 +200,11 @@
                 h3 {
                     font-size: 30px;
                     text-align: center !important;
-                    color: #008;
+                    color: #ff0;
                 }
     
                 label {
-                    color: #008;
+                    color: #ff0;
                     margin-bottom: 2px;
                 }
     
