@@ -6,25 +6,27 @@
     padding: 30px 100px;
 
     .character-main {
-        border-radius: 10px;
+        border-radius: 30px;
         display: flex;
         justify-content: center;
         align-items: center;
         width: 100%;
         background: url(./../../../public/assets/images/bg-img.jpg) center/cover;
+        overflow: hidden;
+        padding-bottom: 30px;
 
         .character-bg-wrapper {
             position: absolute;
             width: 100%;
-            height: 80%;
+            height: 100%;
             display: flex;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: center;
 
             .character-bg {
                 position: absolute;
-                width: 130%;
-                height: 130%;
+                width: 90%;
+                height: 90%;
                 object-fit: contain;
                 object-position: 10% 50%;
                 opacity: 0;
@@ -41,8 +43,20 @@
             display: flex;
             align-items: center;
             color: #fff;
-            padding: 30px 0;
+            padding: 40px 0;
+            width: 100%;
             position: relative;
+
+            .hidden-inner {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 5%;
+                height: 90%;
+                margin: 0 15px;
+            }
 
             .character-inner {
                 position: relative;
@@ -61,7 +75,7 @@
                 .character-line {
                     position: absolute;
                     width: 2px;
-                    height: 150%;
+                    height: 120%;
                     background: linear-gradient(0deg, #ffffff00, #fff, #ffffff00);
                 }
 
@@ -73,7 +87,7 @@
                     width: 10px;
                     height: 10px;
                     font-weight: 600;
-                    border-radius: 30%;
+                    border-radius: 50%;
                     background-color: #fff;
                     transition: 0.5s ease-in-out;
                 }
@@ -115,7 +129,7 @@
 
             .character-control {
                 position: absolute;
-                bottom: 10px;
+                bottom: 0;
                 left: 50%;
                 z-index: 10;
 
@@ -151,10 +165,8 @@
                     flex-direction: column;
                     height: 100%;
                     padding: 30px 0;
-                    padding-right: 20px;
                     transition: 0.25s ease;
-                    pointer-events: none;
-                    flex: 0 0 30%;
+                    flex: 0 45%;
 
                     * {
                         transition: 0.75s ease;
@@ -164,7 +176,7 @@
 
                     .character-name {
                         font-weight: 700;
-                        font-size: 40px;
+                        font-size: 36px;
                         margin: 0 !important;
                         padding: 0 !important;
                     }
@@ -241,7 +253,7 @@
                         align-items: center;
 
                         button {
-                            width: 50%;
+                            width: 80%;
                             height: 40px;
                             border: none;
                             background-color: #fcba3f;
@@ -270,54 +282,49 @@
                     justify-content: center;
                     align-items: center;
                     width: 100%;
-                    margin-right: 40px;
+                    height: 100%;
+                    margin-right: 5%;
 
-                    .slide-wrapper {
-                        position: relative;
-                        display: grid;
-                        place-items: center;
-                        overflow: hidden;
-    
-                        .slide {
+                    .slide-content-wrapper {
+                        max-width: 700px;
+                        height: 90%;
+                        opacity: 0;
+                        position: absolute;
+                        top: 5%;
+                        left: 28%;
+                        right: 0;
+                        bottom: 5%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        transition: opacity 0.25s ease;
+                        background-image: url(../../../public/assets/images/layout-card.png);
+                        background-repeat: no-repeat;
+                        background-size: 100% 100%;
+
+                        .item-image {
+                            width: 80%;
+                            height: 80%;
+                            flex: 1;
                             display: flex;
                             align-items: center;
-                            transition: .75s ease-in-out;
-                            overflow: hidden;
-                            height: 400px;
-                            width: 100%;
-    
-                            .item-wrapper {
-                                display: flex;
-                                align-items: center;
-                                margin: 0 1px;
+                            justify-content: center;
+                            border-radius: 10px;                          
+                            
+                            img {
+                                max-width: 100%;
                                 height: 100%;
-                                width: 100%;
-                                border-radius: 10px;
-                                transition: .75s ease-in-out;
-                                filter: grayscale(100%);
-    
-                                .item-content {
-                                    width: 170px;
-                                    height: 100%;
-                                    background-color: #fa2;
-                                    border-radius: 10px;
-                                    border: 2px solid #ffffff7f;
-                                }
-    
-                                img {
-                                    width: 100%;
-                                    height: 100%;
-                                    border-radius: 10px;
-                                    object-fit: contain;
-                                    filter: drop-shadow(5px 10px 5px #00000080);
-                                }
+                                object-fit: contain;
                             }
-    
-                            .active {
-                                width: 120%;
-                                height: 120%;
-                                filter: grayscale(0);
-                            }
+                        }
+                    }
+
+                    .active {
+                        opacity: 1;
+
+                        .item-image {
+                            filter: drop-shadow(0 0 10px #ffff00) drop-shadow(0 0 50px #ffff00);
+                            transition: color 0.25s;
                         }
                     }
                 }
