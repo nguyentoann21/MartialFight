@@ -1,0 +1,335 @@
+.monster-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 100px 30px 100px;
+
+    .monster-main {
+        border-radius: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        background: url(./../../../public/assets/images/bg-img.jpg) center/cover;
+        overflow: hidden;
+        padding-bottom: 30px;
+
+        .monster-bg-wrapper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .monster-bg {
+                position: absolute;
+                width: 90%;
+                height: 90%;
+                object-fit: contain;
+                object-position: 10% 50%;
+                opacity: 0;
+                transition: 1.25s ease;
+                filter: grayscale(80%);
+            }
+
+            .active {
+                opacity: 0.2;
+            }
+        }
+
+        .monster-content {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            padding: 40px 0;
+            width: 100%;
+            position: relative;
+            
+            .hidden-inner {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 5%;
+                height: 90%;
+            }
+
+            .monster-inner {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 5%;
+                height: 90%;
+                margin: 0 30px;
+                color: #000;
+                font-weight: 600;
+                counter-reset: counter;
+                row-gap: 35px;
+        
+                .monster-line {
+                    position: absolute;
+                    width: 2px;
+                    height: 120%;
+                    background: linear-gradient(0deg, #ffffff00, #fff, #ffffff00);
+                }
+
+                .monster-number {
+                    position: relative;
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    width: 10px;
+                    height: 10px;
+                    font-weight: 600;
+                    border-radius: 50%;
+                    background-color: #fff;
+                    transition: 0.5s ease-in-out;
+                }
+                
+                .monster-number::before {
+                    counter-increment: counter;
+                    content: counter(counter);
+                    position: absolute;
+                    z-index: 5;
+                    transition: 0.75s ease; 
+                    transition-delay: 0.1s;
+                    transform: scale(0);
+                    opacity: 0;
+                }
+
+                .monster-number::after {
+                    position: absolute;
+                    content: "";
+                    width: 300%;
+                    height: 300%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: #fff;
+                    transform: rotate(45deg) scale(0);
+                    transition: 0.75s ease;
+                }
+
+                .active::before {
+                    transform: scale(1);
+                    opacity: 1;
+                }
+
+                .active::after {
+                    background-color: #fcba3f;
+                    transform: rotate(45deg) scale(1);
+                }
+            }
+
+            .monster-control {
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                z-index: 10;
+
+                button {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    border: none;
+                    margin-right: 10px;
+                    cursor: pointer;
+                    transition: 0.5s ease;
+
+                    svg {
+                        font-size: 20px;
+                    }
+                }
+
+                button:active {
+                    transform: scale(0.8);
+                }
+            }
+
+            .content-wrapper {
+                position: relative;
+                flex: 1;
+                height: 100%;
+                display: flex;
+                flex-direction: row-reverse;
+                justify-content: space-between;
+
+                .content-main {
+                    position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    height: 100%;
+                    padding: 30px 0;
+                    transition: 0.25s ease;
+                    flex: 0 45%;
+                    margin-right: 7%;
+
+                    * {
+                        transition: 0.75s ease;
+                        transform: translateY(100px);
+                        opacity: 0;
+                    }
+
+                    .monster-name {
+                        font-weight: 700;
+                        font-size: 36px;
+                        margin: 0 !important;
+                        padding: 0 !important;
+                    }
+
+                    .monster-description {
+                        flex: 1;
+                        display: flex;
+                        align-items: center;
+                        font-size: 1rem;
+                        font-weight: 500;
+                        font-style: italic;
+                        padding-bottom: 10px;
+                        margin: 0 !important;
+                        text-overflow: ellipsis !important;
+                        
+
+                        p {
+                            text-overflow: ellipsis !important;
+                            white-space: nowrap;
+                            margin: 0 !important;
+                            padding: 0 !important;
+                            overflow: hidden;
+                            width: 200px;
+                        }
+                    }
+
+                    .properties {
+                        display: flex;
+                        flex-direction: column;
+                        flex: 1;
+                        flex-wrap: wrap;
+                        row-gap: 5px;
+                        padding-bottom: 10px !important;
+                        font-size: 0.8rem;
+                        margin: 0 !important;
+                        padding: 0 !important;
+                        margin-bottom: 20px !important;
+
+                        li {
+                            display: flex;
+                            align-items: center;
+                            list-style-type: none;
+                            justify-content: flex-end;
+
+                            span:not(.monster-icon) {
+                                margin-right: 10px;
+                            }
+
+                            .monster-icon {
+                                display: flex;
+                                width: 70px;
+                                height: 70px;
+                                margin: 0 !important;
+                                padding: 0 !important;
+
+                                img {
+                                    border-radius: 50%;
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: contain;
+                                }
+                            }
+
+                            span:nth-child(1) {
+                                font-weight: 600;
+                                font-size: 16px;
+                            }
+                        }
+                    }
+
+                    .monster-button-details {
+                        display: flex;
+                        justify-content: flex-end;
+                        align-items: center;
+
+                        button {
+                            width: 80%;
+                            height: 40px;
+                            border: none;
+                            background-color: #fcba3f;
+                            font-family: inherit;
+                            text-transform: uppercase;
+                            font-weight: 500;
+                            font-size: 16px;
+                            cursor: pointer;
+                        }
+                    }
+                }
+
+                .active {
+                    opacity: 1;
+                    pointer-events: visible;
+
+                    * {
+                        transition-delay: 1.2s;
+                        transform: translateY(0);
+                        opacity: 1;
+                    }
+                }
+
+                .slide-container {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    height: 100%;
+                    margin-right: 5%;
+
+                    .slide-content-wrapper {
+                        max-width: 650px;
+                        height: 90%;
+                        opacity: 0;
+                        position: absolute;
+                        top: 5%;
+                        left: 0;
+                        right: 0;
+                        bottom: 5%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        transition: opacity 0.25s ease;
+                        background-image: url(../../../public/assets/images/layout-card.png);
+                        background-repeat: no-repeat;
+                        background-size: 100% 100%;
+
+                        .item-image {
+                            width: 80%;
+                            height: 80%;
+                            flex: 1;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            border-radius: 10px;                          
+                            
+                            img {
+                                max-width: 100%;
+                                height: 100%;
+                                object-fit: contain;
+                            }
+                        }
+                    }
+
+                    .active {
+                        opacity: 1;
+
+                        .item-image {
+                            filter: drop-shadow(0 0 10px #ffff00) drop-shadow(0 0 50px #ffff00);
+                            transition: color 0.25s;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
