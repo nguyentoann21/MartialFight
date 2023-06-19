@@ -1,0 +1,100 @@
+/* CSS for the item list and pagination */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .tab-buttons {
+    margin-bottom: 20px;
+  }
+  
+  .tab-buttons button {
+    margin-right: 10px;
+    padding: 8px 16px;
+    border: none;
+    background-color: #e0e0e0;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .tab-buttons button:hover {
+    background-color: #ccc;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  li img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  li h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  li p {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+  
+  li button {
+    margin-left: auto;
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .pagination-buttons button {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 5px;
+    margin: 0 3px;
+    font-size: 18px;
+    color: #000;
+    transition: color 0.3s;
+  }
+  
+  .pagination-buttons button:disabled {
+    color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .pagination-buttons button:hover:not(:disabled) {
+    color: #007bff;
+  }
+  
+  /* Additional styles for the icons */
+  .pagination-buttons button svg {
+    vertical-align: middle;
+  }
+  
+  /* Adjust the styles based on your design preferences */
+  
