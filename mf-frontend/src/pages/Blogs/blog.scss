@@ -15,7 +15,7 @@
         
         .blogs-content {
             justify-content: center;
-            padding: 20px 90px 50px 50px;
+            padding: 20px 50px 50px 50px;
 
             .blogs-title {
                 font-size: 50px !important;
@@ -53,6 +53,9 @@
             }
 
             .blogs-main {
+                display: flex;
+                justify-content: center;
+                align-items: center;
 
                 .blogs-no-data-found {
                     color: #ff0;
@@ -61,7 +64,9 @@
                     font-style: italic;
                     display: flex;
                     justify-content: center;
-                    align-items: center;
+                    align-items: flex-start;
+                    width: 744px;
+                    height: 490px;
                 }
 
                 .blogs-list {
@@ -69,6 +74,8 @@
                     flex-direction: column !important;
                     justify-content: flex-start !important;
                     list-style-type: none;
+                    width: 704px;
+                    height: 490px;
 
                     .blogs-item {
                         border: 2px solid #fff;
@@ -108,7 +115,7 @@
                     }
 
                     li {
-                        max-width: 660px !important;
+                        max-width: 600px !important;
                         max-height: 110px !important;
                     }
 
@@ -210,18 +217,15 @@
                                 }
                             }
                         }
-    
-                        /* For Chrome, Safari, and Opera */
+
                         .dialog-content::-webkit-scrollbar {
                             width: 0; 
                         }
                           
-                        /* For Chrome, Safari, and Opera */
                         .dialog-content::-webkit-scrollbar-thumb {
                             background-color: transparent;
                         }
                           
-                        /* For Chrome, Safari, and Opera */
                         .dialog-content::-webkit-scrollbar-track {
                             background-color: transparent;
                         }

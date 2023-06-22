@@ -9,7 +9,7 @@ import {
   Cell,
   Tooltip,
 } from 'recharts';
-import './chart.scss';
+import './adminchart.scss';
 
 const AdminChart = () => {
   const dataBar = [
@@ -45,14 +45,14 @@ const AdminChart = () => {
         <div className='row'>
           <div className='chart'>
             <h2>Bar Chart</h2>
-            <BarChart width={300} height={200} data={dataBar}>
+            <BarChart width={300} height={220} data={dataBar}>
               <Bar dataKey='value' fill='#8884d8' />
               <Tooltip />
             </BarChart>
           </div>  
           <div className='chart'>
             <h2>Pie Chart</h2>
-            <PieChart width={300} height={200}>
+            <PieChart width={300} height={220}>
               <Pie
                 data={dataPie}
                 dataKey='value'
@@ -97,7 +97,7 @@ const AdminChart = () => {
         <div className='row'>
           <div className='chart'>
             <h2>Area Chart</h2>
-            <AreaChart width={600} height={150} data={dataArea}>
+            <AreaChart width={600} height={220} data={dataArea}>
               <Area
                 type='monotone'
                 dataKey='value1'

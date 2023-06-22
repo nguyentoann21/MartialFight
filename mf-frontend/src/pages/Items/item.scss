@@ -40,12 +40,16 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             padding-bottom: 50px;
             min-height: 250px;
             width: 100%;
+            height: fit-content;
 
             h1 {
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
                 font-size: 40px;
                 font-weight: 700;
                 color: #ff0;

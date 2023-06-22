@@ -10,11 +10,32 @@ import {
 } from 'react-icons/fa';
 import './adminblog.scss';
 
-const BlogManagement = () => {
+const AdminBlog = () => {
+  const BLOGS_PER_PAGE = 15;
+
   const [blogs, setBlogs] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [blogsPerPage] = useState(10);
+  const [selectedBlog, setSelectedBlog] = useState(null);
+  const [filteredBlogs, setFilteredBlogs] = useState([]);
+  const [isEmptyInput, setIsEmptyInput] = useState(true);
+
+  const handleSearch = (event) => {
+    const query = event.target.value.toLowerCase();
+    const filteredBlogs = blogs.filter((blog) =>
+      blog.name.toLowerCase().includes(query)
+    );
+    setFilteredBlogs(filteredBlogs);
+    setIsEmptyInput(event.target.value === '');
+    setCurrentPage(1);
+  };
+
+  const handleBlogClick = (blog) => {
+    setSelectedBlog(blog);
+  };
+
+  const handleCloseDialog = () => {
+    setSelectedBlog(null);
+  };
 
   useEffect(() => {
     const data = [
@@ -200,48 +221,62 @@ const BlogManagement = () => {
       },
     ];
     setBlogs(data);
+    setFilteredBlogs(data);
   }, []);
 
-  const deleteBlog = (id) => {
-    setBlogs(blogs.filter((blog) => blog.id !== id));
+  const totalPages = Math.ceil(filteredBlogs.length / BLOGS_PER_PAGE);
+  const startIndex = (currentPage - 1) * BLOGS_PER_PAGE;
+  const endIndex = startIndex + BLOGS_PER_PAGE;
+  const currentBlogs = filteredBlogs.slice(startIndex, endIndex);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
   };
 
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-
-  const [showDialog, setShowDialog] = useState(false);
-
-  const handleAddButton = () => {
-    setShowDialog(true);
-  };
-
-  const addBlog = () => {
-    const newBlog = { id: blogs.length + 1, name: name, description: description };
-    setBlogs([...blogs, newBlog]);
-    setName('');
-    setDescription('');
-    setShowDialog(false);
-  };
-
-  const closeAdd = () => {
-    setShowDialog(false);
-  }
-
-  const indexOfLastBlog = currentPage * blogsPerPage;
-  const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
-  const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog);
-
-  const filteredBlogs = currentBlogs.filter((blog) =>
-    blog.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  const [isEmptyInput, setIsEmptyInput] = useState(true);
-
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
-    setIsEmptyInput(e.target.value === '');
+  const renderPaginationButtons = () => {
+    return (
+      <div className='pagination-buttons'>
+        {filteredBlogs.length === 0 ? (
+          <div></div>
+        ) : (
+          <div className='pagination'>
+            <div className='footer-page'>
+              <button
+                onClick={() => handlePageChange(1)}
+                disabled={currentPage === 1}
+              >
+                <FaAngleDoubleLeft />
+              </button>
+              <button
+                onClick={() => handlePageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+              >
+                <FaAngleLeft />
+              </button>
+              <div className='page-number'>Page {currentPage}</div>
+              <button
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={
+                  currentPage === Math.ceil(blogs.length / BLOGS_PER_PAGE)
+                }
+              >
+                <FaAngleRight />
+              </button>
+              <button
+                onClick={() =>
+                  handlePageChange(Math.ceil(blogs.length / BLOGS_PER_PAGE))
+                }
+                disabled={
+                  currentPage === Math.ceil(blogs.length / BLOGS_PER_PAGE)
+                }
+              >
+                <FaAngleDoubleRight />
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    );
   };
 
   return (
@@ -252,39 +287,17 @@ const BlogManagement = () => {
           <input
             type='text'
             placeholder='Search by name'
-            value={searchTerm}
-            onChange={handleSearchChange}
+            onChange={handleSearch}
           />
           <div className='admin-search-icons'>
             {isEmptyInput ? <FaSearch /> : null}
           </div>
         </div>
         <div className='admin-add-blog'>
-          <button onClick={handleAddButton}>
+          <button>
             Add&nbsp;
             <FaPlusCircle />
           </button>
-          {showDialog && (
-            <div className='dialog'>
-              <h1>Add Blog</h1>
-              <input
-                type='text'
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder='Name'
-              />
-              <textarea
-                type='text'
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                placeholder='Content'
-              />
-              <div className='dialog-add-button-form'>
-                <button className='close-add' onClick={closeAdd}>Close</button>
-                <button className='handle-add' onClick={addBlog}>Add</button>
-              </div>
-            </div>
-          )}
         </div>
       </div>
       {filteredBlogs.length === 0 ? (
@@ -299,16 +312,16 @@ const BlogManagement = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredBlogs.map((blog) => (
+            {currentBlogs.map((blog) => (
               <tr key={blog.id}>
                 <td>
-                  <h4>{blog.name}</h4>
+                  <h4 onClick={() => handleBlogClick(blog)}>{blog.name}</h4>
                 </td>
                 <td>
-                  <p>{blog.description}</p>
+                  <p onClick={() => handleBlogClick(blog)}>{blog.description}</p>
                 </td>
                 <td className='actions-column-three'>
-                  <button onClick={() => deleteBlog(blog.id)}>
+                  <button>
                     <FaTrashAlt />
                   </button>
                 </td>
@@ -318,31 +331,24 @@ const BlogManagement = () => {
         </table>
       )}
 
-      {filteredBlogs.length === 0 ? <div></div> : (
-        <div className='pagination'>
-          <div className='footer-page'>
-            <button onClick={() => paginate(1)} disabled={currentPage === 1}>
-              <FaAngleDoubleLeft />
-            </button>
-            <button
-              onClick={() => paginate(currentPage - 1)}
-              disabled={currentPage === 1}
-            >
-              <FaAngleLeft />
-            </button>
-            <div className='page-number'>Page {currentPage}</div>
-            <button
-              onClick={() => paginate(currentPage + 1)}
-              disabled={currentPage === Math.ceil(blogs.length / blogsPerPage)}
-            >
-              <FaAngleRight />
-            </button>
-            <button
-              onClick={() => paginate(Math.ceil(blogs.length / blogsPerPage))}
-              disabled={currentPage === Math.ceil(blogs.length / blogsPerPage)}
-            >
-              <FaAngleDoubleRight />
-            </button>
+      {totalPages > 1 && renderPaginationButtons()}
+      {selectedBlog && (
+        <div className='admin-blog-dialog'>
+          <div className='admin-blog-dialog-content'>
+            <div className='admin-blog-dialog-main'>
+              <img src={selectedBlog.image} alt={selectedBlog.name} />
+              <div className='admin-blog-dialog-details'>
+                <p>
+                  Name: <span>{selectedBlog.name}</span>
+                </p>
+                <p>
+                  Description: <span>{selectedBlog.description}</span>
+                </p>
+              </div>
+            </div>
+            <div className='admin-blog-dialog-buttons'>
+              <button onClick={handleCloseDialog}>Close</button>
+            </div>
           </div>
         </div>
       )}
@@ -350,4 +356,4 @@ const BlogManagement = () => {
   );
 };
 
-export default BlogManagement;
+export default AdminBlog;

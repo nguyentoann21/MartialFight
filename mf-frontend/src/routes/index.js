@@ -1,10 +1,10 @@
 import Home from '../pages/Home';
-import AdminProfile from '../pages/Admin/profiles';
+import AdminProfile from '../pages/Admin/adminprofile';
 import Dashboard from '../pages/Admin/dashboard';
 import Blogs from '../pages/Blogs';
-import BlogManagement from '../pages/Admin/blogs';
-import ItemsManagement from '../pages/Admin/items';
-import Player from '../pages/Admin/players';
+import AdminBlog from '../pages/Admin/adminblog';
+import AdminItem from '../pages/Admin/adminitem';
+import AdminPlayer from '../pages/Admin/adminplayer';
 import Ranking from '../pages/Ranking';
 import Items from '../pages/Items';
 import Character from '../pages/Character';
@@ -79,31 +79,31 @@ const publicRoutes = [
     },
     {
         path: '/chart',
-        name: 'Chart-Management',
+        name: 'Admin Chart',
         component: AdminChart,
         layout: AdminLayout
     },
     {
         path: '/admin-blogs',
-        name: 'Blog-Management',
-        component: BlogManagement,
+        name: 'Admin Blog',
+        component: AdminBlog,
         layout: AdminLayout
     },
     {
         path: '/admin-items',
-        name: 'Items-Management',
-        component: ItemsManagement,
+        name: 'Admin Item',
+        component: AdminItem,
         layout: AdminLayout
     },
     {
         path: '/player',
-        name: 'Players-Management',
-        component: Player,
+        name: 'Admin Player',
+        component: AdminPlayer,
         layout: AdminLayout
     },
     {
         path: '/admin-profile',
-        name: 'Admin-Profile',
+        name: 'Admin Profile',
         component: AdminProfile,
         layout: AdminLayout
     },
