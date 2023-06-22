@@ -4,19 +4,24 @@ import { FaUser, FaKey, FaSignOutAlt, FaNewspaper, FaToolbox, FaChartLine, FaTac
 import './navbar.scss';
 
 const NavbarAdmin = () => {
-
     const avatar = 'https://imglarger.com/Images/before-after/ai-image-enlarger-1-after-2.jpg';
     const [activeItem, setActiveItem] = useState('Dashboard');
 
     useEffect(() => {
-        setActiveItem('Dashboard');
+        const storedActiveItem = localStorage.getItem('activeItem');
+        if (storedActiveItem) {
+            setActiveItem(storedActiveItem);
+        } else {
+            setActiveItem('Dashboard');
+        }
     }, []);
 
     const handleActionClick = (item) => {
         setActiveItem(item);
+        localStorage.setItem('activeItem', item);
     };
 
-    return(
+    return (
         <div className='navbar-container'>
             <div className='navbar-top'>
                 <Link to='/dashboard'>
@@ -30,7 +35,7 @@ const NavbarAdmin = () => {
             <div className='navbar-main'>
                 <Link to='/dashboard'>
                     <div className={`navbar-dashboard ${activeItem === 'Dashboard' ? 'active' : ''}`} onClick={() => handleActionClick('Dashboard')}>
-                        <FaTachometerAlt  />
+                        <FaTachometerAlt />
                         <span>Dashboard</span>
                     </div>
                 </Link>
@@ -66,7 +71,7 @@ const NavbarAdmin = () => {
                 </Link>
                 <Link to='/'>
                     <div className={`navbar-logout ${activeItem === 'Logout' ? 'active' : ''}`} onClick={() => handleActionClick('Logout')}>
-                        <FaSignOutAlt/>
+                        <FaSignOutAlt />
                         <span>Logout</span>
                     </div>
                 </Link>

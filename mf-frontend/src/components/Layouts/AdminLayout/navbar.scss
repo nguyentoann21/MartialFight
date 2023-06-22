@@ -5,15 +5,16 @@
     justify-content: center;
     align-items: center;
     flex-direction: column !important;
-    padding: 15px 15px 35px 15px;
+    padding: 0 15px;
     border-radius: 10px;
-    min-height: 587px;
+    min-height: 800px;
 
     .navbar-top {
         width: 100%;
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
+        margin-bottom: 30px;
         cursor: pointer;
 
         a {
@@ -24,8 +25,9 @@
                 font-weight: 600 !important;
                 background-color: #f3e9e9 !important;
                 color: #333;
-                padding: 3px 10px !important;
+                padding: 3px 20px 5px 20px !important;
                 border-radius: 10px !important;
+                font-size: 26px;
             }
             
             h3:hover {
@@ -46,6 +48,8 @@
 
     h4 {
         font-weight: 600;
+        font-size: 20px;
+        font-style: italic;
     }
 
     .navbar-main {
