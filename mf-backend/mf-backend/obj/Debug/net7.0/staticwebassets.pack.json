@@ -1,0 +1,53 @@
+{
+  "Files": [
+    {
+      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\0359858d-982d-4d31-aec8-5aa68e844eef.png",
+      "PackagePath": "staticwebassets\\Images\\0359858d-982d-4d31-aec8-5aa68e844eef.png"
+    },
+    {
+      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\2812abf1-6b91-4362-a63f-018cdda0417f.png",
+      "PackagePath": "staticwebassets\\Images\\2812abf1-6b91-4362-a63f-018cdda0417f.png"
+    },
+    {
+      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\7be374aa-79bb-4bc5-b88e-1bef6bd0730a.jpg",
+      "PackagePath": "staticwebassets\\Images\\7be374aa-79bb-4bc5-b88e-1bef6bd0730a.jpg"
+    },
+    {
+      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\85656e01-2a30-46c9-85f3-8395962befa9.jpg",
+      "PackagePath": "staticwebassets\\Images\\85656e01-2a30-46c9-85f3-8395962befa9.jpg"
+    },
+    {
+      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\9a3c8c8d-298d-4ce4-972d-1a432abe546f.jpg",
+      "PackagePath": "staticwebassets\\Images\\9a3c8c8d-298d-4ce4-972d-1a432abe546f.jpg"
+    },
+    {
+      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\c901a78b-254e-4519-9de0-c2b3bbb29723.jpg",
+      "PackagePath": "staticwebassets\\Images\\c901a78b-254e-4519-9de0-c2b3bbb29723.jpg"
+    },
+    {
+      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\d8e8a6ad-45f9-4376-88d3-4c9d8fe92aed.png",
+      "PackagePath": "staticwebassets\\Images\\d8e8a6ad-45f9-4376-88d3-4c9d8fe92aed.png"
+    },
+    {
+      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\d8e962c6-813d-49bb-87ea-8af53a47eb79.png",
+      "PackagePath": "staticwebassets\\Images\\d8e962c6-813d-49bb-87ea-8af53a47eb79.png"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.mf-backend.props",
+      "PackagePath": "build\\mf-backend.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.mf-backend.props",
+      "PackagePath": "buildMultiTargeting\\mf-backend.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.mf-backend.props",
+      "PackagePath": "buildTransitive\\mf-backend.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.mf-backend.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
