@@ -19,13 +19,6 @@ namespace mf_backend.Controllers
             _environment = environment;
         }
 
-        [HttpGet("players")]
-        public async Task<IActionResult> GetPlayers()
-        {
-            var players = await _context.Accounts.Where(x => x.Role == 0).ToListAsync();
-            return StatusCode(StatusCodes.Status200OK, players);
-        }
-
         [HttpPost("sign-up")]
         public IActionResult Register([FromForm] RegisterModel account)
         {

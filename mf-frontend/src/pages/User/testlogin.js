@@ -1,60 +1,50 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const TestLogin = () => {
-  const [usernameOrEmail, setUsernameOrEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [accountData, setAccountData] = useState('null');
+  const [avatar, setAvatar] = useState('');
+  const history = useNavigate();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await axios.post('https://localhost:7052/api/mf/login', {
-        usernameOrEmail,
-        password
-      });
-
-      console.log('API response:', response.data);
-
-      if (response.data && response.data.role === 1) {
-        // Redirect or perform actions for admin user
-        console.log('Admin login successful');
-      } else if (response.data && response.data.role === 0) {
-        // Redirect or perform actions for player user
-        console.log('Player login successful');
-      } else {
-        // Handle unrecognized role
-        console.error('Unrecognized role');
-      }
-    } catch (error) {
-      // Handle login error (e.g., display error message, clear input fields, etc.)
-      console.error('Login failed', error);
+  useEffect(() => {
+    // Retrieve the account data from local storage
+    const storedAccountData = localStorage.getItem('ACCOUNT_DATA');
+    
+    if (storedAccountData) {
+      const data = JSON.parse(storedAccountData);
+      setAccountData(JSON.parse(storedAccountData));
+      setAvatar(data.avatarUrl);
+      console.log(1)
+    } else {
+      // If account data is not found, redirect to login page
+      history('/');
+      console.log(0)
     }
+  }, [history]); // Remove the dependency array as it should only run once
+  
+  console.log(accountData);
+
+  const handleLogout = () => {
+    // Clear the account data from local storage and redirect to login page
+    localStorage.removeItem('ACCOUNT_DATA');
+    history('/');
   };
 
   return (
     <div>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
+      {accountData ? (
         <div>
-          <label>Username or Email:</label>
-          <input
-            type="text"
-            value={usernameOrEmail}
-            onChange={(e) => setUsernameOrEmail(e.target.value)}
-          />
+          <h2>{accountData.role === 1 ? "admin": "player"}</h2>
+          <p>Username: {accountData.username}</p>
+          <p>Email: {accountData.email}</p>
+          <img width={100} height={100} src={`https://localhost:7052/Images/${avatar}`} alt={accountData.fullname} />
+          <button onClick={handleLogout}>Logout</button>
         </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
+      ) : (
+        <p>Loading account data...</p>
+      )}
     </div>
   );
 };
+
 export default TestLogin;

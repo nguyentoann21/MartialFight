@@ -27,7 +27,7 @@ namespace mf_backend.DataAccess
                     AccountID = 1, 
                     Username = "mf_admin",
                     Password = "12345@6",
-                    AvatarUrl = "player.png",
+                    AvatarUrl = "player.jpg",
                     Email = "toannvce150811@fpt.edu.vn",
                     Fullname = "Nguyen Van Toan Admin",
                     Gender = "male",
@@ -38,7 +38,7 @@ namespace mf_backend.DataAccess
                     AccountID = 2,
                     Username = "mf_player1",
                     Password = "123456@",
-                    AvatarUrl = "player.png",
+                    AvatarUrl = "player.jpg",
                     Email = "mplkingofworld@gmail.com",
                     Fullname = "Nguyen Van Toan Player",
                     Gender = "female"

@@ -18,7 +18,7 @@ namespace mf_backend.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(LoginModel request)
+        public async Task<IActionResult> Login(LoginModel request, bool rememberMe = false)
         {
             // Find the account based on username or email
             var account = await _context.Accounts.FirstOrDefaultAsync(x =>
@@ -36,6 +36,7 @@ namespace mf_backend.Controllers
             }
 
             string role = account.Role == 1 ? "admin" : "player";
+            account.RememberMe = rememberMe;
 
             return StatusCode(StatusCodes.Status200OK, account);
         }

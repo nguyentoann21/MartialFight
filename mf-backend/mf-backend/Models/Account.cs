@@ -37,5 +37,7 @@ namespace mf_backend.Models
 
         public string Status { get; set; } = "active";
         public int Role { get; set; } = 0;
+
+        public bool RememberMe { get; set; }
     }   
 }
