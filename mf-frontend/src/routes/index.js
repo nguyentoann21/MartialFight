@@ -20,6 +20,8 @@ import ForgotPassword from '../pages/User/forgot';
 import AdminChart from '../pages/Admin/adminchart';
 import Policy from '../pages/Rules/policy';
 import TermsAndConditions from '../pages/Rules/conditions';
+import TestLogin from '../pages/User/testlogin';
+import TestRegister from '../pages/User/testregister';
 
 
 const publicRoutes = [
@@ -148,6 +150,18 @@ const publicRoutes = [
         name: 'terms-condition',
         component: TermsAndConditions,
         layout: RuleLayout
+    },
+    {
+        path: '/test-login',
+        name: 'test-login',
+        component: TestLogin,
+        layout: MainLayout
+    },
+    {
+        path: '/test-register',
+        name: 'test-register',
+        component: TestRegister,
+        layout: MainLayout
     }
 ];
 
