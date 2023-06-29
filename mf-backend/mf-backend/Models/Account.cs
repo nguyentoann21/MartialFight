@@ -12,6 +12,9 @@ namespace mf_backend.Models
         public string Username { get; set; }
 
         [Required]
+        public string NameInGame { get; set; } = string.Empty;
+
+        [Required]
         public string Password { get; set; }
 
         public string AvatarUrl { get; set; }
@@ -30,10 +33,6 @@ namespace mf_backend.Models
         [Required]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Created_at { get; set; } = DateTime.Now;
-
-        [Required]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime LastLogin { get; set; } = DateTime.Now;
 
         public string Status { get; set; } = "active";
         public int Role { get; set; } = 0;

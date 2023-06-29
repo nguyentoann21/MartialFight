@@ -11,7 +11,6 @@
         background-size: 100% 100%;
         padding: 70px;
         border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         transition: transform 0.3s;
         width: 620px;
         margin: 1.5% 0 !important;
@@ -139,6 +138,10 @@
                     display: flex !important;
                     justify-content: space-evenly;
                     margin-top: 5px !important;
+
+                    label {
+                        cursor: pointer;
+                    }
                 }
             }
 
@@ -184,6 +187,119 @@
             a:hover {
                 color: #ff0;
             }
+        }
+    }
+
+    .dialog {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        backdrop-filter: blur(8px);
+        z-index: 9999;
+  
+        &.error {
+            background-color: transparent;
+
+            .dialog-content {
+                background-color: rgb(238, 51, 51);
+
+                svg {
+                    font-size: 40px !important;
+                    color: #fff;
+                }
+
+                p {
+                    text-align: center;
+                    margin-bottom: 10px;
+                    color: #fff;
+                    font-size: 16px;
+                    font-weight: 500 !important;
+                }
+
+                h6 {
+                    font-size: 16px;
+                    font-weight: 600 !important;
+                    color: #ff0;
+                    margin: 10px 0 !important;
+                    padding: 0 !important;
+                }
+            
+                .dialog-close {
+                    border-radius: 5px;
+                    font-weight: 700;
+                    color: #fff;
+                    border: 1px solid #ced4da;
+                    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);
+                    cursor: pointer;
+                    background-color: rgb(62, 123, 194);
+                    padding: 5px 25px;
+                }
+
+                .dialog-close:hover {
+                    color: #222;
+                    background-color: #fff;
+                }
+            }
+        }
+  
+        &.success {
+            background-color: transparent;
+            
+            .dialog-content {
+                background-color: rgb(104, 230, 95);
+
+                svg {
+                    font-size: 40px !important;
+                    color: #fff;
+                }
+
+                p {
+                    text-align: center;
+                    margin-bottom: 10px;
+                    color: #222;
+                    font-size: 16px;
+                    font-weight: 500 !important;
+                }
+
+                h5 {
+                    font-size: 16px;
+                    font-weight: 600 !important;
+                    color: #008;
+                    margin: 10px 0 !important;
+                    padding: 0 !important;
+                }
+            
+                .dialog-close {
+                    border-radius: 5px;
+                    font-weight: 700;
+                    color: #222;
+                    border: 1px solid #ced4da;
+                    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);
+                    cursor: pointer;
+                    background-color: rgb(115, 167, 235);
+                    padding: 5px 25px;
+                }
+
+                .dialog-close:hover {
+                    color: #ff0;
+                    background-color: #202020;
+                }
+            }
+        }
+  
+        .dialog-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
         }
     }
 }

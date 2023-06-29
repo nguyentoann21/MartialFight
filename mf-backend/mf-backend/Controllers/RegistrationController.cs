@@ -29,16 +29,31 @@ namespace mf_backend.Controllers
 
             if (_context.Accounts.Any(a => a.Username == account.Username) || _context.Accounts.Any(a => a.Email == account.Email))
             {
-                return StatusCode(StatusCodes.Status401Unauthorized);
+                return BadRequest("Username or Email already existed");
             }
 
-            if (account != null && account.Username != null && account.Password != null && account.AvatarUrl != null)
+            if (account.Username == null || account.AvatarUrl == null || account.Fullname == null || account.Email == null || account.Password == null)
             {
+                return BadRequest("All fields are required");
+            }
+
+            if (account != null && account.Username != null && account.Password != null && account.AvatarUrl != null && account.Email != null && account.Fullname != null)
+            {
+
+                if (account.Username.Length < 5 || account.Username.Length > 16)
+                {
+                    return BadRequest("Username must be from 5-16 characters");
+                }
+
+                if (account.Password.Length < 6 || account.Password.Length > 32)
+                {
+                    return BadRequest("Password must be from 6-32 characters");
+                }   
+
                 string avatarFileName = $"{Guid.NewGuid()}{Path.GetExtension(account.AvatarUrl.FileName)}";
                 string avatarDirectoryPath = Path.Combine(_environment.WebRootPath, "Images");
                 string avatarFilePath = Path.Combine(avatarDirectoryPath, avatarFileName);
 
-                // Ensure that the target directory exists
                 if (!Directory.Exists(avatarDirectoryPath))
                 {
                     Directory.CreateDirectory(avatarDirectoryPath);
@@ -64,7 +79,7 @@ namespace mf_backend.Controllers
             }
             else
             {
-                return BadRequest();
+                return BadRequest("Account data must not empty");
             }
         }
 

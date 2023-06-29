@@ -20,7 +20,6 @@ namespace mf_backend.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginModel request, bool rememberMe = false)
         {
-            // Find the account based on username or email
             var account = await _context.Accounts.FirstOrDefaultAsync(x =>
                 x.Username == request.UsernameOrEmail || x.Email == request.UsernameOrEmail);
 
@@ -31,7 +30,6 @@ namespace mf_backend.Controllers
 
             if (account.Password != request.Password)
             {
-                // Incorrect password
                 return Unauthorized();
             }
 
