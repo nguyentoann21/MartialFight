@@ -32,11 +32,6 @@ namespace mf_backend.Controllers
                 return BadRequest("Username or Email already existed");
             }
 
-            if (account.Username == null || account.AvatarUrl == null || account.Fullname == null || account.Email == null || account.Password == null)
-            {
-                return BadRequest("All fields are required");
-            }
-
             if (account != null && account.Username != null && account.Password != null && account.AvatarUrl != null && account.Email != null && account.Fullname != null)
             {
 

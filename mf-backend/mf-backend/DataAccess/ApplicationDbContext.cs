@@ -10,6 +10,7 @@ namespace mf_backend.DataAccess
         public ApplicationDbContext() { }
 
         public DbSet<Account> Accounts { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -21,6 +22,7 @@ namespace mf_backend.DataAccess
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Account>().HasKey(a => a.AccountID);
+            modelBuilder.Entity<Blog>().HasKey(a => a.BlogID);
             modelBuilder.Entity<Account>().HasData(
                 new Account
                 {
@@ -44,7 +46,7 @@ namespace mf_backend.DataAccess
                     Email = "mplkingofworld@gmail.com",
                     Fullname = "Nguyen Van Toan Player",
                     Gender = "female"
-                }); ; ;
+                });
         }
     }
 }

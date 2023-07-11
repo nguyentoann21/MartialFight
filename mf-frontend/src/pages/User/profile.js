@@ -1,132 +1,130 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { FaTimes } from 'react-icons/fa';
-import './profile.scss';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { FaTimes } from "react-icons/fa";
+import "./profile.scss";
 
 const Profile = () => {
-  const [name, setName] = useState('S-Chat Key');
-  const [email, setEmail] = useState('mplkingofworld@gmail.com');
-  const [gender, setGender] = useState('Male');
-  const [phone, setPhone] = useState('nguyentoann21');
-  const [avatarUrl, setAvatarUrl] = useState(
-    'https://i.pinimg.com/736x/94/3f/cf/943fcf1ad73de4334e083475d1ab9541.jpg'
-  );
+  const [accountData, setAccountData] = useState("null");
+  const [avatar, setAvatar] = useState("");
+  const history = useNavigate();
+
+  useEffect(() => {
+    const storedAccountData = localStorage.getItem("ACCOUNT_DATA");
+
+    if (storedAccountData) {
+      const data = JSON.parse(storedAccountData);
+      setAccountData(JSON.parse(storedAccountData));
+      setAvatar(data.avatarUrl);
+      console.log(1);
+    } else {
+      history("/");
+      console.log(0);
+    }
+  }, [history]);
 
   const handlePasswordChangeClick = () => {
-    window.location.href = '/change-password';
+    window.location.href = "/change-password";
   };
 
   const handleLogout = () => {
-    console.log('logout');
+    localStorage.removeItem("ACCOUNT_DATA");
+    history("/");
   };
 
   const handleSaveProfile = () => {
-    console.log('Save');
-  };
-
-  const handleNameChange = (event) => {
-    setName(event.target.value);
-  };
-
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handleGenderChange = (event) => {
-    setGender(event.target.value);
-  };
-
-  const handlePhoneChange = (event) => {
-    setPhone(event.target.value);
-  };
-
-  const handleAvatarChange = (event) => {
-    setAvatarUrl(event.target.value);
+    console.log("Update profile");
   };
 
   return (
-    <div className='profile-container'>
-      <div className='profile-form'>
-        <div className='close-profile'>
-          <Link to='/' className='close-icons'>
-            <FaTimes />
-          </Link>
-        </div>
-        <div className='avatar-container'>
-          <label>
-            <input
-              type='file'
-              accept='image/*'
-              onChange={handleAvatarChange}
-              className='avatar-input'
-              hidden
-            />
-            <img src={avatarUrl} alt='Avatar' className='avatar-image' />
-          </label>
-        </div>
-        <div className='profile-main'>
-          <div className='static-container'>
-            <div className='static-content'>
-              <div className='static-label'>Level</div>
-              <p>100</p>
+    <>
+      {accountData ? (
+        <div className="profile-container">
+          <div className="profile-form">
+            <div className="close-profile">
+              <Link to="/" className="close-icons">
+                <FaTimes />
+              </Link>
             </div>
-            <div className='static-content'>
-              <div className='static-label'>Challenge</div>
-              <p>120</p>
-            </div>
-            <div className='static-content'>
-              <div className='static-label'>Rank</div>
-              <p>Gold</p>
-            </div>
-          </div>
-          <div className='details-container'>
-            <div className='details-row'>
-              <div className='details-label'>Name</div>
-              <div className='details-value'>
-                <input type='text' value={name} onChange={handleNameChange} />
-              </div>
-            </div>
-            <div className='details-row'>
-              <div className='details-label'>Email:</div>
-              <div className='details-value'>
+            <div className="avatar-container">
+              <label>
                 <input
-                  type='email'
-                  value={email}
-                  onChange={handleEmailChange}
+                  type="file"
+                  accept="image/*"
+                  className="avatar-input"
+                  hidden
                 />
+                <img
+                  src={`https://localhost:7052/Images/${avatar}`}
+                  alt="Avatar"
+                  className="avatar-image"
+                />
+              </label>
+            </div>
+            <div className="profile-main">
+              <div className="static-container">
+                <div className="static-content">
+                  <div className="static-label">Level</div>
+                  <p>{accountData.level}</p>
+                </div>
+                <div className="static-content">
+                  <div className="static-label">Challenge</div>
+                  <p>{accountData.numberOfMaps}</p>
+                </div>
+                <div className="static-content">
+                  <div className="static-label">Rank Score</div>
+                  <p>{accountData.score_PvP}</p>
+                </div>
+              </div>
+              <div className="details-container">
+                <div className="details-row">
+                  <div className="details-label">Name</div>
+                  <div className="details-value">
+                    <input type="text" value={accountData.fullname} />
+                  </div>
+                </div>
+                <div className="details-row">
+                  <div className="details-label">Email:</div>
+                  <div className="details-value">
+                    <input type="email" value={accountData.email} />
+                  </div>
+                </div>
+                <div className="details-row">
+                  <div className="details-label">Gender</div>
+                  <div className="details-value">
+                    <input id="select" value={accountData.gender} />
+                  </div>
+                </div>
+                <div className="details-row">
+                  <div className="details-label">Username</div>
+                  <div className="details-value">
+                    <input type="tel" value={accountData.username} />
+                  </div>
+                </div>
               </div>
             </div>
-            <div className='details-row'>
-              <div className='details-label'>Gender</div>
-              <div className='details-value'>
-                <select value={gender} onChange={handleGenderChange}>
-                  <option value='Male'>Male</option>
-                  <option value='Female'>Female</option>
-                  <option value='Other'>Other</option>
-                </select>
-              </div>
-            </div>
-            <div className='details-row'>
-              <div className='details-label'>Username</div>
-              <div className='details-value'>
-                <input type='tel' value={phone} onChange={handlePhoneChange} />
+            <div className="actions-container">
+              <div className="actions-content">
+                <button onClick={handleSaveProfile} className="save">
+                  Update Profile
+                </button>
+                <button
+                  onClick={handlePasswordChangeClick}
+                  className="change-password"
+                >
+                  Change Password
+                </button>
+                <button onClick={handleLogout} className="logout">
+                  Logout
+                </button>
               </div>
             </div>
           </div>
         </div>
-        <div className='actions-container'>
-          <div className='actions-content'>
-            <button onClick={handleSaveProfile} className='save'>
-              Save
-            </button>
-            <button onClick={handlePasswordChangeClick} className='change-password'>
-              Change Password
-            </button>
-            <button onClick={handleLogout} className='logout'>Logout</button>
-          </div>
-        </div>
-      </div>
-    </div>
+      ) : (
+        <p>Loading account data...</p>
+      )}
+    </>
   );
 };
 

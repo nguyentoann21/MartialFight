@@ -144,10 +144,6 @@
                             padding: 10px;
                             transition: transform 0.3s;
                         }
-
-                        input:hover {
-                            transform: scale(1.05);
-                        }
             
                         input:focus {
                             outline: none;
@@ -155,16 +151,13 @@
                             box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
                         }
 
-                        select {
-                            width: 94%;
+                        #select {
+                            width: 85%;
                             border-radius: 5px;
                             border: 1px solid #ced4da;
                             padding: 10px;
                             transition: transform 0.3s;
-                        }
-
-                        select:hover {
-                            transform: scale(1.05);
+                            text-transform: capitalize;
                         }
                     }
                 }

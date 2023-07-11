@@ -22,6 +22,7 @@ import Policy from '../pages/Rules/policy';
 import TermsAndConditions from '../pages/Rules/conditions';
 import TestLogin from '../pages/User/testlogin';
 import TestRegister from '../pages/User/testregister';
+import BlogView from '../pages/User/testblog';
 
 
 const publicRoutes = [
@@ -162,6 +163,12 @@ const publicRoutes = [
         name: 'test-register',
         component: TestRegister,
         layout: MainLayout
+    },
+    {
+        path: '/test-blog',
+        name: 'test-blog',
+        component: BlogView,
+        layout: null
     }
 ];
 

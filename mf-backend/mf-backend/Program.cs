@@ -13,7 +13,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>();
 builder.Services.AddCors();
 builder.Services.AddDirectoryBrowser();
-
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddTransient<IFileProvider>(x =>
+    new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
 
 var app = builder.Build();
 
