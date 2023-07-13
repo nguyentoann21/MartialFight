@@ -23,6 +23,7 @@ import TermsAndConditions from '../pages/Rules/conditions';
 import TestLogin from '../pages/User/testlogin';
 import TestRegister from '../pages/User/testregister';
 import BlogView from '../pages/User/testblog';
+import AdminCharacter from '../pages/Admin/admincharacter';
 
 
 const publicRoutes = [
@@ -108,6 +109,12 @@ const publicRoutes = [
         path: '/admin-profile',
         name: 'Admin Profile',
         component: AdminProfile,
+        layout: AdminLayout
+    },
+    {
+        path: '/admin-character',
+        name: 'Admin Character',
+        component: AdminCharacter,
         layout: AdminLayout
     },
     {

@@ -45,6 +45,12 @@ const NavbarAdmin = () => {
                         <span>Charts</span>
                     </div>
                 </Link>
+                <Link to='/admin-character'>
+                    <div className={`navbar-charts ${activeItem === 'Character' ? 'active' : ''}`} onClick={() => handleActionClick('Character')}>
+                        <FaChartLine />
+                        <span>Character</span>
+                    </div>
+                </Link>
                 <Link to='/admin-blogs'>
                     <div className={`navbar-blogs ${activeItem === 'Blogs' ? 'active' : ''}`} onClick={() => handleActionClick('Blogs')}>
                         <FaNewspaper />
