@@ -11,6 +11,10 @@ namespace mf_backend.DataAccess
 
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Blog> Blogs { get; set; }
+        public DbSet<Sect> Sects { get; set; }
+        public DbSet<Map> Maps { get; set; }
+        public DbSet<Skill> Skills { get; set; }
+        public DbSet<Character> Characters { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -23,12 +27,15 @@ namespace mf_backend.DataAccess
         {
             modelBuilder.Entity<Account>().HasKey(a => a.AccountID);
             modelBuilder.Entity<Blog>().HasKey(a => a.BlogID);
+            modelBuilder.Entity<Sect>().HasKey(a => a.SectID);
+            modelBuilder.Entity<Map>().HasKey(a => a.MapID);
+            modelBuilder.Entity<Skill>().HasKey(a => a.SkillID);
+            modelBuilder.Entity<Character>().HasKey(a => a.CharacterID);
             modelBuilder.Entity<Account>().HasData(
                 new Account
                 {
                     AccountID = 1,
                     Username = "mf_admin",
-                    NameInGame = "",
                     Password = "12345@6",
                     AvatarUrl = "player.jpg",
                     Email = "toannvce150811@fpt.edu.vn",
@@ -40,7 +47,6 @@ namespace mf_backend.DataAccess
                 {
                     AccountID = 2,
                     Username = "mf_player1",
-                    NameInGame = "",
                     Password = "123456@",
                     AvatarUrl = "player.jpg",
                     Email = "mplkingofworld@gmail.com",

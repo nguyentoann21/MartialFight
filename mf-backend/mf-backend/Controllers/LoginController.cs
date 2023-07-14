@@ -28,7 +28,14 @@ namespace mf_backend.Controllers
                 return NotFound("Account does not existed");
             }
 
-            if (account.Password != request.Password)
+            if (!account.Active)
+            {
+                return StatusCode(StatusCodes.Status403Forbidden, "Your account is banned");
+            }
+
+            bool isPasswordValid = BCrypt.Net.BCrypt.Verify(request.Password, account.Password);
+
+            if (!isPasswordValid)
             {
                 return Unauthorized();
             }

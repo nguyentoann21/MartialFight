@@ -1,11 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace mf_backend.Models
 {
-    public class Character
+    public class CharacterModel
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CharacterID { get; set; }
 
         [Required]
@@ -13,7 +12,7 @@ namespace mf_backend.Models
 
         public string CharacterDescription { get; set; }
 
-        public string Images { get; set; }
+        public List<string> Images { get; set; }
 
         public int AttackValue { get; set; }
 
@@ -31,6 +30,5 @@ namespace mf_backend.Models
         public int SectID { get; set; }
 
         public Sect CharacterSect { get; set; }
-
     }
 }

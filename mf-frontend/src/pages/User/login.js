@@ -78,6 +78,8 @@ function Login() {
     {
       if (error.response && error.response.status === 401) {
         setError('Incorrect username or password');
+      } else if (error.response && error.response.status === 403){
+        setError('Your account is banned');
       } else {
         setError('Login failed. Please try again.');
       }

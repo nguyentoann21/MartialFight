@@ -12,9 +12,6 @@ namespace mf_backend.Models
         public string Username { get; set; }
 
         [Required]
-        public string NameInGame { get; set; } = string.Empty;
-
-        [Required]
         public string Password { get; set; }
 
         public string AvatarUrl { get; set; }
@@ -25,16 +22,12 @@ namespace mf_backend.Models
 
         [Required]
         public string Gender { get; set; }
-        public int Level { get; set; } = 1;
-        public int Score_PvP { get; set; } = 0;
-        public int Exp { get; set; } = 0;
-        public int NumberOfMaps { get; set; } = 0;
 
         [Required]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Created_at { get; set; } = DateTime.Now;
 
-        public string Status { get; set; } = "active";
+        public bool Active { get; set; } = true;
         public int Role { get; set; } = 0;
 
         public bool RememberMe { get; set; }

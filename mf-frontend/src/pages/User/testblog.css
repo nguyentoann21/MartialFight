@@ -1,5 +1,12 @@
 /* testblog.css */
 
+.empt-list-news {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .container {
     max-width: 800px;
     margin: 0 !important;
@@ -34,7 +41,7 @@
   }
 
   .img-ctrl {
-    background-color: #222;
+    background-color: #fff;
   }
   
   .image-container {

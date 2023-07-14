@@ -3,21 +3,23 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace mf_backend.Models
 {
-    public class Character
+    public class Skill
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int CharacterID { get; set; }
+        public int SkillID { get; set; }
 
         [Required]
-        public string CharacterName { get; set; }
+        public string SkillName { get; set; }
 
-        public string CharacterDescription { get; set; }
+        public string SkillDescription { get; set; }
 
-        public string Images { get; set; }
-
-        public int AttackValue { get; set; }
+        public string SkillType { get; set; }
 
         public int HealthValue { get; set; }
+
+        public int ManaValue { get; set; }
+
+        public int AttackValue { get; set; }
 
         public int DefenseValue { get; set; }
 
@@ -27,10 +29,6 @@ namespace mf_backend.Models
 
         public int PhysicalValue { get; set; }
 
-        [ForeignKey(nameof(Sect))]
-        public int SectID { get; set; }
-
-        public Sect CharacterSect { get; set; }
-
+        public string Images { get; set; }
     }
 }

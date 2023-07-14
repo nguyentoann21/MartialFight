@@ -2,6 +2,8 @@
 using mf_backend.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using BCrypt.Net;
+
 
 namespace mf_backend.Controllers
 {
@@ -29,7 +31,7 @@ namespace mf_backend.Controllers
 
             if (_context.Accounts.Any(a => a.Username == account.Username) || _context.Accounts.Any(a => a.Email == account.Email))
             {
-                return BadRequest("Username or Email already existed");
+                return StatusCode(StatusCodes.Status401Unauthorized, "Username or Email already existed");
             }
 
             if (account != null && account.Username != null && account.Password != null && account.AvatarUrl != null && account.Email != null && account.Fullname != null)
@@ -37,12 +39,12 @@ namespace mf_backend.Controllers
 
                 if (account.Username.Length < 5 || account.Username.Length > 16)
                 {
-                    return BadRequest("Username must be from 5-16 characters");
+                    return StatusCode(StatusCodes.Status405MethodNotAllowed, "Username must be from 5-16 characters");
                 }
 
                 if (account.Password.Length < 6 || account.Password.Length > 32)
                 {
-                    return BadRequest("Password must be from 6-32 characters");
+                    return StatusCode(StatusCodes.Status406NotAcceptable, "Password must be from 6-32 characters");
                 }   
 
                 string avatarFileName = $"{Guid.NewGuid()}{Path.GetExtension(account.AvatarUrl.FileName)}";
@@ -59,10 +61,12 @@ namespace mf_backend.Controllers
                     account.AvatarUrl.CopyTo(stream);
                 }
 
+                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(account.Password);
+
                 _context.Add(new Account
                 {
                     Username = account.Username,
-                    Password = account.Password,
+                    Password = hashedPassword,
                     AvatarUrl = avatarFileName,
                     Email = account.Email,
                     Fullname = account.Fullname,
@@ -74,7 +78,7 @@ namespace mf_backend.Controllers
             }
             else
             {
-                return BadRequest("Account data must not empty");
+                return StatusCode(StatusCodes.Status404NotFound, "Account data must not empty");
             }
         }
 

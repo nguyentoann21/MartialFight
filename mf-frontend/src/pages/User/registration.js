@@ -44,12 +44,18 @@ const Registration = () => {
 
         const imageUrl = URL.createObjectURL(avatar);
         console.log(imageUrl);
+        showDialog("success", "Registration successful");
       }).catch((error) => {
-        if (error.response && error.response.status === 400) {
-          console.log(error.response.data)
-          showDialog("error", error.response.data);
+        if (error.response && error.response.status === 401) {
+          showDialog("error", "Username or Email already existed");
+        } else if(error.response && error.response.status === 400){
+          showDialog("error", "All fields are required");
+        } else if(error.response && error.response.status === 405){
+          showDialog("error", "Username must be from 5-16 characters");
+        } else if(error.response && error.response.status === 406){
+          showDialog("error", "Password must be from 6-32 characters");
         } else {
-          showDialog("error", "An error occurred during registration.");
+          showDialog("error", "An occurred while registering");
         }
       });
       
@@ -85,15 +91,7 @@ const Registration = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (
-      username.trim() === "" &&
-      password.trim() === "" &&
-      email.trim() === "" &&
-      name.trim() === "" &&
-      !avatar
-    ) {
-      showDialog("error", "All fields are required");
-    } else if (password !== rePassword) {
+    if (password !== rePassword) {
       showDialog("error", "Passwords do not match");
     } else if (!avatar) {
       showDialog("error", "Please select an avatar");
@@ -105,10 +103,6 @@ const Registration = () => {
       showDialog("error", "Please enter password");
     } else if (email.trim() === "") {
       showDialog("error", "Please enter an email");
-    } else if (password.length < 6 || password.length > 32) {
-      showDialog("error", "Password must be between 6 and 32 characters");
-    }  else {
-      showDialog("success", "Registration successful");
     }
   };
 
