@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
 import "./profile.scss";
 
 const Profile = () => {
-  const [accountData, setAccountData] = useState("null");
+  const [accountData, setAccountData] = useState(null);
   const [avatar, setAvatar] = useState("");
   const history = useNavigate();
 
@@ -14,7 +13,7 @@ const Profile = () => {
 
     if (storedAccountData) {
       const data = JSON.parse(storedAccountData);
-      setAccountData(JSON.parse(storedAccountData));
+      setAccountData(data);
       setAvatar(data.avatarUrl);
       console.log(1);
     } else {
@@ -23,8 +22,8 @@ const Profile = () => {
     }
   }, [history]);
 
-  const handlePasswordChangeClick = () => {
-    window.location.href = "/change-password";
+  const handlePasswordChange = () => {
+    history("/test-changepassword");
   };
 
   const handleLogout = () => {
@@ -80,25 +79,41 @@ const Profile = () => {
                 <div className="details-row">
                   <div className="details-label">Name</div>
                   <div className="details-value">
-                    <input type="text" value={accountData.fullname} />
+                    <input
+                      type="text"
+                      readOnly
+                      value={accountData.fullname}
+                    />
                   </div>
                 </div>
                 <div className="details-row">
                   <div className="details-label">Email:</div>
                   <div className="details-value">
-                    <input type="email" value={accountData.email} />
+                    <input
+                      type="email"
+                      readOnly
+                      value={accountData.email}
+                    />
                   </div>
                 </div>
                 <div className="details-row">
                   <div className="details-label">Gender</div>
                   <div className="details-value">
-                    <input id="select" value={accountData.gender} />
+                    <input
+                      id="select"
+                      readOnly
+                      value={accountData.gender}
+                    />
                   </div>
                 </div>
                 <div className="details-row">
                   <div className="details-label">Username</div>
                   <div className="details-value">
-                    <input type="tel" value={accountData.username} />
+                    <input
+                      type="tel"
+                      readOnly
+                      value={accountData.username}
+                    />
                   </div>
                 </div>
               </div>
@@ -109,7 +124,7 @@ const Profile = () => {
                   Update Profile
                 </button>
                 <button
-                  onClick={handlePasswordChangeClick}
+                  onClick={handlePasswordChange}
                   className="change-password"
                 >
                   Change Password

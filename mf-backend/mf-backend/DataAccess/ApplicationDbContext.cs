@@ -5,7 +5,7 @@ namespace mf_backend.DataAccess
 {
     public class ApplicationDbContext : DbContext
     {
-        private static readonly string SQL_CONNECTION = "Server=(local);uid=sa;pwd=123456;Database=Martial_Fight;Trusted_Connection=true;Encrypt=false";
+        private static readonly string SQL_CONNECTION = "Server=(local);uid=sa;pwd=123456;Database=MF;Trusted_Connection=true;Encrypt=false";
 
         public ApplicationDbContext() { }
 
@@ -15,6 +15,7 @@ namespace mf_backend.DataAccess
         public DbSet<Map> Maps { get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Character> Characters { get; set; }
+        public DbSet<VerifyCode> VerifyCodes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -36,7 +37,7 @@ namespace mf_backend.DataAccess
                 {
                     AccountID = 1,
                     Username = "mf_admin",
-                    Password = "12345@6",
+                    Password = "$2a$11$Zq2mQ3no7qbNtEV8lX76EOuB3T91sdYjVlFAPPSurjD.1UoKuzsqq",
                     AvatarUrl = "player.jpg",
                     Email = "toannvce150811@fpt.edu.vn",
                     Fullname = "Nguyen Van Toan Admin",
@@ -47,7 +48,7 @@ namespace mf_backend.DataAccess
                 {
                     AccountID = 2,
                     Username = "mf_player1",
-                    Password = "123456@",
+                    Password = "$2a$11$xbwxiTTmueuiy4HF2i9kR.O8GkzWH64SyZdkTB6n0tuf87UCtgLb6",
                     AvatarUrl = "player.jpg",
                     Email = "mplkingofworld@gmail.com",
                     Fullname = "Nguyen Van Toan Player",

@@ -13,12 +13,12 @@ namespace mf_backend.Controllers
 {
     [Route("api/mf/skills")]
     [ApiController]
-    public class skillController : ControllerBase
+    public class SkillController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _environment;
 
-        public skillController(ApplicationDbContext context, IWebHostEnvironment environment)
+        public SkillController(ApplicationDbContext context, IWebHostEnvironment environment)
         {
             _context = context;
             _environment = environment;

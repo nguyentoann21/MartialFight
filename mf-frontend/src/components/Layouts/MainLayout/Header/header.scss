@@ -97,41 +97,47 @@
         }
     }
 
-    // .search {
-    //     position: relative;
-
-    //     input[type="text"] {
-    //         width: 90%;
-    //         height: 25px;
-    //         padding: 2px 10px;
-    //         border: none;
-    //         border-radius: 20px;
-    //         outline: none;
-    //         background-color: #fff;
-    //         cursor: pointer;
-    //     }
-
-    //     button {
-    //         position: absolute;
-    //         top: 55%;
-    //         right: 0;
-    //         transform: translateY(-50%);
-    //         width: 40px;
-    //         height: 40px;
-    //         border: none;
-    //         background-color: transparent;
-    //         cursor: pointer;
-    //         transition: color 0.2s;
-    //     }
-
-    //     button:hover {
-    //         color: #fa0;
-    //     }
-    // }
-
     .auth {
         display: flex;
         align-items: center;
+
+        .nav-welcome {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            padding: 0 20px 0 0;
+
+            a {
+                text-decoration: none;
+                color: #fff;
+
+                .nav-welcome-text {
+                    font-size: 16px;
+                    margin-right: 8px;
+                    cursor: pointer;
+    
+                    span {
+                        font-style: italic;
+                    }
+                }
+    
+                .nav-welcome-text:hover {
+                    color: #ff0;
+                    filter: drop-shadow(0 0 2px #fec603) drop-shadow(0 0 5px #fec603);
+                }
+            }
+
+            .nav-logout {
+                cursor: pointer;
+                font-size: 20px;
+            }
+
+            .nav-logout:hover {
+                color: #ff0;
+                filter: drop-shadow(0 0 3px #fec603) drop-shadow(0 0 50px #fec603);
+            }
+        }
 
         .btn-sign-in,
         .btn-sign-up {
