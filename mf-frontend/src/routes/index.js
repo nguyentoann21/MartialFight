@@ -25,6 +25,7 @@ import TestRegister from '../pages/User/testregister';
 import BlogView from '../pages/User/testblog';
 import AdminCharacter from '../pages/Admin/admincharacter';
 import TestChangePassword from '../pages/User/testchangepassword';
+import TestUpdateProfile from '../pages/User/testprofile';
 
 
 const publicRoutes = [
@@ -182,6 +183,12 @@ const publicRoutes = [
         path: '/test-changepassword',
         name: 'test-changepassword',
         component: TestChangePassword,
+        layout: null
+    },
+    {
+        path: '/test-profile',
+        name: 'test-profile',
+        component: TestUpdateProfile,
         layout: null
     }
 ];

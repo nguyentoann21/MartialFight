@@ -15,10 +15,8 @@ const Profile = () => {
       const data = JSON.parse(storedAccountData);
       setAccountData(data);
       setAvatar(data.avatarUrl);
-      console.log(1);
     } else {
       history("/");
-      console.log(0);
     }
   }, [history]);
 
@@ -32,7 +30,7 @@ const Profile = () => {
   };
 
   const handleSaveProfile = () => {
-    console.log("Update profile");
+    history("/test-profile");
   };
 
   return (
@@ -47,12 +45,6 @@ const Profile = () => {
             </div>
             <div className="avatar-container">
               <label>
-                <input
-                  type="file"
-                  accept="image/*"
-                  className="avatar-input"
-                  hidden
-                />
                 <img
                   src={`https://localhost:7052/Images/${avatar}`}
                   alt="Avatar"
@@ -120,7 +112,7 @@ const Profile = () => {
             </div>
             <div className="actions-container">
               <div className="actions-content">
-                <button onClick={handleSaveProfile} className="save">
+                <button onClick={handleSaveProfile} className="update-profile">
                   Update Profile
                 </button>
                 <button
