@@ -26,6 +26,7 @@ import BlogView from '../pages/User/testblog';
 import AdminCharacter from '../pages/Admin/admincharacter';
 import TestChangePassword from '../pages/User/testchangepassword';
 import TestUpdateProfile from '../pages/User/testprofile';
+import AccountList from '../pages/User/testaccount';
 
 
 const publicRoutes = [
@@ -189,6 +190,12 @@ const publicRoutes = [
         path: '/test-profile',
         name: 'test-profile',
         component: TestUpdateProfile,
+        layout: null
+    },
+    {
+        path: '/test-account',
+        name: 'test-account',
+        component: AccountList,
         layout: null
     }
 ];
