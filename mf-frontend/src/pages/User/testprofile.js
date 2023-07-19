@@ -182,7 +182,7 @@ const TestUpdateProfile = () => {
                 type="radio"
                 name="gender"
                 value="Male"
-                checked={formData.gender === "Male"}
+                checked={formData.gender === "male"}
                 onChange={handleChange}
                 required
               />
@@ -193,7 +193,7 @@ const TestUpdateProfile = () => {
                 type="radio"
                 name="gender"
                 value="Female"
-                checked={formData.gender === "Female"}
+                checked={formData.gender === "female"}
                 onChange={handleChange}
                 required
               />
@@ -204,7 +204,7 @@ const TestUpdateProfile = () => {
                 type="radio"
                 name="gender"
                 value="Other"
-                checked={formData.gender === "Other"}
+                checked={formData.gender === "other"}
                 onChange={handleChange}
                 required
               />

@@ -45,7 +45,12 @@ namespace mf_backend.Controllers
                 if (account.Password.Length < 6 || account.Password.Length > 32)
                 {
                     return StatusCode(StatusCodes.Status406NotAcceptable, "Password must be from 6-32 characters");
-                }   
+                }
+
+                if (account.Password != account.ConfirmPassword)
+                {
+                    return StatusCode(StatusCodes.Status409Conflict, "Password does not match");
+                }
 
                 string avatarFileName = $"{Guid.NewGuid()}{Path.GetExtension(account.AvatarUrl.FileName)}";
                 string avatarDirectoryPath = Path.Combine(_environment.WebRootPath, "Images");

@@ -12,6 +12,9 @@ namespace mf_backend.Models
         [Required]
         public string Password { get; set; }
 
+        [Required]
+        public string ConfirmPassword { get; set; }
+
         public IFormFile AvatarUrl { get; set; }
 
         [Required, EmailAddress]

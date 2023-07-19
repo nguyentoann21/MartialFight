@@ -25,6 +25,7 @@ const Registration = () => {
     const formData = new FormData();
     formData.append("Username", username);
     formData.append("Password", password);
+    formData.append("ConfirmPassword", rePassword);
     formData.append("Email", email);
     formData.append("Fullname", name);
     formData.append("Gender", gender);
@@ -54,6 +55,8 @@ const Registration = () => {
           showDialog("error", "Username must be from 5-16 characters");
         } else if(error.response && error.response.status === 406){
           showDialog("error", "Password must be from 6-32 characters");
+        }else if(error.response && error.response.status === 409){
+          showDialog("error", "Password does not match");
         } else {
           showDialog("error", "An occurred while registering");
         }
@@ -91,9 +94,7 @@ const Registration = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (password !== rePassword) {
-      showDialog("error", "Passwords do not match");
-    } else if (!avatar) {
+    if (!avatar) {
       showDialog("error", "Please select an avatar");
     } else if (username.trim() === "") {
       showDialog("error", "Please enter an username");
