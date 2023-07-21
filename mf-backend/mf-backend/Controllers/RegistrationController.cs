@@ -47,11 +47,6 @@ namespace mf_backend.Controllers
                     return StatusCode(StatusCodes.Status406NotAcceptable, "Password must be from 6-32 characters");
                 }
 
-                if (account.Password != account.ConfirmPassword)
-                {
-                    return StatusCode(StatusCodes.Status409Conflict, "Password does not match");
-                }
-
                 string avatarFileName = $"{Guid.NewGuid()}{Path.GetExtension(account.AvatarUrl.FileName)}";
                 string avatarDirectoryPath = Path.Combine(_environment.WebRootPath, "Images");
                 string avatarFilePath = Path.Combine(avatarDirectoryPath, avatarFileName);

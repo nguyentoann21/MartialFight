@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   BarChart,
   Bar,
@@ -12,6 +13,15 @@ import {
 import './adminchart.scss';
 
 const AdminChart = () => {
+
+  const account = JSON.parse(localStorage.getItem('ADMIN_DATA'));
+  const history = useNavigate();
+  useEffect(() => {
+    if(!account) {
+      history('/');
+    }
+  }, [account, history]);
+
   const dataBar = [
     { name: 'A', value: 10 },
     { name: 'B', value: 20 },

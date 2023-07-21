@@ -2,7 +2,7 @@ import Home from '../pages/Home';
 import AdminProfile from '../pages/Admin/adminprofile';
 import Dashboard from '../pages/Admin/dashboard';
 import Blogs from '../pages/Blogs';
-import AdminBlog from '../pages/Admin/adminblog';
+import AdminNews from '../pages/Admin/adminnews';
 import AdminItem from '../pages/Admin/adminitem';
 import AdminPlayer from '../pages/Admin/adminplayer';
 import Ranking from '../pages/Ranking';
@@ -20,14 +20,8 @@ import ForgotPassword from '../pages/User/forgot';
 import AdminChart from '../pages/Admin/adminchart';
 import Policy from '../pages/Rules/policy';
 import TermsAndConditions from '../pages/Rules/conditions';
-import TestLogin from '../pages/User/testlogin';
-import TestRegister from '../pages/User/testregister';
-import BlogView from '../pages/User/testblog';
 import AdminCharacter from '../pages/Admin/admincharacter';
-import TestChangePassword from '../pages/User/testchangepassword';
 import TestUpdateProfile from '../pages/User/testprofile';
-import AccountList from '../pages/User/testaccount';
-
 
 const publicRoutes = [
     {
@@ -93,7 +87,7 @@ const publicRoutes = [
     {
         path: '/admin-blogs',
         name: 'Admin Blog',
-        component: AdminBlog,
+        component: AdminNews,
         layout: AdminLayout
     },
     {
@@ -103,7 +97,7 @@ const publicRoutes = [
         layout: AdminLayout
     },
     {
-        path: '/player',
+        path: '/admin-players',
         name: 'Admin Player',
         component: AdminPlayer,
         layout: AdminLayout
@@ -163,39 +157,9 @@ const publicRoutes = [
         layout: RuleLayout
     },
     {
-        path: '/test-login',
-        name: 'test-login',
-        component: TestLogin,
-        layout: MainLayout
-    },
-    {
-        path: '/test-register',
-        name: 'test-register',
-        component: TestRegister,
-        layout: MainLayout
-    },
-    {
-        path: '/test-blog',
-        name: 'test-blog',
-        component: BlogView,
-        layout: null
-    },
-    {
-        path: '/test-changepassword',
-        name: 'test-changepassword',
-        component: TestChangePassword,
-        layout: null
-    },
-    {
         path: '/test-profile',
         name: 'test-profile',
         component: TestUpdateProfile,
-        layout: null
-    },
-    {
-        path: '/test-account',
-        name: 'test-account',
-        component: AccountList,
         layout: null
     }
 ];

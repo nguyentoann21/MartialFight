@@ -1,339 +1,127 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
-  FaEdit,
-  FaTrash,
   FaAngleDoubleLeft,
   FaAngleLeft,
   FaAngleRight,
   FaAngleDoubleRight,
-  FaPlusCircle,
+  FaSyncAlt,
   FaSearch,
+  FaEdit,
+  FaEye,
 } from 'react-icons/fa';
 import './adminplayer.scss';
 
 const AdminPlayer = () => {
+  const [players, setPlayers] = useState([]);
+  const [dialogMessage, setDialogMessage] = useState('');
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const ref = useRef();
+  const [searchTerm, setSearchTerm] = useState('');
+  const [messageSearch, setMessageSearch] = useState('');
+  const [originalPlayers, setOriginalPlayers] = useState([]);
   const PLAYERS_PER_PAGE = 10;
-
-  const [players, setPlayer] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [filteredPlayers, setFilteredPlayers] = useState([]);
-  const [isEmptyInput, setIsEmptyInput] = useState(true);
+  const startIndex = (currentPage - 1) * PLAYERS_PER_PAGE;
+  const endIndex = startIndex + PLAYERS_PER_PAGE;
+  const currentPlayer = filteredPlayers.slice(startIndex, endIndex);
+  const [selectedPlayer, setSelectedPlayer] = useState(null);
 
-  const handleSearch = (event) => {
-    const query = event.target.value.toLowerCase();
-    const filteredPlayers = players.filter((player) =>
-      player.name.toLowerCase().includes(query)
-    );
-    setFilteredPlayers(filteredPlayers);
-    setIsEmptyInput(event.target.value === '');
-    setCurrentPage(1);
+  useEffect(() => {
+    loadPlayers();
+  }, []);
+
+  useEffect(() => {
+    setFilteredPlayers(players);
+  }, [players, searchTerm]);
+
+  const loadPlayers = async () => {
+    try {
+      const response = await fetch('https://localhost:7052/api/mf/players');
+      const data = await response.json();
+      setPlayers(data);
+      setOriginalPlayers(data);
+    } catch (error) {
+      console.error('Error fetching players:', error);
+    }
   };
 
-  const handlePlayerClick = (player) => {
-    setSelectedPlayer(player);
+  const playerIsActive = async (id, isActive) => {
+    try {
+      const response = await fetch(
+        `https://localhost:7052/api/mf/${id}/active`,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(isActive),
+        }
+      );
+      if (response.status === 200) {
+        showDialog(await response.text());
+      } else if (response.status === 403) {
+        showDialog(await response.text());
+      } else {
+        showDialog('Error updating status. Please try again later');
+      }
+    } catch (error) {
+      showDialog('Error updating status. Please try again later');
+    }
+  };
+
+  const showDialog = (message) => {
+    setDialogMessage(message);
+    setIsDialogOpen(true);
   };
 
   const handleCloseDialog = () => {
+    setIsDialogOpen(false);
+    loadPlayers();
+  };
+
+  const handleKey = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
+  const handleReload = () => {
+    setSearchTerm('');
+    setMessageSearch('');
+    loadPlayers();
+  };
+
+  const handleSearch = () => {
+    const trimmedSearchTerm = searchTerm.trim();
+    if (trimmedSearchTerm === '') {
+      setMessageSearch('Please enter a valid data for search');
+      setPlayers(originalPlayers);
+      return;
+    }
+    setMessageSearch('');
+
+    const filteredPlayers = originalPlayers.filter(
+      (account) =>
+        account.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        account.fullname.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setPlayers(filteredPlayers);
+  };
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const handleClosePlayer = () => {
     setSelectedPlayer(null);
   };
 
-  useEffect(() => {
-    const data = [
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'Toan 1',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'Toan 1',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'Toan 1',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'Toan 1',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'Toan 1',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'Toan 1',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'Toan 1',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'Toan 1',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'Toan 1',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'S Chat Key',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'Toan 1',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'Toan 1',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'S Chat Key',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'S Chat Key',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'S Chat Key',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'S Chat Key',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'S Chat Key',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'S Chat Key',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'S Chat Key',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'S Chat Key',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'S Chat Key',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'S Chat Key',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'S Chat Key',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'S Chat Key',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'S Chat Key',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'S Chat Key',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'S Chat Key',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'S Chat Key',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'S Chat Key',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'S Chat Key',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-      {
-        id: 1,
-        image: '/assets/images/player.png',
-        username: 'nguyentoann21',
-        name: 'S Chat Key',
-        gender: 'Male',
-        level: '50',
-        rank: 'Golden',
-      },
-    ];
-    setPlayer(data);
-    setFilteredPlayers(data);
-  }, []);
+  const renderPage = () => {
+    if (filteredPlayers.length <= PLAYERS_PER_PAGE) {
+      return null;
+    }
 
-  const totalPages = Math.ceil(filteredPlayers.length / PLAYERS_PER_PAGE);
-  const startIndex = (currentPage - 1) * PLAYERS_PER_PAGE;
-  const endIndex = startIndex + PLAYERS_PER_PAGE;
-  const currentPlayers = filteredPlayers.slice(startIndex, endIndex);
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
-
-  const renderPaginationButtons = () => {
     return (
       <div className='pagination-buttons'>
         {filteredPlayers.length === 0 ? (
@@ -357,17 +145,21 @@ const AdminPlayer = () => {
               <button
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={
-                  currentPage === Math.ceil(players.length / PLAYERS_PER_PAGE)
+                  currentPage ===
+                  Math.ceil(filteredPlayers.length / PLAYERS_PER_PAGE)
                 }
               >
                 <FaAngleRight />
               </button>
               <button
                 onClick={() =>
-                  handlePageChange(Math.ceil(players.length / PLAYERS_PER_PAGE))
+                  handlePageChange(
+                    Math.ceil(filteredPlayers.length / PLAYERS_PER_PAGE)
+                  )
                 }
                 disabled={
-                  currentPage === Math.ceil(players.length / PLAYERS_PER_PAGE)
+                  currentPage ===
+                  Math.ceil(filteredPlayers.length / PLAYERS_PER_PAGE)
                 }
               >
                 <FaAngleDoubleRight />
@@ -382,83 +174,168 @@ const AdminPlayer = () => {
   return (
     <div className='admin-player-page'>
       <h1>Managing Player</h1>
-      <div className='admin-player-top'>
-        <div className='admin-player-search'>
-          <input
-            type='text'
-            placeholder='Search by name'
-            onChange={handleSearch}
-          />
-          <div className='admin-search-icons'>
-            {isEmptyInput ? <FaSearch /> : null}
-          </div>
-        </div>
-        <div className='admin-add-players'>
-          <button>
-            Add&nbsp;
-            <FaPlusCircle />
-          </button>
-        </div>
-      </div>
-      {filteredPlayers.length === 0 ? (
-        <p className='admin-no-data'>No data was found.</p>
+      {originalPlayers.length === 0 ? (
+        <p className='admin-no-data'>No player data is empty</p>
       ) : (
-        <ul className='admin-player-main-container'>
-          {currentPlayers.map((player) => (
-            <li key={player.id}>
-              <img
-                src={player.image}
-                alt={player.name}
-                onClick={() => handlePlayerClick(player)}
+        <>
+          <div className='admin-player-top'>
+            <div className='admin-player-search'>
+              <input
+                type='text'
+                placeholder='Search by name or email...'
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyDown={handleKey}
+                onClick={() => setMessageSearch('')}
               />
-              <div className='admin-player-content'>
-                <p onClick={() => handlePlayerClick(player)}>
-                  Username: {player.username} - Full-name: {player.name} -
-                  Gender: {player.gender} - Level: {player.level} - Rank:{' '}
-                  {player.rank}
-                </p>
-              </div>
-              <div className='admin-player-button-container'>
-                <button>
-                  <FaEdit />
-                </button>
-                <button>
-                  <FaTrash />
-                </button>
-              </div>
-            </li>
-          ))}
-        </ul>
-      )}
-      {totalPages > 1 && renderPaginationButtons()}
-      {selectedPlayer && (
-        <div className='admin-player-dialog'>
-          <div className='admin-player-dialog-content'>
-            <div className='admin-player-dialog-main'>
-              <img src={selectedPlayer.image} alt={selectedPlayer.name} />
-              <div className='admin-player-dialog-details'>
-                <p>
-                  Username: <span>{selectedPlayer.username}</span>
-                </p>
-                <p>
-                  Full-name: <span>{selectedPlayer.name}</span>
-                </p>
-                <p>
-                  Gender: <span>{selectedPlayer.gender}</span>
-                </p>
-                <p>
-                  Level: <span>{selectedPlayer.level}</span>
-                </p>
-                <p>
-                  Rank: <span>{selectedPlayer.rank}</span>
-                </p>
-              </div>
+              <button className='admin-search-icons' onClick={handleSearch}>
+                <FaSearch />
+              </button>
             </div>
-            <div className='admin-player-dialog-buttons'>
-              <button onClick={handleCloseDialog}>Close</button>
+            <div className='admin-reload-players'>
+              <button onClick={handleReload}>
+                <FaSyncAlt />
+              </button>
             </div>
           </div>
-        </div>
+          {messageSearch ? (
+            <div className='error-message'>{messageSearch}</div>
+          ) : (
+            <>
+              {currentPlayer.length === 0 ? (
+                <div className='error-message'>No data was found</div>
+              ) : (
+                <div
+                  className='none-display'
+                  id={currentPlayer.length === 0 ? 'none' : ''}
+                >
+                  {players.length}{' '}
+                  {players.length === 1 ? 'player' : 'players'} found
+                </div>
+              )}
+            </>
+          )}
+          {currentPlayer.length === 0 ? (
+            <div className='admin-player-table-none'></div>
+          ) : (
+            <div className='admin-player-table'>
+              <table className='table table-bordered'>
+                <thead>
+                  <tr>
+                    <th>Avatar</th>
+                    <th>Username</th>
+                    <th>Fullname</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {currentPlayer.map((account) => (
+                    <tr key={account.accountID}>
+                      <td className='admin-player-avatar'>
+                        <img
+                          src={`https://localhost:7052/Images/${account.avatarUrl}`}
+                          alt={account.fullname}
+                        />
+                      </td>
+                      <td className='admin-player-username'>
+                        <span>{account.username}</span>
+                      </td>
+                      <td className='admin-player-fullname'>
+                        <span>{account.fullname}</span>
+                      </td>
+                      <td className='admin-player-email'>
+                        <span>{account.email}</span>
+                      </td>
+                      <td className='admin-player-status'>
+                        <select
+                          id={`accountStatus_${account.accountID}`}
+                          className='form-control'
+                          defaultValue={account.active ? 'true' : 'false'}
+                          ref={ref}
+                        >
+                          <option value='true'>Active</option>
+                          <option value='false'>Banned</option>
+                        </select>
+                      </td>
+                      <td className='admin-player-action'>
+                        <button
+                          className='admin-player-button'
+                          onClick={() => setSelectedPlayer(account)}
+                        >
+                          <FaEye />
+                        </button>
+                        <button
+                          className='admin-player-button'
+                          onClick={() => {
+                            const isActive = ref.current.value === 'true';
+                            playerIsActive(account.accountID, isActive);
+                          }}
+                        >
+                          <FaEdit />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+          {isDialogOpen && (
+            <div className='admin-player-status-dialog'>
+              <div className='admin-player-status-dialog-container'>
+                <div className='admin-player-status-dialog-content'>
+                  <div className='admin-player-status-dialog-message'>
+                    {dialogMessage}
+                  </div>
+                  <div className='admin-player-status-dialog-action'>
+                    <button
+                      className='admin-player-status-dialog-button'
+                      onClick={handleCloseDialog}
+                    >
+                      OK
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+          {renderPage()}
+          {selectedPlayer && (
+            <div className='admin-player-dialog'>
+              <div className='admin-player-dialog-content'>
+                <div className='admin-player-dialog-main'>
+                  <img
+                    src={`https://localhost:7052/Images/${selectedPlayer.avatarUrl}`}
+                    alt={selectedPlayer.fullname}
+                  />
+                  <div className='admin-player-dialog-details'>
+                    <p>
+                      Username: <span>{selectedPlayer.username}</span>
+                    </p>
+                    <p>
+                      Full-name: <span>{selectedPlayer.fullname}</span>
+                    </p>
+                    <p>
+                      Email: <span>{selectedPlayer.email}</span>
+                    </p>
+                    <p>
+                      Gender: <span>{selectedPlayer.gender}</span>
+                    </p>
+                    <p>
+                      Status:{' '}
+                      <span>{selectedPlayer.active ? 'active' : 'banned'}</span>
+                    </p>
+                  </div>
+                </div>
+                <div className='admin-player-dialog-buttons'>
+                  <button onClick={handleClosePlayer}>Close</button>
+                </div>
+              </div>
+            </div>
+          )}
+        </>
       )}
     </div>
   );

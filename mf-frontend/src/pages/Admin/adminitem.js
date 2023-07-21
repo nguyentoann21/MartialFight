@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   FaEdit,
   FaTrash,
@@ -12,6 +13,15 @@ import {
 import './adminitem.scss';
 
 const AdminItem = () => {
+
+  const account = JSON.parse(localStorage.getItem('ADMIN_DATA'));
+  const history = useNavigate();
+  useEffect(() => {
+    if(!account) {
+      history('/');
+    }
+  }, [account, history]);
+
   const ITEMS_PER_PAGE = 6;
 
   const [items, setItems] = useState([]);

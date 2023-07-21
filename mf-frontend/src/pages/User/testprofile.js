@@ -181,8 +181,8 @@ const TestUpdateProfile = () => {
               <input
                 type="radio"
                 name="gender"
-                value="Male"
-                checked={formData.gender === "male"}
+                value="male"
+                checked={formData.gender.toLocaleLowerCase() === "male"}
                 onChange={handleChange}
                 required
               />
@@ -192,8 +192,8 @@ const TestUpdateProfile = () => {
               <input
                 type="radio"
                 name="gender"
-                value="Female"
-                checked={formData.gender === "female"}
+                value="female"
+                checked={formData.gender.toLocaleLowerCase() === "female"}
                 onChange={handleChange}
                 required
               />
@@ -203,8 +203,8 @@ const TestUpdateProfile = () => {
               <input
                 type="radio"
                 name="gender"
-                value="Other"
-                checked={formData.gender === "other"}
+                value="other"
+                checked={formData.gender.toLocaleLowerCase() === "other"}
                 onChange={handleChange}
                 required
               />

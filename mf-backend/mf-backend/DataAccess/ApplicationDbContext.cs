@@ -10,7 +10,7 @@ namespace mf_backend.DataAccess
         public ApplicationDbContext() { }
 
         public DbSet<Account> Accounts { get; set; }
-        public DbSet<Blog> Blogs { get; set; }
+        public DbSet<News> News { get; set; }
         public DbSet<Sect> Sects { get; set; }
         public DbSet<Map> Maps { get; set; }
         public DbSet<Skill> Skills { get; set; }
@@ -27,7 +27,7 @@ namespace mf_backend.DataAccess
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Account>().HasKey(a => a.AccountID);
-            modelBuilder.Entity<Blog>().HasKey(a => a.BlogID);
+            modelBuilder.Entity<News>().HasKey(a => a.NewsID);
             modelBuilder.Entity<Sect>().HasKey(a => a.SectID);
             modelBuilder.Entity<Map>().HasKey(a => a.MapID);
             modelBuilder.Entity<Skill>().HasKey(a => a.SkillID);

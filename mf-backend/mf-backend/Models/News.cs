@@ -3,16 +3,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace mf_backend.Models
 {
-    public class Blog
+    public class News
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int BlogID { get; set; }
+        public int NewsID { get; set; }
 
         [Required]
-        public string BlogTitle { get; set; }
+        public string NewsTitle { get; set; }
 
         [Required]
-        public string BlogContent { get; set; }
+        public string NewsContent { get; set; }
 
         public string Images { get; set; } 
 

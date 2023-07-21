@@ -1,67 +1,128 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import './adminprofile.scss'; // Import the CSS file
+import axios from 'axios';
+import './adminprofile.scss';
 
 const AdminProfile = () => {
-  const [currentPassword, setCurrentPassword] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
+  const [formData, setFormData] = useState({
+    currentPassword: '',
+    newPassword: '',
+    reNewPassword: '',
+  });
+
+  const [statusMessage, setStatusMessage] = useState('');
+  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showReNewPassword, setShowReNewPassword] = useState(false);
   const [dialogType, setDialogType] = useState(null);
+  const [remainingSeconds, setRemainingSeconds] = useState(5);
+
+  const account = JSON.parse(localStorage.getItem('ADMIN_DATA'));
+
+  useEffect(() => {
+    let countdownTimer;
+    if (dialogType && remainingSeconds > 0) {
+      countdownTimer = setInterval(() => {
+        setRemainingSeconds((prevSeconds) => prevSeconds - 1);
+      }, 1000);
+    }
+
+    return () => {
+      clearInterval(countdownTimer);
+    };
+  }, [dialogType, remainingSeconds]);
 
   const handleCurrentPasswordChange = (event) => {
-    setCurrentPassword(event.target.value);
+    setFormData({ ...formData, currentPassword: event.target.value });
     setDialogType(null);
   };
 
   const handleNewPasswordChange = (event) => {
-    setNewPassword(event.target.value);
+    setFormData({ ...formData, newPassword: event.target.value });
     setDialogType(null);
   };
 
   const handleConfirmPasswordChange = (event) => {
-    setConfirmPassword(event.target.value);
+    setFormData({ ...formData, reNewPassword: event.target.value });
     setDialogType(null);
   };
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+  const handleCurrent = () => {
+    setShowCurrentPassword(!showCurrentPassword);
   };
 
-  const handleSubmit = (event) => {
+  const handleNewPassword = () => {
+    setShowNewPassword(!showNewPassword);
+  };
+
+  const handleReNewPassword = () => {
+    setShowReNewPassword(!showReNewPassword);
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (newPassword === currentPassword) {
-      setDialogType('error');
+    if (
+      formData.currentPassword.trim() === '' ||
+      formData.newPassword.trim() === '' ||
+      formData.reNewPassword.trim() === ''
+    ) {
+      showDialog('error', 'All fields are required');
       return;
     }
 
-    if (newPassword !== confirmPassword) {
-      setDialogType('error');
+    if (formData.newPassword !== formData.reNewPassword) {
+      showDialog('error', 'New password and re-entered password must match');
       return;
     }
 
-    if (newPassword.length < 6 || newPassword.length > 32) {
-      setDialogType('error');
-      return;
+    try {
+      const response = await axios.post(
+        'https://localhost:7052/api/mf/change-password',
+        { ...formData, accountID: account.accountID },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      setStatusMessage(response.data);
+      showDialog('success', 'Password successfully changed');
+    } catch (error) {
+      setStatusMessage(error.response.data);
+      showDialog('error', error.response.data);
     }
-
-    console.log('Current password:', currentPassword);
-    console.log('New password:', newPassword);
-    console.log('Confirm password:', confirmPassword);
-
-    setDialogType('success');
-
-    setCurrentPassword('');
-    setNewPassword('');
-    setConfirmPassword('');
   };
 
   const handleReset = () => {
-    setCurrentPassword('');
-    setNewPassword('');
-    setConfirmPassword('');
+    setFormData({
+      currentPassword: '',
+      newPassword: '',
+      reNewPassword: '',
+    });
     setDialogType(null);
+  };
+
+  const showDialog = (type, message) => {
+    setDialogType(type);
+    setStatusMessage(message);
+    setRemainingSeconds(5);
+
+    if (type === 'error') {
+      setTimeout(() => {
+        setDialogType(null);
+      }, 3000);
+    } else if (type === 'success') {
+      setTimeout(() => {
+        setFormData({
+          currentPassword: '',
+          newPassword: '',
+          reNewPassword: '',
+        });
+        setDialogType(null);
+      }, 3000);
+    }
   };
 
   const closeDialog = () => {
@@ -74,12 +135,12 @@ const AdminProfile = () => {
       <div className='admin-change-password-status'>
         {dialogType === 'success' && (
           <div className='success-dialog' onClick={closeDialog}>
-            Password changed successfully!
+            {statusMessage}
           </div>
         )}
         {dialogType === 'error' && (
           <div className='error-dialog' onClick={closeDialog}>
-            Error occurred while changing the password.
+            {statusMessage}
           </div>
         )}
       </div>
@@ -88,13 +149,14 @@ const AdminProfile = () => {
           <label>Current Password:</label>
           <div className='password-input'>
             <input
-              type={showPassword ? 'text' : 'password'}
-              value={currentPassword}
+              type={showCurrentPassword ? 'text' : 'password'}
+              value={formData.currentPassword}
               onChange={handleCurrentPasswordChange}
               onClick={closeDialog}
+              placeholder='Please enter your current password'
             />
-            <div className='password-icon' onClick={togglePasswordVisibility}>
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            <div className='password-icon' onClick={handleCurrent}>
+              {showCurrentPassword ? <FaEyeSlash /> : <FaEye />}
             </div>
           </div>
         </div>
@@ -102,27 +164,29 @@ const AdminProfile = () => {
           <label>New Password:</label>
           <div className='password-input'>
             <input
-              type={showPassword ? 'text' : 'password'}
-              value={newPassword}
+              type={showNewPassword ? 'text' : 'password'}
+              value={formData.newPassword}
               onChange={handleNewPasswordChange}
               onClick={closeDialog}
+              placeholder='Please enter your new password'
             />
-            <div className='password-icon' onClick={togglePasswordVisibility}>
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            <div className='password-icon' onClick={handleNewPassword}>
+              {showNewPassword ? <FaEyeSlash /> : <FaEye />}
             </div>
           </div>
         </div>
         <div className='form-group'>
-          <label>Confirm Password:</label>
+          <label>Re-typing Password:</label>
           <div className='password-input'>
             <input
-              type={showPassword ? 'text' : 'password'}
-              value={confirmPassword}
+              type={showReNewPassword ? 'text' : 'password'}
+              value={formData.reNewPassword}
               onChange={handleConfirmPasswordChange}
               onClick={closeDialog}
+              placeholder='Please enter your re-typing new password'
             />
-            <div className='password-icon' onClick={togglePasswordVisibility}>
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            <div className='password-icon' onClick={handleReNewPassword}>
+              {showReNewPassword ? <FaEyeSlash /> : <FaEye />}
             </div>
           </div>
         </div>

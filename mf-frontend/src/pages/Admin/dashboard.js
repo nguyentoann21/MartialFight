@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './dashboard.scss';
 
 const Dashboard = () => {
+  const account = JSON.parse(localStorage.getItem('ADMIN_DATA'));
+  const history = useNavigate();
+  useEffect(() => {
+    if(!account) {
+      history('/');
+    }
+  }, [account, history]);
+
   return (
     <div className='dashboard-container'>
       <h1>Admin Dashboard</h1>

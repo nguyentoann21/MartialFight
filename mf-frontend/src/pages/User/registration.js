@@ -21,47 +21,60 @@ const Registration = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    
-    const formData = new FormData();
-    formData.append("Username", username);
-    formData.append("Password", password);
-    formData.append("ConfirmPassword", rePassword);
-    formData.append("Email", email);
-    formData.append("Fullname", name);
-    formData.append("Gender", gender);
-    formData.append("AvatarUrl", avatar);
 
-    axios
-      .post("https://localhost:7052/api/mf/sign-up", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then((response) => {
-        console.log(response.data);
+    if (!avatar) {
+      showDialog("error", "Please select an avatar");
+    } else if (username.trim() === "") {
+      showDialog("error", "Please enter an username");
+    } else if (name.trim() === "") {
+      showDialog("error", "Please enter fullname");
+    } else if (password.trim() === "") {
+      showDialog("error", "Please enter password");
+    } else if (email.trim() === "") {
+      showDialog("error", "Please enter an email");
+    } else if (password.trim() !== rePassword.trim()) {
+      showDialog("error", "The password and re-password does not match");
+    } else {
+      const formData = new FormData();
+      formData.append("Username", username);
+      formData.append("Password", password);
+      formData.append("Email", email);
+      formData.append("Fullname", name);
+      formData.append("Gender", gender);
+      formData.append("AvatarUrl", avatar);
 
-        const avatarFileName = response.data.avatarUrl;
-        console.log(avatarFileName);
+      axios
+        .post("https://localhost:7052/api/mf/sign-up", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((response) => {
+          console.log(response.data);
 
-        const imageUrl = URL.createObjectURL(avatar);
-        console.log(imageUrl);
-        showDialog("success", "Registration successful");
-      }).catch((error) => {
-        if (error.response && error.response.status === 401) {
-          showDialog("error", "Username or Email already existed");
-        } else if(error.response && error.response.status === 400){
-          showDialog("error", "All fields are required");
-        } else if(error.response && error.response.status === 405){
-          showDialog("error", "Username must be from 5-16 characters");
-        } else if(error.response && error.response.status === 406){
-          showDialog("error", "Password must be from 6-32 characters");
-        }else if(error.response && error.response.status === 409){
-          showDialog("error", "Password does not match");
-        } else {
-          showDialog("error", "An occurred while registering");
-        }
-      });
-      
+          const avatarFileName = response.data.avatarUrl;
+          console.log(avatarFileName);
+
+          const imageUrl = URL.createObjectURL(avatar);
+          console.log(imageUrl);
+          showDialog("success", "Registration successful");
+        })
+        .catch((error) => {
+          if (error.response && error.response.status === 401) {
+            showDialog("error", "Username or Email already existed");
+          } else if (error.response && error.response.status === 400) {
+            showDialog("error", "An occurred while registering");
+          } else if (error.response && error.response.status === 405) {
+            showDialog("error", "Username must be from 5-16 characters");
+          } else if (error.response && error.response.status === 406) {
+            showDialog("error", "Password must be from 6-32 characters");
+          } else if (error.response && error.response.status === 409) {
+            showDialog("error", "Password does not match");
+          } else {
+            showDialog("error", "An occurred while registering");
+          }
+        });
+    }
   };
 
   useEffect(() => {
@@ -84,27 +97,6 @@ const Registration = () => {
 
   const handleShowRePassword = () => {
     setShowRePassword((re) => !re);
-  };
-
-  const handleAction = (e) => {
-    handleFormSubmit(e);
-    handleSubmit(e);
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!avatar) {
-      showDialog("error", "Please select an avatar");
-    } else if (username.trim() === "") {
-      showDialog("error", "Please enter an username");
-    } else if (name.trim() === "") {
-      showDialog("error", "Please enter fullname");
-    } else if (password.trim() === "") {
-      showDialog("error", "Please enter password");
-    } else if (email.trim() === "") {
-      showDialog("error", "Please enter an email");
-    }
   };
 
   const showDialog = (type, message) => {
@@ -159,19 +151,18 @@ const Registration = () => {
         </div>
         <div className="register-form-input">
           <div className="form-group-register">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="username">Username</label>
             <input
-              type="email"
-              id="email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              required
+              type="text"
+              id="username"
+              name="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Enter your username"
             />
           </div>
           <div className="form-group-register">
-            <label htmlFor="name">Name</label>
+            <label htmlFor="name">Full-name</label>
             <input
               type="name"
               id="name"
@@ -179,7 +170,6 @@ const Registration = () => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Enter your name"
-              required
             />
           </div>
           <div className="form-group-register">
@@ -191,7 +181,6 @@ const Registration = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
-              required
             />
             <div
               className="password-icons"
@@ -210,7 +199,6 @@ const Registration = () => {
               value={rePassword}
               onChange={(e) => setRePassword(e.target.value)}
               placeholder="Enter your re-password"
-              required
             />
             <div
               className="password-icons"
@@ -255,23 +243,20 @@ const Registration = () => {
               </label>
             </div>
           </div>
-          <div className="form-group-register" id="username-field">
-            <label htmlFor="username">Username</label>
+          <div className="form-group-register" id="email-field">
+            <label htmlFor="email">Email</label>
             <input
-              type="text"
-              id="username"
-              name="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              placeholder="Enter your username"
-              required
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
             />
           </div>
         </div>
         <div className="form-group-button">
-          <button type="submit" onClick={handleAction}>
-            Sign Up
-          </button>
+          <button type="submit">Sign Up</button>
         </div>
         <div className="link-to-sign-in">
           Already have an account?&nbsp;<Link to="/sign-in">Sign in here!</Link>
@@ -280,7 +265,7 @@ const Registration = () => {
       {dialogVisible && (
         <div className={`dialog ${dialogType}`}>
           <div className="dialog-content">
-            <p>{dialogMessage}</p>
+            <p>{dialogMessage.toUpperCase()}</p>
             <FaClock />
             {dialogType === "success" ? (
               <h5>{`Redirect to Sign In page after ${remainingSeconds} seconds`}</h5>

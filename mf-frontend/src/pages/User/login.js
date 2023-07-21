@@ -60,15 +60,13 @@ function Login() {
         rememberMe
       });
 
-      //localStorage.setItem('ACCOUNT_DATA', JSON.stringify({ ...response.data, role: response.data.role }));
-
-      localStorage.setItem('ACCOUNT_DATA', JSON.stringify(response.data));
-
       if (response.data && response.data.role === 1) {
-        navigate('/test-login');
+        localStorage.setItem('ADMIN_DATA', JSON.stringify(response.data));
+        navigate('/dashboard');
         console.log('Admin login successful');
       } else if (response.data && response.data.role === 0) {
-        navigate('/test-login');
+        localStorage.setItem('ACCOUNT_DATA', JSON.stringify(response.data));
+        navigate('/');
         console.log('Player login successful');
       } else { 
         console.error('Unrecognized role');

@@ -21,7 +21,7 @@ const Profile = () => {
   }, [history]);
 
   const handlePasswordChange = () => {
-    history("/test-changepassword");
+    history("/change-password");
   };
 
   const handleLogout = () => {

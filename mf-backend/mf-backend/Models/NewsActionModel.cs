@@ -2,13 +2,13 @@
 
 namespace mf_backend.Models
 {
-    public class BlogActionModel
+    public class NewsActionModel
     {
         [Required]
-        public string BlogTitle { get; set; }
+        public string NewsTitle { get; set; }
 
         [Required]
-        public string BlogContent { get; set; }
+        public string NewsContent { get; set; }
 
         public List<IFormFile> Images { get; set; }
     }

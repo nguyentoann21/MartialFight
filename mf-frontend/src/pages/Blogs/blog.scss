@@ -134,6 +134,7 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    backdrop-filter: blur(8px);
                     padding: 30px;
                     background-color: rgba(0, 0, 0, 0.5);
                     z-index: 999;
