@@ -1,10 +1,10 @@
 import Home from '../pages/Home';
-import AdminProfile from '../pages/Admin/adminprofile';
+import AdminProfile from '../pages/Admin/adminProfile';
 import Dashboard from '../pages/Admin/dashboard';
 import Blogs from '../pages/Blogs';
-import AdminNews from '../pages/Admin/adminnews';
-import AdminItem from '../pages/Admin/adminitem';
-import AdminPlayer from '../pages/Admin/adminplayer';
+import AdminNews from '../pages/Admin/adminNews';
+import AdminItem from '../pages/Admin/adminItem';
+import AdminPlayer from '../pages/Admin/adminPlayer';
 import Ranking from '../pages/Ranking';
 import Items from '../pages/Items';
 import Character from '../pages/Character';
@@ -17,11 +17,11 @@ import { AdminLayout, MainLayout, RuleLayout, UserLayout } from '../components/L
 import Profile from '../pages/User/profile';
 import ChangePassword from '../pages/User/password';
 import ForgotPassword from '../pages/User/forgot';
-import AdminChart from '../pages/Admin/adminchart';
+import AdminChart from '../pages/Admin/adminChart';
 import Policy from '../pages/Rules/policy';
 import TermsAndConditions from '../pages/Rules/conditions';
-import AdminCharacter from '../pages/Admin/admincharacter';
-import TestUpdateProfile from '../pages/User/testprofile';
+import AdminCharacter from '../pages/Admin/adminCharacter';
+import UpdateProfile from '../pages/User/updateProfile';
 
 const publicRoutes = [
     {
@@ -157,10 +157,10 @@ const publicRoutes = [
         layout: RuleLayout
     },
     {
-        path: '/test-profile',
-        name: 'test-profile',
-        component: TestUpdateProfile,
-        layout: null
+        path: '/update-profile',
+        name: 'update-profile',
+        component: UpdateProfile,
+        layout: UserLayout
     }
 ];
 

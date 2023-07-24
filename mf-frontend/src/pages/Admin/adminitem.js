@@ -10,7 +10,7 @@ import {
   FaAngleDoubleRight,
   FaPlusCircle
 } from 'react-icons/fa';
-import './adminitem.scss';
+import './adminItem.scss';
 
 const AdminItem = () => {
 

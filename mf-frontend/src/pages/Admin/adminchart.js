@@ -10,7 +10,7 @@ import {
   Cell,
   Tooltip,
 } from 'recharts';
-import './adminchart.scss';
+import './adminChart.scss';
 
 const AdminChart = () => {
 

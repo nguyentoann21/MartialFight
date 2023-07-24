@@ -30,7 +30,7 @@ const Profile = () => {
   };
 
   const handleSaveProfile = () => {
-    history("/test-profile");
+    history("/update-profile");
   };
 
   return (

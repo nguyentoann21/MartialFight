@@ -9,7 +9,7 @@ import {
   FaEdit,
   FaEye,
 } from 'react-icons/fa';
-import './adminplayer.scss';
+import './adminPlayer.scss';
 
 const AdminPlayer = () => {
   const [players, setPlayers] = useState([]);
@@ -227,7 +227,7 @@ const AdminPlayer = () => {
                     <th>Fullname</th>
                     <th>Email</th>
                     <th>Status</th>
-                    <th>Action</th>
+                    <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -236,7 +236,7 @@ const AdminPlayer = () => {
                       <td className='admin-player-avatar'>
                         <img
                           src={`https://localhost:7052/Images/${account.avatarUrl}`}
-                          alt={account.fullname}
+                          alt={account.accountID}
                         />
                       </td>
                       <td className='admin-player-username'>

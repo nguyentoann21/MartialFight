@@ -1,115 +1,329 @@
-.admin-change-password {
+.admin-profile-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     max-width: 800px;
-    margin: 0 auto;
-    padding: 50px 90px 100px 90px;
-    background-image: url('../../../public/assets/images/member-card.png');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
 
-    h1 {
-        font-size: 36px;
-        font-weight: 700;
-        text-align: center;
+    .admin-profile-update {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        button {
+            padding: 5px 10px;
+            margin: 0 25px 10px 0;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            cursor: pointer;
+            background-image: url('../../../public/assets/images/member-card.png');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+
+        .admin-update-profile-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(8px);
+            color: #fff;
+            z-index: 999;
+          
+            .admin-update-profile-form {
+                background-image: url('../../../public/assets/images/item-card.png');
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+                padding: 50px 60px;
+                border-radius: 5px;
+                width: 400px;
+                margin: 1.25% 0;
+          
+                h2 {
+                    margin-bottom: 20px;
+                    text-align: center;
+                    text-transform: uppercase;
+                }
+          
+                form {
+                    display: flex;
+                    flex-direction: column;
+          
+                    .admin-update-avatar {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-bottom: 20px;
+                        width: 100%;
+                        height: 150px;
+        
+                        label {
+                            display: inline-block;
+                            width: 150px;
+                            height: 150px;
+                            border-radius: 50%;
+                            overflow: hidden;
+                            position: relative;
+                            cursor: pointer;
+                
+                            img {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                            }
+                        }
+                    }
+          
+                    .admin-update-email,
+                    .admin-update-fullname,
+                    .admin-update-gender {
+                        display: flex;
+                        flex-direction: column;
+                        margin-bottom: 15px;
+          
+                        label {
+                            margin-bottom: 5px;
+                            font-weight: 500;
+                        }
+          
+                        input {
+                            padding: 5px 10px;
+                            border: 1px solid #ccc;
+                            border-radius: 3px;
+                            outline: none;
+                
+                            &:focus {
+                                border-color: #007bff;
+                            }
+                        }
+                    }
+          
+                    .admin-update-gender {
+                        label {
+                        display: block;
+                        margin-bottom: 10px;
+                        font-weight: 500;
+                        cursor: pointer;
+                        }
+          
+                        div {
+                            display: flex;
+                            align-items: center;
+                
+                            label {
+                                margin-right: 10px;
+                            }
+                        }
+                    }
+          
+                    .admin-update-buttons {
+                        display: flex;
+                        justify-content: space-between;
+          
+                        button {
+                            padding: 8px 15px;
+                            border: none;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            background-image: none;
+                        }
+          
+                        .admin-update-button-action {
+                            background-color: #007bff !important;
+                            color: #fff;
+                    
+                            &:hover {
+                                background-color: green !important;
+                            }
+                        }
+          
+                        .admin-update-button-cancel {
+                            background-color: #444040 !important;
+          
+                            &:hover {
+                                background-color: #ec3d3d !important;
+                                color: #fff;
+                            }
+                        }
+                    }
+                }
+            }
+          
+            .dialog-admin-update-profile {
+                position: fixed;
+                top: 0;
+                left: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                backdrop-filter: blur(8px);
+                color: #fff;
+                z-index: 999;
+        
+                .dialog-admin-update-profile-container {
+                    background-image: url('../../../public/assets/images/horizontal-card.png');
+                    background-repeat: no-repeat;
+                    background-size: 100% 100%;
+                    display: flex;
+                    width: 400px;
+                    height: 200px;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+        
+                    h3 {
+                        margin: 0 !important;
+                        text-align: center;
+                        font-size: 28px;
+                    }
+        
+                    .dialog-admin-update-profile-content {
+                        color: #ff0;
+                        margin: 10px 0;
+                        font-size: 18px;
+                    }
+              
+                    button {
+                        padding: 7px 30px;
+                        border: none;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        background-color: #007bff;
+                        color: #fff;
+                        background-image: none;
+                
+                        &:hover {
+                            background-color: #6fad28;
+                        }
+                    }
+                }
+            }
+        }        
     }
 
-    .admin-change-password-status {
-        width: 360px;
-        height: 42px;
-        margin-bottom: 20px;
-
-        .success-dialog, .error-dialog {
-            padding: 10px;
-            margin-bottom: 10px;
-            color: #fff;
-            font-weight: bold;
+    .admin-change-password {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 50px 90px 100px 90px;
+        background-image: url('../../../public/assets/images/member-card.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
             text-align: center;
-            cursor: pointer;
-            border: none;
-            border-radius: 10px;
         }
     
-        .success-dialog {
-            background-color: #4caf50;
-        }
-          
-        .error-dialog {
-            background-color: #f44336;
-        }
-    }
-
-    .form-group {
-        margin-bottom: 15px;
-        width: 350px;
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .password-input {
-            position: relative;
-
-            input {
-                width: 100%;
-                padding: 8px;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-            }
-
-            .password-icon {
-                position: absolute;
-                top: 50%;
-                right: 10px;
-                transform: translateY(-50%);
+        .admin-change-password-status {
+            width: 360px;
+            height: 42px;
+            margin-bottom: 20px;
+    
+            .success-dialog, .error-dialog {
+                padding: 10px;
+                margin-bottom: 10px;
+                color: #fff;
+                font-weight: bold;
+                text-align: center;
                 cursor: pointer;
-
-                svg {
-                    color: #222;
-                    font-size: 20px;
+                border: none;
+                border-radius: 10px;
+            }
+        
+            .success-dialog {
+                background-color: #4caf50;
+            }
+              
+            .error-dialog {
+                background-color: #f44336;
+            }
+        }
+    
+        .form-group {
+            margin-bottom: 15px;
+            width: 350px;
+    
+            label {
+                display: block;
+                margin-bottom: 5px;
+            }
+    
+            .password-input {
+                position: relative;
+    
+                input {
+                    width: 100%;
+                    padding: 8px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                }
+    
+                .password-icon {
+                    position: absolute;
+                    top: 50%;
+                    right: 10px;
+                    transform: translateY(-50%);
+                    cursor: pointer;
+    
+                    svg {
+                        color: #222;
+                        font-size: 20px;
+                    }
                 }
             }
         }
-    }
-
-    .admin-button-group {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 30px !important;
-
-        button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 500;
-        }
-
-        .button-reset {
-            width: 40%;
-            background-color: #ccc;
-            color: #222;
-            margin: 0 10px;
-        }
-
-        .button-reset:hover {
-            width: 40%;
-            background-color: #555;
-            color: #ccc;
-            margin: 0 10px;
-        }
-
-        .button-submit-change {
-            width: 60%;
-            background-color: #4caf50;
-            color: #fff;
-        }
-
-        .button-submit-change:hover {
-            width: 60%;
-            background-color: #12a1c5;
-            color: #222;
+    
+        .admin-button-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px !important;
+    
+            button {
+                padding: 10px 20px;
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+                font-size: 16px;
+                font-weight: 500;
+            }
+    
+            .button-reset {
+                width: 40%;
+                background-color: #ccc;
+                color: #222;
+                margin: 0 10px;
+            }
+    
+            .button-reset:hover {
+                width: 40%;
+                background-color: #555;
+                color: #ccc;
+                margin: 0 10px;
+            }
+    
+            .button-submit-change {
+                width: 60%;
+                background-color: #4caf50;
+                color: #fff;
+            }
+    
+            .button-submit-change:hover {
+                width: 60%;
+                background-color: #12a1c5;
+                color: #222;
+            }
         }
     }
 }
