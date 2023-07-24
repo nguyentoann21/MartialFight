@@ -19,7 +19,7 @@ import {
 } from "react-icons/fa";
 import "./adminNews.scss";
 
-const AdminMap = () => {
+const AdminSect = () => {
   const account = JSON.parse(localStorage.getItem("ADMIN_DATA"));
   const history = useNavigate();
 
@@ -313,10 +313,10 @@ const AdminMap = () => {
 
   return (
     <div className="admin-news-container">
-      <h1>Managing Maps</h1>
+      <h1>Managing Sects</h1>
       {originalNews.length === 0 ? (
         <div className="admin-news-nodata">
-          <p className="admin-news-empty">The map list is empty</p>
+          <p className="admin-news-empty">The sect list is empty</p>
           <div className="admin-add-news-empty">
             <button onClick={() => handleDialogOpen("create")}>
               <FaPlus />
@@ -453,7 +453,6 @@ const AdminMap = () => {
                   <tr>
                     <th>Name</th>
                     <th>Description</th>
-                    <th>Level</th>
                     <th>Images</th>
                     <th>Actions</th>
                   </tr>
@@ -461,9 +460,6 @@ const AdminMap = () => {
                 <tbody>
                   {currentNewsPage.map((news) => (
                     <tr key={news.newsID}>
-                      <td className="admin-news-title">
-                        <span>{news.newsTitle}</span>
-                      </td>
                       <td className="admin-news-content">
                         <span>{news.newsContent}</span>
                       </td>
@@ -682,4 +678,4 @@ const AdminMap = () => {
     </div>
   );
 };
-export default AdminMap;
+export default AdminSect;

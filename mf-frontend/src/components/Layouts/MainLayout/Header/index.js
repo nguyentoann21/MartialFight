@@ -14,7 +14,7 @@ function Header() {
     if (path === '/ranking') return 'Ranking';
     if (path === '/items') return 'Items';
     if (path === '/character') return 'Character';
-    if (path === '/blog') return 'Blogs';
+    if (path === '/news') return 'News';
     if (path === '/guide') return 'Guide';
     if (path === '/about-us') return 'About us';
     return 'Home';
@@ -97,12 +97,12 @@ function Header() {
             Character
           </li>
         </Link>
-        <Link to='/blog' className='nav-link'>
+        <Link to='/news' className='nav-link'>
           <li
-            className={`nav-item ${activeTab === 'Blogs' ? 'active' : ''}`}
-            onClick={() => handleTab('Blogs')}
+            className={`nav-item ${activeTab === 'News' ? 'active' : ''}`}
+            onClick={() => handleTab('News')}
           >
-            Blogs
+            News
           </li>
         </Link>
         <Link to='/guide' className='nav-link'>

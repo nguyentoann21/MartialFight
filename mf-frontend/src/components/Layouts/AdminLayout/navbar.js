@@ -105,7 +105,7 @@ const NavbarAdmin = () => {
             <span>Character</span>
           </div>
         </Link>
-        <Link to='/admin-blogs'>
+        <Link to='/admin-news'>
           <div
             className={`navbar-news ${activeItem === 'News' ? 'active' : ''}`}
             onClick={() => handleAction('News')}

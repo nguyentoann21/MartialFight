@@ -1,10 +1,12 @@
 import Home from '../pages/Home';
 import AdminProfile from '../pages/Admin/adminProfile';
 import Dashboard from '../pages/Admin/dashboard';
-import Blogs from '../pages/Blogs';
+import News from '../pages/News';
 import AdminNews from '../pages/Admin/adminNews';
 import AdminItem from '../pages/Admin/adminItem';
 import AdminPlayer from '../pages/Admin/adminPlayer';
+import AdminMap from '../pages/Admin/adminMap';
+import AdminSect from '../pages/Admin/adminSect';
 import Ranking from '../pages/Ranking';
 import Items from '../pages/Items';
 import Character from '../pages/Character';
@@ -37,9 +39,9 @@ const publicRoutes = [
         layout: MainLayout
     },
     {
-        path: '/blog',
-        name: 'Blogs',
-        component: Blogs,
+        path: '/news',
+        name: 'News',
+        component: News,
         layout: MainLayout
     },
     {
@@ -85,8 +87,8 @@ const publicRoutes = [
         layout: AdminLayout
     },
     {
-        path: '/admin-blogs',
-        name: 'Admin Blog',
+        path: '/admin-news',
+        name: 'Admin News',
         component: AdminNews,
         layout: AdminLayout
     },
@@ -112,6 +114,18 @@ const publicRoutes = [
         path: '/admin-character',
         name: 'Admin Character',
         component: AdminCharacter,
+        layout: AdminLayout
+    },
+    {
+        path: '/admin-maps',
+        name: 'Admin Maps',
+        component: AdminMap,
+        layout: AdminLayout
+    },
+    {
+        path: '/admin-sects',
+        name: 'Admin Sects',
+        component: AdminSect,
         layout: AdminLayout
     },
     {
