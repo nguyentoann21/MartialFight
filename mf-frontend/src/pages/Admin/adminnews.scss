@@ -11,11 +11,112 @@
 
     .admin-news-nodata {
         display: flex;
-        justify-content: center;
-        align-items: flex-start;
+        justify-content: flex-start;
+        align-items: center;
         flex-direction: column;
         width: 800px;
         height: 500px;
+
+        .dialog-empt-action-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            backdrop-filter: blur(8px);
+            justify-content: center;
+        
+            .dialog-empt-action-content {
+                background-image: url('../../../public/assets/images/member-card.png');
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                border-radius: 10px;
+                text-align: center;
+                width: 500px;
+                height: 500px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+    
+                h2 {
+                    margin: 0 !important;
+                    padding: 0 !important;
+                    color: #ff0;
+                    font-size: 30px;
+                }
+    
+                .dialog-empt-action-main {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    margin-top: 20px;
+                    width: 400px;
+    
+                    .dialog-empt-action-group {
+                        display: flex;
+                        flex-direction: column;
+                        width: 90%;
+                        margin-bottom: 5px;
+    
+                        label {
+                            text-align: left;
+                            font-weight: 600;
+                        }
+
+                        input[type="text"] {
+                            padding: 3px 5px;
+                        }
+
+                        textarea {
+                            height: 150px;
+                            padding: 0 3px;
+                        }
+                    }
+    
+                    .dialog-empt-action-handle {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+                        margin-top: 5px;
+    
+                        button {
+                            border-radius: 5px;
+                            border: none;
+                            padding: 5px 15px;
+                            cursor: pointer;
+                            width: 150px;
+                            font-size: 16px;
+                            font-weight: 500;
+                        }
+    
+                        #actions-empt {
+                            color: #fff;
+                            background-color: green;
+                        }
+    
+                        #actions-empt:hover {
+                            color: #000;
+                            background-color: rgb(29, 164, 243);
+                        }
+    
+                        #cancel-actions-empt {
+                            color: #fff;
+                            background-color: rgb(250, 31, 31);
+                        }
+    
+                        #cancel-actions-empt:hover {
+                            color: #000;
+                            background-color: rgb(247, 204, 17);
+                        }
+                    }
+                }
+            }
+        }
 
         .admin-news-empty {
             font-size: 30px;
@@ -383,6 +484,7 @@
                     border-radius: 5px;
                     font-size: 16px;
                     cursor: pointer;
+                    width: 100px;
                 }
 
                 #removed {
@@ -420,13 +522,13 @@
         justify-content: center;
     
         .dialog-action-content {
-            background-image: url('../../../public/assets/images/horizontal-card.png');
+            background-image: url('../../../public/assets/images/member-card.png');
             background-size: 100% 100%;
             background-repeat: no-repeat;
             border-radius: 10px;
             text-align: center;
             width: 500px;
-            height: 400px;
+            height: 500px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -444,8 +546,8 @@
                 justify-content: center;
                 align-items: center;
                 flex-direction: column;
-                margin-top: 20px;
-                width: 350px;
+                margin-top: 30px;
+                width: 400px;
 
                 .dialog-action-group {
                     display: flex;
@@ -455,8 +557,16 @@
 
                     label {
                         text-align: left;
-                        width: 60px;
                         font-weight: 600;
+                    }
+
+                    input[type="text"] {
+                        padding: 3px 5px;
+                    }
+
+                    textarea {
+                        height: 150px;
+                        padding: 0 3px;
                     }
                 }
 
@@ -465,13 +575,16 @@
                     justify-content: center;
                     align-items: center;
                     gap: 10px;
-                    margin-top: 10px;
+                    margin-top: 5px;
 
                     button {
                         border-radius: 5px;
                         border: none;
                         padding: 5px 15px;
                         cursor: pointer;
+                        font-size: 16px;
+                        font-weight: 500;
+                        width: 150px;
                     }
 
                     #actions {
@@ -561,7 +674,7 @@
         overflow: hidden;
     
         .dialog-view-main-content {
-            max-width: 900px;
+            width: 900px;
             height: 400px;
             background-color: #222;
             display: flex;
@@ -573,6 +686,7 @@
             .dialog-view-content {
                 position: relative;
                 max-width: 900px;
+                min-width: 500px;
                 max-height: 350px;
                 text-align: start;
                 padding: 0 70px !important;
@@ -592,15 +706,18 @@
                 .dialog-view-main {
                     width: 100%;
                     text-align: left;
+                    display: flex;
+                    flex-direction: column;
     
                     p {
                         margin: 10px 0 !important;
                         padding: 0 !important;
                         color: #ff0;
+                        display: flex;
+                        flex-direction: column;
 
                         span {
-                            width: 90%;
-                            padding: 0 5px;
+                            width: 100%;
                             color: #fff;
                             flex-wrap: wrap;
                             word-break: break-word;
@@ -617,15 +734,21 @@
                         position: relative;
                         margin-bottom: 20px;
                         overflow: hidden;
+                        width: 100%;
     
                         .slideshow-slide {
                             display: flex;
-                            width: 600px;
+                            width: 750px;
                             gap: 5px;
     
                             .slideshow-image {
                                 max-width: 100%;
                                 width: calc(100% / 3);
+                            }
+
+                            .slideshow-twice {
+                                max-width: 100%;
+                                width: calc(100% / 2);
                             }
     
                             img {
@@ -635,12 +758,21 @@
                         }
     
                         .slideshow-image-none {
-                            width: 600;
                             display: flex;
                             justify-content: center;
                             align-items: center;
                             gap: 5px;
     
+                            .slideshow-twice {
+                                max-width: 100%;
+                                width: calc(100% / 2);
+                            }
+
+                            .slideshow-image {
+                                width: 100%;
+                                height: 100%;
+                            }
+
                             img {
                                 width: 200px;
                                 height: 150px;
@@ -681,19 +813,19 @@
                     align-items: center;
                     
                     button {
+                        width: 150px;
                         background-color: #080;
                         font-size: 16px;
                         font-weight: 600;
                         padding: 5px 25px;
                         border: none;
                         color: #fff;
-                        border-radius: 10px;
+                        border-radius: 5px;
                         cursor: pointer;
                     }
     
                     button:hover {
                         background-color: #2665ee;
-                        color: #000;
                     }
                 }
             }

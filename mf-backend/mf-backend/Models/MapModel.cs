@@ -15,6 +15,6 @@ namespace mf_backend.Models
 
         public string MapDescription { get; set; }
 
-        public List<string> Images { get; set; }
+        public string Image { get; set; }
     }
 }

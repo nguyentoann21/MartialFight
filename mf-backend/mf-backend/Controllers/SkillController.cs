@@ -8,6 +8,7 @@ using mf_backend.DataAccess;
 using mf_backend.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace mf_backend.Controllers
 {
@@ -67,10 +68,10 @@ namespace mf_backend.Controllers
                 PhysicalValue = skillModel.PhysicalValue
         };
 
-            if (skillModel.Images != null && skillModel.Images.Count > 0)
+            if (skillModel.Image != null)
             {
-                var imageUrls = await SaveImages(skillModel.Images);
-                skill.Images = string.Join(",", imageUrls);
+                var imageUrls = await SaveImages(skillModel.Image);
+                skill.Image = string.Join(",", imageUrls);
             }
 
             _context.Skills.Add(skill);
@@ -105,10 +106,10 @@ namespace mf_backend.Controllers
             skill.IntellectValue = skillModel.IntellectValue;
             skill.PhysicalValue = skillModel.PhysicalValue;
 
-            if (skillModel.Images != null && skillModel.Images.Count > 0)
+            if (skillModel.Image != null)
             {
-                var imageUrls = await SaveImages(skillModel.Images);
-                skill.Images = string.Join(",", imageUrls);
+                var imageUrls = await SaveImages(skillModel.Image);
+                skill.Image = string.Join(",", imageUrls);
             }
 
             _context.Entry(skill).State = EntityState.Modified;
@@ -133,9 +134,8 @@ namespace mf_backend.Controllers
             return Ok("Delete successful");
         }
 
-        private async Task<string[]> SaveImages(List<IFormFile> images)
+        private async Task<string> SaveImages(IFormFile image)
         {
-            var imageUrls = new string[images.Count];
             var skillImagesDirectory = Path.Combine(_environment.WebRootPath, "Skills");
 
             if (!Directory.Exists(skillImagesDirectory))
@@ -143,21 +143,14 @@ namespace mf_backend.Controllers
                 Directory.CreateDirectory(skillImagesDirectory);
             }
 
-            for (var i = 0; i < images.Count; i++)
+            var imageFileName = $"{Guid.NewGuid()}{Path.GetExtension(image.FileName)}";
+            var imagePath = Path.Combine(skillImagesDirectory, imageFileName);
+
+            using (var stream = new FileStream(imagePath, FileMode.Create))
             {
-                var imageFile = images[i];
-                var imageFileName = $"{Guid.NewGuid()}{Path.GetExtension(imageFile.FileName)}";
-                var imagePath = Path.Combine(skillImagesDirectory, imageFileName);
-
-                using (var stream = new FileStream(imagePath, FileMode.Create))
-                {
-                    await imageFile.CopyToAsync(stream);
-                }
-
-                imageUrls[i] = Path.Combine("Skills", imageFileName);
+                await image.CopyToAsync(stream);
             }
-
-            return imageUrls;
+            return Path.Combine("Skills", imageFileName);
         }
     }
 }

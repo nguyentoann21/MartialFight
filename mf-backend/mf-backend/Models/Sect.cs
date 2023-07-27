@@ -14,7 +14,7 @@ namespace mf_backend.Models
         [Required]
         public string  SectDescription { get; set; }
 
-        public string Images { get; set; }
+        public string Image { get; set; }
 
         [ForeignKey(nameof(Character))]
         public int CharacterID { get; set; }

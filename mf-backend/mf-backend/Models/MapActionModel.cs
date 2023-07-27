@@ -4,7 +4,6 @@ namespace mf_backend.Models
 {
     public class MapActionModel
     {
-        [Required]
         public string MapName { get; set; }
 
         public int Level { get; set; }
@@ -13,6 +12,6 @@ namespace mf_backend.Models
 
         public string MapDescription { get; set; }
 
-        public List<IFormFile> Images { get; set; }
+        public IFormFile? Image { get; set; }
     }
 }

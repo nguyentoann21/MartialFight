@@ -11,6 +11,7 @@ import {
   FaMap,
   FaUsers,
   FaFighterJet,
+  FaChessRook  
 } from 'react-icons/fa';
 import './navbar.scss';
 
@@ -130,6 +131,15 @@ const NavbarAdmin = () => {
           >
             <FaUsers />
             <span>Sects</span>
+          </div>
+        </Link>
+        <Link to='/admin-skills'>
+          <div
+            className={`navbar-skills ${activeItem === 'Skills' ? 'active' : ''}`}
+            onClick={() => handleAction('Skills')}
+          >
+            <FaChessRook    />
+            <span>Skills</span>
           </div>
         </Link>
         <Link to='/admin-items'>

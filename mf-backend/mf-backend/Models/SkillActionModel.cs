@@ -25,6 +25,6 @@ namespace mf_backend.Models
 
         public int PhysicalValue { get; set; }
 
-        public List<IFormFile> Images { get; set; }
+        public IFormFile Image { get; set; }
     }
 }

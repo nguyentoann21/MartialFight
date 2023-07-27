@@ -59,10 +59,10 @@ namespace mf_backend.Controllers
                 SectDescription = sectModel.SectDescription,
             };
 
-            if (sectModel.Images != null && sectModel.Images.Count > 0)
+            if (sectModel.Image != null)
             {
-                var imageUrls = await SaveImages(sectModel.Images);
-                sect.Images = string.Join(",", imageUrls);
+                var imageUrl = await SaveImage(sectModel.Image);
+                sect.Image = imageUrl;
             }
 
             _context.Sects.Add(sect);
@@ -89,16 +89,15 @@ namespace mf_backend.Controllers
             sect.SectName = sectModel.SectName;
             sect.SectDescription = sectModel.SectDescription;
 
-            if (sectModel.Images != null && sectModel.Images.Count > 0)
+            if (sectModel.Image != null)
             {
-                var imageUrls = await SaveImages(sectModel.Images);
-                sect.Images = string.Join(",", imageUrls);
+                var imageUrl = await SaveImage(sectModel.Image);
+                sect.Image = imageUrl;
             }
 
             _context.Entry(sect).State = EntityState.Modified;
             await _context.SaveChangesAsync();
-
-            return StatusCode(StatusCodes.Status200OK);
+            return StatusCode(StatusCodes.Status202Accepted);
         }
 
         // DELETE: api/mf/sects/{id}
@@ -117,9 +116,8 @@ namespace mf_backend.Controllers
             return Ok("Delete successful");
         }
 
-        private async Task<string[]> SaveImages(List<IFormFile> images)
+        private async Task<string> SaveImage(IFormFile image)
         {
-            var imageUrls = new string[images.Count];
             var sectImagesDirectory = Path.Combine(_environment.WebRootPath, "Sects");
 
             if (!Directory.Exists(sectImagesDirectory))
@@ -127,21 +125,15 @@ namespace mf_backend.Controllers
                 Directory.CreateDirectory(sectImagesDirectory);
             }
 
-            for (var i = 0; i < images.Count; i++)
+            var imageFileName = $"{Guid.NewGuid()}{Path.GetExtension(image.FileName)}";
+            var imagePath = Path.Combine(sectImagesDirectory, imageFileName);
+
+            using (var stream = new FileStream(imagePath, FileMode.Create))
             {
-                var imageFile = images[i];
-                var imageFileName = $"{Guid.NewGuid()}{Path.GetExtension(imageFile.FileName)}";
-                var imagePath = Path.Combine(sectImagesDirectory, imageFileName);
-
-                using (var stream = new FileStream(imagePath, FileMode.Create))
-                {
-                    await imageFile.CopyToAsync(stream);
-                }
-
-                imageUrls[i] = Path.Combine("Sects", imageFileName);
+                await image.CopyToAsync(stream);
             }
 
-            return imageUrls;
+            return Path.Combine("Sects", imageFileName);
         }
     }
 }

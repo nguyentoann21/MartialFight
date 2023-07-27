@@ -67,7 +67,7 @@
             background-color: #08252a  !important;
             color: #fff;
 
-            .navbar-dashboard, .navbar-charts, .navbar-news, .navbar-maps, .navbar-sects, .navbar-items, .navbar-players, .navbar-profile, .navbar-logout {
+            .navbar-dashboard, .navbar-charts, .navbar-news, .navbar-maps, .navbar-sects, .navbar-skills, .navbar-items, .navbar-players, .navbar-profile, .navbar-logout {
                 font-weight: 500;
                 border: 2px solid #fff;
                 border-radius: 10px;
@@ -91,6 +91,7 @@
             .navbar-news:hover, 
             .navbar-maps:hover,
             .navbar-sects:hover,
+            .navbar-skills:hover,
             .navbar-items:hover, 
             .navbar-players:hover, 
             .navbar-profile:hover, 

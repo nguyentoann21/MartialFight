@@ -17,7 +17,13 @@ const UpdateProfile = () => {
   const [avatarPreviewUrl, setAvatarPreviewUrl] = useState(null);
 
   const account = JSON.parse(localStorage.getItem("ACCOUNT_DATA"));
+
   const history = useNavigate();
+  useEffect(() => {
+    if(!account) {
+      history('/');
+    }
+  }, [account, history]);
 
   useEffect(() => {
     if (!accountDataLoaded && account) {

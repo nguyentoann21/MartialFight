@@ -29,6 +29,6 @@ namespace mf_backend.Models
 
         public int PhysicalValue { get; set; }
 
-        public string Images { get; set; }
+        public string Image { get; set; }
     }
 }

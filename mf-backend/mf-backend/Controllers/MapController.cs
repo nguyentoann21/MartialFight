@@ -61,10 +61,10 @@ namespace mf_backend.Controllers
                 MapDescription = mapModel.MapDescription
             };
 
-            if (mapModel.Images != null && mapModel.Images.Count > 0)
+            if (mapModel.Image != null)
             {
-                var imageUrls = await SaveImages(mapModel.Images);
-                map.Images = string.Join(",", imageUrls);
+                var imageUrl = await SaveImage(mapModel.Image);
+                map.Image = imageUrl;
             }
 
             _context.Maps.Add(map);
@@ -93,17 +93,17 @@ namespace mf_backend.Controllers
             map.LevelRequirement = mapModel.LevelRequirement;
             map.MapDescription = mapModel.MapDescription;
 
-            if (mapModel.Images != null && mapModel.Images.Count > 0)
+            if (mapModel.Image != null)
             {
-                var imageUrls = await SaveImages(mapModel.Images);
-                map.Images = string.Join(",", imageUrls);
+                var imageUrl = await SaveImage(mapModel.Image);
+                map.Image = imageUrl;
             }
 
             _context.Entry(map).State = EntityState.Modified;
             await _context.SaveChangesAsync();
-
-            return StatusCode(StatusCodes.Status200OK);
+            return StatusCode(StatusCodes.Status202Accepted);
         }
+
 
         // DELETE: api/mf/maps/{id}
         [HttpDelete("{id}")]
@@ -121,31 +121,21 @@ namespace mf_backend.Controllers
             return Ok("Delete successful");
         }
 
-        private async Task<string[]> SaveImages(List<IFormFile> images)
+        private async Task<string> SaveImage(IFormFile image)
         {
-            var imageUrls = new string[images.Count];
             var mapImagesDirectory = Path.Combine(_environment.WebRootPath, "Maps");
-
             if (!Directory.Exists(mapImagesDirectory))
             {
                 Directory.CreateDirectory(mapImagesDirectory);
             }
+            var imageFileName = $"{Guid.NewGuid()}{Path.GetExtension(image.FileName)}";
+            var imagePath = Path.Combine(mapImagesDirectory, imageFileName);
 
-            for (var i = 0; i < images.Count; i++)
+            using (var stream = new FileStream(imagePath, FileMode.Create))
             {
-                var imageFile = images[i];
-                var imageFileName = $"{Guid.NewGuid()}{Path.GetExtension(imageFile.FileName)}";
-                var imagePath = Path.Combine(mapImagesDirectory, imageFileName);
-
-                using (var stream = new FileStream(imagePath, FileMode.Create))
-                {
-                    await imageFile.CopyToAsync(stream);
-                }
-
-                imageUrls[i] = Path.Combine("Maps", imageFileName);
+                await image.CopyToAsync(stream);
             }
-
-            return imageUrls;
+            return Path.Combine("Maps", imageFileName);
         }
     }
 }
