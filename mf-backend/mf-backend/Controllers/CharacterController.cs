@@ -1,7 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using mf_backend.Models;
+using System;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 using mf_backend.DataAccess;
+using mf_backend.Models;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 
 namespace mf_backend.Controllers
 {
@@ -20,19 +26,21 @@ namespace mf_backend.Controllers
 
         // GET: api/mf/characters
         [HttpGet]
-        public IActionResult GetCharacters()
+        public async Task<IActionResult> GetCharacters()
         {
-            var characters = _context.Characters.Include(c => c.CharacterSect).ToList();
+            var characters = await _context.Characters.ToListAsync();
             return Ok(characters);
         }
 
-        // GET: api/mf/characters/{id}
+        /*// GET: api/mf/characters/{id}
         [HttpGet("{id}")]
-        public IActionResult GetCharacter(int id)
+        public async Task<IActionResult> GetCharacter(int id)
         {
-            var character = _context.Characters.Include(c => c.CharacterSect).FirstOrDefault(c => c.CharacterID == id);
+            var character = await _context.Characters.FindAsync(id);
             if (character == null)
-                return NotFound();
+            {
+                return NotFound("Character could not be found");
+            }
             return Ok(character);
         }
 
@@ -58,15 +66,14 @@ namespace mf_backend.Controllers
                 SectID = characterModel.SectID
             };
 
-            if (characterModel.Images != null && characterModel.Images.Count > 0)
+            if (characterModel.Image != null)
             {
-                var imageUrls = await SaveImages(characterModel.Images);
-                character.Images = string.Join(",", imageUrls);
+                var imageUrl = await SaveImage(characterModel.Image);
+                character.Image = imageUrl;
             }
 
             _context.Characters.Add(character);
             await _context.SaveChangesAsync();
-
             return StatusCode(StatusCodes.Status200OK, character);
         }
 
@@ -74,6 +81,11 @@ namespace mf_backend.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateCharacter(int id, [FromForm] CharacterActionModel characterModel)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var character = await _context.Characters.FindAsync(id);
             if (character == null)
             {
@@ -90,16 +102,15 @@ namespace mf_backend.Controllers
             character.PhysicalValue = characterModel.PhysicalValue;
             character.SectID = characterModel.SectID;
 
-            if (characterModel.Images != null && characterModel.Images.Count > 0)
+            if (characterModel.Image != null)
             {
-                var imageUrls = await SaveImages(characterModel.Images);
-                character.Images = string.Join(",", imageUrls);
+                var imageUrl = await SaveImage(characterModel.Image);
+                character.Image = imageUrl;
             }
 
             _context.Entry(character).State = EntityState.Modified;
             await _context.SaveChangesAsync();
-
-            return StatusCode(StatusCodes.Status200OK);
+            return StatusCode(StatusCodes.Status202Accepted);
         }
 
         // DELETE: api/mf/characters/{id}
@@ -118,31 +129,24 @@ namespace mf_backend.Controllers
             return Ok("Delete successful");
         }
 
-        private async Task<string[]> SaveImages(List<IFormFile> images)
+        private async Task<string> SaveImage(IFormFile image)
         {
-            var imageUrls = new string[images.Count];
-            var mapImagesDirectory = Path.Combine(_environment.WebRootPath, "Characters");
+            var characterImagesDirectory = Path.Combine(_environment.WebRootPath, "Characters");
 
-            if (!Directory.Exists(mapImagesDirectory))
+            if (!Directory.Exists(characterImagesDirectory))
             {
-                Directory.CreateDirectory(mapImagesDirectory);
+                Directory.CreateDirectory(characterImagesDirectory);
             }
 
-            for (var i = 0; i < images.Count; i++)
+            var imageFileName = $"{Guid.NewGuid()}{Path.GetExtension(image.FileName)}";
+            var imagePath = Path.Combine(characterImagesDirectory, imageFileName);
+
+            using (var stream = new FileStream(imagePath, FileMode.Create))
             {
-                var imageFile = images[i];
-                var imageFileName = $"{Guid.NewGuid()}{Path.GetExtension(imageFile.FileName)}";
-                var imagePath = Path.Combine(mapImagesDirectory, imageFileName);
-
-                using (var stream = new FileStream(imagePath, FileMode.Create))
-                {
-                    await imageFile.CopyToAsync(stream);
-                }
-
-                imageUrls[i] = Path.Combine("Characters", imageFileName);
+                await image.CopyToAsync(stream);
             }
 
-            return imageUrls;
-        }
+            return Path.Combine("Characters", imageFileName);
+        }*/
     }
 }

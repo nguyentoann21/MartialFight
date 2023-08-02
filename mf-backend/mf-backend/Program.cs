@@ -1,4 +1,5 @@
 using mf_backend.DataAccess;
+using mf_backend.Models;
 using Microsoft.Extensions.FileProviders;
 using System;
 
@@ -14,6 +15,7 @@ builder.Services.AddDbContext<ApplicationDbContext>();
 builder.Services.AddCors();
 builder.Services.AddDirectoryBrowser();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddSignalR();
 builder.Services.AddTransient<IFileProvider>(x =>
     new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
 
@@ -39,6 +41,8 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.UseStaticFiles();
+
+app.MapHub<RankingHub>("/hubs/rankings");
 
 app.UseDirectoryBrowser(new DirectoryBrowserOptions
 {

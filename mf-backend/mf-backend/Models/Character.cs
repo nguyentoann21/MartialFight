@@ -13,7 +13,7 @@ namespace mf_backend.Models
 
         public string CharacterDescription { get; set; }
 
-        public string Images { get; set; }
+        public string Image { get; set; }
 
         public int AttackValue { get; set; }
 
@@ -30,7 +30,7 @@ namespace mf_backend.Models
         [ForeignKey(nameof(Sect))]
         public int SectID { get; set; }
 
-        public Sect CharacterSect { get; set; }
+        public Sect? CharacterSect { get; set; }
 
     }
 }

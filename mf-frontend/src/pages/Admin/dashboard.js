@@ -17,18 +17,35 @@ const Dashboard = () => {
       <div className='dashboard-grid'>
         <div className='dashboard-card'>
           <h2>Accounts</h2>
-          <p>Total: 100</p>
-          <p>Download: 200</p>
+          <p>100</p>
+        </div>
+        <div className='dashboard-card'>
+          <h2>Characters</h2>
+          <p>100</p>
+        </div>
+        <div className='dashboard-card'>
+          <h2>News</h2>
+          <p>100</p>
+        </div>
+        <div className='dashboard-card'>
+          <h2>Maps</h2>
+          <p>100</p>
+        </div>
+        <div className='dashboard-card'>
+          <h2>Sects</h2>
+          <p>100</p>
+        </div>
+        <div className='dashboard-card'>
+          <h2>Skills</h2>
+          <p>100</p>
+        </div>
+        <div className='dashboard-card'>
+          <h2>Categories</h2>
+          <p>100</p>
         </div>
         <div className='dashboard-card'>
           <h2>Items</h2>
-          <p>Total: 100</p>
-          <p>Type: 80</p>
-        </div>
-        <div className='dashboard-card'>
-          <h2>Blogs</h2>
-          <p>Total: 100</p>
-          <p>Type: 80</p>
+          <p>100</p>
         </div>
       </div>
     </div>

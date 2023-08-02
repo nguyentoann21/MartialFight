@@ -53,6 +53,11 @@ namespace mf_backend.Controllers
                 return BadRequest(ModelState);
             }
 
+            if(newsModel.NewsTitle == null || newsModel.NewsContent == null || newsModel.Images == null)
+            {
+                return StatusCode(StatusCodes.Status403Forbidden, "Please fill in all the required fields");
+            }
+
             var news = new News
             {
                 NewsTitle = newsModel.NewsTitle,
@@ -79,6 +84,11 @@ namespace mf_backend.Controllers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+
+            if (newsModel.NewsTitle == null || newsModel.NewsContent == null || newsModel.Images == null)
+            {
+                return StatusCode(StatusCodes.Status403Forbidden, "Please fill in all the required fields");
             }
 
             var news = await _context.News.FindAsync(id);

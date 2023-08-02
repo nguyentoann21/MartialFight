@@ -12,7 +12,7 @@ namespace mf_backend.Models
 
         public string CharacterDescription { get; set; }
 
-        public List<string> Images { get; set; }
+        public string Image { get; set; }
 
         public int AttackValue { get; set; }
 

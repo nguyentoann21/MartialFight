@@ -2,16 +2,13 @@
 
 namespace mf_backend.Models
 {
-    public class Item
+    public class ItemActionModel
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ItemID { get; set; }
-
         public string ItemName { get; set; }
 
         public string ItemDescription { get; set; }
 
-        public string Image { get; set; }
+        public IFormFile? Image { get; set; }
 
         public int Gold { get; set; }
 
@@ -21,14 +18,8 @@ namespace mf_backend.Models
 
         public bool Equipped { get; set; }
 
-        [ForeignKey(nameof(Sect))]
         public int SectID { get; set; }
 
-        public Sect? ItemSect { get; set; }
-
-        [ForeignKey(nameof(CategoryItem))]
         public int CategoryID { get; set; }
-
-        public CategoryItem? ItemCategory { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-.admin-news-container {
+.admin-category-container {
     width: 800px;
     height: 700px;
     margin: 0 !important;
@@ -9,7 +9,7 @@
         text-align: center;
     }
 
-    .admin-news-nodata {
+    .admin-category-nodata {
         display: flex;
         justify-content: flex-start;
         align-items: center;
@@ -29,101 +29,122 @@
             justify-content: center;
         
             .dialog-empt-action-content {
-                background-image: url('../../../public/assets/images/member-card.png');
+                background-image: url('../../../public/assets/images/horizontal-card.png');
                 background-size: 100% 100%;
                 background-repeat: no-repeat;
                 border-radius: 10px;
                 text-align: center;
-                width: 500px;
+                width: 1100px;
                 height: 500px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 flex-direction: column;
-    
-                h2 {
-                    margin: 0 !important;
-                    padding: 0 !important;
-                    color: #ff0;
-                    font-size: 30px;
-                }
+
+            h2 {
+                margin: 0 0 30px 0 !important;
+                padding: 0 !important;
+                color: #ff0;
+                font-size: 40px;
+            }
     
                 .dialog-empt-action-main {
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    flex-direction: column;
-                    margin-top: 20px;
-                    width: 400px;
     
-                    .dialog-empt-action-group {
+                    .dialog-empt-action-image-group {
                         display: flex;
-                        flex-direction: column;
-                        width: 90%;
-                        margin-bottom: 5px;
+                        justify-content: center;
+                        cursor: pointer;
+                        width: 500px !important;
+                        height: 250px !important;
+                        border-radius: 10px;
+                        margin-right: 30px;
+                        filter: drop-shadow(0 0 3px #ffff00) drop-shadow(0 0 4px #ffff00);
     
-                        label {
-                            text-align: left;
-                            font-weight: 600;
-                        }
-
-                        input[type="text"] {
-                            padding: 3px 5px;
-                        }
-
-                        textarea {
-                            height: 150px;
-                            padding: 0 3px;
+                        img {
+                            width: 500px !important;
+                            height: 250px !important;
+                            border-radius: 10px;
                         }
                     }
     
-                    .dialog-empt-action-handle {
+                    .dialog-empt-action-content-main {
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                        gap: 10px;
-                        margin-top: 5px;
+                        flex-direction: column;
     
-                        button {
-                            border-radius: 5px;
-                            border: none;
-                            padding: 5px 15px;
-                            cursor: pointer;
-                            width: 150px;
-                            font-size: 16px;
-                            font-weight: 500;
+                        .dialog-empt-action-group {
+                            display: flex;
+                            flex-direction: column;
+                            width: 100%;
+                            margin-bottom: 5px;
+        
+                            label {
+                                text-align: left;
+                                font-weight: 600;
+                            }
+        
+                            input[type="text"], input[type="number"] {
+                                padding: 3px 5px;
+                            }
+        
+                            textarea {
+                                height: 150px;
+                                padding: 0 3px;
+                            }
                         }
-    
-                        #actions-empt {
-                            color: #fff;
-                            background-color: green;
-                        }
-    
-                        #actions-empt:hover {
-                            color: #000;
-                            background-color: rgb(29, 164, 243);
-                        }
-    
-                        #cancel-actions-empt {
-                            color: #fff;
-                            background-color: rgb(250, 31, 31);
-                        }
-    
-                        #cancel-actions-empt:hover {
-                            color: #000;
-                            background-color: rgb(247, 204, 17);
+        
+                        .dialog-empt-action-handle {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            gap: 10px;
+                            margin-top: 5px;
+        
+                            button {
+                                width: 200px;
+                                border-radius: 5px;
+                                border: none;
+                                padding: 5px 15px;
+                                cursor: pointer;
+                                font-size: 16px;
+                                font-weight: 500;
+                            }
+        
+                            #actions-empt {
+                                color: #fff;
+                                background-color: green;
+                            }
+        
+                            #actions-empt:hover {
+                                color: #000;
+                                background-color: rgb(29, 164, 243);
+                            }
+        
+                            #cancel-empt-actions {
+                                color: #fff;
+                                background-color: rgb(250, 31, 31);
+                            }
+        
+                            #cancel-empt-actions:hover {
+                                color: #000;
+                                background-color: rgb(247, 204, 17);
+                            }
                         }
                     }
                 }
             }
         }
 
-        .admin-news-empty {
+        .admin-category-empty {
             font-size: 30px;
             color: #ff0;
         }
 
-        .admin-add-news-empty {
+        .admin-add-category-empty {
             button {
                 cursor: pointer;
                 border-radius: 50%;
@@ -141,7 +162,7 @@
         }
     }
 
-    .admin-news-top {
+    .admin-categories-top {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -200,24 +221,7 @@
             }
         }
 
-        .admin-news-filter {
-            select {
-                padding: 5px;
-                border-radius: 10px;
-                background-color: green;
-                color: #fff;
-                font-weight: 600;
-                cursor: pointer;
-
-                option {
-                    background-color: #fff;
-                    color: #000;
-                    font-weight: 600;
-                }
-            }
-        }
-
-        .admin-add-news {
+        .admin-add-categories {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -276,7 +280,7 @@
         visibility: hidden;
     }
 
-    .admin-news-table {
+    .admin-categories-table {
         width: 800px;
         height: 500px;
         color: #000;
@@ -304,7 +308,7 @@
                 }
             }
     
-            .admin-news-title {
+            .admin-category-name {
                 width: 180px !important;
                 max-width: 170px;
                 white-space: nowrap !important;
@@ -319,9 +323,15 @@
                 }
             }
     
-            .admin-news-content {
-                width: 200px !important;
-                max-width: 190px;
+            .admin-categories-level {
+                width: 70px !important;
+                max-width: 60px;
+                text-align: center;
+            }
+    
+            .admin-category-description {
+                width: 230px !important;
+                max-width: 220px;
                 white-space: nowrap !important;
                 overflow: hidden !important;
                 text-overflow: ellipsis !important;
@@ -334,29 +344,7 @@
                 }
             }
     
-            .admin-news-date {
-                width: 130px !important;
-                max-width: 120px;
-                white-space: nowrap !important;
-                overflow: hidden !important;
-                text-overflow: ellipsis !important;
-    
-                span {
-                    padding: 0 5px !important;
-    
-                    div {
-                        text-align: center;
-                        max-width: 120px !important;
-                        white-space: nowrap !important;
-                        overflow: hidden !important;
-                        text-overflow: ellipsis !important;
-                        padding:  0 !important;
-                        margin: 0 !important;
-                    }
-                }
-            }
-    
-            .admin-news-images {
+            .admin-categories-images {
                 width: 200px !important;
                 max-width: 190px;
     
@@ -370,7 +358,7 @@
                 }
             }
     
-            .admin-news-actions {
+            .admin-categories-actions {
                 width: 120px !important;
                 max-width: 110px;
                 text-align: center;
@@ -444,6 +432,7 @@
         left: 0;
         width: 100%;
         height: 100%;
+        backdrop-filter: blur(8px);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -454,8 +443,8 @@
             background-repeat: no-repeat;
             border-radius: 10px;
             text-align: center;
-            width: 400px;
-            height: 200px;
+            width: 450px;
+            height: 250px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -470,6 +459,14 @@
             p {
                 margin: 10px 0 !important;
                 padding: 0 !important;
+            }
+
+            small {
+                max-width: 250px;
+                word-break: break-all;
+                margin: 0 0 10px 0;
+                color: #ff0;
+                font-style: italic;
             }
 
             .dialog-remove-buttons {
@@ -522,12 +519,12 @@
         justify-content: center;
     
         .dialog-action-content {
-            background-image: url('../../../public/assets/images/member-card.png');
+            background-image: url('../../../public/assets/images/horizontal-card.png');
             background-size: 100% 100%;
             background-repeat: no-repeat;
             border-radius: 10px;
             text-align: center;
-            width: 500px;
+            width: 1100px;
             height: 500px;
             display: flex;
             justify-content: center;
@@ -535,76 +532,97 @@
             flex-direction: column;
 
             h2 {
-                margin: 0 !important;
+                margin: 0 0 30px 0 !important;
                 padding: 0 !important;
                 color: #ff0;
-                font-size: 30px;
+                font-size: 40px;
             }
 
             .dialog-action-main {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                flex-direction: column;
-                margin-top: 30px;
-                width: 400px;
 
-                .dialog-action-group {
+                .dialog-action-image-group {
                     display: flex;
-                    flex-direction: column;
-                    width: 90%;
-                    margin-bottom: 5px;
+                    justify-content: center;
+                    cursor: pointer;
+                    width: 500px !important;
+                    height: 250px !important;
+                    border-radius: 10px;
+                    margin-right: 30px;
+                    filter: drop-shadow(0 0 3px #ffff00) drop-shadow(0 0 4px #ffff00);
 
-                    label {
-                        text-align: left;
-                        font-weight: 600;
-                    }
-
-                    input[type="text"] {
-                        padding: 3px 5px;
-                    }
-
-                    textarea {
-                        height: 150px;
-                        padding: 0 3px;
+                    img {
+                        width: 500px !important;
+                        height: 250px !important;
+                        border-radius: 10px;
                     }
                 }
 
-                .dialog-action-handle {
+                .dialog-action-content-main {
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    gap: 10px;
-                    margin-top: 5px;
+                    flex-direction: column;
 
-                    button {
-                        border-radius: 5px;
-                        border: none;
-                        padding: 5px 15px;
-                        cursor: pointer;
-                        font-size: 16px;
-                        font-weight: 500;
-                        width: 150px;
+                    .dialog-action-group {
+                        display: flex;
+                        flex-direction: column;
+                        width: 100%;
+                        margin-bottom: 5px;
+    
+                        label {
+                            text-align: left;
+                            font-weight: 600;
+                        }
+    
+                        input[type="text"], input[type="number"] {
+                            padding: 3px 5px;
+                        }
+    
+                        textarea {
+                            height: 150px;
+                            padding: 0 3px;
+                        }
                     }
-
-                    #actions {
-                        color: #fff;
-                        background-color: green;
-                    }
-
-                    #actions:hover {
-                        color: #000;
-                        background-color: rgb(29, 164, 243);
-                    }
-
-                    #cancel-actions {
-                        color: #fff;
-                        background-color: rgb(250, 31, 31);
-                    }
-
-                    #cancel-actions:hover {
-                        color: #000;
-                        background-color: rgb(247, 204, 17);
+    
+                    .dialog-action-handle {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+                        margin-top: 5px;
+    
+                        button {
+                            width: 200px;
+                            border-radius: 5px;
+                            border: none;
+                            padding: 5px 15px;
+                            cursor: pointer;
+                            font-size: 16px;
+                            font-weight: 500;
+                        }
+    
+                        #actions {
+                            color: #fff;
+                            background-color: green;
+                        }
+    
+                        #actions:hover {
+                            color: #000;
+                            background-color: rgb(29, 164, 243);
+                        }
+    
+                        #cancel-actions {
+                            color: #fff;
+                            background-color: rgb(250, 31, 31);
+                        }
+    
+                        #cancel-actions:hover {
+                            color: #000;
+                            background-color: rgb(247, 204, 17);
+                        }
                     }
                 }
             }
@@ -639,6 +657,7 @@
                 margin: 10px 0 !important;
                 padding: 0 !important;
                 font-size: 20px;
+                font-style: italic;
             }
 
             button {
@@ -650,6 +669,7 @@
                 color: #fff;  
                 background-color: green; 
                 font-weight: 600;
+                width: 100px;
             }
 
             button:hover {
@@ -674,21 +694,19 @@
         overflow: hidden;
     
         .dialog-view-main-content {
-            width: 1000px;
-            height: 550px;
-            background-image: url('../../../public/assets/images/horizontal-card.png');
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
+            width: 850px;
+            height: 400px;
+            background-color: #222;
             display: flex;
             justify-content: center;
             align-items: center;
             border-radius: 10px;
-            padding: 100px 30px 0 30px;
+            padding: 50px 0;
 
             .dialog-view-content {
                 position: relative;
-                width: 810px;
-                height: 500px;
+                width: 850px;
+                max-height: 350px;
                 text-align: start;
                 padding: 0 70px !important;
                 overflow: auto; 
@@ -700,7 +718,7 @@
                     margin: 0 !important;
                     padding: 0 !important;
                     color: #ff0;
-                    font-size: 36px;
+                    font-size: 30px;
                     text-align: center;
                 }
     
@@ -730,81 +748,12 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
-    
-                    .slideshow-container {
-                        position: relative;
-                        margin-bottom: 20px;
-                        overflow: hidden;
-                        width: 100%;
-    
-                        .slideshow-slide {
-                            display: flex;
-                            width: 810px;
-                            gap: 5px;
-    
-                            .slideshow-image {
-                                max-width: 100%;
-                                width: calc(100% / 3);
-                            }
-
-                            .slideshow-twice {
-                                max-width: 100%;
-                                width: calc(100% / 2);
-                            }
-    
-                            img {
-                                width: 200px;
-                                height: 150px;
-                            }
-                        }
-    
-                        .slideshow-image-none {
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            gap: 5px;
-    
-                            .slideshow-twice {
-                                max-width: 100%;
-                                width: calc(100% / 2);
-                            }
-
-                            .slideshow-image {
-                                width: 100%;
-                                height: 100%;
-                            }
-
-                            img {
-                                width: 200px;
-                                height: 150px;
-                            }
-                        }
-    
-                        .prev-button {
-                            left: 10px;
-                        }
-                        
-                        .next-button {
-                            right: 15px;
-                        }
-    
-                        .prev-button,
-                        .next-button {
-                            position: absolute;
-                            top: 50%;
-                            transform: translateY(-50%);
-                            background-color: transparent;
-                            border: none;
-                            color: #fff;
-                            font-size: 18px;
-                            padding: 10px;
-                            cursor: pointer;
-                            border-radius: 50%;
-                            background-color: #a0be4c;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                        }
+                    margin: 15px 0;
+                    
+                    .image-view-dialog {
+                        border-radius: 10px;
+                        width: 800px;
+                        height: 400px;
                     }
                 }
     
@@ -812,6 +761,7 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    margin: 15px 0;
                     
                     button {
                         width: 150px;

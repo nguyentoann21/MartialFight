@@ -8,7 +8,6 @@ using mf_backend.DataAccess;
 using mf_backend.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace mf_backend.Controllers
 {
@@ -27,7 +26,7 @@ namespace mf_backend.Controllers
 
         // GET: api/mf/skills
         [HttpGet]
-        public async Task<IActionResult> Getskills()
+        public async Task<IActionResult> GetSkills()
         {
             var skills = await _context.Skills.ToListAsync();
             return Ok(skills);
@@ -35,19 +34,19 @@ namespace mf_backend.Controllers
 
         // GET: api/mf/skills/{id}
         [HttpGet("{id}")]
-        public async Task<IActionResult> Getskill(int id)
+        public async Task<IActionResult> GetSkill(int id)
         {
             var skill = await _context.Skills.FindAsync(id);
             if (skill == null)
             {
-                return NotFound("skill could not be found");
+                return NotFound("Skill could not be found");
             }
             return Ok(skill);
         }
 
         // POST: api/mf/skills
         [HttpPost]
-        public async Task<IActionResult> Createskill([FromForm] SkillActionModel skillModel)
+        public async Task<IActionResult> CreateSkill([FromForm] SkillActionModel skillModel)
         {
             if (!ModelState.IsValid)
             {
@@ -66,23 +65,23 @@ namespace mf_backend.Controllers
                 SpeedValue = skillModel.SpeedValue,
                 IntellectValue = skillModel.IntellectValue,
                 PhysicalValue = skillModel.PhysicalValue
-        };
+
+            };
 
             if (skillModel.Image != null)
             {
-                var imageUrls = await SaveImages(skillModel.Image);
-                skill.Image = string.Join(",", imageUrls);
+                var imageUrl = await SaveImage(skillModel.Image);
+                skill.Image = imageUrl;
             }
 
             _context.Skills.Add(skill);
             await _context.SaveChangesAsync();
-
             return StatusCode(StatusCodes.Status200OK, skill);
         }
 
         // PUT: api/mf/skills/{id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> Updateskill(int id, [FromForm] SkillActionModel skillModel)
+        public async Task<IActionResult> UpdateSkill(int id, [FromForm] SkillActionModel skillModel)
         {
             if (!ModelState.IsValid)
             {
@@ -108,19 +107,20 @@ namespace mf_backend.Controllers
 
             if (skillModel.Image != null)
             {
-                var imageUrls = await SaveImages(skillModel.Image);
-                skill.Image = string.Join(",", imageUrls);
+                var imageUrl = await SaveImage(skillModel.Image);
+                skill.Image = imageUrl;
             }
 
             _context.Entry(skill).State = EntityState.Modified;
             await _context.SaveChangesAsync();
-
-            return StatusCode(StatusCodes.Status200OK);
+            return StatusCode(StatusCodes.Status202Accepted);
         }
+
+
 
         // DELETE: api/mf/skills/{id}
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Deleteskill(int id)
+        public async Task<IActionResult> DeleteSkill(int id)
         {
             var skill = await _context.Skills.FindAsync(id);
             if (skill == null)
@@ -130,19 +130,16 @@ namespace mf_backend.Controllers
 
             _context.Skills.Remove(skill);
             await _context.SaveChangesAsync();
-
             return Ok("Delete successful");
         }
 
-        private async Task<string> SaveImages(IFormFile image)
+        private async Task<string> SaveImage(IFormFile image)
         {
             var skillImagesDirectory = Path.Combine(_environment.WebRootPath, "Skills");
-
             if (!Directory.Exists(skillImagesDirectory))
             {
                 Directory.CreateDirectory(skillImagesDirectory);
             }
-
             var imageFileName = $"{Guid.NewGuid()}{Path.GetExtension(image.FileName)}";
             var imagePath = Path.Combine(skillImagesDirectory, imageFileName);
 

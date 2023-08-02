@@ -6,7 +6,6 @@ namespace mf_backend.Models
     {
         public int SkillID { get; set; }
 
-        [Required]
         public string SkillName { get; set; }
 
         public string SkillDescription { get; set; }

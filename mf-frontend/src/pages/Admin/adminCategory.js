@@ -15,9 +15,9 @@ import {
   FaCheck,
   FaTimes,
 } from "react-icons/fa";
-import "./adminSect.scss";
+import "./adminCategory.scss";
 
-const AdminSect = () => {
+const AdminCategory = () => {
   const account = JSON.parse(localStorage.getItem("ADMIN_DATA"));
   const history = useNavigate();
 
@@ -27,68 +27,68 @@ const AdminSect = () => {
     }
   }, [account, history]);
 
-  const SECT_PER_PAGE = 10;
-  const [sects, setSects] = useState([]);
+  const CATEGORY_PER_PAGE = 10;
+  const [categories, setCategories] = useState([]);
   const [dialogVisible, setDialogVisible] = useState(false);
   const [dialogMode, setDialogMode] = useState("create");
-  const [currentSects, setCurrentSects] = useState({
-    sectName: "",
-    sectDescription: "",
+  const [currentCategory, setCurrentCategory] = useState({
+    categoryName: "",
+    categoryDescription: "",
     image: null,
   });
 
   const [message, setMessage] = useState("");
   const [deleteDialogVisible, setDeleteDialogVisible] = useState(false);
-  const [sectRemoved, setSectRemoved] = useState(null);
+  const [categoryRemoved, setCategoryRemoved] = useState(null);
   const [viewDialogVisible, setViewDialogVisible] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [messageSearch, setMessageSearch] = useState("");
-  const [originalSect, setOriginalSect] = useState([]);
+  const [originalCategory, setOriginalCategory] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [filteredSect, setFilteredSect] = useState([]);
-  const startIndex = (currentPage - 1) * SECT_PER_PAGE;
-  const endIndex = startIndex + SECT_PER_PAGE;
-  const currentSectPage = filteredSect.slice(startIndex, endIndex);
+  const [filteredCategory, setFilteredCategory] = useState([]);
+  const startIndex = (currentPage - 1) * CATEGORY_PER_PAGE;
+  const endIndex = startIndex + CATEGORY_PER_PAGE;
+  const currentCategoryPage = filteredCategory.slice(startIndex, endIndex);
 
-  const showDeleteDialog = (sect) => {
-    setSectRemoved(sect);
+  const showDeleteDialog = (category) => {
+    setCategoryRemoved(category);
     setDeleteDialogVisible(true);
   };
 
   const closeDeleteDialog = () => {
     setDeleteDialogVisible(false);
-    setSectRemoved(null);
-    loadSects();
+    setCategoryRemoved(null);
+    loadCategory();
   };
 
   useEffect(() => {
-    setFilteredSect(sects);
-  }, [sects, searchTerm]);
+    setFilteredCategory(categories);
+  }, [categories, searchTerm]);
 
   useEffect(() => {
     return () => {
-      if (currentSects.image && currentSects.image[0]) {
-        window.URL.revokeObjectURL(currentSects.image[0]);
+      if (currentCategory.image && currentCategory.image[0]) {
+        window.URL.revokeObjectURL(currentCategory.image[0]);
       }
     };
-  }, [currentSects.image]);
+  }, [currentCategory.image]);
 
-  const loadSects = async () => {
+  const loadCategory = async () => {
     try {
-      const response = await axios.get("https://localhost:7052/api/mf/sects");
-      setSects(
-        response.data.map((sect) => {
+      const response = await axios.get("https://localhost:7052/api/mf/categories");
+      setCategories(
+        response.data.map((category) => {
           return {
-            ...sect,
-            image: sect.image ? sect.image : null,
+            ...category,
+            image: category.image ? category.image : null,
           };
         })
       );
-      setOriginalSect(
-        response.data.map((sect) => {
+      setOriginalCategory(
+        response.data.map((category) => {
           return {
-            ...sect,
-            image: sect.image ? sect.image : null,
+            ...category,
+            image: category.image ? category.image : null,
           };
         })
       );
@@ -98,51 +98,51 @@ const AdminSect = () => {
   };
 
   useEffect(() => {
-    loadSects();
+    loadCategory();
   }, []);
 
-  const actionSects = async () => {
+  const actionCategory = async () => {
     const formData = new FormData();
-    if (!currentSects.sectName || !currentSects.sectDescription) {
+    if (!currentCategory.categoryName || !currentCategory.categoryDescription) {
       setMessage("Please fill in all the required fields");
       return;
     }
 
-    const original = originalSect.find(
-      (sect) => sect.sectID === currentSects.sectID
+    const original = originalCategory.find(
+      (category) => category.categoryID === currentCategory.categoryID
     );
 
     if (dialogMode === "update") {
-      formData.append("sectID", currentSects.sectID);
+      formData.append("categoryID", currentCategory.categoryID);
 
       if (
-        currentSects.sectName !== original.sectName ||
-        currentSects.sectDescription !== original.sectDescription ||
-        (currentSects.image && currentSects.image !== original.image)
+        currentCategory.categoryName !== original.categoryName ||
+        currentCategory.categoryDescription !== original.categoryDescription ||
+        (currentCategory.image && currentCategory.image !== original.image)
       ) {
-        formData.append("sectName", currentSects.sectName);
-        formData.append("sectDescription", currentSects.sectDescription);
-        formData.append("image", currentSects.image);
+        formData.append("categoryName", currentCategory.categoryName);
+        formData.append("categoryDescription", currentCategory.categoryDescription);
+        formData.append("image", currentCategory.image);
       } else {
         setMessage("Nothing to update");
         return;
       }
     } else {
-      if (currentSects.sectName !== originalSect.sectName) {
-        formData.append("sectName", currentSects.sectName);
+      if (currentCategory.categoryName !== originalCategory.categoryName) {
+        formData.append("categoryName", currentCategory.categoryName);
       }
-      if (currentSects.sectDescription !== originalSect.sectDescription) {
-        formData.append("sectDescription", currentSects.sectDescription);
+      if (currentCategory.categoryDescription !== originalCategory.categoryDescription) {
+        formData.append("categoryDescription", currentCategory.categoryDescription);
       }
-      if (currentSects.image && currentSects.image !== originalSect.image) {
-        formData.append("image", currentSects.image);
+      if (currentCategory.image && currentCategory.image !== originalCategory.image) {
+        formData.append("image", currentCategory.image);
       }
     }
 
     const url =
       dialogMode === "create"
-        ? "https://localhost:7052/api/mf/sects"
-        : `https://localhost:7052/api/mf/sects/${currentSects.sectID}`;
+        ? "https://localhost:7052/api/mf/categories"
+        : `https://localhost:7052/api/mf/categories/${currentCategory.categoryID}`;
 
     try {
       let response;
@@ -152,54 +152,54 @@ const AdminSect = () => {
             "Content-Type": "multipart/form-data",
           },
         });
-        setMessage("Sect created successfully");
+        setMessage("Category created successfully");
       } else if (dialogMode === "update") {
         response = await axios.put(url, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
         });
-        setMessage("Sect updated successfully");
+        setMessage("Category updated successfully");
       }
 
       if (response.status === 200 || response.status === 202) {
         setDialogVisible(false);
-        loadSects();
+        loadCategory();
       } else {
-        setMessage("Failed to save the sect");
+        setMessage("Failed to save the category");
       }
     } catch (error) {
       console.error(error);
-      setMessage("Failed to save the sect");
+      setMessage("Failed to save the category");
     }
   };
 
-  const removeSect = async () => {
-    if (sectRemoved) {
+  const removeCategory = async () => {
+    if (categoryRemoved) {
       try {
         await axios.delete(
-          `https://localhost:7052/api/mf/sects/${sectRemoved.sectID}`
+          `https://localhost:7052/api/mf/categories/${categoryRemoved.categoryID}`
         );
-        setMessage("Sect deleted successfully");
-        loadSects();
+        setMessage("Category deleted successfully");
+        loadCategory();
       } catch (error) {
         console.error(error);
-        setMessage("Failed to delete the sect");
+        setMessage("Failed to delete the category");
       }
       closeDeleteDialog();
     }
   };
 
-  const handleDialogOpen = (mode, sect) => {
+  const handleDialogOpen = (mode, category) => {
     if (mode === "view") {
-      setCurrentSects(sect);
+      setCurrentCategory(category);
       setViewDialogVisible(true);
     } else {
       setDialogMode(mode);
       if (mode === "create") {
-        setCurrentSects({ ...sect, image: null });
+        setCurrentCategory({ ...category, image: null });
       } else if (mode === "update") {
-        setCurrentSects({ ...currentSects, ...sect });
+        setCurrentCategory({ ...currentCategory, ...category });
       }
       setDialogVisible(true);
     }
@@ -207,7 +207,7 @@ const AdminSect = () => {
 
   const handleDialogClose = () => {
     setDialogVisible(false);
-    setCurrentSects({});
+    setCurrentCategory({});
   };
 
   const closeViewDialog = () => {
@@ -217,16 +217,15 @@ const AdminSect = () => {
   const handleSearch = () => {
     if (searchTerm.trim() === "") {
       setMessageSearch("Please enter a valid data for search");
-      setSects(originalSect);
+      setCategories(originalCategory);
       return;
     }
     setMessageSearch("");
-    const filteredSect = originalSect.filter(
-      (sect) =>
-        sect.sectName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        sect.sectDescription.toLowerCase().includes(searchTerm.toLowerCase())
+    const filteredCategory = originalCategory.filter(
+      (category) =>
+        category.categoryName.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    setSects(filteredSect);
+    setCategories(filteredCategory);
   };
 
   const handleKey = (e) => {
@@ -238,7 +237,7 @@ const AdminSect = () => {
   const handleReload = () => {
     setSearchTerm("");
     setMessageSearch("");
-    loadSects();
+    loadCategory();
   };
 
   const handlePageChange = (pageNumber) => {
@@ -246,13 +245,13 @@ const AdminSect = () => {
   };
 
   const renderPage = () => {
-    if (filteredSect.length <= SECT_PER_PAGE) {
+    if (filteredCategory.length <= CATEGORY_PER_PAGE) {
       return null;
     }
 
     return (
       <div className="pagination-buttons">
-        {filteredSect.length === 0 ? (
+        {filteredCategory.length === 0 ? (
           <div></div>
         ) : (
           <div className="pagination">
@@ -273,7 +272,7 @@ const AdminSect = () => {
               <button
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={
-                  currentPage === Math.ceil(filteredSect.length / SECT_PER_PAGE)
+                  currentPage === Math.ceil(filteredCategory.length / CATEGORY_PER_PAGE)
                 }
               >
                 <FaAngleRight />
@@ -281,11 +280,11 @@ const AdminSect = () => {
               <button
                 onClick={() =>
                   handlePageChange(
-                    Math.ceil(filteredSect.length / SECT_PER_PAGE)
+                    Math.ceil(filteredCategory.length / CATEGORY_PER_PAGE)
                   )
                 }
                 disabled={
-                  currentPage === Math.ceil(filteredSect.length / SECT_PER_PAGE)
+                  currentPage === Math.ceil(filteredCategory.length / CATEGORY_PER_PAGE)
                 }
               >
                 <FaAngleDoubleRight />
@@ -298,12 +297,12 @@ const AdminSect = () => {
   };
 
   return (
-    <div className="admin-sect-container">
-      <h1>Managing Sect</h1>
-      {originalSect.length === 0 ? (
-        <div className="admin-sect-nodata">
-          <p className="admin-sect-empty">The sect list is empty</p>
-          <div className="admin-add-sect-empty">
+    <div className="admin-category-container">
+      <h1>Managing Category</h1>
+      {originalCategory.length === 0 ? (
+        <div className="admin-category-nodata">
+          <p className="admin-category-empty">The category list is empty</p>
+          <div className="admin-add-category-empty">
             <button onClick={() => handleDialogOpen("create")}>
               <FaPlus />
             </button>
@@ -311,7 +310,7 @@ const AdminSect = () => {
           {dialogVisible && (
             <div className="dialog-empt-action-container">
               <div className="dialog-empt-action-content">
-                <h2>{dialogMode === "create" ? "Create" : "Update"} Sect</h2>
+                <h2>{dialogMode === "create" ? "Create" : "Update"} Category</h2>
                 <div className="dialog-empt-action-main">
                   <div className="dialog-empt-action-image-main">
                     <label className="dialog-empt-action-image-group">
@@ -320,61 +319,61 @@ const AdminSect = () => {
                         id="images"
                         accept="image/*"
                         onChange={(e) =>
-                          setCurrentSects({
-                            ...currentSects,
+                          setCurrentCategory({
+                            ...currentCategory,
                             image: e.target.files[0],
                           })
                         }
                         hidden
-                        required={!currentSects.sectID}
+                        required={!currentCategory.categoryID}
                       />
-                      {currentSects.image ? (
+                      {currentCategory.image ? (
                         <img
                           src={
-                            currentSects.image instanceof File
-                              ? window.URL.createObjectURL(currentSects.image)
-                              : `https://localhost:7052/${currentSects.image}`
+                            currentCategory.image instanceof File
+                              ? window.URL.createObjectURL(currentCategory.image)
+                              : `https://localhost:7052/${currentCategory.image}`
                           }
-                          alt="sect-img"
+                          alt="category-img"
                         />
                       ) : (
-                        <img src="/assets/images/map.png" alt="sect-img" />
+                        <img src="/assets/images/map.png" alt="category-img" />
                       )}
                     </label>
                   </div>
                   <div className="dialog-empt-action-content-main">
                     <div className="dialog-empt-action-group">
-                      <label htmlFor="sectName">Sect Name:</label>
+                      <label htmlFor="categoryName">Category Name:</label>
                       <input
-                        className="sect_name"
+                        className="category_name"
                         type="text"
-                        id="sectName"
-                        value={currentSects.sectName || ""}
+                        id="categoryName"
+                        value={currentCategory.categoryName || ""}
                         onChange={(e) =>
-                          setCurrentSects({
-                            ...currentSects,
-                            sectName: e.target.value,
+                          setCurrentCategory({
+                            ...currentCategory,
+                            categoryName: e.target.value,
                           })
                         }
-                        placeholder="Please enter sect name"
+                        placeholder="Please enter category name"
                       />
                     </div>
                     <div className="dialog-empt-action-group">
-                      <label htmlFor="sectDescription">Description:</label>
+                      <label htmlFor="categoryDescription">Description:</label>
                       <textarea
-                        id="sectDescription"
-                        value={currentSects.sectDescription || ""}
+                        id="categoryDescription"
+                        value={currentCategory.categoryDescription || ""}
                         onChange={(e) =>
-                          setCurrentSects({
-                            ...currentSects,
-                            sectDescription: e.target.value,
+                          setCurrentCategory({
+                            ...currentCategory,
+                            categoryDescription: e.target.value,
                           })
                         }
-                        placeholder="Please enter the sect description"
+                        placeholder="Please enter the category description"
                       />
                     </div>
                     <div className="dialog-empt-action-handle">
-                      <button onClick={actionSects} id="actions-empt">
+                      <button onClick={actionCategory} id="actions-empt">
                         {dialogMode === "create" ? "Create" : "Update"}
                       </button>
                       <button
@@ -400,11 +399,11 @@ const AdminSect = () => {
         </div>
       ) : (
         <>
-          <div className="admin-sects-top">
+          <div className="admin-categories-top">
             <div className="admin-search-bar">
               <input
                 type="text"
-                placeholder="Search by name or description..."
+                placeholder="Search by name..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 onKeyDown={handleKey}
@@ -416,7 +415,7 @@ const AdminSect = () => {
                 <FaSyncAlt />
               </button>
             </div>
-            <div className="admin-add-sects">
+            <div className="admin-add-categories">
               <button onClick={() => handleDialogOpen("create")}>
                 Create&nbsp;
                 <FaPlus />
@@ -427,22 +426,22 @@ const AdminSect = () => {
             <div className="error-message">{messageSearch}</div>
           ) : (
             <>
-              {currentSectPage.length === 0 ? (
+              {currentCategoryPage.length === 0 ? (
                 <div className="error-message">No data was found</div>
               ) : (
                 <div
                   className="none-display"
-                  id={currentSectPage.length === 0 ? "none" : ""}
+                  id={currentCategoryPage.length === 0 ? "none" : ""}
                 >
-                  {sects.length} {sects.length === 1 ? "sect" : "sects"} found
+                  {categories.length} {categories.length === 1 ? "category" : "categories"} found
                 </div>
               )}
             </>
           )}
-          {currentSectPage.length === 0 ? (
+          {currentCategoryPage.length === 0 ? (
             <div className="table-nodata-display"></div>
           ) : (
-            <div className="admin-sects-table">
+            <div className="admin-categories-table">
               <table className="table table-bordered">
                 <thead>
                   <tr>
@@ -453,34 +452,34 @@ const AdminSect = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {currentSectPage.map((sects) => (
-                    <tr key={sects.sectID}>
-                      <td className="admin-sects-images">
+                  {currentCategoryPage.map((category) => (
+                    <tr key={category.categoryID}>
+                      <td className="admin-categories-images">
                         <div className="image-container">
-                          {sects.image && (
+                          {category.image && (
                             <img
-                              src={`https://localhost:7052/${sects.image}`}
-                              alt="sect-img"
+                              src={`https://localhost:7052/${category.image}`}
+                              alt="category-img"
                             />
                           )}
                         </div>
                       </td>
-                      <td className="admin-sect-name">
-                        <span>{sects.sectName}</span>
+                      <td className="admin-categories-name">
+                        <span>{category.categoryName}</span>
                       </td>
-                      <td className="admin-sect-description">
-                        <span>{sects.sectDescription}</span>
+                      <td className="admin-category-description">
+                        <span>{category.categoryDescription}</span>
                       </td>
-                      <td className="admin-sects-actions">
-                        <button onClick={() => handleDialogOpen("view", sects)}>
+                      <td className="admin-categories-actions">
+                        <button onClick={() => handleDialogOpen("view", category)}>
                           <FaEye />
                         </button>
                         <button
-                          onClick={() => handleDialogOpen("update", sects)}
+                          onClick={() => handleDialogOpen("update", category)}
                         >
                           <FaEdit />
                         </button>
-                        <button onClick={() => showDeleteDialog(sects)}>
+                        <button onClick={() => showDeleteDialog(category)}>
                           <FaTrash />
                         </button>
                       </td>
@@ -494,13 +493,13 @@ const AdminSect = () => {
             <div className="dialog-remove-container">
               <div className="dialog-remove-content">
                 <h3>Remove Message Confirm</h3>
-                <p>Are you sure you want to delete this sect?</p>
+                <p>Are you sure you want to delete this category?</p>
                 <small>
-                  If you delete that sect, all characters in this sect will be
+                  If you delete that category, all items in this category will be
                   removed as well.
                 </small>
                 <div className="dialog-remove-buttons">
-                  <button onClick={removeSect} id="removed">
+                  <button onClick={removeCategory} id="removed">
                     <FaCheck />
                   </button>
                   <button onClick={closeDeleteDialog} id="cancel-removed">
@@ -513,7 +512,7 @@ const AdminSect = () => {
           {dialogVisible && (
             <div className="dialog-action-container">
               <div className="dialog-action-content">
-                <h2>{dialogMode === "create" ? "Create" : "Update"} Sect</h2>
+                <h2>{dialogMode === "create" ? "Create" : "Update"} Category</h2>
                 <div className="dialog-action-main">
                   <div className="dialog-action-image-main">
                     <label className="dialog-action-image-group">
@@ -522,61 +521,61 @@ const AdminSect = () => {
                         id="images"
                         accept="image/*"
                         onChange={(e) =>
-                          setCurrentSects({
-                            ...currentSects,
+                          setCurrentCategory({
+                            ...currentCategory,
                             image: e.target.files[0],
                           })
                         }
                         hidden
-                        required={!currentSects.sectID}
+                        required={!currentCategory.categoryID}
                       />
-                      {currentSects.image ? (
+                      {currentCategory.image ? (
                         <img
                           src={
-                            currentSects.image instanceof File
-                              ? window.URL.createObjectURL(currentSects.image)
-                              : `https://localhost:7052/${currentSects.image}`
+                            currentCategory.image instanceof File
+                              ? window.URL.createObjectURL(currentCategory.image)
+                              : `https://localhost:7052/${currentCategory.image}`
                           }
-                          alt="sect-img"
+                          alt="category-img"
                         />
                       ) : (
-                        <img src="/assets/images/map.png" alt="sect-img" />
+                        <img src="/assets/images/map.png" alt="category-img" />
                       )}
                     </label>
                   </div>
                   <div className="dialog-action-content-main">
                     <div className="dialog-action-group">
-                      <label htmlFor="sectName">Sect Name:</label>
+                      <label htmlFor="categoryName">Category Name:</label>
                       <input
-                        className="sect_name"
+                        className="category_name"
                         type="text"
-                        id="sectName"
-                        value={currentSects.sectName || ""}
+                        id="categoryName"
+                        value={currentCategory.categoryName || ""}
                         onChange={(e) =>
-                          setCurrentSects({
-                            ...currentSects,
-                            sectName: e.target.value,
+                          setCurrentCategory({
+                            ...currentCategory,
+                            categoryName: e.target.value,
                           })
                         }
-                        placeholder="Please enter sect name"
+                        placeholder="Please enter category name"
                       />
                     </div>
                     <div className="dialog-action-group">
-                      <label htmlFor="sectDescription">Description:</label>
+                      <label htmlFor="categoryDescription">Description:</label>
                       <textarea
-                        id="sectDescription"
-                        value={currentSects.sectDescription || ""}
+                        id="categoryDescription"
+                        value={currentCategory.categoryDescription || ""}
                         onChange={(e) =>
-                          setCurrentSects({
-                            ...currentSects,
-                            sectDescription: e.target.value,
+                          setCurrentCategory({
+                            ...currentCategory,
+                            categoryDescription: e.target.value,
                           })
                         }
-                        placeholder="Please enter the sect description"
+                        placeholder="Please enter the category description"
                       />
                     </div>
                     <div className="dialog-action-handle">
-                      <button onClick={actionSects} id="actions">
+                      <button onClick={actionCategory} id="actions">
                         {dialogMode === "create" ? "Create" : "Update"}
                       </button>
                       <button onClick={handleDialogClose} id="cancel-actions">
@@ -592,22 +591,22 @@ const AdminSect = () => {
             <div className="dialog-view-container">
               <div className="dialog-view-main-content">
                 <div className="dialog-view-content">
-                  <h3>View {currentSects.sectName}</h3>
+                  <h3>View {currentCategory.categoryName}</h3>
                   <div className="dialog-view-images">
-                    {currentSects.image && (
+                    {currentCategory.image && (
                       <img
-                        src={`https://localhost:7052/${currentSects.image}`}
-                        alt="sect-img"
+                        src={`https://localhost:7052/${currentCategory.image}`}
+                        alt="category-img"
                         className="image-view-dialog"
                       />
                     )}
                   </div>
                   <div className="dialog-view-main">
                     <p>
-                      Sect Name: <span>{currentSects.sectName}</span>
+                      Category Name: <span>{currentCategory.categoryName}</span>
                     </p>
                     <p>
-                      Description:<span> {currentSects.sectDescription}</span>
+                      Description:<span> {currentCategory.categoryDescription}</span>
                     </p>
                   </div>
                   <div className="dialog-view-button">
@@ -632,4 +631,4 @@ const AdminSect = () => {
   );
 };
 
-export default AdminSect;
+export default AdminCategory;

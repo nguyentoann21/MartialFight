@@ -1,115 +1,149 @@
-import React, { useState } from 'react';
-import { FaMedal } from 'react-icons/fa';
-import './rank.scss';
-
-const rankData = {
-  levels: [
-    { no: 1, name: 'John', level: 'Level 10' },
-    { no: 2, name: 'Alice', level: 'Level 8' },
-    { no: 3, name: 'Bob', level: 'Level 7' },
-    { no: 4, name: 'Sarah', level: 'Level 5' },
-    { no: 5, name: 'Peter', level: 'Level 2' },
-  ],
-  rankings: [
-    { no: 1, name: 'John', rank: 'Expert' },
-    { no: 2, name: 'Alice', rank: 'Pro' },
-    { no: 3, name: 'Bob', rank: 'Advanced' },
-    { no: 4, name: 'Sarah', rank: 'Intermediate' },
-    { no: 5, name: 'Peter', rank: 'Beginner' },
-  ],
-  challenges: [
-    { no: 1, name: 'Challenge 1', challenge: 'Easy' },
-    { no: 2, name: 'Challenge 2', challenge: 'Medium' },
-    { no: 3, name: 'Challenge 3', challenge: 'Hard' },
-    { no: 4, name: 'Challenge 4', challenge: 'Defeat' },
-  ],
-};
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import * as signalR from "@microsoft/signalr";
+import { FaMedal } from "react-icons/fa";
+import "./rank.scss";
 
 const Ranking = () => {
-  const [activeTab, setActiveTab] = useState('levels');
+  const [top15ByLevel, setTop15ByLevel] = useState([]);
+  const [top15ByScore, setTop15ByScore] = useState([]);
+  const [top15ByChallenge, setTop15ByChallenge] = useState([]);
+  const [activeTab, setActiveTab] = useState("levels");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [levelResponse, scoreResponse, challengeResponse] =
+          await Promise.all([
+            axios.get("https://localhost:7052/api/mf/rank/top-15-level"),
+            axios.get("https://localhost:7052/api/mf/rank/top-15-score"),
+            axios.get("https://localhost:7052/api/mf/rank/top-15-challenge"),
+          ]);
+
+        setTop15ByLevel(levelResponse.data);
+        setTop15ByScore(scoreResponse.data);
+        setTop15ByChallenge(challengeResponse.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+
+    const hubConnection = new signalR.HubConnectionBuilder()
+      .withUrl("https://localhost:7052/hubs/rankings", {
+        skipNegotiation: true,
+        transport: signalR.HttpTransportType.WebSockets,
+      })
+      .build();
+
+    hubConnection.start().then(() => {
+      hubConnection.on("UpdateRankings", () => {
+        fetchData();
+      });
+    });
+  }, []);
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
   };
 
+  const getRankData = () => {
+    if (activeTab === "levels") {
+      return top15ByLevel;
+    } else if (activeTab === "rankings") {
+      return top15ByScore;
+    } else if (activeTab === "challenges") {
+      return top15ByChallenge;
+    }
+    return [];
+  };
+
   return (
-    <div className='ranking-container'>
-      <div className='ranking-form'>
-        <div className='ranking-text'>
-          <img src='/assets/images/cups.png' alt='ranking' />
+    <div className="ranking-container">
+      <div className="ranking-form">
+        <div className="ranking-text">
+          <img src="/assets/images/cups.png" alt="ranking" />
           <h3>Leaderboard</h3>
-          <img src='/assets/images/cups.png' alt='ranking' />
+          <img src="/assets/images/cups.png" alt="ranking" />
         </div>
-        <div className='tabs-container'>
+        <div className="tabs-container">
           <button
-            className={`tab ${activeTab === 'levels' ? 'active' : ''}`}
-            onClick={() => handleTabChange('levels')}
+            className={`tab ${activeTab === "levels" ? "active" : ""}`}
+            onClick={() => handleTabChange("levels")}
           >
             Level
           </button>
           <button
-            className={`tab ${activeTab === 'rankings' ? 'active' : ''}`}
-            onClick={() => handleTabChange('rankings')}
+            className={`tab ${activeTab === "rankings" ? "active" : ""}`}
+            onClick={() => handleTabChange("rankings")}
           >
-            Rank
+            Score
           </button>
           <button
-            className={`tab ${activeTab === 'challenges' ? 'active' : ''}`}
-            onClick={() => handleTabChange('challenges')}
+            className={`tab ${activeTab === "challenges" ? "active" : ""}`}
+            onClick={() => handleTabChange("challenges")}
           >
             Challenge
           </button>
         </div>
-        <div className='table-container'>
-          {
-            Object.keys(rankData).length === 0 ? (<div className='no-rank-list'>No ranking was found</div>) : 
-            (
-              <table>
-                <thead>
-                  <tr>
-                    <th>Rank</th>
-                    <th>Name</th>
-                    <th>
-                      {activeTab === 'levels'
-                        ? 'Level'
-                        : activeTab === 'rankings'
-                        ? 'Rank'
-                        : 'Challenge'}
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {rankData[activeTab].map((item) => (
-                    <tr key={item.no}>
-                      <td>
-                        {item.no === 1 ? (
-                          <FaMedal className='gold' />
-                        ) : item.no === 2 ? (
-                          <FaMedal className='silver' />
-                        ) : item.no === 3 ? (
-                          <FaMedal className='bronze' />
-                        ) : (
-                          <FaMedal className='normal' />
-                        )}
-                      </td>
-                      <td>{item.name}</td>
-                      <td>
+        <div className="table-container">
+          {getRankData().length === 0 ? (
+            <div className="no-rank-list">No ranking was found</div>
+          ) : (
+            <table>
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Username</th>
+                  <th>Name</th>
+                  <th>
+                    {activeTab === "levels"
+                      ? "Level"
+                      : activeTab === "rankings"
+                      ? "Score"
+                      : "Challenge"}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {getRankData().map((item, index) => (
+                  <tr key={item.id}>
+                    <td>
+                      {index === 0 ? (
+                        <FaMedal className="gold" />
+                      ) : index === 1 ? (
+                        <FaMedal className="silver" />
+                      ) : index === 2 ? (
+                        <FaMedal className="bronze" />
+                      ) : (
+                        <span className="normal">{index + 1}</span>
+                      )}
+                    </td>
+                    <td>
+                      <span>{item.username}</span>
+                    </td>
+                    <td>
+                      <span>{item.name}</span>
+                    </td>
+                    <td>
+                      <span>
                         {
                           item[
-                            activeTab === 'levels'
-                              ? 'level'
-                              : activeTab === 'rankings'
-                              ? 'rank'
-                              : 'challenge'
+                            activeTab === "levels"
+                              ? "level"
+                              : activeTab === "rankings"
+                              ? "score"
+                              : "challenge"
                           ]
                         }
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            )
-          }
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
     </div>

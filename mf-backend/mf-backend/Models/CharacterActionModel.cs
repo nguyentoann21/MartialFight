@@ -5,12 +5,11 @@ namespace mf_backend.Models
 {
     public class CharacterActionModel
     {
-        [Required]
         public string CharacterName { get; set; }
 
         public string CharacterDescription { get; set; }
 
-        public List<IFormFile> Images { get; set; }
+        public IFormFile? Image { get; set; }
 
         public int AttackValue { get; set; }
 
@@ -24,9 +23,6 @@ namespace mf_backend.Models
 
         public int PhysicalValue { get; set; }
 
-        [ForeignKey(nameof(Sect))]
         public int SectID { get; set; }
-
-        public Sect CharacterSect { get; set; }
     }
 }

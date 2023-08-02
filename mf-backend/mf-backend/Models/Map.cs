@@ -8,7 +8,6 @@ namespace mf_backend.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MapID { get; set; }
 
-        [Required]
         public string MapName { get; set; }
 
         public int Level { get; set; }

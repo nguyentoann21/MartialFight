@@ -24,12 +24,12 @@ import {
 import Profile from "../pages/User/profile";
 import ChangePassword from "../pages/User/password";
 import ForgotPassword from "../pages/User/forgot";
-import AdminChart from "../pages/Admin/adminChart";
+import AdminCategory from "../pages/Admin/adminCategory";
 import Policy from "../pages/Rules/policy";
 import TermsAndConditions from "../pages/Rules/conditions";
 import AdminCharacter from "../pages/Admin/adminCharacter";
 import UpdateProfile from "../pages/User/updateProfile";
-import AdminSkills from "../pages/Admin/adminSkills";
+import AdminSkill from "../pages/Admin/adminSkill";
 
 const publicRoutes = [
   {
@@ -89,7 +89,7 @@ const publicRoutes = [
   {
     path: "/chart",
     name: "Admin Chart",
-    component: AdminChart,
+    component: AdminCategory,
     layout: AdminLayout,
   },
   {
@@ -137,7 +137,7 @@ const publicRoutes = [
   {
     path: "/admin-skills",
     name: "Admin Skills",
-    component: AdminSkills,
+    component: AdminSkill,
     layout: AdminLayout,
   },
   {
@@ -187,7 +187,7 @@ const publicRoutes = [
     name: "update-profile",
     component: UpdateProfile,
     layout: UserLayout,
-  },
+  }
 ];
 
 const privateRoutes = [];

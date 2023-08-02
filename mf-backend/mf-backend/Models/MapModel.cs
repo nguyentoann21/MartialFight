@@ -6,7 +6,6 @@ namespace mf_backend.Models
     {
         public int MapID { get; set; }
 
-        [Required]
         public string MapName { get; set; }
 
         public int Level { get; set; }

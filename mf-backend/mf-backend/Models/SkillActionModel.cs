@@ -4,7 +4,6 @@ namespace mf_backend.Models
 {
     public class SkillActionModel
     {
-        [Required]
         public string SkillName { get; set; }
 
         public string SkillDescription { get; set; }
@@ -25,6 +24,6 @@ namespace mf_backend.Models
 
         public int PhysicalValue { get; set; }
 
-        public IFormFile Image { get; set; }
+        public IFormFile? Image { get; set; }
     }
 }

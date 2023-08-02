@@ -11,8 +11,8 @@
         padding: 40px 100px 50px 100px;
         color: #fff;
         font-weight: 600;
-        min-width: 600px;
-        min-height: 470px;
+        width: 800px;
+        height: 1000px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -23,6 +23,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            width: 100%;
 
             h3{
                 font-size: 50px;
@@ -40,19 +41,22 @@
 
         .tabs-container {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
             margin: 20px 0;
             border-radius: 5px;
-            min-width: 240px;
+            width: 100%;
             
             .tab {
-                color: #fff;
+                color: #000;
                 font-weight: 700;
                 border: 2px solid #fff;
-                background-color: transparent;
+                background-color: #fff;
                 font-size: 16px;
                 border-radius: 5px;
                 padding: 5px 10px;
+                width: 150px;
                 cursor: pointer;
                 transition: color 0.2s ease-in-out;
             }
@@ -60,13 +64,12 @@
             .active {
                 background-color: #ff0;
                 color: #008;
-                border: 2px solid #2f7add;
+                border: none;
             }
         }
 
         .table-container {
             width: 100%;
-            overflow-x: auto;
 
             .no-rank-list {
                 text-align: center;
@@ -76,11 +79,11 @@
             }
 
             table {
-                border-collapse: separate;
+                border-collapse: collapse;
                 width: 100%;
 
                 th, td {
-                    padding: 10px;
+                    padding: 7px 0;
                     text-align: left;
                     border: 1px solid #222;
                     background-color: #444;
@@ -88,41 +91,88 @@
                 
                 th {
                     font-weight: bold;
-                    background-color: #ccc;
+                    background-color: #eee;
                     color: #222;
+                    text-align: center;
                 }
                 
                 td:first-child {
-                    width: 10%;
+                    width: 80px;
+                    max-width: 80px;
                     text-align: center;
 
                     .gold {
                         color: gold;
                         font-size: 30px;
+                        filter: drop-shadow(0 0 .5px gold) drop-shadow(0 0 .5px gold);
                     }
 
                     .silver {
                         color: silver;
                         font-size: 30px;
+                        filter: drop-shadow(0 0 .5px silver) drop-shadow(0 0 .5px silver);
                     }
 
                     .bronze {
                         color: #cd7f32;
                         font-size: 30px;
+                        filter: drop-shadow(0 0 .5px #cd7f32) drop-shadow(0 0 .5px #cd7f32);
                     }
 
                     .normal {
                         color: #fff;
-                        font-size: 30px;
+                        font-size: 28px;
+                        font-weight: 300;
                     }
                 }
 
                 td:nth-child(2) {
-                    width: 40%;
+                    width: 240px;
+                    max-width: 230px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+
+                    span {
+                        max-width: 220px;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        padding: 0 5px;
+                    }
                 }
 
                 td:nth-child(3) {
-                    width: 50%;
+                    width: 320px;
+                    max-width: 320px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+
+                    span {
+                        max-width: 300px;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        padding: 0 5px;
+                    }
+                }
+
+                td:nth-child(4) {
+                    text-align: center;
+                    width: 160px;
+                    max-width: 150px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+
+                    span {
+                        max-width: 140px;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        padding: 0 5px;
+                    }
                 }
             }
         }

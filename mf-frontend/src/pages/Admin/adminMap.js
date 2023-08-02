@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
@@ -76,29 +76,42 @@ const AdminMap = () => {
     };
   }, [currentMaps.image]);
 
-  const loadMaps = useCallback(async () => {
+  const loadMaps = async () => {
     try {
       const response = await axios.get("https://localhost:7052/api/mf/maps");
-      const updatedMaps = response.data.map((map) => {
-        return {
-          ...map,
-          image: map.image ? map.image : null,
-        };
-      });
-      setMaps(updatedMaps);
-      setOriginalMap(updatedMaps);
-      const lastPage = Math.ceil(updatedMaps.length / MAP_PER_PAGE);
-      if (currentPage > lastPage) {
-        setCurrentPage(lastPage);
-      }
+
+      setMaps(
+        response.data.map((map) => {
+          return {
+            ...map,
+            image: map.image ? map.image : null,
+          };
+        })
+      );
+      setOriginalMap(
+        response.data.map((map) => {
+          return {
+            ...map,
+            image: map.image ? map.image : null,
+          };
+        })
+      );
+      setFilteredMap(
+        response.data.map((map) => {
+          return {
+            ...map,
+            image: map.image ? map.image : null,
+          };
+        })
+      );
     } catch (error) {
       console.error(error);
     }
-  }, [currentPage]);
+  };
 
   useEffect(() => {
     loadMaps();
-  }, [loadMaps]);
+  }, []);
 
   const actionMaps = async () => {
     const formData = new FormData();
@@ -126,7 +139,6 @@ const AdminMap = () => {
         setMessage("Nothing to update");
         return;
       }
-
     } else {
       if (currentMaps.mapName !== originalMap.mapName) {
         formData.append("mapName", currentMaps.mapName);
@@ -144,8 +156,6 @@ const AdminMap = () => {
         formData.append("image", currentMaps.image);
       }
     }
-    
-    
 
     const url =
       dialogMode === "create"
@@ -177,8 +187,11 @@ const AdminMap = () => {
         setMessage("Failed to save the map");
       }
     } catch (error) {
-      console.error(error);
-      setMessage("Failed to save the map");
+      if (error.response.status === 403) {
+        setMessage(error.response.data);
+      } else {
+        setMessage("Failed to save the map");
+      }
     }
   };
 
@@ -393,13 +406,14 @@ const AdminMap = () => {
                         type="text"
                         id="level"
                         value={currentMaps.level || ""}
+                        min={1}
                         onChange={(e) =>
                           setCurrentMaps({
                             ...currentMaps,
                             level: e.target.value,
                           })
                         }
-                        placeholder="0"
+                        placeholder="Please enter number value"
                       />
                     </div>
                     <div className="dialog-empt-action-group">
@@ -496,7 +510,9 @@ const AdminMap = () => {
           ) : (
             <>
               {currentMapPage.length === 0 ? (
-                <div className="error-message">No data was found</div>
+                <div className="error-message">
+                  No data was found
+                </div>
               ) : (
                 <div
                   className="none-display"
@@ -508,31 +524,24 @@ const AdminMap = () => {
             </>
           )}
           {currentMapPage.length === 0 ? (
-            <div className="table-nodata-display"></div>
+            <>
+              <div className="table-nodata-display"></div>
+            </>
           ) : (
             <div className="admin-maps-table">
               <table className="table table-bordered">
                 <thead>
                   <tr>
+                    <th>Image</th>
                     <th>Name</th>
                     <th>Level</th>
                     <th>Description</th>
-                    <th>Image</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   {currentMapPage.map((maps) => (
                     <tr key={maps.mapID}>
-                      <td className="admin-map-name">
-                        <span>{maps.mapName}</span>
-                      </td>
-                      <td className="admin-maps-level">
-                        <span>{maps.level}</span>
-                      </td>
-                      <td className="admin-map-description">
-                        <span>{maps.mapDescription}</span>
-                      </td>
                       <td className="admin-maps-images">
                         <div className="image-container">
                           {maps.image && (
@@ -542,6 +551,15 @@ const AdminMap = () => {
                             />
                           )}
                         </div>
+                      </td>
+                      <td className="admin-map-name">
+                        <span>{maps.mapName}</span>
+                      </td>
+                      <td className="admin-maps-level">
+                        <span>{maps.level}</span>
+                      </td>
+                      <td className="admin-map-description">
+                        <span>{maps.mapDescription}</span>
                       </td>
                       <td className="admin-maps-actions">
                         <button onClick={() => handleDialogOpen("view", maps)}>
@@ -636,13 +654,14 @@ const AdminMap = () => {
                         type="text"
                         id="level"
                         value={currentMaps.level || ""}
+                        min={1}
                         onChange={(e) =>
                           setCurrentMaps({
                             ...currentMaps,
                             level: e.target.value,
                           })
                         }
-                        placeholder="0"
+                        placeholder="Please enter number value"
                       />
                     </div>
                     <div className="dialog-action-group">

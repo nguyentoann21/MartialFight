@@ -2,9 +2,8 @@
 
 namespace mf_backend.Models
 {
-    public class Item
+    public class ItemModel
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ItemID { get; set; }
 
         public string ItemName { get; set; }

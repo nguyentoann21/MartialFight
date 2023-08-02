@@ -16,7 +16,6 @@ import {
 import './navbar.scss';
 
 const NavbarAdmin = () => {
-  const avatar = '/assets/images/admin-image.avif';
   const [activeItem, setActiveItem] = useState('');
   const admin = JSON.parse(localStorage.getItem('ADMIN_DATA'));
   const history = useNavigate();
@@ -63,7 +62,7 @@ const NavbarAdmin = () => {
       </div>
       <Link to='/admin-profile'>
         <img
-          src={avatar}
+          src={admin ? `https://localhost:7052/Images/${admin.avatarUrl}`:'/assets/images/admin-image.avif'}
           alt='avatar'
           className={`navbar-dashboard ${
             activeItem === 'Profile' ? 'active' : ''
@@ -92,7 +91,7 @@ const NavbarAdmin = () => {
             onClick={() => handleAction('Charts')}
           >
             <FaChartLine />
-            <span>Charts</span>
+            <span>Category</span>
           </div>
         </Link>
         <Link to='/admin-character'>

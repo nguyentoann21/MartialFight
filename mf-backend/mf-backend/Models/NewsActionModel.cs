@@ -4,12 +4,10 @@ namespace mf_backend.Models
 {
     public class NewsActionModel
     {
-        [Required]
-        public string NewsTitle { get; set; }
+        public string? NewsTitle { get; set; }
 
-        [Required]
-        public string NewsContent { get; set; }
+        public string? NewsContent { get; set; }
 
-        public List<IFormFile> Images { get; set; }
+        public List<IFormFile>? Images { get; set; }
     }
 }
