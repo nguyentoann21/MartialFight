@@ -19,7 +19,7 @@ namespace mf_backend.Models
 
         public int ItemType { get; set; }
 
-        public bool Equipped { get; set; }
+        public bool Equipped { get; set; } = false;
 
         [ForeignKey(nameof(Sect))]
         public int SectID { get; set; }

@@ -30,7 +30,7 @@
         
             .dialog-empt-action-content {
                 background-image: url('../../../public/assets/images/horizontal-card.png');
-                background-size: 100% 100%;
+                background-size: 100% 95%;
                 background-repeat: no-repeat;
                 border-radius: 10px;
                 text-align: center;
@@ -40,6 +40,7 @@
                 justify-content: center;
                 align-items: center;
                 flex-direction: column;
+                padding-bottom: 20px;
 
             h2 {
                 margin: 0 0 30px 0 !important;
@@ -85,6 +86,7 @@
                             label {
                                 text-align: left;
                                 font-weight: 600;
+                                color: #ff0;
                             }
         
                             input[type="text"], input[type="number"] {
@@ -520,7 +522,7 @@
     
         .dialog-action-content {
             background-image: url('../../../public/assets/images/horizontal-card.png');
-            background-size: 100% 100%;
+            background-size: 100% 95%;
             background-repeat: no-repeat;
             border-radius: 10px;
             text-align: center;
@@ -530,6 +532,7 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            padding-bottom: 20px;
 
             h2 {
                 margin: 0 0 30px 0 !important;
@@ -575,6 +578,7 @@
                         label {
                             text-align: left;
                             font-weight: 600;
+                            color: #ff0;
                         }
     
                         input[type="text"], input[type="number"] {
@@ -694,19 +698,21 @@
         overflow: hidden;
     
         .dialog-view-main-content {
-            width: 850px;
-            height: 400px;
-            background-color: #222;
+            width: 1000px;
+            height: 500px;
+            background-image: url('../../../public/assets/images/horizontal-card.png');
+            background-size: 100% 95%;
+            background-repeat: no-repeat;
             display: flex;
             justify-content: center;
             align-items: center;
             border-radius: 10px;
-            padding: 50px 0;
+            padding: 70px 0;
 
             .dialog-view-content {
                 position: relative;
                 width: 850px;
-                max-height: 350px;
+                max-height: 400px;
                 text-align: start;
                 padding: 0 70px !important;
                 overflow: auto; 
@@ -730,7 +736,7 @@
     
                     p {
                         margin: 10px 0 !important;
-                        padding: 0 !important;
+                        padding: 0 20px !important;
                         color: #ff0;
                         display: flex;
                         flex-direction: column;

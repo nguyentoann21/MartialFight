@@ -106,6 +106,13 @@ namespace mf_backend.Controllers
                 return NotFound();
             }
 
+            bool isReferenced = await _context.Items.AnyAsync(item => item.CategoryID == id);
+
+            if (isReferenced)
+            {
+                return StatusCode(StatusCodes.Status409Conflict, "Cannot delete the category because it is referenced by items");
+            }
+
             _context.CategoryItems.Remove(category);
             await _context.SaveChangesAsync();
 

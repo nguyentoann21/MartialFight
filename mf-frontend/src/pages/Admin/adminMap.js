@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import {
   FaAngleLeft,
   FaAngleRight,
@@ -14,39 +14,39 @@ import {
   FaEye,
   FaCheck,
   FaTimes,
-} from "react-icons/fa";
-import "./adminMap.scss";
+} from 'react-icons/fa';
+import './adminMap.scss';
 
 const AdminMap = () => {
-  const account = JSON.parse(localStorage.getItem("ADMIN_DATA"));
+  const account = JSON.parse(localStorage.getItem('ADMIN_DATA'));
   const history = useNavigate();
 
   useEffect(() => {
     if (!account) {
-      history("/");
+      history('/');
     }
   }, [account, history]);
 
   const MAP_PER_PAGE = 10;
   const [maps, setMaps] = useState([]);
   const [dialogVisible, setDialogVisible] = useState(false);
-  const [dialogMode, setDialogMode] = useState("create");
+  const [dialogMode, setDialogMode] = useState('create');
   const [currentMaps, setCurrentMaps] = useState({
-    mapName: "",
-    level: "",
-    levelRequirement: "",
-    mapDescription: "",
+    mapName: '',
+    level: '',
+    levelRequirement: '',
+    mapDescription: '',
     image: null,
   });
 
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState('');
   const [deleteDialogVisible, setDeleteDialogVisible] = useState(false);
   const [mapRemoved, setMapRemoved] = useState(null);
   const [viewDialogVisible, setViewDialogVisible] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [messageSearch, setMessageSearch] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
+  const [messageSearch, setMessageSearch] = useState('');
   const [originalMap, setOriginalMap] = useState([]);
-  const [sortType, setSortType] = useState("normal");
+  const [sortType, setSortType] = useState('normal');
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredMap, setFilteredMap] = useState([]);
   const startIndex = (currentPage - 1) * MAP_PER_PAGE;
@@ -78,7 +78,7 @@ const AdminMap = () => {
 
   const loadMaps = async () => {
     try {
-      const response = await axios.get("https://localhost:7052/api/mf/maps");
+      const response = await axios.get('https://localhost:7052/api/mf/maps');
 
       setMaps(
         response.data.map((map) => {
@@ -120,8 +120,8 @@ const AdminMap = () => {
       (map) => map.mapID === currentMaps.mapID
     );
 
-    if (dialogMode === "update") {
-      formData.append("mapID", currentMaps.mapID);
+    if (dialogMode === 'update') {
+      formData.append('mapID', currentMaps.mapID);
 
       if (
         currentMaps.mapName !== originalM.mapName ||
@@ -130,67 +130,67 @@ const AdminMap = () => {
         currentMaps.mapDescription !== originalM.mapDescription ||
         (currentMaps.image && currentMaps.image !== originalM.image)
       ) {
-        formData.append("mapName", currentMaps.mapName);
-        formData.append("level", currentMaps.level);
-        formData.append("levelRequirement", currentMaps.levelRequirement);
-        formData.append("mapDescription", currentMaps.mapDescription);
-        formData.append("image", currentMaps.image);
+        formData.append('mapName', currentMaps.mapName);
+        formData.append('level', currentMaps.level);
+        formData.append('levelRequirement', currentMaps.levelRequirement);
+        formData.append('mapDescription', currentMaps.mapDescription);
+        formData.append('image', currentMaps.image);
       } else {
-        setMessage("Nothing to update");
+        setMessage('Nothing to update');
         return;
       }
     } else {
       if (currentMaps.mapName !== originalMap.mapName) {
-        formData.append("mapName", currentMaps.mapName);
+        formData.append('mapName', currentMaps.mapName);
       }
       if (currentMaps.level !== originalMap.level) {
-        formData.append("level", currentMaps.level);
+        formData.append('level', currentMaps.level);
       }
       if (currentMaps.levelRequirement !== originalMap.levelRequirement) {
-        formData.append("levelRequirement", currentMaps.levelRequirement);
+        formData.append('levelRequirement', currentMaps.levelRequirement);
       }
       if (currentMaps.mapDescription !== originalMap.mapDescription) {
-        formData.append("mapDescription", currentMaps.mapDescription);
+        formData.append('mapDescription', currentMaps.mapDescription);
       }
       if (currentMaps.image && currentMaps.image !== originalMap.image) {
-        formData.append("image", currentMaps.image);
+        formData.append('image', currentMaps.image);
       }
     }
 
     const url =
-      dialogMode === "create"
-        ? "https://localhost:7052/api/mf/maps"
+      dialogMode === 'create'
+        ? 'https://localhost:7052/api/mf/maps'
         : `https://localhost:7052/api/mf/maps/${currentMaps.mapID}`;
 
     try {
       let response;
-      if (dialogMode === "create") {
+      if (dialogMode === 'create') {
         response = await axios.post(url, formData, {
           headers: {
-            "Content-Type": "multipart/form-data",
+            'Content-Type': 'multipart/form-data',
           },
         });
-        setMessage("Map created successfully");
-      } else if (dialogMode === "update") {
+        setMessage('Map created successfully');
+      } else if (dialogMode === 'update') {
         response = await axios.put(url, formData, {
           headers: {
-            "Content-Type": "multipart/form-data",
+            'Content-Type': 'multipart/form-data',
           },
         });
-        setMessage("Map updated successfully");
+        setMessage('Map updated successfully');
       }
 
       if (response.status === 200 || response.status === 202) {
         setDialogVisible(false);
         loadMaps();
       } else {
-        setMessage("Failed to save the map");
+        setMessage('Failed to save the map');
       }
     } catch (error) {
       if (error.response.status === 403) {
         setMessage(error.response.data);
       } else {
-        setMessage("Failed to save the map");
+        setMessage('Failed to save the map');
       }
     }
   };
@@ -201,25 +201,28 @@ const AdminMap = () => {
         await axios.delete(
           `https://localhost:7052/api/mf/maps/${mapRemoved.mapID}`
         );
-        setMessage("Map deleted successfully");
+        setMessage('Map deleted successfully');
         loadMaps();
+        if (currentMapPage.length === 1 && currentPage > 1) {
+          setCurrentPage(currentPage - 1);
+        }
       } catch (error) {
         console.error(error);
-        setMessage("Failed to delete the map");
+        setMessage('Failed to delete the map');
       }
       closeDeleteDialog();
     }
   };
 
   const handleDialogOpen = (mode, map) => {
-    if (mode === "view") {
+    if (mode === 'view') {
       setCurrentMaps(map);
       setViewDialogVisible(true);
     } else {
       setDialogMode(mode);
-      if (mode === "create") {
+      if (mode === 'create') {
         setCurrentMaps({ ...map, image: null });
-      } else if (mode === "update") {
+      } else if (mode === 'update') {
         setCurrentMaps({ ...currentMaps, ...map });
       }
       setDialogVisible(true);
@@ -236,32 +239,41 @@ const AdminMap = () => {
   };
 
   const handleSearch = () => {
-    if (searchTerm.trim() === "") {
-      setMessageSearch("Please enter a valid data for search");
+    if (searchTerm.trim() === '') {
+      setMessageSearch('Please enter a valid data for search');
       setMaps(originalMap);
       return;
     }
-    setMessageSearch("");
+    setMessageSearch('');
     const filteredMap = originalMap.filter((map) =>
       map.mapName.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setMaps(filteredMap);
   };
 
+  const handleSearchChange = (e) => { 
+    setSearchTerm(e.target.value)
+    setCurrentPage(1);
+    setSortType('none');
+  };
+
   const handleSortChange = (e) => {
     setSortType(e.target.value);
     sortMap(e.target.value);
+    setSearchTerm('');
+    setMessageSearch('');
+    setCurrentPage(1);
   };
 
   const sortMap = (sortType) => {
-    if (sortType === "none") {
+    if (sortType === 'none') {
       loadMaps();
     } else {
       const sortedMaps = [...maps];
       sortedMaps.sort((x, y) => {
         const numberOne = x.level;
         const numberTwo = y.level;
-        if (sortType === "ascending") {
+        if (sortType === 'ascending') {
           return numberOne - numberTwo;
         } else {
           return numberTwo - numberOne;
@@ -272,14 +284,16 @@ const AdminMap = () => {
   };
 
   const handleKey = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       handleSearch();
     }
   };
 
   const handleReload = () => {
-    setSearchTerm("");
-    setMessageSearch("");
+    setSearchTerm('');
+    setMessageSearch('');
+    setSortType('none');
+    setCurrentPage(1);
     loadMaps();
   };
 
@@ -293,12 +307,12 @@ const AdminMap = () => {
     }
 
     return (
-      <div className="pagination-buttons">
+      <div className='pagination-buttons'>
         {filteredMap.length === 0 ? (
           <div></div>
         ) : (
-          <div className="pagination">
-            <div className="footer-page">
+          <div className='pagination'>
+            <div className='footer-page'>
               <button
                 onClick={() => handlePageChange(1)}
                 disabled={currentPage === 1}
@@ -311,7 +325,7 @@ const AdminMap = () => {
               >
                 <FaAngleLeft />
               </button>
-              <div className="page-number">Page {currentPage}</div>
+              <div className='page-number'>Page {currentPage}</div>
               <button
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={
@@ -338,27 +352,27 @@ const AdminMap = () => {
   };
 
   return (
-    <div className="admin-map-container">
+    <div className='admin-map-container'>
       <h1>Managing Map</h1>
       {originalMap.length === 0 ? (
-        <div className="admin-map-nodata">
-          <p className="admin-map-empty">The map list is empty</p>
-          <div className="admin-add-map-empty">
-            <button onClick={() => handleDialogOpen("create")}>
+        <div className='admin-map-nodata'>
+          <p className='admin-map-empty'>The map list is empty</p>
+          <div className='admin-add-map-empty'>
+            <button onClick={() => handleDialogOpen('create')}>
               <FaPlus />
             </button>
           </div>
           {dialogVisible && (
-            <div className="dialog-empt-action-container">
-              <div className="dialog-empt-action-content">
-                <h2>{dialogMode === "create" ? "Create" : "Update"} Map</h2>
-                <div className="dialog-empt-action-main">
-                  <div className="dialog-empt-action-image-main">
-                    <label className="dialog-empt-action-image-group">
+            <div className='dialog-empt-action-container'>
+              <div className='dialog-empt-action-content'>
+                <h2>{dialogMode === 'create' ? 'Create' : 'Update'} Map</h2>
+                <div className='dialog-empt-action-main'>
+                  <div className='dialog-empt-action-image-main'>
+                    <label className='dialog-empt-action-image-group'>
                       <input
-                        type="file"
-                        id="images"
-                        accept="image/*"
+                        type='file'
+                        id='images'
+                        accept='image/*'
                         onChange={(e) =>
                           setCurrentMaps({
                             ...currentMaps,
@@ -375,37 +389,37 @@ const AdminMap = () => {
                               ? window.URL.createObjectURL(currentMaps.image)
                               : `https://localhost:7052/${currentMaps.image}`
                           }
-                          alt="map-img"
+                          alt='map-img'
                         />
                       ) : (
-                        <img src="/assets/images/map.png" alt="map-img" />
+                        <img src='/assets/images/map.png' alt='map-img' />
                       )}
                     </label>
                   </div>
-                  <div className="dialog-empt-action-content-main">
-                    <div className="dialog-empt-action-group">
-                      <label htmlFor="mapName">Map Name:</label>
+                  <div className='dialog-empt-action-content-main'>
+                    <div className='dialog-empt-action-group'>
+                      <label htmlFor='mapName'>Map Name:</label>
                       <input
-                        className="map_name"
-                        type="text"
-                        id="mapName"
-                        value={currentMaps.mapName || ""}
+                        className='map_name'
+                        type='text'
+                        id='mapName'
+                        value={currentMaps.mapName || ''}
                         onChange={(e) =>
                           setCurrentMaps({
                             ...currentMaps,
                             mapName: e.target.value,
                           })
                         }
-                        placeholder="Please enter map name"
+                        placeholder='Please enter map name'
                       />
                     </div>
-                    <div className="dialog-empt-action-group">
-                      <label htmlFor="level">Level:</label>
+                    <div className='dialog-empt-action-group'>
+                      <label htmlFor='level'>Level:</label>
                       <input
-                        className="level"
-                        type="text"
-                        id="level"
-                        value={currentMaps.level || ""}
+                        className='level'
+                        type='number'
+                        id='level'
+                        value={currentMaps.level || ''}
                         min={1}
                         onChange={(e) =>
                           setCurrentMaps({
@@ -413,48 +427,48 @@ const AdminMap = () => {
                             level: e.target.value,
                           })
                         }
-                        placeholder="Please enter number value"
+                        placeholder='Please enter number value'
                       />
                     </div>
-                    <div className="dialog-empt-action-group">
-                      <label htmlFor="levelRequirement">
+                    <div className='dialog-empt-action-group'>
+                      <label htmlFor='levelRequirement'>
                         Level Requirement:
                       </label>
                       <input
-                        className="levelRequirement"
-                        type="text"
-                        id="levelRequirement"
-                        value={currentMaps.levelRequirement || ""}
+                        className='levelRequirement'
+                        type='text'
+                        id='levelRequirement'
+                        value={currentMaps.levelRequirement || ''}
                         onChange={(e) =>
                           setCurrentMaps({
                             ...currentMaps,
                             levelRequirement: e.target.value,
                           })
                         }
-                        placeholder="Please enter the level requirement"
+                        placeholder='Please enter the level requirement'
                       />
                     </div>
-                    <div className="dialog-empt-action-group">
-                      <label htmlFor="mapDescription">Description:</label>
+                    <div className='dialog-empt-action-group'>
+                      <label htmlFor='mapDescription'>Description:</label>
                       <textarea
-                        id="mapDescription"
-                        value={currentMaps.mapDescription || ""}
+                        id='mapDescription'
+                        value={currentMaps.mapDescription || ''}
                         onChange={(e) =>
                           setCurrentMaps({
                             ...currentMaps,
                             mapDescription: e.target.value,
                           })
                         }
-                        placeholder="Please enter the map description"
+                        placeholder='Please enter the map description'
                       />
                     </div>
-                    <div className="dialog-empt-action-handle">
-                      <button onClick={actionMaps} id="actions-empt">
-                        {dialogMode === "create" ? "Create" : "Update"}
+                    <div className='dialog-empt-action-handle'>
+                      <button onClick={actionMaps} id='actions-empt'>
+                        {dialogMode === 'create' ? 'Create' : 'Update'}
                       </button>
                       <button
                         onClick={handleDialogClose}
-                        id="cancel-empt-actions"
+                        id='cancel-empt-actions'
                       >
                         Cancel
                       </button>
@@ -465,71 +479,71 @@ const AdminMap = () => {
             </div>
           )}
           {message && (
-            <div className="dialog-message-container">
-              <div className="dialog-message-content">
+            <div className='dialog-message-container'>
+              <div className='dialog-message-content'>
                 <p>{message}</p>
-                <button onClick={() => setMessage("")}>OK</button>
+                <button onClick={() => setMessage('')}>OK</button>
               </div>
             </div>
           )}
         </div>
       ) : (
         <>
-          <div className="admin-maps-top">
-            <div className="admin-search-bar">
+          <div className='admin-maps-top'>
+            <div className='admin-search-bar'>
               <input
-                type="text"
-                placeholder="Search by name..."
+                type='text'
+                placeholder='Search by name...'
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={handleSearchChange}
                 onKeyDown={handleKey}
               />
-              <button className="admin-search-icons" onClick={handleSearch}>
+              <button className='admin-search-icons' onClick={handleSearch}>
                 <FaSearch />
               </button>
-              <button className="admin-search-reload" onClick={handleReload}>
+              <button className='admin-search-reload' onClick={handleReload}>
                 <FaSyncAlt />
               </button>
             </div>
-            <div className="admin-maps-filter">
+            <div className='admin-maps-filter'>
               <select value={sortType} onChange={handleSortChange}>
-                <option value="none">None</option>
-                <option value="ascending">Level Ascending</option>
-                <option value="descending">Level Descending</option>
+                <option value='none'>None</option>
+                <option value='ascending'>Level Ascending</option>
+                <option value='descending'>Level Descending</option>
               </select>
             </div>
-            <div className="admin-add-maps">
-              <button onClick={() => handleDialogOpen("create")}>
+            <div className='admin-add-maps'>
+              <button onClick={() => handleDialogOpen('create')}>
                 Create&nbsp;
                 <FaPlus />
               </button>
             </div>
           </div>
           {messageSearch ? (
-            <div className="error-message">{messageSearch}</div>
+            <div className='error-message'>{messageSearch}</div>
           ) : (
             <>
               {currentMapPage.length === 0 ? (
-                <div className="error-message">
+                <div className='error-message'>
                   No data was found
                 </div>
               ) : (
                 <div
-                  className="none-display"
-                  id={currentMapPage.length === 0 ? "none" : ""}
+                  className='none-display'
+                  id={currentMapPage.length === 0 ? 'none' : ''}
                 >
-                  {maps.length} {maps.length === 1 ? "map" : "maps"} found
+                  {maps.length} {maps.length === 1 ? 'map' : 'maps'} found
                 </div>
               )}
             </>
           )}
           {currentMapPage.length === 0 ? (
             <>
-              <div className="table-nodata-display"></div>
+              <div className='table-nodata-display'></div>
             </>
           ) : (
-            <div className="admin-maps-table">
-              <table className="table table-bordered">
+            <div className='admin-maps-table'>
+              <table className='table table-bordered'>
                 <thead>
                   <tr>
                     <th>Image</th>
@@ -542,31 +556,31 @@ const AdminMap = () => {
                 <tbody>
                   {currentMapPage.map((maps) => (
                     <tr key={maps.mapID}>
-                      <td className="admin-maps-images">
-                        <div className="image-container">
+                      <td className='admin-maps-images'>
+                        <div className='image-container'>
                           {maps.image && (
                             <img
                               src={`https://localhost:7052/${maps.image}`}
-                              alt="map-img"
+                              alt='map-img'
                             />
                           )}
                         </div>
                       </td>
-                      <td className="admin-map-name">
+                      <td className='admin-map-name'>
                         <span>{maps.mapName}</span>
                       </td>
-                      <td className="admin-maps-level">
+                      <td className='admin-maps-level'>
                         <span>{maps.level}</span>
                       </td>
-                      <td className="admin-map-description">
+                      <td className='admin-map-description'>
                         <span>{maps.mapDescription}</span>
                       </td>
-                      <td className="admin-maps-actions">
-                        <button onClick={() => handleDialogOpen("view", maps)}>
+                      <td className='admin-maps-actions'>
+                        <button onClick={() => handleDialogOpen('view', maps)}>
                           <FaEye />
                         </button>
                         <button
-                          onClick={() => handleDialogOpen("update", maps)}
+                          onClick={() => handleDialogOpen('update', maps)}
                         >
                           <FaEdit />
                         </button>
@@ -581,15 +595,15 @@ const AdminMap = () => {
             </div>
           )}
           {deleteDialogVisible && (
-            <div className="dialog-remove-container">
-              <div className="dialog-remove-content">
+            <div className='dialog-remove-container'>
+              <div className='dialog-remove-content'>
                 <h3>Remove Message Confirm</h3>
                 <p>Are you sure you want to delete this map?</p>
-                <div className="dialog-remove-buttons">
-                  <button onClick={removeMap} id="removed">
+                <div className='dialog-remove-buttons'>
+                  <button onClick={removeMap} id='removed'>
                     <FaCheck />
                   </button>
-                  <button onClick={closeDeleteDialog} id="cancel-removed">
+                  <button onClick={closeDeleteDialog} id='cancel-removed'>
                     <FaTimes />
                   </button>
                 </div>
@@ -597,16 +611,16 @@ const AdminMap = () => {
             </div>
           )}
           {dialogVisible && (
-            <div className="dialog-action-container">
-              <div className="dialog-action-content">
-                <h2>{dialogMode === "create" ? "Create" : "Update"} Map</h2>
-                <div className="dialog-action-main">
-                  <div className="dialog-action-image-main">
-                    <label className="dialog-action-image-group">
+            <div className='dialog-action-container'>
+              <div className='dialog-action-content'>
+                <h2>{dialogMode === 'create' ? 'Create' : 'Update'} Map</h2>
+                <div className='dialog-action-main'>
+                  <div className='dialog-action-image-main'>
+                    <label className='dialog-action-image-group'>
                       <input
-                        type="file"
-                        id="images"
-                        accept="image/*"
+                        type='file'
+                        id='images'
+                        accept='image/*'
                         onChange={(e) =>
                           setCurrentMaps({
                             ...currentMaps,
@@ -623,37 +637,37 @@ const AdminMap = () => {
                               ? window.URL.createObjectURL(currentMaps.image)
                               : `https://localhost:7052/${currentMaps.image}`
                           }
-                          alt="map-img"
+                          alt='map-img'
                         />
                       ) : (
-                        <img src="/assets/images/map.png" alt="map-img" />
+                        <img src='/assets/images/map.png' alt='map-img' />
                       )}
                     </label>
                   </div>
-                  <div className="dialog-action-content-main">
-                    <div className="dialog-action-group">
-                      <label htmlFor="mapName">Map Name:</label>
+                  <div className='dialog-action-content-main'>
+                    <div className='dialog-action-group'>
+                      <label htmlFor='mapName'>Map Name:</label>
                       <input
-                        className="map_name"
-                        type="text"
-                        id="mapName"
-                        value={currentMaps.mapName || ""}
+                        className='map_name'
+                        type='text'
+                        id='mapName'
+                        value={currentMaps.mapName || ''}
                         onChange={(e) =>
                           setCurrentMaps({
                             ...currentMaps,
                             mapName: e.target.value,
                           })
                         }
-                        placeholder="Please enter map name"
+                        placeholder='Please enter map name'
                       />
                     </div>
-                    <div className="dialog-action-group">
-                      <label htmlFor="level">Level:</label>
+                    <div className='dialog-action-group'>
+                      <label htmlFor='level'>Level:</label>
                       <input
-                        className="level"
-                        type="text"
-                        id="level"
-                        value={currentMaps.level || ""}
+                        className='level'
+                        type='number'
+                        id='level'
+                        value={currentMaps.level || ''}
                         min={1}
                         onChange={(e) =>
                           setCurrentMaps({
@@ -661,46 +675,46 @@ const AdminMap = () => {
                             level: e.target.value,
                           })
                         }
-                        placeholder="Please enter number value"
+                        placeholder='Please enter number value'
                       />
                     </div>
-                    <div className="dialog-action-group">
-                      <label htmlFor="levelRequirement">
+                    <div className='dialog-action-group'>
+                      <label htmlFor='levelRequirement'>
                         Level Requirement:
                       </label>
                       <input
-                        className="levelRequirement"
-                        type="text"
-                        id="levelRequirement"
-                        value={currentMaps.levelRequirement || ""}
+                        className='levelRequirement'
+                        type='text'
+                        id='levelRequirement'
+                        value={currentMaps.levelRequirement || ''}
                         onChange={(e) =>
                           setCurrentMaps({
                             ...currentMaps,
                             levelRequirement: e.target.value,
                           })
                         }
-                        placeholder="Please enter the level requirement"
+                        placeholder='Please enter the level requirement'
                       />
                     </div>
-                    <div className="dialog-action-group">
-                      <label htmlFor="mapDescription">Description:</label>
+                    <div className='dialog-action-group'>
+                      <label htmlFor='mapDescription'>Description:</label>
                       <textarea
-                        id="mapDescription"
-                        value={currentMaps.mapDescription || ""}
+                        id='mapDescription'
+                        value={currentMaps.mapDescription || ''}
                         onChange={(e) =>
                           setCurrentMaps({
                             ...currentMaps,
                             mapDescription: e.target.value,
                           })
                         }
-                        placeholder="Please enter the map description"
+                        placeholder='Please enter the map description'
                       />
                     </div>
-                    <div className="dialog-action-handle">
-                      <button onClick={actionMaps} id="actions">
-                        {dialogMode === "create" ? "Create" : "Update"}
+                    <div className='dialog-action-handle'>
+                      <button onClick={actionMaps} id='actions'>
+                        {dialogMode === 'create' ? 'Create' : 'Update'}
                       </button>
-                      <button onClick={handleDialogClose} id="cancel-actions">
+                      <button onClick={handleDialogClose} id='cancel-actions'>
                         Cancel
                       </button>
                     </div>
@@ -710,20 +724,20 @@ const AdminMap = () => {
             </div>
           )}
           {viewDialogVisible && (
-            <div className="dialog-view-container">
-              <div className="dialog-view-main-content">
-                <div className="dialog-view-content">
+            <div className='dialog-view-container'>
+              <div className='dialog-view-main-content'>
+                <div className='dialog-view-content'>
                   <h3>View {currentMaps.mapName}</h3>
-                  <div className="dialog-view-images">
+                  <div className='dialog-view-images'>
                     {currentMaps.image && (
                       <img
                         src={`https://localhost:7052/${currentMaps.image}`}
-                        alt="map-img"
-                        className="image-view-dialog"
+                        alt='map-img'
+                        className='image-view-dialog'
                       />
                     )}
                   </div>
-                  <div className="dialog-view-main">
+                  <div className='dialog-view-main'>
                     <p>
                       Map Name: <span>{currentMaps.mapName}</span>
                     </p>
@@ -731,14 +745,14 @@ const AdminMap = () => {
                       Level: <span> {currentMaps.level}</span>
                     </p>
                     <p>
-                      Level Requirement:{" "}
+                      Level Requirement:{' '}
                       <span> {currentMaps.levelRequirement}</span>
                     </p>
                     <p>
                       Description:<span> {currentMaps.mapDescription}</span>
                     </p>
                   </div>
-                  <div className="dialog-view-button">
+                  <div className='dialog-view-button'>
                     <button onClick={closeViewDialog}>OK</button>
                   </div>
                 </div>
@@ -747,10 +761,10 @@ const AdminMap = () => {
           )}
           {renderPage()}
           {message && (
-            <div className="dialog-message-container">
-              <div className="dialog-message-content">
+            <div className='dialog-message-container'>
+              <div className='dialog-message-content'>
                 <p>{message}</p>
-                <button onClick={() => setMessage("")}>OK</button>
+                <button onClick={() => setMessage('')}>OK</button>
               </div>
             </div>
           )}

@@ -89,8 +89,14 @@ const AdminPlayer = () => {
   const handleReload = () => {
     setSearchTerm('');
     setMessageSearch('');
+    setCurrentPage(1);
     loadPlayers();
   };
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+    setCurrentPage(1);
+  }
 
   const handleSearch = () => {
     const trimmedSearchTerm = searchTerm.trim();
@@ -184,7 +190,7 @@ const AdminPlayer = () => {
                 type='text'
                 placeholder='Search by name or email...'
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={handleSearchChange}
                 onKeyDown={handleKey}
                 onClick={() => setMessageSearch('')}
               />

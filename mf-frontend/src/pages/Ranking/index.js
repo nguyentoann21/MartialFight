@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import * as signalR from "@microsoft/signalr";
-import { FaMedal } from "react-icons/fa";
-import "./rank.scss";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import * as signalR from '@microsoft/signalr';
+import { FaMedal } from 'react-icons/fa';
+import './rank.scss';
 
 const Ranking = () => {
   const [top15ByLevel, setTop15ByLevel] = useState([]);
   const [top15ByScore, setTop15ByScore] = useState([]);
   const [top15ByChallenge, setTop15ByChallenge] = useState([]);
-  const [activeTab, setActiveTab] = useState("levels");
+  const [activeTab, setActiveTab] = useState('levels');
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const [levelResponse, scoreResponse, challengeResponse] =
           await Promise.all([
-            axios.get("https://localhost:7052/api/mf/rank/top-15-level"),
-            axios.get("https://localhost:7052/api/mf/rank/top-15-score"),
-            axios.get("https://localhost:7052/api/mf/rank/top-15-challenge"),
+            axios.get('https://localhost:7052/api/mf/rank/top-15-level'),
+            axios.get('https://localhost:7052/api/mf/rank/top-15-score'),
+            axios.get('https://localhost:7052/api/mf/rank/top-15-challenge'),
           ]);
 
         setTop15ByLevel(levelResponse.data);
@@ -31,14 +31,14 @@ const Ranking = () => {
     fetchData();
 
     const hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl("https://localhost:7052/hubs/rankings", {
+      .withUrl('https://localhost:7052/hubs/rankings', {
         skipNegotiation: true,
         transport: signalR.HttpTransportType.WebSockets,
       })
       .build();
 
     hubConnection.start().then(() => {
-      hubConnection.on("UpdateRankings", () => {
+      hubConnection.on('UpdateRankings', () => {
         fetchData();
       });
     });
@@ -49,47 +49,47 @@ const Ranking = () => {
   };
 
   const getRankData = () => {
-    if (activeTab === "levels") {
+    if (activeTab === 'levels') {
       return top15ByLevel;
-    } else if (activeTab === "rankings") {
+    } else if (activeTab === 'rankings') {
       return top15ByScore;
-    } else if (activeTab === "challenges") {
+    } else if (activeTab === 'challenges') {
       return top15ByChallenge;
     }
     return [];
   };
 
   return (
-    <div className="ranking-container">
-      <div className="ranking-form">
-        <div className="ranking-text">
-          <img src="/assets/images/cups.png" alt="ranking" />
+    <div className='ranking-container'>
+      <div className='ranking-form'>
+        <div className='ranking-text'>
+          <img src='/assets/images/cups.png' alt='ranking' />
           <h3>Leaderboard</h3>
-          <img src="/assets/images/cups.png" alt="ranking" />
+          <img src='/assets/images/cups.png' alt='ranking' />
         </div>
-        <div className="tabs-container">
+        <div className='tabs-container'>
           <button
-            className={`tab ${activeTab === "levels" ? "active" : ""}`}
-            onClick={() => handleTabChange("levels")}
+            className={`tab ${activeTab === 'levels' ? 'active' : ''}`}
+            onClick={() => handleTabChange('levels')}
           >
             Level
           </button>
           <button
-            className={`tab ${activeTab === "rankings" ? "active" : ""}`}
-            onClick={() => handleTabChange("rankings")}
+            className={`tab ${activeTab === 'rankings' ? 'active' : ''}`}
+            onClick={() => handleTabChange('rankings')}
           >
             Score
           </button>
           <button
-            className={`tab ${activeTab === "challenges" ? "active" : ""}`}
-            onClick={() => handleTabChange("challenges")}
+            className={`tab ${activeTab === 'challenges' ? 'active' : ''}`}
+            onClick={() => handleTabChange('challenges')}
           >
             Challenge
           </button>
         </div>
-        <div className="table-container">
+        <div className='table-container'>
           {getRankData().length === 0 ? (
-            <div className="no-rank-list">No ranking was found</div>
+            <div className='no-rank-list'>No ranking was found</div>
           ) : (
             <table>
               <thead>
@@ -98,11 +98,11 @@ const Ranking = () => {
                   <th>Username</th>
                   <th>Name</th>
                   <th>
-                    {activeTab === "levels"
-                      ? "Level"
-                      : activeTab === "rankings"
-                      ? "Score"
-                      : "Challenge"}
+                    {activeTab === 'levels'
+                      ? 'Level'
+                      : activeTab === 'rankings'
+                      ? 'Score'
+                      : 'Challenge'}
                   </th>
                 </tr>
               </thead>
@@ -111,13 +111,13 @@ const Ranking = () => {
                   <tr key={item.id}>
                     <td>
                       {index === 0 ? (
-                        <FaMedal className="gold" />
+                        <FaMedal className='gold' />
                       ) : index === 1 ? (
-                        <FaMedal className="silver" />
+                        <FaMedal className='silver' />
                       ) : index === 2 ? (
-                        <FaMedal className="bronze" />
+                        <FaMedal className='bronze' />
                       ) : (
-                        <span className="normal">{index + 1}</span>
+                        <span className='normal'>{index + 1}</span>
                       )}
                     </td>
                     <td>
@@ -130,11 +130,11 @@ const Ranking = () => {
                       <span>
                         {
                           item[
-                            activeTab === "levels"
-                              ? "level"
-                              : activeTab === "rankings"
-                              ? "score"
-                              : "challenge"
+                            activeTab === 'levels'
+                              ? 'level'
+                              : activeTab === 'rankings'
+                              ? 'score'
+                              : 'challenge'
                           ]
                         }
                       </span>

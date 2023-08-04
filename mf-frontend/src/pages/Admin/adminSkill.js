@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import {
   FaAngleLeft,
   FaAngleRight,
@@ -14,45 +14,45 @@ import {
   FaEye,
   FaCheck,
   FaTimes,
-} from "react-icons/fa";
-import "./adminSkill.scss";
+} from 'react-icons/fa';
+import './adminSkill.scss';
 
 const AdminSkill = () => {
-  const account = JSON.parse(localStorage.getItem("ADMIN_DATA"));
+  const account = JSON.parse(localStorage.getItem('ADMIN_DATA'));
   const history = useNavigate();
 
   useEffect(() => {
     if (!account) {
-      history("/");
+      history('/');
     }
   }, [account, history]);
 
   const SKILL_PER_PAGE = 10;
   const [skills, setSkills] = useState([]);
   const [dialogVisible, setDialogVisible] = useState(false);
-  const [dialogMode, setDialogMode] = useState("create");
+  const [dialogMode, setDialogMode] = useState('create');
   const [currentSkills, setCurrentSkills] = useState({
-    skillName: "",
-    skillDescription: "",
-    skillType: "",
-    healthValue: "",
-    manaValue: "",
-    attackValue: "",
-    defenseValue: "",
-    speedValue: "",
-    intellectValue: "",
-    physicalValue: "",
+    skillName: '',
+    skillDescription: '',
+    skillType: '',
+    healthValue: '',
+    manaValue: '',
+    attackValue: '',
+    defenseValue: '',
+    speedValue: '',
+    intellectValue: '',
+    physicalValue: '',
     image: null,
   });
 
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState('');
   const [deleteDialogVisible, setDeleteDialogVisible] = useState(false);
   const [skillRemoved, setSkillRemoved] = useState(null);
   const [viewDialogVisible, setViewDialogVisible] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [messageSearch, setMessageSearch] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
+  const [messageSearch, setMessageSearch] = useState('');
   const [originalSkill, setOriginalSkill] = useState([]);
-  const [sortType, setSortType] = useState("normal");
+  const [sortType, setSortType] = useState('normal');
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredSkill, setFilteredSkill] = useState([]);
   const startIndex = (currentPage - 1) * SKILL_PER_PAGE;
@@ -84,7 +84,7 @@ const AdminSkill = () => {
 
   const loadSkills = async () => {
     try {
-      const response = await axios.get("https://localhost:7052/api/mf/skills");
+      const response = await axios.get('https://localhost:7052/api/mf/skills');
 
       setSkills(
         response.data.map((skill) => {
@@ -120,15 +120,14 @@ const AdminSkill = () => {
   }, []);
 
   const actionSkills = async () => {
-
     const formData = new FormData();
 
     const originalK = originalSkill.find(
       (skill) => skill.skillID === currentSkills.skillID
     );
 
-    if (dialogMode === "update") {
-      formData.append("skillID", currentSkills.skillID);
+    if (dialogMode === 'update') {
+      formData.append('skillID', currentSkills.skillID);
 
       if (
         currentSkills.skillName !== originalK.skillName ||
@@ -143,67 +142,67 @@ const AdminSkill = () => {
         currentSkills.physicalValue !== originalK.physicalValue ||
         (currentSkills.image && currentSkills.image !== originalK.image)
       ) {
-        formData.append("skillName", currentSkills.skillName);
-        formData.append("skillDescription", currentSkills.skillDescription);
-        formData.append("skillType", currentSkills.skillType);
-        formData.append("healthValue", currentSkills.healthValue);
-        formData.append("manaValue", currentSkills.manaValue);
-        formData.append("attackValue", currentSkills.attackValue);
-        formData.append("defenseValue", currentSkills.defenseValue);
-        formData.append("speedValue", currentSkills.speedValue);
-        formData.append("intellectValue", currentSkills.intellectValue);
-        formData.append("physicalValue", currentSkills.physicalValue);
-        formData.append("image", currentSkills.image);
+        formData.append('skillName', currentSkills.skillName);
+        formData.append('skillDescription', currentSkills.skillDescription);
+        formData.append('skillType', currentSkills.skillType);
+        formData.append('healthValue', currentSkills.healthValue);
+        formData.append('manaValue', currentSkills.manaValue);
+        formData.append('attackValue', currentSkills.attackValue);
+        formData.append('defenseValue', currentSkills.defenseValue);
+        formData.append('speedValue', currentSkills.speedValue);
+        formData.append('intellectValue', currentSkills.intellectValue);
+        formData.append('physicalValue', currentSkills.physicalValue);
+        formData.append('image', currentSkills.image);
       } else {
-        setMessage("Nothing to update");
+        setMessage('Nothing to update');
         return;
       }
     } else {
-      formData.append("skillName", currentSkills.skillName);
-      formData.append("skillDescription", currentSkills.skillDescription);
-      formData.append("skillType", currentSkills.skillType);
-      formData.append("healthValue", currentSkills.healthValue);
-      formData.append("manaValue", currentSkills.manaValue);
-      formData.append("attackValue", currentSkills.attackValue);
-      formData.append("defenseValue", currentSkills.defenseValue);
-      formData.append("speedValue", currentSkills.speedValue);
-      formData.append("intellectValue", currentSkills.intellectValue);
-      formData.append("physicalValue", currentSkills.physicalValue);
-      formData.append("image", currentSkills.image);
+      formData.append('skillName', currentSkills.skillName);
+      formData.append('skillDescription', currentSkills.skillDescription);
+      formData.append('skillType', currentSkills.skillType);
+      formData.append('healthValue', currentSkills.healthValue);
+      formData.append('manaValue', currentSkills.manaValue);
+      formData.append('attackValue', currentSkills.attackValue);
+      formData.append('defenseValue', currentSkills.defenseValue);
+      formData.append('speedValue', currentSkills.speedValue);
+      formData.append('intellectValue', currentSkills.intellectValue);
+      formData.append('physicalValue', currentSkills.physicalValue);
+      formData.append('image', currentSkills.image);
     }
 
     const url =
-      dialogMode === "create"
-        ? "https://localhost:7052/api/mf/skills"
+      dialogMode === 'create'
+        ? 'https://localhost:7052/api/mf/skills'
         : `https://localhost:7052/api/mf/skills/${currentSkills.skillID}`;
 
     try {
       let response;
-      if (dialogMode === "create") {
+      if (dialogMode === 'create') {
         response = await axios.post(url, formData, {
           headers: {
-            "Content-Type": "multipart/form-data",
+            'Content-Type': 'multipart/form-data',
           },
         });
-        setMessage("Skill created successfully");
-      } else if (dialogMode === "update") {
+        setMessage('Skill created successfully');
+      } else if (dialogMode === 'update') {
         response = await axios.put(url, formData, {
           headers: {
-            "Content-Type": "multipart/form-data",
+            'Content-Type': 'multipart/form-data',
           },
         });
-        setMessage("Skill updated successfully");
+        setMessage('Skill updated successfully');
       }
 
       if (response.status === 200 || response.status === 202) {
         setDialogVisible(false);
         loadSkills();
       } else {
-        setMessage("Failed to save the skill");
+        setMessage('Failed to save the skill');
       }
     } catch (error) {
       console.error(error);
-      setMessage("Failed to save the skill");
+      setMessage('Failed to save the skill');
     }
   };
 
@@ -213,25 +212,28 @@ const AdminSkill = () => {
         await axios.delete(
           `https://localhost:7052/api/mf/skills/${skillRemoved.skillID}`
         );
-        setMessage("Skill deleted successfully");
+        setMessage('Skill deleted successfully');
         loadSkills();
+        if (currentSkillPage.length === 1 && currentPage > 1) {
+          setCurrentPage(currentPage - 1);
+        }
       } catch (error) {
         console.error(error);
-        setMessage("Failed to delete the skill");
+        setMessage('Failed to delete the skill');
       }
       closeDeleteDialog();
     }
   };
 
   const handleDialogOpen = (mode, skill) => {
-    if (mode === "view") {
+    if (mode === 'view') {
       setCurrentSkills(skill);
       setViewDialogVisible(true);
     } else {
       setDialogMode(mode);
-      if (mode === "create") {
-        setCurrentSkills({ ...skill, image: null });
-      } else if (mode === "update") {
+      if (mode === 'create') {
+        setCurrentSkills({ ...skill, image: null, skillType: 'equipment' });
+      } else if (mode === 'update') {
         setCurrentSkills({ ...currentSkills, ...skill });
       }
       setDialogVisible(true);
@@ -247,28 +249,36 @@ const AdminSkill = () => {
     setViewDialogVisible(false);
   };
 
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+    setCurrentPage(1);
+    setSortType('all');
+  };
+
   const handleSearch = () => {
-    if (searchTerm.trim() === "") {
-      setMessageSearch("Please enter a valid data for search");
+    if (searchTerm.trim() === '') {
+      setMessageSearch('Please enter a valid data for search');
       setSkills(originalSkill);
       return;
     }
-    setMessageSearch("");
+    setMessageSearch('');
     const filteredSkill = originalSkill.filter((skill) =>
       skill.skillName.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setSkills(filteredSkill);
-    setSortType("all");
+    setSortType('all');
   };
 
   const handleSortChange = (e) => {
     setSortType(e.target.value);
     sortSkill(e.target.value);
-    setSearchTerm("");
+    setSearchTerm('');
+    setMessageSearch('');
+    setCurrentPage(1);
   };
 
   const sortSkill = (sortType) => {
-    if (sortType === "all") {
+    if (sortType === 'all') {
       loadSkills();
     } else {
       const sortedSkills = originalSkill.filter((skill) => {
@@ -279,14 +289,16 @@ const AdminSkill = () => {
   };
 
   const handleKey = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       handleSearch();
     }
   };
 
   const handleReload = () => {
-    setSearchTerm("");
-    setMessageSearch("");
+    setSearchTerm('');
+    setMessageSearch('');
+    setSortType('all');
+    setCurrentPage(1);
     loadSkills();
   };
 
@@ -300,12 +312,12 @@ const AdminSkill = () => {
     }
 
     return (
-      <div className="pagination-buttons">
+      <div className='pagination-buttons'>
         {filteredSkill.length === 0 ? (
           <div></div>
         ) : (
-          <div className="pagination">
-            <div className="footer-page">
+          <div className='pagination'>
+            <div className='footer-page'>
               <button
                 onClick={() => handlePageChange(1)}
                 disabled={currentPage === 1}
@@ -318,7 +330,7 @@ const AdminSkill = () => {
               >
                 <FaAngleLeft />
               </button>
-              <div className="page-number">Page {currentPage}</div>
+              <div className='page-number'>Page {currentPage}</div>
               <button
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={
@@ -349,26 +361,26 @@ const AdminSkill = () => {
   };
 
   return (
-    <div className="admin-skill-container">
+    <div className='admin-skill-container'>
       <h1>Managing Skill</h1>
       {originalSkill.length === 0 ? (
-        <div className="admin-skill-nodata">
-          <p className="admin-skill-empty">The skill list is empty</p>
-          <div className="admin-add-skill-empty">
-            <button onClick={() => handleDialogOpen("create")}>
+        <div className='admin-skill-nodata'>
+          <p className='admin-skill-empty'>The skill list is empty</p>
+          <div className='admin-add-skill-empty'>
+            <button onClick={() => handleDialogOpen('create')}>
               <FaPlus />
             </button>
           </div>
           {dialogVisible && (
-            <div className="dialog-empt-action-container">
-              <div className="dialog-empt-action-content">
-                <div className="dialog-empt-action-main">
-                  <div className="dialog-empt-action-image-main">
-                    <label className="dialog-empt-action-image-group">
+            <div className='dialog-empt-action-container'>
+              <div className='dialog-empt-action-content'>
+                <div className='dialog-empt-action-main'>
+                  <div className='dialog-empt-action-image-main'>
+                    <label className='dialog-empt-action-image-group'>
                       <input
-                        type="file"
-                        id="image"
-                        accept="image/*"
+                        type='file'
+                        id='image'
+                        accept='image/*'
                         onChange={(e) =>
                           setCurrentSkills({
                             ...currentSkills,
@@ -385,58 +397,58 @@ const AdminSkill = () => {
                               ? window.URL.createObjectURL(currentSkills.image)
                               : `https://localhost:7052/${currentSkills.image}`
                           }
-                          alt="skill-img"
+                          alt='skill-img'
                         />
                       ) : (
-                        <img src="/assets/images/map.png" alt="skill-img" />
+                        <img src='/assets/images/map.png' alt='skill-img' />
                       )}
                     </label>
                   </div>
-                  <div className="dialog-empt-action-content-main">
+                  <div className='dialog-empt-action-content-main'>
                     <h2>
-                      {dialogMode === "create" ? "Create a new" : "Update"}{" "}
+                      {dialogMode === 'create' ? 'Create a new' : 'Update'}{' '}
                       Skill
                     </h2>
-                    <div className="main-content-input-empt">
-                      <div className="left-side-empt">
-                        <div className="dialog-action-group-empt">
-                          <label htmlFor="skillName">Name:</label>
+                    <div className='main-content-input-empt'>
+                      <div className='left-side-empt'>
+                        <div className='dialog-action-group-empt'>
+                          <label htmlFor='skillName'>Name:</label>
                           <input
-                            className="skill_name"
-                            type="text"
-                            id="skillName"
-                            value={currentSkills.skillName || ""}
+                            className='skill_name'
+                            type='text'
+                            id='skillName'
+                            value={currentSkills.skillName || ''}
                             onChange={(e) =>
                               setCurrentSkills({
                                 ...currentSkills,
                                 skillName: e.target.value,
                               })
                             }
-                            placeholder="Please enter skill name"
+                            placeholder='Please enter skill name'
                           />
                         </div>
-                        <div className="dialog-action-group-empt">
-                          <label htmlFor="skillDescription">Description:</label>
+                        <div className='dialog-action-group-empt'>
+                          <label htmlFor='skillDescription'>Description:</label>
                           <input
-                            className="skillDescription"
-                            type="text"
-                            id="skillDescription"
-                            value={currentSkills.skillDescription || ""}
+                            className='skillDescription'
+                            type='text'
+                            id='skillDescription'
+                            value={currentSkills.skillDescription || ''}
                             onChange={(e) =>
                               setCurrentSkills({
                                 ...currentSkills,
                                 skillDescription: e.target.value,
                               })
                             }
-                            placeholder="Please enter skill description"
+                            placeholder='Please enter skill description'
                           />
                         </div>
-                        <div className="dialog-action-group-empt">
-                          <label htmlFor="skillType">Type:</label>
+                        <div className='dialog-action-group-empt'>
+                          <label htmlFor='skillType'>Type:</label>
                           <select
-                            className="skillType"
-                            id="skillType"
-                            value={currentSkills.skillType || ""}
+                            className='skillType'
+                            id='skillType'
+                            value={currentSkills.skillType || ''}
                             onChange={(e) =>
                               setCurrentSkills({
                                 ...currentSkills,
@@ -444,19 +456,19 @@ const AdminSkill = () => {
                               })
                             }
                           >
-                            <option value="equipment">Equipment</option>
-                            <option value="health">Health</option>
-                            <option value="consumable">Consumable</option>
-                            <option value="chest">Chest</option>
-                            <option value="others">Other</option>
+                            <option value='equipment'>Equipment</option>
+                            <option value='health'>Health</option>
+                            <option value='consumable'>Consumable</option>
+                            <option value='chest'>Chest</option>
+                            <option value='others'>Other</option>
                           </select>
                         </div>
-                        <div className="dialog-action-group-empt">
-                          <label htmlFor="healthValue">Health:</label>
+                        <div className='dialog-action-group-empt'>
+                          <label htmlFor='healthValue'>Health:</label>
                           <input
-                            type="number"
-                            id="healthValue"
-                            value={currentSkills.healthValue || ""}
+                            type='number'
+                            id='healthValue'
+                            value={currentSkills.healthValue || ''}
                             min={1}
                             onChange={(e) =>
                               setCurrentSkills({
@@ -464,15 +476,15 @@ const AdminSkill = () => {
                                 healthValue: e.target.value,
                               })
                             }
-                            placeholder="Please enter number value"
+                            placeholder='Please enter number value'
                           />
                         </div>
-                        <div className="dialog-action-group-empt">
-                          <label htmlFor="manaValue">Mana:</label>
+                        <div className='dialog-action-group-empt'>
+                          <label htmlFor='manaValue'>Mana:</label>
                           <input
-                            type="number"
-                            id="manaValue"
-                            value={currentSkills.manaValue || ""}
+                            type='number'
+                            id='manaValue'
+                            value={currentSkills.manaValue || ''}
                             min={1}
                             onChange={(e) =>
                               setCurrentSkills({
@@ -480,17 +492,17 @@ const AdminSkill = () => {
                                 manaValue: e.target.value,
                               })
                             }
-                            placeholder="Please enter number value"
+                            placeholder='Please enter number value'
                           />
                         </div>
                       </div>
-                      <div className="right-side-empt">
-                        <div className="dialog-action-group-empt">
-                          <label htmlFor="attackValue">Attack:</label>
+                      <div className='right-side-empt'>
+                        <div className='dialog-action-group-empt'>
+                          <label htmlFor='attackValue'>Attack:</label>
                           <input
-                            type="number"
-                            id="attackValue"
-                            value={currentSkills.attackValue || ""}
+                            type='number'
+                            id='attackValue'
+                            value={currentSkills.attackValue || ''}
                             min={1}
                             onChange={(e) =>
                               setCurrentSkills({
@@ -498,15 +510,15 @@ const AdminSkill = () => {
                                 attackValue: e.target.value,
                               })
                             }
-                            placeholder="Please enter number value"
+                            placeholder='Please enter number value'
                           />
                         </div>
-                        <div className="dialog-action-group-empt">
-                          <label htmlFor="defenseValue">Defense:</label>
+                        <div className='dialog-action-group-empt'>
+                          <label htmlFor='defenseValue'>Defense:</label>
                           <input
-                            type="number"
-                            id="defenseValue"
-                            value={currentSkills.defenseValue || ""}
+                            type='number'
+                            id='defenseValue'
+                            value={currentSkills.defenseValue || ''}
                             min={1}
                             onChange={(e) =>
                               setCurrentSkills({
@@ -514,15 +526,15 @@ const AdminSkill = () => {
                                 defenseValue: e.target.value,
                               })
                             }
-                            placeholder="Please enter number value"
+                            placeholder='Please enter number value'
                           />
                         </div>
-                        <div className="dialog-action-group-empt">
-                          <label htmlFor="speedValue">Speed:</label>
+                        <div className='dialog-action-group-empt'>
+                          <label htmlFor='speedValue'>Speed:</label>
                           <input
-                            type="number"
-                            id="speedValue"
-                            value={currentSkills.speedValue || ""}
+                            type='number'
+                            id='speedValue'
+                            value={currentSkills.speedValue || ''}
                             min={1}
                             onChange={(e) =>
                               setCurrentSkills({
@@ -530,15 +542,15 @@ const AdminSkill = () => {
                                 speedValue: e.target.value,
                               })
                             }
-                            placeholder="Please enter number value"
+                            placeholder='Please enter number value'
                           />
                         </div>
-                        <div className="dialog-action-group-empt">
-                          <label htmlFor="intellectValue">Intellect:</label>
+                        <div className='dialog-action-group-empt'>
+                          <label htmlFor='intellectValue'>Intellect:</label>
                           <input
-                            type="number"
-                            id="intellectValue"
-                            value={currentSkills.intellectValue || ""}
+                            type='number'
+                            id='intellectValue'
+                            value={currentSkills.intellectValue || ''}
                             min={1}
                             onChange={(e) =>
                               setCurrentSkills({
@@ -546,15 +558,15 @@ const AdminSkill = () => {
                                 intellectValue: e.target.value,
                               })
                             }
-                            placeholder="Please enter number value"
+                            placeholder='Please enter number value'
                           />
                         </div>
-                        <div className="dialog-action-group-empt">
-                          <label htmlFor="physicalValue">Physical:</label>
+                        <div className='dialog-action-group-empt'>
+                          <label htmlFor='physicalValue'>Physical:</label>
                           <input
-                            type="number"
-                            id="physicalValue"
-                            value={currentSkills.physicalValue || ""}
+                            type='number'
+                            id='physicalValue'
+                            value={currentSkills.physicalValue || ''}
                             min={1}
                             onChange={(e) =>
                               setCurrentSkills({
@@ -562,18 +574,18 @@ const AdminSkill = () => {
                                 physicalValue: e.target.value,
                               })
                             }
-                            placeholder="Please enter number value"
+                            placeholder='Please enter number value'
                           />
                         </div>
                       </div>
                     </div>
-                    <div className="dialog-action-handle-empt">
-                      <button onClick={actionSkills} id="actions-empt">
-                        {dialogMode === "create" ? "Create" : "Update"}
+                    <div className='dialog-action-handle-empt'>
+                      <button onClick={actionSkills} id='actions-empt'>
+                        {dialogMode === 'create' ? 'Create' : 'Update'}
                       </button>
                       <button
                         onClick={handleDialogClose}
-                        id="cancel-actions-empt"
+                        id='cancel-actions-empt'
                       >
                         Cancel
                       </button>
@@ -584,63 +596,63 @@ const AdminSkill = () => {
             </div>
           )}
           {message && (
-            <div className="dialog-message-container">
-              <div className="dialog-message-content">
+            <div className='dialog-message-container'>
+              <div className='dialog-message-content'>
                 <p>{message}</p>
-                <button onClick={() => setMessage("")}>OK</button>
+                <button onClick={() => setMessage('')}>OK</button>
               </div>
             </div>
           )}
         </div>
       ) : (
         <>
-          <div className="admin-skills-top">
-            <div className="admin-search-bar">
+          <div className='admin-skills-top'>
+            <div className='admin-search-bar'>
               <input
-                type="text"
-                placeholder="Search by name..."
+                type='text'
+                placeholder='Search by name...'
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={handleSearchChange}
                 onKeyDown={handleKey}
               />
-              <button className="admin-search-icons" onClick={handleSearch}>
+              <button className='admin-search-icons' onClick={handleSearch}>
                 <FaSearch />
               </button>
-              <button className="admin-search-reload" onClick={handleReload}>
+              <button className='admin-search-reload' onClick={handleReload}>
                 <FaSyncAlt />
               </button>
             </div>
-            <div className="admin-skills-filter">
+            <div className='admin-skills-filter'>
               <select value={sortType} onChange={handleSortChange}>
-                <option value="all">All</option>
-                <option value="equipment">Equipment</option>
-                <option value="health">Health</option>
-                <option value="consumable">Consumable</option>
-                <option value="chest">Chest</option>
-                <option value="others">Other</option>
+                <option value='all'>All</option>
+                <option value='equipment'>Equipment</option>
+                <option value='health'>Health</option>
+                <option value='consumable'>Consumable</option>
+                <option value='chest'>Chest</option>
+                <option value='others'>Other</option>
               </select>
             </div>
-            <div className="admin-add-skills">
-              <button onClick={() => handleDialogOpen("create")}>
+            <div className='admin-add-skills'>
+              <button onClick={() => handleDialogOpen('create')}>
                 Create&nbsp;
                 <FaPlus />
               </button>
             </div>
           </div>
           {messageSearch ? (
-            <div className="error-message">{messageSearch}</div>
+            <div className='error-message'>{messageSearch}</div>
           ) : (
             <>
               {currentSkillPage.length === 0 ? (
-                <div className="error-message">
+                <div className='error-message'>
                   No data was found {currentPage.length}
                 </div>
               ) : (
                 <div
-                  className="none-display"
-                  id={currentSkillPage.length === 0 ? "none" : ""}
+                  className='none-display'
+                  id={currentSkillPage.length === 0 ? 'none' : ''}
                 >
-                  {skills.length} {skills.length === 1 ? "skill" : "skills"}{" "}
+                  {skills.length} {skills.length === 1 ? 'skill' : 'skills'}{' '}
                   found
                 </div>
               )}
@@ -649,11 +661,11 @@ const AdminSkill = () => {
           {currentSkillPage.length === 0 ? (
             <>
               console.assert({currentSkillPage.length})
-              <div className="table-nodata-display"></div>
+              <div className='table-nodata-display'></div>
             </>
           ) : (
-            <div className="admin-skills-table">
-              <table className="table table-bordered">
+            <div className='admin-skills-table'>
+              <table className='table table-bordered'>
                 <thead>
                   <tr>
                     <th>Image</th>
@@ -666,33 +678,33 @@ const AdminSkill = () => {
                 <tbody>
                   {currentSkillPage.map((skills) => (
                     <tr key={skills.skillID}>
-                      <td className="admin-skills-images">
-                        <div className="image-container">
+                      <td className='admin-skills-images'>
+                        <div className='image-container'>
                           {skills.image && (
                             <img
                               src={`https://localhost:7052/${skills.image}`}
-                              alt="skill-img"
+                              alt='skill-img'
                             />
                           )}
                         </div>
                       </td>
-                      <td className="admin-skills-name">
+                      <td className='admin-skills-name'>
                         <span>{skills.skillName}</span>
                       </td>
-                      <td className="admin-skills-description">
+                      <td className='admin-skills-description'>
                         <span>{skills.skillDescription}</span>
                       </td>
-                      <td className="admin-skills-type">
+                      <td className='admin-skills-type'>
                         <span>{skills.skillType}</span>
                       </td>
-                      <td className="admin-skills-actions">
+                      <td className='admin-skills-actions'>
                         <button
-                          onClick={() => handleDialogOpen("view", skills)}
+                          onClick={() => handleDialogOpen('view', skills)}
                         >
                           <FaEye />
                         </button>
                         <button
-                          onClick={() => handleDialogOpen("update", skills)}
+                          onClick={() => handleDialogOpen('update', skills)}
                         >
                           <FaEdit />
                         </button>
@@ -707,15 +719,15 @@ const AdminSkill = () => {
             </div>
           )}
           {deleteDialogVisible && (
-            <div className="dialog-remove-container">
-              <div className="dialog-remove-content">
+            <div className='dialog-remove-container'>
+              <div className='dialog-remove-content'>
                 <h3>Remove Message Confirm</h3>
                 <p>Are you sure you want to delete this skill?</p>
-                <div className="dialog-remove-buttons">
-                  <button onClick={removeSkill} id="removed">
+                <div className='dialog-remove-buttons'>
+                  <button onClick={removeSkill} id='removed'>
                     <FaCheck />
                   </button>
-                  <button onClick={closeDeleteDialog} id="cancel-removed">
+                  <button onClick={closeDeleteDialog} id='cancel-removed'>
                     <FaTimes />
                   </button>
                 </div>
@@ -723,15 +735,15 @@ const AdminSkill = () => {
             </div>
           )}
           {dialogVisible && (
-            <div className="dialog-action-container">
-              <div className="dialog-action-content">
-                <div className="dialog-action-main">
-                  <div className="dialog-action-image-main">
-                    <label className="dialog-action-image-group">
+            <div className='dialog-action-container'>
+              <div className='dialog-action-content'>
+                <div className='dialog-action-main'>
+                  <div className='dialog-action-image-main'>
+                    <label className='dialog-action-image-group'>
                       <input
-                        type="file"
-                        id="image"
-                        accept="image/*"
+                        type='file'
+                        id='image'
+                        accept='image/*'
                         onChange={(e) =>
                           setCurrentSkills({
                             ...currentSkills,
@@ -748,58 +760,58 @@ const AdminSkill = () => {
                               ? window.URL.createObjectURL(currentSkills.image)
                               : `https://localhost:7052/${currentSkills.image}`
                           }
-                          alt="skill-img"
+                          alt='skill-img'
                         />
                       ) : (
-                        <img src="/assets/images/map.png" alt="skill-img" />
+                        <img src='/assets/images/map.png' alt='skill-img' />
                       )}
                     </label>
                   </div>
-                  <div className="dialog-action-content-main">
+                  <div className='dialog-action-content-main'>
                     <h2>
-                      {dialogMode === "create" ? "Create a new" : "Update"}{" "}
+                      {dialogMode === 'create' ? 'Create a new' : 'Update'}{' '}
                       Skill
                     </h2>
-                    <div className="main-content-input">
-                      <div className="left-side">
-                        <div className="dialog-action-group">
-                          <label htmlFor="skillName">Name:</label>
+                    <div className='main-content-input'>
+                      <div className='left-side'>
+                        <div className='dialog-action-group'>
+                          <label htmlFor='skillName'>Name:</label>
                           <input
-                            className="skill_name"
-                            type="text"
-                            id="skillName"
-                            value={currentSkills.skillName || ""}
+                            className='skill_name'
+                            type='text'
+                            id='skillName'
+                            value={currentSkills.skillName || ''}
                             onChange={(e) =>
                               setCurrentSkills({
                                 ...currentSkills,
                                 skillName: e.target.value,
                               })
                             }
-                            placeholder="Please enter skill name"
+                            placeholder='Please enter skill name'
                           />
                         </div>
-                        <div className="dialog-action-group">
-                          <label htmlFor="skillDescription">Description:</label>
+                        <div className='dialog-action-group'>
+                          <label htmlFor='skillDescription'>Description:</label>
                           <input
-                            className="skillDescription"
-                            type="text"
-                            id="skillDescription"
-                            value={currentSkills.skillDescription || ""}
+                            className='skillDescription'
+                            type='text'
+                            id='skillDescription'
+                            value={currentSkills.skillDescription || ''}
                             onChange={(e) =>
                               setCurrentSkills({
                                 ...currentSkills,
                                 skillDescription: e.target.value,
                               })
                             }
-                            placeholder="Please enter skill description"
+                            placeholder='Please enter skill description'
                           />
                         </div>
-                        <div className="dialog-action-group">
-                          <label htmlFor="skillType">Type:</label>
+                        <div className='dialog-action-group'>
+                          <label htmlFor='skillType'>Type:</label>
                           <select
-                            className="skillType"
-                            id="skillType"
-                            value={currentSkills.skillType || ""}
+                            className='skillType'
+                            id='skillType'
+                            value={currentSkills.skillType || ''}
                             onChange={(e) =>
                               setCurrentSkills({
                                 ...currentSkills,
@@ -807,19 +819,19 @@ const AdminSkill = () => {
                               })
                             }
                           >
-                            <option value="equipment">Equipment</option>
-                            <option value="health">Health</option>
-                            <option value="consumable">Consumable</option>
-                            <option value="chest">Chest</option>
-                            <option value="others">Other</option>
+                            <option value='equipment'>Equipment</option>
+                            <option value='health'>Health</option>
+                            <option value='consumable'>Consumable</option>
+                            <option value='chest'>Chest</option>
+                            <option value='others'>Other</option>
                           </select>
                         </div>
-                        <div className="dialog-action-group">
-                          <label htmlFor="healthValue">Health:</label>
+                        <div className='dialog-action-group'>
+                          <label htmlFor='healthValue'>Health:</label>
                           <input
-                            type="number"
-                            id="healthValue"
-                            value={currentSkills.healthValue || ""}
+                            type='number'
+                            id='healthValue'
+                            value={currentSkills.healthValue || ''}
                             min={1}
                             onChange={(e) =>
                               setCurrentSkills({
@@ -827,15 +839,15 @@ const AdminSkill = () => {
                                 healthValue: e.target.value,
                               })
                             }
-                            placeholder="Please enter number value"
+                            placeholder='Please enter number value'
                           />
                         </div>
-                        <div className="dialog-action-group">
-                          <label htmlFor="manaValue">Mana:</label>
+                        <div className='dialog-action-group'>
+                          <label htmlFor='manaValue'>Mana:</label>
                           <input
-                            type="number"
-                            id="manaValue"
-                            value={currentSkills.manaValue || ""}
+                            type='number'
+                            id='manaValue'
+                            value={currentSkills.manaValue || ''}
                             min={1}
                             onChange={(e) =>
                               setCurrentSkills({
@@ -843,17 +855,17 @@ const AdminSkill = () => {
                                 manaValue: e.target.value,
                               })
                             }
-                            placeholder="Please enter number value"
+                            placeholder='Please enter number value'
                           />
                         </div>
                       </div>
-                      <div className="right-side">
-                        <div className="dialog-action-group">
-                          <label htmlFor="attackValue">Attack:</label>
+                      <div className='right-side'>
+                        <div className='dialog-action-group'>
+                          <label htmlFor='attackValue'>Attack:</label>
                           <input
-                            type="number"
-                            id="attackValue"
-                            value={currentSkills.attackValue || ""}
+                            type='number'
+                            id='attackValue'
+                            value={currentSkills.attackValue || ''}
                             min={1}
                             onChange={(e) =>
                               setCurrentSkills({
@@ -861,15 +873,15 @@ const AdminSkill = () => {
                                 attackValue: e.target.value,
                               })
                             }
-                            placeholder="Please enter number value"
+                            placeholder='Please enter number value'
                           />
                         </div>
-                        <div className="dialog-action-group">
-                          <label htmlFor="defenseValue">Defense:</label>
+                        <div className='dialog-action-group'>
+                          <label htmlFor='defenseValue'>Defense:</label>
                           <input
-                            type="number"
-                            id="defenseValue"
-                            value={currentSkills.defenseValue || ""}
+                            type='number'
+                            id='defenseValue'
+                            value={currentSkills.defenseValue || ''}
                             min={1}
                             onChange={(e) =>
                               setCurrentSkills({
@@ -877,15 +889,15 @@ const AdminSkill = () => {
                                 defenseValue: e.target.value,
                               })
                             }
-                            placeholder="Please enter number value"
+                            placeholder='Please enter number value'
                           />
                         </div>
-                        <div className="dialog-action-group">
-                          <label htmlFor="speedValue">Speed:</label>
+                        <div className='dialog-action-group'>
+                          <label htmlFor='speedValue'>Speed:</label>
                           <input
-                            type="number"
-                            id="speedValue"
-                            value={currentSkills.speedValue || ""}
+                            type='number'
+                            id='speedValue'
+                            value={currentSkills.speedValue || ''}
                             min={1}
                             onChange={(e) =>
                               setCurrentSkills({
@@ -893,15 +905,15 @@ const AdminSkill = () => {
                                 speedValue: e.target.value,
                               })
                             }
-                            placeholder="Please enter number value"
+                            placeholder='Please enter number value'
                           />
                         </div>
-                        <div className="dialog-action-group">
-                          <label htmlFor="intellectValue">Intellect:</label>
+                        <div className='dialog-action-group'>
+                          <label htmlFor='intellectValue'>Intellect:</label>
                           <input
-                            type="number"
-                            id="intellectValue"
-                            value={currentSkills.intellectValue || ""}
+                            type='number'
+                            id='intellectValue'
+                            value={currentSkills.intellectValue || ''}
                             min={1}
                             onChange={(e) =>
                               setCurrentSkills({
@@ -909,15 +921,15 @@ const AdminSkill = () => {
                                 intellectValue: e.target.value,
                               })
                             }
-                            placeholder="Please enter number value"
+                            placeholder='Please enter number value'
                           />
                         </div>
-                        <div className="dialog-action-group">
-                          <label htmlFor="physicalValue">Physical:</label>
+                        <div className='dialog-action-group'>
+                          <label htmlFor='physicalValue'>Physical:</label>
                           <input
-                            type="number"
-                            id="physicalValue"
-                            value={currentSkills.physicalValue || ""}
+                            type='number'
+                            id='physicalValue'
+                            value={currentSkills.physicalValue || ''}
                             min={1}
                             onChange={(e) =>
                               setCurrentSkills({
@@ -925,16 +937,16 @@ const AdminSkill = () => {
                                 physicalValue: e.target.value,
                               })
                             }
-                            placeholder="Please enter number value"
+                            placeholder='Please enter number value'
                           />
                         </div>
                       </div>
                     </div>
-                    <div className="dialog-action-handle">
-                      <button onClick={actionSkills} id="actions">
-                        {dialogMode === "create" ? "Create" : "Update"}
+                    <div className='dialog-action-handle'>
+                      <button onClick={actionSkills} id='actions'>
+                        {dialogMode === 'create' ? 'Create' : 'Update'}
                       </button>
-                      <button onClick={handleDialogClose} id="cancel-actions">
+                      <button onClick={handleDialogClose} id='cancel-actions'>
                         Cancel
                       </button>
                     </div>
@@ -944,25 +956,25 @@ const AdminSkill = () => {
             </div>
           )}
           {viewDialogVisible && (
-            <div className="dialog-view-container">
-              <div className="dialog-view-main-content">
-                <div className="dialog-view-content">
+            <div className='dialog-view-container'>
+              <div className='dialog-view-main-content'>
+                <div className='dialog-view-content'>
                   <h3>View {currentSkills.skillName}</h3>
-                  <div className="dialog-view-images">
+                  <div className='dialog-view-images'>
                     {currentSkills.image && (
                       <img
                         src={`https://localhost:7052/${currentSkills.image}`}
-                        alt="skill-img"
-                        className="image-view-dialog"
+                        alt='skill-img'
+                        className='image-view-dialog'
                       />
                     )}
                   </div>
-                  <div className="dialog-view-main">
+                  <div className='dialog-view-main'>
                     <p>
                       Name: <span>{currentSkills.skillName}</span>
                     </p>
                     <p>
-                      Description:{" "}
+                      Description:{' '}
                       <span> {currentSkills.skillDescription}</span>
                     </p>
                     <p>
@@ -990,7 +1002,7 @@ const AdminSkill = () => {
                       Physical:<span> {currentSkills.physicalValue}</span>
                     </p>
                   </div>
-                  <div className="dialog-view-button">
+                  <div className='dialog-view-button'>
                     <button onClick={closeViewDialog}>OK</button>
                   </div>
                 </div>
@@ -999,10 +1011,10 @@ const AdminSkill = () => {
           )}
           {renderPage()}
           {message && (
-            <div className="dialog-message-container">
-              <div className="dialog-message-content">
+            <div className='dialog-message-container'>
+              <div className='dialog-message-content'>
                 <p>{message}</p>
-                <button onClick={() => setMessage("")}>OK</button>
+                <button onClick={() => setMessage('')}>OK</button>
               </div>
             </div>
           )}

@@ -65,6 +65,7 @@
                         label {
                             text-align: left;
                             font-weight: 600;
+                            color: #ff0;
                         }
 
                         input[type="text"] {
@@ -446,6 +447,7 @@
         height: 100%;
         display: flex;
         align-items: center;
+        backdrop-filter: blur(8px);
         justify-content: center;
     
         .dialog-remove-content {
@@ -558,6 +560,7 @@
                     label {
                         text-align: left;
                         font-weight: 600;
+                        color: #ff0;
                     }
 
                     input[type="text"] {
@@ -675,20 +678,20 @@
     
         .dialog-view-main-content {
             width: 1000px;
-            height: 550px;
+            height: 500px;
             background-image: url('../../../public/assets/images/horizontal-card.png');
             background-repeat: no-repeat;
-            background-size: 100% 100%;
+            background-size: 100% 95%;
             display: flex;
             justify-content: center;
             align-items: center;
             border-radius: 10px;
-            padding: 100px 30px 0 30px;
+            padding: 100px 30px;
 
             .dialog-view-content {
                 position: relative;
                 width: 810px;
-                height: 500px;
+                height: 450px;
                 text-align: start;
                 padding: 0 70px !important;
                 overflow: auto; 
@@ -795,12 +798,13 @@
                             transform: translateY(-50%);
                             background-color: transparent;
                             border: none;
-                            color: #fff;
+                            color: #009;
                             font-size: 18px;
                             padding: 10px;
                             cursor: pointer;
                             border-radius: 50%;
                             background-color: #a0be4c;
+                            filter: drop-shadow(0 0 2px #000) drop-shadow(0 0 3px #000);
                             display: flex;
                             justify-content: center;
                             align-items: center;

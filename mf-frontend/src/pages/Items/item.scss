@@ -1,10 +1,15 @@
 .item-page {
     padding: 20px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     .items-page-container {
         margin: 0 30px;
         display: flex;
-        justify-content: center;
+        width: 1000px;
+        min-height: 900px;
+        justify-content: flex-start;
         align-items: center;
         flex-direction: column;
         background-image: url('../../../public/assets/images/member-card.png');
@@ -12,27 +17,45 @@
         background-size: 100% 100%;
         color: #fff;
         border-radius: 10px;
+        padding-bottom: 30px;
 
         h2 {
             font-size: 50px;
             padding: 0 !important;
-            margin: 30px 0 0 0 !important;
+            margin: 70px 0 0 0 !important;
         }
     
         .item-filter {
-            width: 100%;
+            width: 70%;
             display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            margin: 20px 15% 20px 0;
+            align-items: flex-end;
+            justify-content: center;
+            flex-direction: column;
+            margin: 20px 30% 20px 30%;
+
+            label {
+                width: 30%;
+                margin-bottom: 5px;
+                font-size: 18px;
+                font-weight: 500;
+                color: #ff0;
+            }
             
             select {
                 font-size: 16px;
+                font-weight: 500;
+                background-color: green;
+                color: #fff;
                 padding: 5px 10px;
-                width: 20%;
+                width: 30%;
                 border: none !important;
                 border-radius: 5px;
                 cursor: pointer;
+
+                option {
+                    background-color: #fff;
+                    color: #222;
+                }
             }
         }
     
@@ -60,59 +83,121 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                flex-direction: column;
                 margin: 10px;
-                padding: 20px;
+                padding: 50px 25px 40px 30px;
                 color: #fff;
                 background-image: url('../../../public/assets/images/item-card.png');
                 background-repeat: no-repeat;
                 background-size: 100% 100%;
                 border-radius: 10px;
-                width: calc(30% - 60px);
+                width: 30%;
                 cursor: pointer;
-    
-                .item-image {
-                    width: 100px;
-                    height: 100px;
-                    margin: 0 20px;
-    
-                    img {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
+
+                .card-top {
+                    display: flex;
+                    width: 100%;
+
+                    .card-image {
+                        width: 50% !important;
+                        height: 120px !important;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 10px;
+
+                        img {
+                            width: 100%;
+                            max-width: 120px;
+                            height: 100%;
+                            object-fit: cover;
+                            border-radius: 10px;
+                            filter: drop-shadow(0 0 3px #ffff00) drop-shadow(0 0 4px #ffff00);
+                        }
+                        
+                    }
+
+                    .card-top-content {
+                        width: 50%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: flex-start;
+
+                        h3, h5 {
+                            margin: 0 !important;
+                            padding: 0 !important;
+                        }
+
+                        h3 {
+                            margin-bottom: 15px !important;
+                            font-size: 20px !important;
+                            color: #ff0;
+                        }
+
+                        h5 {
+                            margin: 3px 0 !important;
+                            font-size: 16px !important;
+                        }
                     }
                 }
-    
-                .item-info {
-                    flex-grow: 1;
-    
-                    h3, h4, h5, h6 {
-                        margin: 0 !important;
-                        padding: 0 !important;
-                        line-height: 2;
+
+                .card-bottom {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 2%;
+                    margin: 15px 0 0 0;
+
+                    .card-bottom-left {
+                        width: 50%;
+                        margin-left: 2%;
+
+                        label {
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+                            width: 100%;
+
+                            p {
+                                width: 60%;
+                                max-width: 90px;
+                                margin: 0 !important;
+                                padding: 0 !important;
+                                color: #ff0;
+                            }
+
+                            span {
+                                width: 40%;
+                                font-style: italic;
+                            }
+                        }
                     }
-    
-                    h3 {
-                        font-weight: 700;
-                        font-size: 25px;
-                    }
-    
-                    h4 {
-                        font-weight: 600;
-                        font-size: 16px;
-                    }
-    
-                    h5 {
-                        font-weight: 500;
-                        font-size: 16px;
-                    }
-    
-                    h6 {
-                        font-weight: 500;
-                        font-size: 16px;
-                    }
-    
-                    p {
-                        font-style: italic;
+
+                    .card-bottom-right {
+                        width: 40%;
+                        margin-left: 6%;
+
+                        label {
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+                            width: 100%;
+
+                            p {
+                                width: 60%;
+                                max-width: 70px;
+                                margin: 0 !important;
+                                padding: 0 !important;
+                                color: #ff0;
+                            }
+
+                            span {
+                                width: 40%;
+                                font-style: italic;
+                            }
+                        }
                     }
                 }
             }

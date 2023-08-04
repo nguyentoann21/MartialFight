@@ -14,7 +14,7 @@
         width: 800px;
         height: 1000px;
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         flex-direction: column;
         margin: 30px 0 !important;
@@ -74,7 +74,8 @@
             .no-rank-list {
                 text-align: center;
                 font-size: 30px;
-                font-size: #ff0;
+                color: #ff0;
+                font-style: italic;
                 font-weight: 600;
             }
 

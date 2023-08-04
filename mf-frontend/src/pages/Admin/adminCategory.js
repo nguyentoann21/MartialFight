@@ -27,7 +27,7 @@ const AdminCategory = () => {
     }
   }, [account, history]);
 
-  const CATEGORY_PER_PAGE = 10;
+  const CATEGORY_PER_PAGE = 1;
   const [categories, setCategories] = useState([]);
   const [dialogVisible, setDialogVisible] = useState(false);
   const [dialogMode, setDialogMode] = useState("create");
@@ -75,7 +75,9 @@ const AdminCategory = () => {
 
   const loadCategory = async () => {
     try {
-      const response = await axios.get("https://localhost:7052/api/mf/categories");
+      const response = await axios.get(
+        "https://localhost:7052/api/mf/categories"
+      );
       setCategories(
         response.data.map((category) => {
           return {
@@ -103,7 +105,11 @@ const AdminCategory = () => {
 
   const actionCategory = async () => {
     const formData = new FormData();
-    if (!currentCategory.categoryName || !currentCategory.categoryDescription) {
+    if (
+      !currentCategory.categoryName ||
+      !currentCategory.categoryDescription ||
+      currentCategory.image === null
+    ) {
       setMessage("Please fill in all the required fields");
       return;
     }
@@ -121,7 +127,10 @@ const AdminCategory = () => {
         (currentCategory.image && currentCategory.image !== original.image)
       ) {
         formData.append("categoryName", currentCategory.categoryName);
-        formData.append("categoryDescription", currentCategory.categoryDescription);
+        formData.append(
+          "categoryDescription",
+          currentCategory.categoryDescription
+        );
         formData.append("image", currentCategory.image);
       } else {
         setMessage("Nothing to update");
@@ -131,10 +140,19 @@ const AdminCategory = () => {
       if (currentCategory.categoryName !== originalCategory.categoryName) {
         formData.append("categoryName", currentCategory.categoryName);
       }
-      if (currentCategory.categoryDescription !== originalCategory.categoryDescription) {
-        formData.append("categoryDescription", currentCategory.categoryDescription);
+      if (
+        currentCategory.categoryDescription !==
+        originalCategory.categoryDescription
+      ) {
+        formData.append(
+          "categoryDescription",
+          currentCategory.categoryDescription
+        );
       }
-      if (currentCategory.image && currentCategory.image !== originalCategory.image) {
+      if (
+        currentCategory.image &&
+        currentCategory.image !== originalCategory.image
+      ) {
         formData.append("image", currentCategory.image);
       }
     }
@@ -182,9 +200,16 @@ const AdminCategory = () => {
         );
         setMessage("Category deleted successfully");
         loadCategory();
+        if (currentCategoryPage.length === 1 && currentPage > 1) {
+          setCurrentPage(currentPage - 1);
+        }
       } catch (error) {
         console.error(error);
-        setMessage("Failed to delete the category");
+        if (error.response.status === 409) {
+          setMessage(error.response.data);
+        } else {
+          setMessage("Failed to delete the category");
+        }
       }
       closeDeleteDialog();
     }
@@ -214,6 +239,11 @@ const AdminCategory = () => {
     setViewDialogVisible(false);
   };
 
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+    setCurrentPage(1);
+  };
+
   const handleSearch = () => {
     if (searchTerm.trim() === "") {
       setMessageSearch("Please enter a valid data for search");
@@ -221,9 +251,8 @@ const AdminCategory = () => {
       return;
     }
     setMessageSearch("");
-    const filteredCategory = originalCategory.filter(
-      (category) =>
-        category.categoryName.toLowerCase().includes(searchTerm.toLowerCase())
+    const filteredCategory = originalCategory.filter((category) =>
+      category.categoryName.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setCategories(filteredCategory);
   };
@@ -238,6 +267,7 @@ const AdminCategory = () => {
     setSearchTerm("");
     setMessageSearch("");
     loadCategory();
+    setCurrentPage(1);
   };
 
   const handlePageChange = (pageNumber) => {
@@ -272,7 +302,8 @@ const AdminCategory = () => {
               <button
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={
-                  currentPage === Math.ceil(filteredCategory.length / CATEGORY_PER_PAGE)
+                  currentPage ===
+                  Math.ceil(filteredCategory.length / CATEGORY_PER_PAGE)
                 }
               >
                 <FaAngleRight />
@@ -284,7 +315,8 @@ const AdminCategory = () => {
                   )
                 }
                 disabled={
-                  currentPage === Math.ceil(filteredCategory.length / CATEGORY_PER_PAGE)
+                  currentPage ===
+                  Math.ceil(filteredCategory.length / CATEGORY_PER_PAGE)
                 }
               >
                 <FaAngleDoubleRight />
@@ -310,7 +342,9 @@ const AdminCategory = () => {
           {dialogVisible && (
             <div className="dialog-empt-action-container">
               <div className="dialog-empt-action-content">
-                <h2>{dialogMode === "create" ? "Create" : "Update"} Category</h2>
+                <h2>
+                  {dialogMode === "create" ? "Create" : "Update"} Category
+                </h2>
                 <div className="dialog-empt-action-main">
                   <div className="dialog-empt-action-image-main">
                     <label className="dialog-empt-action-image-group">
@@ -331,7 +365,9 @@ const AdminCategory = () => {
                         <img
                           src={
                             currentCategory.image instanceof File
-                              ? window.URL.createObjectURL(currentCategory.image)
+                              ? window.URL.createObjectURL(
+                                  currentCategory.image
+                                )
                               : `https://localhost:7052/${currentCategory.image}`
                           }
                           alt="category-img"
@@ -405,7 +441,7 @@ const AdminCategory = () => {
                 type="text"
                 placeholder="Search by name..."
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={handleSearchChange}
                 onKeyDown={handleKey}
               />
               <button className="admin-search-icons" onClick={handleSearch}>
@@ -433,7 +469,8 @@ const AdminCategory = () => {
                   className="none-display"
                   id={currentCategoryPage.length === 0 ? "none" : ""}
                 >
-                  {categories.length} {categories.length === 1 ? "category" : "categories"} found
+                  {categories.length}{" "}
+                  {categories.length === 1 ? "category" : "categories"} found
                 </div>
               )}
             </>
@@ -471,7 +508,9 @@ const AdminCategory = () => {
                         <span>{category.categoryDescription}</span>
                       </td>
                       <td className="admin-categories-actions">
-                        <button onClick={() => handleDialogOpen("view", category)}>
+                        <button
+                          onClick={() => handleDialogOpen("view", category)}
+                        >
                           <FaEye />
                         </button>
                         <button
@@ -495,8 +534,8 @@ const AdminCategory = () => {
                 <h3>Remove Message Confirm</h3>
                 <p>Are you sure you want to delete this category?</p>
                 <small>
-                  If you delete that category, all items in this category will be
-                  removed as well.
+                  If you delete that category, all items in this category will
+                  be removed as well.
                 </small>
                 <div className="dialog-remove-buttons">
                   <button onClick={removeCategory} id="removed">
@@ -512,7 +551,9 @@ const AdminCategory = () => {
           {dialogVisible && (
             <div className="dialog-action-container">
               <div className="dialog-action-content">
-                <h2>{dialogMode === "create" ? "Create" : "Update"} Category</h2>
+                <h2>
+                  {dialogMode === "create" ? "Create" : "Update"} Category
+                </h2>
                 <div className="dialog-action-main">
                   <div className="dialog-action-image-main">
                     <label className="dialog-action-image-group">
@@ -533,7 +574,9 @@ const AdminCategory = () => {
                         <img
                           src={
                             currentCategory.image instanceof File
-                              ? window.URL.createObjectURL(currentCategory.image)
+                              ? window.URL.createObjectURL(
+                                  currentCategory.image
+                                )
                               : `https://localhost:7052/${currentCategory.image}`
                           }
                           alt="category-img"
@@ -606,7 +649,8 @@ const AdminCategory = () => {
                       Category Name: <span>{currentCategory.categoryName}</span>
                     </p>
                     <p>
-                      Description:<span> {currentCategory.categoryDescription}</span>
+                      Description:
+                      <span> {currentCategory.categoryDescription}</span>
                     </p>
                   </div>
                   <div className="dialog-view-button">

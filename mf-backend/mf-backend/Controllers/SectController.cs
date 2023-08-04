@@ -110,6 +110,18 @@ namespace mf_backend.Controllers
                 return NotFound();
             }
 
+            bool isReferencedItem = await _context.Items.AnyAsync(item => item.SectID == id);
+            bool isReferencedCharacter = await _context.Characters.AnyAsync(character => character.SectID == id);
+
+            if (isReferencedItem)
+            {
+                return StatusCode(StatusCodes.Status409Conflict, "Cannot delete the category because it is referenced by items");
+            }
+            if (isReferencedCharacter)
+            {
+                return StatusCode(StatusCodes.Status406NotAcceptable, "Cannot delete the category because it is referenced by characters");
+            }
+
             _context.Sects.Remove(sect);
             await _context.SaveChangesAsync();
 

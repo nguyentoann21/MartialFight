@@ -27,7 +27,7 @@ const AdminSect = () => {
     }
   }, [account, history]);
 
-  const SECT_PER_PAGE = 10;
+  const SECT_PER_PAGE = 2;
   const [sects, setSects] = useState([]);
   const [dialogVisible, setDialogVisible] = useState(false);
   const [dialogMode, setDialogMode] = useState("create");
@@ -182,9 +182,18 @@ const AdminSect = () => {
         );
         setMessage("Sect deleted successfully");
         loadSects();
+        if (currentSectPage.length === 1 && currentPage > 1) {
+          setCurrentPage(currentPage - 1);
+        }
       } catch (error) {
         console.error(error);
-        setMessage("Failed to delete the sect");
+        if (error.response.status === 409) {
+          setMessage(error.response.data);
+        } else if (error.response.status === 406) {
+          setMessage(error.response.data);
+        } else {
+          setMessage("Failed to delete the category");
+        }
       }
       closeDeleteDialog();
     }
@@ -214,6 +223,11 @@ const AdminSect = () => {
     setViewDialogVisible(false);
   };
 
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+    setCurrentPage(1);
+  };
+
   const handleSearch = () => {
     if (searchTerm.trim() === "") {
       setMessageSearch("Please enter a valid data for search");
@@ -238,6 +252,7 @@ const AdminSect = () => {
   const handleReload = () => {
     setSearchTerm("");
     setMessageSearch("");
+    setCurrentPage(1);
     loadSects();
   };
 
@@ -406,7 +421,7 @@ const AdminSect = () => {
                 type="text"
                 placeholder="Search by name or description..."
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={handleSearchChange}
                 onKeyDown={handleKey}
               />
               <button className="admin-search-icons" onClick={handleSearch}>
@@ -496,8 +511,8 @@ const AdminSect = () => {
                 <h3>Remove Message Confirm</h3>
                 <p>Are you sure you want to delete this sect?</p>
                 <small>
-                  If you delete that sect, all characters in this sect will be
-                  removed as well.
+                  If you delete that sect, all characters and items in this sect
+                  will be removed as well.
                 </small>
                 <div className="dialog-remove-buttons">
                   <button onClick={removeSect} id="removed">

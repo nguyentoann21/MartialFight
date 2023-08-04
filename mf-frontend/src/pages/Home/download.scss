@@ -2,56 +2,86 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    padding: 20px 0 !important;
 
-    .download-content {
-        position: relative;
-        width: 150px;
-        height: 150px;
+    .download-title {
+        width: 1200px;
+        display: flex;
         margin-bottom: 30px;
+        justify-content: center;
+        align-items: center;
+        background-color: #808080;
+        border-radius: 50px;
+        filter: drop-shadow(0 0 2px #ffff00) drop-shadow(0 0 3px #ffff00);
 
-        .download-bg-image {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border: 2px solid #ccc;
-            border-radius: 5px;
-        }
-    
-        .download-bg-image:hover {
-            opacity: 0.5;
-        }
-    
-        .download-icon {
-            position: absolute;
-            bottom: 5px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #ccc;
-            border: none !important;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: opacity 0.3s ease-in-out;
-            outline: none;
-            padding: 8px 10px;
-    
-            svg {
-                font-size: 30px;
-            }
-    
-            #check-icon {
-                color: #ff0;
-            }
-        }
-    
-        .download-icon:hover {
-            background-color: #1b6edb;
+        h1 {
+            font-size: 56px !important;
+            margin: 0 !important;
+            padding: 0 0 10px 0 !important;
             color: #fff;
+            filter: drop-shadow(0 0 2px #000) drop-shadow(0 0 3px #000);
         }
     }
 
-    .download-content:hover {
-        .download-bg-image {
-            opacity: 0.5;
+    .download-main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 1200px;
+        padding: 0 0 20px 0;
+
+        .download-content {
+            position: relative;
+            width: 400px;
+            height: 250px;
+            filter: drop-shadow(0 0 2px #009) drop-shadow(0 0 3px #009);
+    
+            .download-bg-image {
+                width: 400px;
+                height: 250px;
+                border: 2px solid #ccc;
+                border-radius: 5px;
+                filter: blur(.8px);
+            }
+        
+            .download-bg-image:hover {
+                opacity: 0.5;
+            }
+        
+            .download-icon {
+                position: absolute;
+                bottom: 5px;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: #ccc;
+                border: none !important;
+                border-radius: 50%;
+                cursor: pointer;
+                transition: opacity 0.3s ease-in-out;
+                outline: none;
+                padding: 8px 10px;
+                filter: drop-shadow(0 0 2px #000) drop-shadow(0 0 3px #000);
+        
+                svg {
+                    font-size: 30px;
+                }
+        
+                #check-icon {
+                    color: #ff0;
+                }
+            }
+        
+            .download-icon:hover {
+                background-color: #1b6edb;
+                color: #fff;
+            }
+        }
+    
+        .download-content:hover {
+            .download-bg-image {
+                opacity: 0.5;
+            }
         }
     }
 }

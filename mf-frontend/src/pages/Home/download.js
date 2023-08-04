@@ -26,15 +26,20 @@ const DownloadGame = () => {
 
   return (
     <div className='download-button-container'>
-      <div className='download-content'>
-        <img
+      <div className='download-title'>
+        <h1>Download</h1>
+      </div>
+      <div className='download-main'>
+        <div className='download-content'>
+          <img
             src='/assets/images/logo.jpg'
             alt=''
             className='download-bg-image'
-        />
-        <button className='download-icon' onClick={handleDownload}>
+          />
+          <button className='download-icon' onClick={handleDownload}>
             {showCheckIcon ? <FaCheck id='check-icon' /> : icon}
-        </button>
+          </button>
+        </div>
       </div>
     </div>
   );

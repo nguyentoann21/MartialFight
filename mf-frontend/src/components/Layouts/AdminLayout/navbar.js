@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
   FaUser,
   FaKey,
@@ -19,6 +19,8 @@ const NavbarAdmin = () => {
   const [activeItem, setActiveItem] = useState('');
   const admin = JSON.parse(localStorage.getItem('ADMIN_DATA'));
   const history = useNavigate();
+  const location = useLocation();
+  
 
   useEffect(() => {
     if (!admin) {
@@ -33,7 +35,14 @@ const NavbarAdmin = () => {
     } else {
       setActiveItem('Dashboard');
     }
-  }, []);
+
+    if (location.pathname === '/admin-sects') {
+      setActiveItem('Sects');
+    } else if (location.pathname === '/admin-categories') {
+      setActiveItem('Categories');
+    }
+
+  }, [location.pathname]);
 
   const handleLogout = () => {
     localStorage.removeItem('ADMIN_DATA');
@@ -83,12 +92,12 @@ const NavbarAdmin = () => {
             <span>Dashboard</span>
           </div>
         </Link>
-        <Link to='/chart'>
+        <Link to='/admin-categories'>
           <div
-            className={`navbar-charts ${
-              activeItem === 'Charts' ? 'active' : ''
+            className={`navbar-categories ${
+              activeItem === 'Categories' ? 'active' : ''
             }`}
-            onClick={() => handleAction('Charts')}
+            onClick={() => handleAction('Categories')}
           >
             <FaChartLine />
             <span>Category</span>
@@ -96,7 +105,7 @@ const NavbarAdmin = () => {
         </Link>
         <Link to='/admin-character'>
           <div
-            className={`navbar-charts ${
+            className={`navbar-characters ${
               activeItem === 'Character' ? 'active' : ''
             }`}
             onClick={() => handleAction('Character')}
