@@ -15,7 +15,7 @@ import {
   FaCheck,
   FaTimes,
 } from 'react-icons/fa';
-import './adminMap.scss';
+import './adminMaps.scss';
 
 const AdminMap = () => {
   const account = JSON.parse(localStorage.getItem('ADMIN_DATA'));

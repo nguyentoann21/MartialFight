@@ -146,7 +146,7 @@ const Monster = () => {
             <img
               key={index}
               src={monster.image}
-              alt=''
+              alt='1'
               className={`monster-bg ${index === currentIndex ? 'active' : ''}`}
             />
           ))}
@@ -192,28 +192,28 @@ const Monster = () => {
                 <p>{activemonster.description}</p>
               </div>
               <ul className='properties'>
-                <li>
+                <li className="monster-skill">
                   <span>{activemonster.target}</span>
                   <span className='monster-icon'>
-                    <img src='/assets/images/logo.jpg' alt='' />
+                    <img src='/assets/images/logo.jpg' alt='1' />
                   </span>
                 </li>
-                <li>
+                <li className="monster-skill">
                   <span>{activemonster.housing}</span>
                   <span class='monster-icon'>
-                    <img src='/assets/images/logo.jpg' alt='' />
+                    <img src='/assets/images/logo.jpg' alt='1' />
                   </span>
                 </li>
-                <li>
+                <li className="monster-skill">
                   <span>{activemonster.movement}</span>
                   <span class='monster-icon'>
-                    <img src='/assets/images/logo.jpg' alt='' />
+                    <img src='/assets/images/logo.jpg' alt='1' />
                   </span>
                 </li>
-                <li>
+                <li className="monster-skill">
                   <span>{activemonster.attack}</span>
                   <span class='monster-icon'>
-                    <img src='/assets/images/logo.jpg' alt='' />
+                    <img src='/assets/images/logo.jpg' alt='1' />
                   </span>
                 </li>
               </ul>

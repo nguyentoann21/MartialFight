@@ -15,7 +15,7 @@ import {
   FaCheck,
   FaTimes,
 } from 'react-icons/fa';
-import './adminItem.scss';
+import './adminItems.scss';
 
 const AdminItem = () => {
   const account = JSON.parse(localStorage.getItem('ADMIN_DATA'));
@@ -373,13 +373,13 @@ const AdminItem = () => {
 
   const handleSortChange = (e) => {
     setSortType(e.target.value);
-    sortCharacter(e.target.value);
+    sortItem(e.target.value);
     setSearchTerm('');
     setMessageSearch('');
     setCurrentPage(1);
   };
 
-  const sortCharacter = (sortType) => {
+  const sortItem = (sortType) => {
     console.log('sortType:', sortType, typeof sortType);
     if (sortType === 'all') {
       loadItem();

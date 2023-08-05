@@ -1,12 +1,12 @@
 import Home from '../pages/Home';
-import AdminProfile from '../pages/Admin/adminProfile';
+import AdminProfile from '../pages/Admin/adminProfiles';
 import Dashboard from '../pages/Admin/dashboard';
 import News from '../pages/News';
-import AdminNews from '../pages/Admin/adminNews';
-import AdminItem from '../pages/Admin/adminItem';
-import AdminPlayer from '../pages/Admin/adminPlayer';
-import AdminMap from '../pages/Admin/adminMap';
-import AdminSect from '../pages/Admin/adminSect';
+import AdminNews from '../pages/Admin/adminBlogNews';
+import AdminItem from '../pages/Admin/adminItems';
+import AdminPlayer from '../pages/Admin/adminPlayers';
+import AdminMap from '../pages/Admin/adminMaps';
+import AdminSect from '../pages/Admin/adminSects';
 import Ranking from '../pages/Ranking';
 import Items from '../pages/Items';
 import Character from '../pages/Character';
@@ -27,9 +27,9 @@ import ForgotPassword from '../pages/User/forgot';
 import AdminCategory from '../pages/Admin/adminCategory';
 import Policy from '../pages/Rules/policy';
 import TermsAndConditions from '../pages/Rules/conditions';
-import AdminCharacter from '../pages/Admin/adminCharacter';
+import AdminCharacter from '../pages/Admin/adminCharacters';
 import UpdateProfile from '../pages/User/updateProfile';
-import AdminSkill from '../pages/Admin/adminSkill';
+import AdminSkill from '../pages/Admin/adminSkills';
 
 const publicRoutes = [
   {

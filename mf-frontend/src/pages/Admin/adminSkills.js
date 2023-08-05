@@ -15,7 +15,7 @@ import {
   FaCheck,
   FaTimes,
 } from 'react-icons/fa';
-import './adminSkill.scss';
+import './adminSkills.scss';
 
 const AdminSkill = () => {
   const account = JSON.parse(localStorage.getItem('ADMIN_DATA'));

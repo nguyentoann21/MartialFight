@@ -17,7 +17,7 @@ import {
   FaArrowLeft,
   FaArrowRight,
 } from 'react-icons/fa';
-import './adminNews.scss';
+import './adminBlogNews.scss';
 
 const AdminNews = () => {
   const account = JSON.parse(localStorage.getItem('ADMIN_DATA'));

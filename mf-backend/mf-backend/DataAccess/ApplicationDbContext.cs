@@ -5,7 +5,7 @@ namespace mf_backend.DataAccess
 {
     public class ApplicationDbContext : DbContext
     {
-        private static readonly string SQL_CONNECTION = "Server=(local);uid=sa;pwd=123456;Database=MF_V10;Trusted_Connection=true;Encrypt=false";
+        private static readonly string SQL_CONNECTION = "Server=(local);uid=sa;pwd=123456;Database=MF_V12;Trusted_Connection=true;Encrypt=false";
 
         public ApplicationDbContext() { }
 
@@ -16,9 +16,10 @@ namespace mf_backend.DataAccess
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Character> Characters { get; set; }
         public DbSet<VerifyCode> VerifyCodes { get; set; }
-        public DbSet<Player> Player { get; set; }
+        public DbSet<PlayerAttribute> PlayerAttributes { get; set; }
         public DbSet<CategoryItem> CategoryItems { get; set; }
         public DbSet<Item> Items { get; set; }
+        public DbSet<CharacterSkill> CharacterSkills { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -37,6 +38,7 @@ namespace mf_backend.DataAccess
             modelBuilder.Entity<Character>().HasKey(a => a.CharacterID);
             modelBuilder.Entity<CategoryItem>().HasKey(a => a.CategoryID);
             modelBuilder.Entity<Item>().HasKey(a => a.ItemID);
+            modelBuilder.Entity<PlayerAttribute>().HasKey(a => a.PlayerAttributeID);
 
             modelBuilder.Entity<Character>()
                 .HasOne(c => c.CharacterSect)

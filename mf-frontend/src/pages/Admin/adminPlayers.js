@@ -9,7 +9,7 @@ import {
   FaEdit,
   FaEye,
 } from 'react-icons/fa';
-import './adminPlayer.scss';
+import './adminPlayers.scss';
 
 const AdminPlayer = () => {
   const [players, setPlayers] = useState([]);

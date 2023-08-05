@@ -22,10 +22,10 @@ namespace mf_backend.Controllers
         [HttpGet("top-15-level")]
         public IActionResult RankByLevel()
         {
-            var level = _context.Player
+            var level = _context.PlayerAttributes
                         .OrderByDescending(p => p.Level)
-                        .ThenByDescending(p => p.Score)
-                        .ThenByDescending(p => p.Challenge)
+                        .ThenByDescending(p => p.ScorePvP)
+                        .ThenByDescending(p => p.NumberOfMaps)
                         .Take(15)
                         .ToList();
             return Ok(level);
@@ -34,9 +34,9 @@ namespace mf_backend.Controllers
         [HttpGet("top-15-score")]
         public IActionResult RankByScore()
         {
-            var score = _context.Player
-                        .OrderByDescending(p => p.Score)
-                        .ThenByDescending(p => p.Challenge)
+            var score = _context.PlayerAttributes
+                        .OrderByDescending(p => p.ScorePvP)
+                        .ThenByDescending(p => p.NumberOfMaps)
                         .ThenByDescending(p => p.Level)
                         .Take(15)
                         .ToList();
@@ -46,10 +46,10 @@ namespace mf_backend.Controllers
         [HttpGet("top-15-challenge")]
         public IActionResult RankByChallenge()
         {
-            var challenge = _context.Player
-                        .OrderByDescending(p => p.Challenge)
+            var challenge = _context.PlayerAttributes
+                        .OrderByDescending(p => p.NumberOfMaps)
                         .ThenByDescending(p => p.Level)
-                        .ThenByDescending(p => p.Score)
+                        .ThenByDescending(p => p.ScorePvP)
                         .Take(15)
                         .ToList();
             return Ok(challenge);

@@ -162,19 +162,19 @@ const Items = () => {
                   <div className='card-bottom-right'>
                     <label>
                       <p>Attack: </p>
-                      <span> 1</span>
+                      <span> 1000</span>
                     </label>
                     <label>
                       <p>Defense: </p>
-                      <span> 1</span>
+                      <span> 1000</span>
                     </label>
                     <label>
                       <p>Speed: </p>
-                      <span> 1</span>
+                      <span> 1000</span>
                     </label>
                     <label>
                       <p>Intellect: </p>
-                      <span> 1</span>
+                      <span> 1000</span>
                     </label>
                   </div>
                 </div>

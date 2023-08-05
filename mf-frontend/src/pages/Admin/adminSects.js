@@ -15,7 +15,7 @@ import {
   FaCheck,
   FaTimes,
 } from "react-icons/fa";
-import "./adminSect.scss";
+import "./adminSects.scss";
 
 const AdminSect = () => {
   const account = JSON.parse(localStorage.getItem("ADMIN_DATA"));

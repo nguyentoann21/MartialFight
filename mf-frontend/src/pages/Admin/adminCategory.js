@@ -501,7 +501,7 @@ const AdminCategory = () => {
                           )}
                         </div>
                       </td>
-                      <td className="admin-categories-name">
+                      <td className="admin-category-name">
                         <span>{category.categoryName}</span>
                       </td>
                       <td className="admin-category-description">

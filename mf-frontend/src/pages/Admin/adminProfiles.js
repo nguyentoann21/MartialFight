@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './adminProfile.scss';
+import './adminProfiles.scss';
 
 const AdminProfile = () => {
   const [formData, setFormData] = useState({
