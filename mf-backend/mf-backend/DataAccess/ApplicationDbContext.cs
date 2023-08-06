@@ -5,7 +5,7 @@ namespace mf_backend.DataAccess
 {
     public class ApplicationDbContext : DbContext
     {
-        private static readonly string SQL_CONNECTION = "Server=(local);uid=sa;pwd=123456;Database=MF_V12;Trusted_Connection=true;Encrypt=false";
+        private static readonly string SQL_CONNECTION = "Server=(local);uid=sa;pwd=123456;Database=MF_V16;Trusted_Connection=true;Encrypt=false";
 
         public ApplicationDbContext() { }
 

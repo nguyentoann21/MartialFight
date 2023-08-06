@@ -31,5 +31,7 @@ namespace mf_backend.Models
         public int Role { get; set; } = 0;
 
         public bool RememberMe { get; set; }
+
+        public string ResetCode { get; set; } = string.Empty;
     }   
 }

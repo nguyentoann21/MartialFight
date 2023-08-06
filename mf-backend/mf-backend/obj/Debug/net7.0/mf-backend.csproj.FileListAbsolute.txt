@@ -71,3 +71,8 @@ G:\martial-fight\mf-backend\mf-backend\bin\Debug\net7.0\runtimes\win\lib\netstan
 G:\martial-fight\mf-backend\mf-backend\bin\Debug\net7.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 G:\martial-fight\mf-backend\mf-backend\bin\Debug\net7.0\mf-backend.staticwebassets.runtime.json
 G:\martial-fight\mf-backend\mf-backend\bin\Debug\net7.0\BCrypt.Net-Next.dll
+G:\martial-fight\mf-backend\mf-backend\bin\Debug\net7.0\BouncyCastle.Cryptography.dll
+G:\martial-fight\mf-backend\mf-backend\bin\Debug\net7.0\MailKit.dll
+G:\martial-fight\mf-backend\mf-backend\bin\Debug\net7.0\MimeKit.dll
+G:\martial-fight\mf-backend\mf-backend\bin\Debug\net7.0\System.Security.Cryptography.Pkcs.dll
+G:\martial-fight\mf-backend\mf-backend\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Security.Cryptography.Pkcs.dll

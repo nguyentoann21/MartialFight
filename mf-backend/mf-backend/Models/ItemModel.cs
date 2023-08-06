@@ -20,6 +20,18 @@ namespace mf_backend.Models
 
         public bool Equipped { get; set; }
 
+        public int AttackValue { get; set; }
+
+        public int HealthValue { get; set; }
+
+        public int DefenseValue { get; set; }
+
+        public int SpeedValue { get; set; }
+
+        public int IntellectValue { get; set; }
+
+        public int PhysicalValue { get; set; }
+
         [ForeignKey(nameof(Sect))]
         public int SectID { get; set; }
 

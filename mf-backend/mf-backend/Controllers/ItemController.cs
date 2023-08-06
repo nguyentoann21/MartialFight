@@ -56,6 +56,12 @@ namespace mf_backend.Controllers
                 Diamond = itemModel.Diamond,
                 ItemType = itemModel.ItemType,
                 Equipped = itemModel.Equipped,
+                AttackValue = itemModel.AttackValue,
+                HealthValue = itemModel.HealthValue,
+                DefenseValue = itemModel.DefenseValue,
+                SpeedValue = itemModel.SpeedValue,
+                IntellectValue = itemModel.IntellectValue,
+                PhysicalValue = itemModel.PhysicalValue,
                 SectID = itemModel.SectID,
                 CategoryID = itemModel.CategoryID,
             };
@@ -92,6 +98,12 @@ namespace mf_backend.Controllers
             item.Diamond = itemModel.Diamond;
             item.ItemType = itemModel.ItemType;
             item.Equipped = itemModel.Equipped;
+            item.AttackValue = itemModel.AttackValue;
+            item.HealthValue = itemModel.HealthValue;
+            item.DefenseValue = itemModel.DefenseValue;
+            item.SpeedValue = itemModel.SpeedValue;
+            item.IntellectValue = itemModel.IntellectValue;
+            item.PhysicalValue = itemModel.PhysicalValue;
             item.SectID = itemModel.SectID;
             item.CategoryID = itemModel.CategoryID;
 

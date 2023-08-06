@@ -1,96 +1,16 @@
 {
   "Files": [
     {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\1y11nsuz.ywg.png",
-      "PackagePath": "staticwebassets\\Images\\1y11nsuz.ywg.png"
+      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Characters\\player.png",
+      "PackagePath": "staticwebassets\\Characters\\player.png"
     },
     {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\21ormifr.z0w.png",
-      "PackagePath": "staticwebassets\\Images\\21ormifr.z0w.png"
-    },
-    {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\2myfbcy1.qga.png",
-      "PackagePath": "staticwebassets\\Images\\2myfbcy1.qga.png"
-    },
-    {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\2s3wv4l3.bsd.png",
-      "PackagePath": "staticwebassets\\Images\\2s3wv4l3.bsd.png"
-    },
-    {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\3yhqgvsv.pmg.png",
-      "PackagePath": "staticwebassets\\Images\\3yhqgvsv.pmg.png"
-    },
-    {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\4eot4zsd.enk.jpg",
-      "PackagePath": "staticwebassets\\Images\\4eot4zsd.enk.jpg"
-    },
-    {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\4v5ejkbi.1c1.png",
-      "PackagePath": "staticwebassets\\Images\\4v5ejkbi.1c1.png"
-    },
-    {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\acugyy2z.4be.png",
-      "PackagePath": "staticwebassets\\Images\\acugyy2z.4be.png"
-    },
-    {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\brhixxwu.o0n.jpg",
-      "PackagePath": "staticwebassets\\Images\\brhixxwu.o0n.jpg"
-    },
-    {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\c1iost0a.vzu.jpg",
-      "PackagePath": "staticwebassets\\Images\\c1iost0a.vzu.jpg"
-    },
-    {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\cbxyzpes.42h.jpg",
-      "PackagePath": "staticwebassets\\Images\\cbxyzpes.42h.jpg"
-    },
-    {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\fcc61519-f633-4184-8af6-0d1a7de2af8a.png",
-      "PackagePath": "staticwebassets\\Images\\fcc61519-f633-4184-8af6-0d1a7de2af8a.png"
-    },
-    {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\fe136a5e-2ac3-46c6-b3ea-bf9d528cdceb.png",
-      "PackagePath": "staticwebassets\\Images\\fe136a5e-2ac3-46c6-b3ea-bf9d528cdceb.png"
-    },
-    {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\gymvpm1s.kmy.png",
-      "PackagePath": "staticwebassets\\Images\\gymvpm1s.kmy.png"
-    },
-    {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\hb0mcz1a.vul.jpg",
-      "PackagePath": "staticwebassets\\Images\\hb0mcz1a.vul.jpg"
-    },
-    {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\hl5wj2ek.srt.gif",
-      "PackagePath": "staticwebassets\\Images\\hl5wj2ek.srt.gif"
-    },
-    {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\m5kc2xzn.3gh.png",
-      "PackagePath": "staticwebassets\\Images\\m5kc2xzn.3gh.png"
-    },
-    {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\p1erdb5n.blm.gif",
-      "PackagePath": "staticwebassets\\Images\\p1erdb5n.blm.gif"
+      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\3eevcwgu.sl2.png",
+      "PackagePath": "staticwebassets\\Images\\3eevcwgu.sl2.png"
     },
     {
       "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\player.jpg",
       "PackagePath": "staticwebassets\\Images\\player.jpg"
-    },
-    {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\rlw1btsf.kjf.png",
-      "PackagePath": "staticwebassets\\Images\\rlw1btsf.kjf.png"
-    },
-    {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\t1mecwxw.p4w.png",
-      "PackagePath": "staticwebassets\\Images\\t1mecwxw.p4w.png"
-    },
-    {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\ts2tjp1c.jgo.png",
-      "PackagePath": "staticwebassets\\Images\\ts2tjp1c.jgo.png"
-    },
-    {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\y20ppyop.1gw.png",
-      "PackagePath": "staticwebassets\\Images\\y20ppyop.1gw.png"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.mf-backend.props",

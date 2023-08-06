@@ -85,7 +85,9 @@ const MainCharacter = () => {
   return (
     <>
       {characters.length === 0 ? (
-        <div className="character-empty"><span>No character was found</span></div>
+        <div className="character-empty">
+          <span>No character was found</span>
+        </div>
       ) : (
         <>
           <div className="character-container">
@@ -107,22 +109,24 @@ const MainCharacter = () => {
                   </div>
                 )}
 
-                <div className="character-control">
-                  <button
-                    className="prev"
-                    onClick={handlePrevClick}
-                    disabled={currentIndex === 0}
-                  >
-                    <FaArrowLeft />
-                  </button>
-                  <button
-                    className="next"
-                    onClick={handleNextClick}
-                    disabled={currentIndex === characters.length - 1}
-                  >
-                    <FaArrowRight />
-                  </button>
-                </div>
+                {characters.length > 1 && (
+                  <div className="character-control">
+                    <button
+                      className="prev"
+                      onClick={handlePrevClick}
+                      disabled={currentIndex === 0}
+                    >
+                      <FaArrowLeft />
+                    </button>
+                    <button
+                      className="next"
+                      onClick={handleNextClick}
+                      disabled={currentIndex === characters.length - 1}
+                    >
+                      <FaArrowRight />
+                    </button>
+                  </div>
+                )}
 
                 <div className="content-wrapper">
                   <div className="content-main active">
