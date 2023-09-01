@@ -51,10 +51,10 @@ namespace mf_backend.Controllers
             var item = new Item
             {
                 ItemName = itemModel.ItemName,
-                ItemDescription = itemModel.ItemDescription,
+                Description = itemModel.Description,
                 Gold = itemModel.Gold,
-                Diamond = itemModel.Diamond,
-                ItemType = itemModel.ItemType,
+                Silver = itemModel.Silver,
+                Type = itemModel.Type,
                 Equipped = itemModel.Equipped,
                 AttackValue = itemModel.AttackValue,
                 HealthValue = itemModel.HealthValue,
@@ -62,14 +62,19 @@ namespace mf_backend.Controllers
                 SpeedValue = itemModel.SpeedValue,
                 IntellectValue = itemModel.IntellectValue,
                 PhysicalValue = itemModel.PhysicalValue,
-                SectID = itemModel.SectID,
-                CategoryID = itemModel.CategoryID,
+                ManaValue = itemModel.ManaValue,
+                SectId = itemModel.SectId,
+                CategoryId = itemModel.CategoryId,
             };
 
-            if (itemModel.Image != null)
+            if (itemModel.ImagePath != null)
             {
-                var imageUrl = await SaveImage(itemModel.Image);
-                item.Image = imageUrl;
+                var imageUrl = await SaveImage(itemModel.ImagePath);
+                if (imageUrl.Equals(string.Empty))
+                {
+                    return StatusCode(StatusCodes.Status405MethodNotAllowed, "Invalid image format.Valid format (png, jpg, gif or jpeg)");
+                }
+                item.ImagePath = imageUrl;
             }
 
             _context.Items.Add(item);
@@ -93,10 +98,10 @@ namespace mf_backend.Controllers
             }
 
             item.ItemName = itemModel.ItemName;
-            item.ItemDescription = itemModel.ItemDescription;
+            item.Description = itemModel.Description;
             item.Gold = itemModel.Gold;
-            item.Diamond = itemModel.Diamond;
-            item.ItemType = itemModel.ItemType;
+            item.Silver = itemModel.Silver;
+            item.Type = itemModel.Type;
             item.Equipped = itemModel.Equipped;
             item.AttackValue = itemModel.AttackValue;
             item.HealthValue = itemModel.HealthValue;
@@ -104,13 +109,18 @@ namespace mf_backend.Controllers
             item.SpeedValue = itemModel.SpeedValue;
             item.IntellectValue = itemModel.IntellectValue;
             item.PhysicalValue = itemModel.PhysicalValue;
-            item.SectID = itemModel.SectID;
-            item.CategoryID = itemModel.CategoryID;
+            item.ManaValue = itemModel.ManaValue;
+            item.SectId = itemModel.SectId;
+            item.CategoryId = itemModel.CategoryId;
 
-            if (itemModel.Image != null)
+            if (itemModel.ImagePath != null)
             {
-                var imageUrl = await SaveImage(itemModel.Image);
-                item.Image = imageUrl;
+                var imageUrl = await SaveImage(itemModel.ImagePath);
+                if (imageUrl.Equals(string.Empty))
+                {
+                    return StatusCode(StatusCodes.Status405MethodNotAllowed, "Invalid image format.Valid format (png, jpg, gif or jpeg)");
+                }
+                item.ImagePath = imageUrl;
             }
 
             _context.Entry(item).State = EntityState.Modified;
@@ -128,6 +138,13 @@ namespace mf_backend.Controllers
                 return NotFound();
             }
 
+            var isReferencedInMaps = await _context.Maps.AnyAsync(map => map.ItemId == id);
+
+            if (isReferencedInMaps)
+            {
+                return StatusCode(StatusCodes.Status409Conflict, "This item is referenced in one or more maps and cannot be deleted");
+            }
+
             _context.Items.Remove(item);
             await _context.SaveChangesAsync();
 
@@ -136,22 +153,25 @@ namespace mf_backend.Controllers
 
         private async Task<string> SaveImage(IFormFile image)
         {
-            var itemImagesDirectory = Path.Combine(_environment.WebRootPath, "Items");
+            var imagesDirectory = Path.Combine(_environment.WebRootPath, "Images");
+            Directory.CreateDirectory(imagesDirectory);
 
-            if (!Directory.Exists(itemImagesDirectory))
+            var allowedContentTypes = new[] { "image/jpeg", "image/png", "image/gif", "image/jpg" };
+            var contentType = image.ContentType.ToLower();
+
+            if (!allowedContentTypes.Contains(contentType))
             {
-                Directory.CreateDirectory(itemImagesDirectory);
+                return string.Empty;
             }
 
-            var imageFileName = $"{Guid.NewGuid()}{Path.GetExtension(image.FileName)}";
-            var imagePath = Path.Combine(itemImagesDirectory, imageFileName);
+            var extension = Path.GetExtension(image.FileName).ToLower();
+            var imageFileName = $"{Guid.NewGuid()}{extension}";
+            var imagePath = Path.Combine(imagesDirectory, imageFileName);
 
             using (var stream = new FileStream(imagePath, FileMode.Create))
-            {
                 await image.CopyToAsync(stream);
-            }
 
-            return Path.Combine("Items", imageFileName);
+            return imageFileName;
         }
     }
 }

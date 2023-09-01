@@ -7,8 +7,8 @@ namespace mf_backend.Models
     {
         public string SectName { get; set; }
 
-        public string SectDescription { get; set; }
+        public string Description { get; set; }
 
-        public IFormFile? Image { get; set; }
+        public IFormFile? ImagePath { get; set; }
     }
 }

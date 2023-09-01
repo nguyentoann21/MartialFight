@@ -27,14 +27,14 @@ const AdminCategory = () => {
     }
   }, [account, history]);
 
-  const CATEGORY_PER_PAGE = 1;
+  const CATEGORY_PER_PAGE = 10;
   const [categories, setCategories] = useState([]);
   const [dialogVisible, setDialogVisible] = useState(false);
   const [dialogMode, setDialogMode] = useState("create");
   const [currentCategory, setCurrentCategory] = useState({
     categoryName: "",
-    categoryDescription: "",
-    image: null,
+    description: "",
+    imagePath: null,
   });
 
   const [message, setMessage] = useState("");
@@ -67,11 +67,11 @@ const AdminCategory = () => {
 
   useEffect(() => {
     return () => {
-      if (currentCategory.image && currentCategory.image[0]) {
-        window.URL.revokeObjectURL(currentCategory.image[0]);
+      if (currentCategory.imagePath && currentCategory.imagePath[0]) {
+        window.URL.revokeObjectURL(currentCategory.imagePath[0]);
       }
     };
-  }, [currentCategory.image]);
+  }, [currentCategory.imagePath]);
 
   const loadCategory = async () => {
     try {
@@ -82,7 +82,7 @@ const AdminCategory = () => {
         response.data.map((category) => {
           return {
             ...category,
-            image: category.image ? category.image : null,
+            imagePath: category.imagePath ? category.imagePath : null,
           };
         })
       );
@@ -90,7 +90,7 @@ const AdminCategory = () => {
         response.data.map((category) => {
           return {
             ...category,
-            image: category.image ? category.image : null,
+            imagePath: category.imagePath ? category.imagePath : null,
           };
         })
       );
@@ -107,31 +107,29 @@ const AdminCategory = () => {
     const formData = new FormData();
     if (
       !currentCategory.categoryName ||
-      !currentCategory.categoryDescription ||
-      currentCategory.image === null
+      !currentCategory.description ||
+      currentCategory.imagePath === null
     ) {
       setMessage("Please fill in all the required fields");
       return;
     }
 
     const original = originalCategory.find(
-      (category) => category.categoryID === currentCategory.categoryID
+      (category) => category.categoryId === currentCategory.categoryId
     );
 
     if (dialogMode === "update") {
-      formData.append("categoryID", currentCategory.categoryID);
+      formData.append("categoryId", currentCategory.categoryId);
 
       if (
         currentCategory.categoryName !== original.categoryName ||
-        currentCategory.categoryDescription !== original.categoryDescription ||
-        (currentCategory.image && currentCategory.image !== original.image)
+        currentCategory.description !== original.description ||
+        (currentCategory.imagePath &&
+          currentCategory.imagePath !== original.imagePath)
       ) {
         formData.append("categoryName", currentCategory.categoryName);
-        formData.append(
-          "categoryDescription",
-          currentCategory.categoryDescription
-        );
-        formData.append("image", currentCategory.image);
+        formData.append("description", currentCategory.description);
+        formData.append("imagePath", currentCategory.imagePath);
       } else {
         setMessage("Nothing to update");
         return;
@@ -140,27 +138,21 @@ const AdminCategory = () => {
       if (currentCategory.categoryName !== originalCategory.categoryName) {
         formData.append("categoryName", currentCategory.categoryName);
       }
-      if (
-        currentCategory.categoryDescription !==
-        originalCategory.categoryDescription
-      ) {
-        formData.append(
-          "categoryDescription",
-          currentCategory.categoryDescription
-        );
+      if (currentCategory.description !== originalCategory.description) {
+        formData.append("description", currentCategory.description);
       }
       if (
-        currentCategory.image &&
-        currentCategory.image !== originalCategory.image
+        currentCategory.imagePath &&
+        currentCategory.imagePath !== originalCategory.imagePath
       ) {
-        formData.append("image", currentCategory.image);
+        formData.append("imagePath", currentCategory.imagePath);
       }
     }
 
     const url =
       dialogMode === "create"
         ? "https://localhost:7052/api/mf/categories"
-        : `https://localhost:7052/api/mf/categories/${currentCategory.categoryID}`;
+        : `https://localhost:7052/api/mf/categories/${currentCategory.categoryId}`;
 
     try {
       let response;
@@ -188,7 +180,11 @@ const AdminCategory = () => {
       }
     } catch (error) {
       console.error(error);
-      setMessage("Failed to save the category");
+      if (error.response.status === 405) {
+        setMessage(error.response.data);
+      } else {
+        setMessage("Failed to save the category");
+      }
     }
   };
 
@@ -196,7 +192,7 @@ const AdminCategory = () => {
     if (categoryRemoved) {
       try {
         await axios.delete(
-          `https://localhost:7052/api/mf/categories/${categoryRemoved.categoryID}`
+          `https://localhost:7052/api/mf/categories/${categoryRemoved.categoryId}`
         );
         setMessage("Category deleted successfully");
         loadCategory();
@@ -222,7 +218,7 @@ const AdminCategory = () => {
     } else {
       setDialogMode(mode);
       if (mode === "create") {
-        setCurrentCategory({ ...category, image: null });
+        setCurrentCategory({ ...category, imagePath: null });
       } else if (mode === "update") {
         setCurrentCategory({ ...currentCategory, ...category });
       }
@@ -355,20 +351,20 @@ const AdminCategory = () => {
                         onChange={(e) =>
                           setCurrentCategory({
                             ...currentCategory,
-                            image: e.target.files[0],
+                            imagePath: e.target.files[0],
                           })
                         }
                         hidden
                         required={!currentCategory.categoryID}
                       />
-                      {currentCategory.image ? (
+                      {currentCategory.imagePath ? (
                         <img
                           src={
-                            currentCategory.image instanceof File
+                            currentCategory.imagePath instanceof File
                               ? window.URL.createObjectURL(
-                                  currentCategory.image
+                                  currentCategory.imagePath
                                 )
-                              : `https://localhost:7052/${currentCategory.image}`
+                              : `https://localhost:7052/Images/${currentCategory.imagePath}`
                           }
                           alt="category-img"
                         />
@@ -395,14 +391,14 @@ const AdminCategory = () => {
                       />
                     </div>
                     <div className="dialog-empt-action-group">
-                      <label htmlFor="categoryDescription">Description:</label>
+                      <label htmlFor="description">Description:</label>
                       <textarea
-                        id="categoryDescription"
-                        value={currentCategory.categoryDescription || ""}
+                        id="description"
+                        value={currentCategory.description || ""}
                         onChange={(e) =>
                           setCurrentCategory({
                             ...currentCategory,
-                            categoryDescription: e.target.value,
+                            description: e.target.value,
                           })
                         }
                         placeholder="Please enter the category description"
@@ -490,12 +486,12 @@ const AdminCategory = () => {
                 </thead>
                 <tbody>
                   {currentCategoryPage.map((category) => (
-                    <tr key={category.categoryID}>
+                    <tr key={category.categoryId}>
                       <td className="admin-categories-images">
                         <div className="image-container">
-                          {category.image && (
+                          {category.imagePath && (
                             <img
-                              src={`https://localhost:7052/${category.image}`}
+                              src={`https://localhost:7052/Images/${category.imagePath}`}
                               alt="category-img"
                             />
                           )}
@@ -505,7 +501,7 @@ const AdminCategory = () => {
                         <span>{category.categoryName}</span>
                       </td>
                       <td className="admin-category-description">
-                        <span>{category.categoryDescription}</span>
+                        <span>{category.description}</span>
                       </td>
                       <td className="admin-categories-actions">
                         <button
@@ -564,20 +560,20 @@ const AdminCategory = () => {
                         onChange={(e) =>
                           setCurrentCategory({
                             ...currentCategory,
-                            image: e.target.files[0],
+                            imagePath: e.target.files[0],
                           })
                         }
                         hidden
                         required={!currentCategory.categoryID}
                       />
-                      {currentCategory.image ? (
+                      {currentCategory.imagePath ? (
                         <img
                           src={
-                            currentCategory.image instanceof File
+                            currentCategory.imagePath instanceof File
                               ? window.URL.createObjectURL(
-                                  currentCategory.image
+                                  currentCategory.imagePath
                                 )
-                              : `https://localhost:7052/${currentCategory.image}`
+                              : `https://localhost:7052/Images/${currentCategory.imagePath}`
                           }
                           alt="category-img"
                         />
@@ -604,14 +600,14 @@ const AdminCategory = () => {
                       />
                     </div>
                     <div className="dialog-action-group">
-                      <label htmlFor="categoryDescription">Description:</label>
+                      <label htmlFor="description">Description:</label>
                       <textarea
-                        id="categoryDescription"
-                        value={currentCategory.categoryDescription || ""}
+                        id="description"
+                        value={currentCategory.description || ""}
                         onChange={(e) =>
                           setCurrentCategory({
                             ...currentCategory,
-                            categoryDescription: e.target.value,
+                            description: e.target.value,
                           })
                         }
                         placeholder="Please enter the category description"
@@ -634,11 +630,10 @@ const AdminCategory = () => {
             <div className="dialog-view-container">
               <div className="dialog-view-main-content">
                 <div className="dialog-view-content">
-                  <h3>View {currentCategory.categoryName}</h3>
                   <div className="dialog-view-images">
-                    {currentCategory.image && (
+                    {currentCategory.imagePath && (
                       <img
-                        src={`https://localhost:7052/${currentCategory.image}`}
+                        src={`https://localhost:7052/Images/${currentCategory.imagePath}`}
                         alt="category-img"
                         className="image-view-dialog"
                       />
@@ -646,16 +641,16 @@ const AdminCategory = () => {
                   </div>
                   <div className="dialog-view-main">
                     <p>
-                      Category Name: <span>{currentCategory.categoryName}</span>
+                      Name: <span>{currentCategory.categoryName}</span>
                     </p>
                     <p>
                       Description:
-                      <span> {currentCategory.categoryDescription}</span>
+                      <span> {currentCategory.description}</span>
                     </p>
                   </div>
-                  <div className="dialog-view-button">
-                    <button onClick={closeViewDialog}>OK</button>
-                  </div>
+                </div>
+                <div className="dialog-view-button">
+                  <button onClick={closeViewDialog}>OK</button>
                 </div>
               </div>
             </div>

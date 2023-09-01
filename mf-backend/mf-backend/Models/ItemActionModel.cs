@@ -6,15 +6,16 @@ namespace mf_backend.Models
     {
         public string ItemName { get; set; }
 
-        public string ItemDescription { get; set; }
+        public string Description { get; set; }
 
-        public IFormFile? Image { get; set; }
+        public IFormFile? ImagePath { get; set; }
 
         public int Gold { get; set; }
 
-        public int Diamond { get; set; }
+        public int Silver { get; set; }
+        public int ManaValue { get; set; }
 
-        public int ItemType { get; set; }
+        public int Type { get; set; }
 
         public bool Equipped { get; set; } = false;
 
@@ -30,8 +31,8 @@ namespace mf_backend.Models
 
         public int PhysicalValue { get; set; }
 
-        public int SectID { get; set; }
+        public int SectId { get; set; }
 
-        public int CategoryID { get; set; }
+        public int CategoryId { get; set; }
     }
 }

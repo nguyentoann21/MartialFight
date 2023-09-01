@@ -5,7 +5,7 @@ namespace mf_backend.Models
     public class PlayerAttribute
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int PlayerAttributeID { get; set; }
+        public int PlayerAttributeId { get; set; }
         public string PlayerName { get; set; }
         public int Silver { get; set; }
         public int Gold { get; set; }
@@ -26,7 +26,8 @@ namespace mf_backend.Models
         public int LevelSkill4 { get; set; }
         public int SettingSoundValue { get; set; }
         public int SettingBrightnessValue { get; set; }
-        public int CharacterID { get; set; }
-        public int AccountID { get; set; }
+        public int CharacterId { get; set; }
+        public int AccountId { get; set; }
+        public int SkillExtraCount { get; set; } = 0;
     }
 }

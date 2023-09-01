@@ -709,8 +709,9 @@
     
                 .dialog-view-main {
                     width: 100%;
-                    text-align: left;
                     display: flex;
+                    align-items: flex-start;
+                    justify-content: center;
                     flex-direction: column;
     
                     p {
@@ -757,7 +758,7 @@
     
                             img {
                                 width: 200px;
-                                height: 150px;
+                                height: 200px;
                             }
                         }
     

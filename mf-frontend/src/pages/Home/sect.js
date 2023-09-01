@@ -7,7 +7,7 @@ const Sect = () => {
 
   const loadSect = async () => {
     try {
-      const response = await axios.get('https://localhost:7052/api/mf/sects');
+      const response = await axios.get('https://localhost:7052/api/mf/sects/sect');
       setSects(response.data);
     } catch (error) {
       console.error(error);
@@ -29,14 +29,14 @@ const Sect = () => {
               <h1>Sect</h1>
             </div>
             {sects.map((sect) => (
-              <div className='main-container' key={sect.sectID}>
+              <div className='main-container' key={sect.sectId}>
                 <div className='main-left'>
                   <h3>{sect.sectName}</h3>
-                  <h4>{sect.sectDescription}</h4>
+                  <h4>{sect.description}</h4>
                 </div>
                 <div className='main-right'>
                   <img
-                    src={`https://localhost:7052/${sect.image}`}
+                    src={`https://localhost:7052/Images/${sect.imagePath}`}
                     alt={sect.sectName}
                   />
                 </div>

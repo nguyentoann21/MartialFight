@@ -32,6 +32,15 @@ namespace mf_backend.Controllers
             return Ok(sects);
         }
 
+        // GET: api/mf/sects/sect
+        // Get all sects that not contain the id with name unknown
+        [HttpGet("sect")]
+        public async Task<IActionResult> GetSectNotUnknown()
+        {
+            var sects = await _context.Sects.Where(sect => sect.SectId != 5).ToListAsync();
+            return Ok(sects);
+        }
+
         // GET: api/mf/sects/{id}
         [HttpGet("{id}")]
         public async Task<IActionResult> GetSect(int id)
@@ -56,13 +65,17 @@ namespace mf_backend.Controllers
             var sect = new Sect
             {
                 SectName = sectModel.SectName,
-                SectDescription = sectModel.SectDescription,
+                Description = sectModel.Description,
             };
 
-            if (sectModel.Image != null)
+            if (sectModel.ImagePath != null)
             {
-                var imageUrl = await SaveImage(sectModel.Image);
-                sect.Image = imageUrl;
+                var imageUrl = await SaveImage(sectModel.ImagePath);
+                if (imageUrl.Equals(string.Empty))
+                {
+                    return StatusCode(StatusCodes.Status405MethodNotAllowed, "Invalid image format.Valid format (png, jpg, gif or jpeg)");
+                }
+                sect.ImagePath = imageUrl;
             }
 
             _context.Sects.Add(sect);
@@ -87,12 +100,16 @@ namespace mf_backend.Controllers
             }
 
             sect.SectName = sectModel.SectName;
-            sect.SectDescription = sectModel.SectDescription;
+            sect.Description = sectModel.Description;
 
-            if (sectModel.Image != null)
+            if (sectModel.ImagePath != null)
             {
-                var imageUrl = await SaveImage(sectModel.Image);
-                sect.Image = imageUrl;
+                var imageUrl = await SaveImage(sectModel.ImagePath);
+                if (imageUrl.Equals(string.Empty))
+                {
+                    return StatusCode(StatusCodes.Status405MethodNotAllowed, "Invalid image format.Valid format (png, jpg, gif or jpeg)");
+                }
+                sect.ImagePath = imageUrl;
             }
 
             _context.Entry(sect).State = EntityState.Modified;
@@ -110,18 +127,19 @@ namespace mf_backend.Controllers
                 return NotFound();
             }
 
-            bool isReferencedItem = await _context.Items.AnyAsync(item => item.SectID == id);
-            bool isReferencedCharacter = await _context.Characters.AnyAsync(character => character.SectID == id);
+            bool isReferencedItem = await _context.Items.AnyAsync(item => item.SectId == id);
+            bool isReferencedCharacter = await _context.Characters.AnyAsync(character => character.SectId == id);
 
-            if (isReferencedItem)
-            {
-                return StatusCode(StatusCodes.Status409Conflict, "Cannot delete the category because it is referenced by items");
-            }
             if (isReferencedCharacter)
             {
                 return StatusCode(StatusCodes.Status406NotAcceptable, "Cannot delete the category because it is referenced by characters");
             }
 
+            if (isReferencedItem)
+            {
+                return StatusCode(StatusCodes.Status409Conflict, "Cannot delete the category because it is referenced by items");
+            }
+            
             _context.Sects.Remove(sect);
             await _context.SaveChangesAsync();
 
@@ -130,22 +148,25 @@ namespace mf_backend.Controllers
 
         private async Task<string> SaveImage(IFormFile image)
         {
-            var sectImagesDirectory = Path.Combine(_environment.WebRootPath, "Sects");
+            var imagesDirectory = Path.Combine(_environment.WebRootPath, "Images");
+            Directory.CreateDirectory(imagesDirectory);
 
-            if (!Directory.Exists(sectImagesDirectory))
+            var allowedContentTypes = new[] { "image/jpeg", "image/png", "image/gif", "image/jpg" };
+            var contentType = image.ContentType.ToLower();
+
+            if (!allowedContentTypes.Contains(contentType))
             {
-                Directory.CreateDirectory(sectImagesDirectory);
+                return string.Empty;
             }
 
-            var imageFileName = $"{Guid.NewGuid()}{Path.GetExtension(image.FileName)}";
-            var imagePath = Path.Combine(sectImagesDirectory, imageFileName);
+            var extension = Path.GetExtension(image.FileName).ToLower();
+            var imageFileName = $"{Guid.NewGuid()}{extension}";
+            var imagePath = Path.Combine(imagesDirectory, imageFileName);
 
             using (var stream = new FileStream(imagePath, FileMode.Create))
-            {
                 await image.CopyToAsync(stream);
-            }
 
-            return Path.Combine("Sects", imageFileName);
+            return imageFileName;
         }
     }
 }

@@ -8,7 +8,7 @@ const UpdateProfile = () => {
     email: '',
     fullname: '',
     gender: '',
-    avatarUrl: null,
+    avatar: null,
   });
 
   const [statusMessage, setStatusMessage] = useState('');
@@ -31,19 +31,19 @@ const UpdateProfile = () => {
         email: account.email,
         fullname: account.fullname,
         gender: account.gender,
-        avatarUrl: account.avatarUrl,
+        avatar: account.avatar,
       });
       setAccountDataLoaded(true);
     }
   }, [account, accountDataLoaded]);
 
   useEffect(() => {
-    if (formData.avatarUrl) {
+    if (formData.avatar) {
       setAvatarPreviewUrl(
-        `https://localhost:7052/Images/${formData.avatarUrl}`
+        `https://localhost:7052/Images/${formData.avatar}`
       );
     }
-  }, [formData.avatarUrl]);
+  }, [formData.avatar]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -88,7 +88,7 @@ const UpdateProfile = () => {
     const formDataObj = new FormData();
 
     if (selectedImage) {
-      formDataObj.append('AvatarUrl', selectedImage);
+      formDataObj.append('Avatar', selectedImage);
     }
 
     if (formData.email !== account?.email) {
@@ -106,7 +106,7 @@ const UpdateProfile = () => {
     try {
       if (account) {
         await axios.put(
-          `https://localhost:7052/api/mf/update-profile?id=${account.accountID}`,
+          `https://localhost:7052/api/mf/update-profile?id=${account.accountId}`,
           formDataObj,
           {
             headers: {
@@ -119,7 +119,7 @@ const UpdateProfile = () => {
       setStatusMessage('Profile updated successfully!');
       openDialog();
     } catch (error) {
-      if (error.response) {
+      if (error.response.status === 409 || error.response.status === 405) {
         setStatusMessage(error.response.data);
       } else {
         setStatusMessage('Error occurred during update');

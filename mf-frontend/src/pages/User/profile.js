@@ -22,11 +22,11 @@ const Profile = () => {
 
         const data = JSON.parse(storedAccountData);
         setAccountData(data);
-        setAvatar(data.avatarUrl);
+        setAvatar(data.avatar);
 
-        if (data.accountID) {
+        if (data.accountId) {
           const response = await axios.get(
-            `https://localhost:7052/api/mf/player-attribute/${data.accountID}`
+            `https://localhost:7052/api/mf/player-attribute/${data.accountId}`
           );
           setDataInGame(response.data);
         }
@@ -74,31 +74,31 @@ const Profile = () => {
               <div className="static-container">
                 <div className="static-content">
                   <div className="static-label">Level</div>
-                  {accountData.accountID && (
+                  {accountData.accountId && (
                     <p>
                       {dataInGame.find(
-                        (data) => data.accountID === accountData.accountID
-                      )?.level || ""}
+                        (data) => data.accountId === accountData.accountId
+                      )?.level || "N/A"}
                     </p>
                   )}
                 </div>
                 <div className="static-content">
                   <div className="static-label">Challenge</div>
-                  {accountData.accountID && (
+                  {accountData.accountId && (
                     <p>
                       {dataInGame.find(
-                        (data) => data.accountID === accountData.accountID
-                      )?.numberOfMaps || ""}
+                        (data) => data.accountId === accountData.accountId
+                      )?.numberOfMaps || "N/A"}
                     </p>
                   )}
                 </div>
                 <div className="static-content">
                   <div className="static-label">Rank Score</div>
-                  {accountData.accountID && (
+                  {accountData.accountId && (
                     <p>
                       {dataInGame.find(
-                        (data) => data.accountID === accountData.accountID
-                      )?.scorePvP || ""}
+                        (data) => data.accountId === accountData.accountId
+                      )?.scorePvP || "N/A"}
                     </p>
                   )}
                 </div>

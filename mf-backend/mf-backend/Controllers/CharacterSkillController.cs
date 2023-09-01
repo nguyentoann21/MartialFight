@@ -22,12 +22,12 @@ namespace mf_backend.Controllers
         public async Task<ActionResult<IEnumerable<Skill>>> GetSkillsForCharacter(int id)
         {
             var skillIds = await _context.CharacterSkills
-                .Where(cs => cs.CharacterID == id)
-                .Select(cs => cs.SkillID)
+                .Where(cs => cs.CharacterId == id)
+                .Select(cs => cs.SkillId)
                 .ToListAsync();
 
             var skills = await _context.Skills
-                .Where(skill => skillIds.Contains(skill.SkillID))
+                .Where(skill => skillIds.Contains(skill.SkillId))
                 .ToListAsync();
 
             if (skills == null)

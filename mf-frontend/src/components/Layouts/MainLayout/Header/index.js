@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { FaGlobe, FaSignOutAlt } from 'react-icons/fa';
-import { ReactComponent as LogoGame } from '../../../../logo.svg';
 import { Link, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './header.scss';
@@ -55,7 +54,7 @@ function Header() {
     <div className='header'>
       <div className='logo'>
         <Link to='/' className='logo-main'>
-          <LogoGame className='image-logo' />
+        <img src="/assets/images/logo.jpg" alt='' className='image-logo' />
           <span
             className={`logo-text ${activeTab === 'Home' ? 'active' : ''}`}
             onClick={() => handleTab('Home')}

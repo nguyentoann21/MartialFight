@@ -10,8 +10,14 @@ namespace mf_backend.Models
 
         public string LevelRequirement { get; set; }
 
-        public string MapDescription { get; set; }
+        public string Description { get; set; }
 
-        public IFormFile? Image { get; set; }
+        public IFormFile? ImagePath { get; set; }
+
+        public int Type { get; set; }
+        public int Exp { get; set; }
+        public int Silver { get; set; }
+        public int ItemId { get; set; }
+        public int AmountItem { get; set; }
     }
 }

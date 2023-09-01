@@ -5,25 +5,27 @@ namespace mf_backend.Models
     public class Item
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ItemID { get; set; }
+        public int ItemId { get; set; }
 
         public string ItemName { get; set; }
 
-        public string ItemDescription { get; set; }
+        public string Description { get; set; }
 
-        public string Image { get; set; }
+        public string ImagePath { get; set; }
+
+        public int Silver { get; set; }
 
         public int Gold { get; set; }
 
-        public int Diamond { get; set; }
+        public int ManaValue { get; set; }
 
-        public int ItemType { get; set; }
+        public int HealthValue { get; set; }
+
+        public int Type { get; set; }
 
         public bool Equipped { get; set; } = false;
 
         public int AttackValue { get; set; }
-
-        public int HealthValue { get; set; }
 
         public int DefenseValue { get; set; }
 
@@ -34,13 +36,13 @@ namespace mf_backend.Models
         public int PhysicalValue { get; set; }
 
         [ForeignKey(nameof(Sect))]
-        public int SectID { get; set; }
+        public int SectId { get; set; }
 
-        public Sect? ItemSect { get; set; }
+        public Sect? Sect { get; set; }
 
         [ForeignKey(nameof(CategoryItem))]
-        public int CategoryID { get; set; }
+        public int CategoryId { get; set; }
 
-        public CategoryItem? ItemCategory { get; set; }
+        public CategoryItem? Category { get; set; }
     }
 }

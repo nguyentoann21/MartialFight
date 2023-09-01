@@ -84,7 +84,7 @@ const AdminProfile = () => {
     try {
       const response = await axios.post(
         'https://localhost:7052/api/mf/change-password',
-        { ...formData, accountID: account.accountID },
+        { ...formData, accountId: account.accountId },
         {
           headers: {
             'Content-Type': 'application/json',
@@ -138,7 +138,7 @@ const AdminProfile = () => {
     email: '',
     fullname: '',
     gender: '',
-    avatarUrl: null,
+    avatar: null,
   });
 
   const [updateMessage, setUpdateMessage] = useState('');
@@ -153,19 +153,19 @@ const AdminProfile = () => {
         email: account.email,
         fullname: account.fullname,
         gender: account.gender,
-        avatarUrl: account.avatarUrl,
+        avatar: account.avatar,
       });
       setAccountUpdateLoaded(true);
     }
   }, [account, accountUpdateLoaded]);
 
   useEffect(() => {
-    if (formUpdate.avatarUrl) {
+    if (formUpdate.avatar) {
       setAvatarPreviewUrl(
-        `https://localhost:7052/Images/${formUpdate.avatarUrl}`
+        `https://localhost:7052/Images/${formUpdate.avatar}`
       );
     }
-  }, [formUpdate.avatarUrl]);
+  }, [formUpdate.avatar]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -180,7 +180,7 @@ const AdminProfile = () => {
     reader.onloadend = () => {
       setAvatarPreviewUrl(reader.result);
     };
-    reader.readAsUpdateURL(imageFile);
+    reader.readAsDataURL(imageFile);
   };
 
   const [isDialogOpen, setDialogOpen] = useState(false);
@@ -211,7 +211,7 @@ const AdminProfile = () => {
     const updateObj = new FormData();
 
     if (selectedImage) {
-      updateObj.append('AvatarUrl', selectedImage);
+      updateObj.append('Avatar', selectedImage);
     }
 
     if (formUpdate.email !== account?.email) {
@@ -229,7 +229,7 @@ const AdminProfile = () => {
     try {
       if (account) {
         await axios.put(
-          `https://localhost:7052/api/mf/update-profile?id=${account.accountID}`,
+          `https://localhost:7052/api/mf/update-profile?id=${account.accountId}`,
           updateObj,
           {
             headers: {

@@ -20,7 +20,7 @@ namespace mf_backend.Controllers
         [HttpPost("change-password")]
         public async Task<IActionResult> ChangePassword(ChangePasswordModel requestChange)
         {
-            var account = await _context.Accounts.FirstOrDefaultAsync(x => x.AccountID == requestChange.AccountID);
+            var account = await _context.Accounts.FirstOrDefaultAsync(x => x.AccountId == requestChange.AccountId);
             if (account == null)
             {
                 return NotFound("Account does not exist");

@@ -51,7 +51,7 @@ const Trailer = () => {
         <div className='trailer-container'>
             <div className='trailer-content'>
                 <div className='prev-trailer' onClick={prevSlide}><FaChevronLeft /></div>
-                <video ref={videoRef} controls autoPlay muted onEnded={handleVideoEnd} width='100%' height='auto'>
+                <video ref={videoRef} controls autoPlay muted onEnded={handleVideoEnd}>
                     <source src={slides[currentSlide].trailerUrl} type='video/mp4'/>
                 </video> 
                 <div className='next-trailer' onClick={nextSlide}><FaChevronRight /></div>

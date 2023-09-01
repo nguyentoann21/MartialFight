@@ -124,7 +124,7 @@ const Ranking = () => {
               </thead>
               <tbody>
                 {getRankData().map((item, index) => (
-                  <tr key={item.id}>
+                  <tr key={item.accountId}>
                     <td>
                       {index === 0 ? (
                         <FaMedal className="gold" />
@@ -137,10 +137,10 @@ const Ranking = () => {
                       )}
                     </td>
                     <td>
-                      {item.accountID && (
+                      {item.accountId && (
                         <span>
                           {account.find(
-                            (account) => account.accountID === item.accountID
+                            (account) => account.accountId === item.accountId
                           )?.username || ""}
                         </span>
                       )}

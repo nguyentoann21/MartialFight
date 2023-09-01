@@ -34,7 +34,7 @@
                 background-repeat: no-repeat;
                 border-radius: 10px;
                 text-align: center;
-                width: 1200px;
+                width: 950px;
                 height: 580px;
                 display: flex;
                 justify-content: center;
@@ -76,11 +76,11 @@
                             padding: 0 !important;
                             color: #ff0;
                             font-size: 40px;
+                            width: 100%;
                         }
     
                         .main-content-input-empt {
-                            display: flex;
-                            gap: 30px;
+                            width: 100%;
                             margin-bottom: 20px;
     
                             .left-side-empt, .right-side-empt {
@@ -100,13 +100,7 @@
                                         color: #ff0;
                                     }
                 
-                                    input[type="text"], input[type="number"] {
-                                        padding: 5px;
-                                        width: 300px;
-                                    }
-                
-                                    select {
-                                        width: 314px;
+                                    input[type="text"], input[type="number"], select {
                                         padding: 5px;
                                     }
                                 }
@@ -118,16 +112,14 @@
                             justify-content: center;
                             align-items: center;
                             gap: 30px;
-                            margin-top: 5px;
         
                             button {
                                 width: 200px;
-                                height: 36px;
                                 border-radius: 5px;
                                 border: none;
-                                padding: 5px 15px;
+                                padding: 3px 15px;
                                 cursor: pointer;
-                                font-size: 18px;
+                                font-size: 16px;
                                 font-weight: 500;
                             }
         
@@ -240,6 +232,7 @@
 
         .admin-skills-filter {
             select {
+                width: 150px;
                 padding: 5px;
                 border-radius: 10px;
                 background-color: green;
@@ -358,11 +351,12 @@
             }
     
             .admin-skills-type {
-                width: 170px !important;
+                width: 100px !important;
                 max-width: 160px;
                 white-space: nowrap !important;
                 overflow: hidden !important;
                 text-overflow: ellipsis !important;
+                text-align: center;
     
                 span {
                     white-space: nowrap !important;
@@ -373,8 +367,8 @@
             }
     
             .admin-skills-description {
-                width: 230px !important;
-                max-width: 220px;
+                width: 300px !important;
+                max-width: 280px;
                 white-space: nowrap !important;
                 overflow: hidden !important;
                 text-overflow: ellipsis !important;
@@ -559,7 +553,7 @@
             background-repeat: no-repeat;
             border-radius: 10px;
             text-align: center;
-            width: 1150px;
+            width: 950px;
             height: 580px;
             display: flex;
             justify-content: center;
@@ -602,13 +596,13 @@
                         padding: 0 !important;
                         color: #ff0;
                         font-size: 40px;
+                        width: 100%;
                     }
 
                     .main-content-input {
-                        display: flex;
-                        gap: 30px;
+                        width: 100%;
                         margin-bottom: 20px;
-
+            
                         .left-side, .right-side {
                             display: flex;
                             flex-direction: column;
@@ -626,13 +620,7 @@
                                     color: #ff0;
                                 }
             
-                                input[type="text"], input[type="number"] {
-                                    padding: 5px;
-                                    width: 300px;
-                                }
-            
-                                select {
-                                    width: 314px;
+                                input[type="text"], input[type="number"], select {
                                     padding: 5px;
                                 }
                             }
@@ -644,16 +632,14 @@
                         justify-content: center;
                         align-items: center;
                         gap: 30px;
-                        margin-top: 5px;
     
                         button {
                             width: 200px;
-                            height: 36px;
                             border-radius: 5px;
                             border: none;
                             padding: 5px 15px;
                             cursor: pointer;
-                            font-size: 18px;
+                            font-size: 16px;
                             font-weight: 500;
                         }
     
@@ -699,7 +685,7 @@
             background-repeat: no-repeat;
             border-radius: 10px;
             text-align: center;
-            width: 500px;
+            min-width: 500px;
             height: 150px;
             display: flex;
             justify-content: center;
@@ -708,7 +694,7 @@
 
             p {
                 margin: 10px 0 !important;
-                padding: 0 !important;
+                padding: 0 30px !important;
                 font-size: 20px;
                 font-style: italic;
             }
@@ -778,8 +764,9 @@
     
                 .dialog-view-main {
                     width: 100%;
-                    text-align: left;
                     display: flex;
+                    justify-content: center;
+                    align-items: flex-start;
                     flex-direction: column;
     
                     p {

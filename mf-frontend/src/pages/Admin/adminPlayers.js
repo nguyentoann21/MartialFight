@@ -238,11 +238,11 @@ const AdminPlayer = () => {
                 </thead>
                 <tbody>
                   {currentPlayer.map((account) => (
-                    <tr key={account.accountID}>
+                    <tr key={account.accountId}>
                       <td className='admin-player-avatar'>
                         <img
-                          src={`https://localhost:7052/Images/${account.avatarUrl}`}
-                          alt={account.accountID}
+                          src={`https://localhost:7052/Images/${account.avatar}`}
+                          alt={account.accountId}
                         />
                       </td>
                       <td className='admin-player-username'>
@@ -256,7 +256,7 @@ const AdminPlayer = () => {
                       </td>
                       <td className='admin-player-status'>
                         <select
-                          id={`accountStatus_${account.accountID}`}
+                          id={`accountStatus_${account.accountId}`}
                           className='form-control'
                           defaultValue={account.active ? 'true' : 'false'}
                           ref={ref}
@@ -276,7 +276,7 @@ const AdminPlayer = () => {
                           className='admin-player-button'
                           onClick={() => {
                             const isActive = ref.current.value === 'true';
-                            playerIsActive(account.accountID, isActive);
+                            playerIsActive(account.accountId, isActive);
                           }}
                         >
                           <FaEdit />
@@ -313,7 +313,7 @@ const AdminPlayer = () => {
               <div className='admin-player-dialog-content'>
                 <div className='admin-player-dialog-main'>
                   <img
-                    src={`https://localhost:7052/Images/${selectedPlayer.avatarUrl}`}
+                    src={`https://localhost:7052/Images/${selectedPlayer.avatar}`}
                     alt={selectedPlayer.fullname}
                   />
                   <div className='admin-player-dialog-details'>

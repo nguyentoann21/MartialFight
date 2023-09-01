@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace mf_backend.Controllers
 {
@@ -42,7 +43,7 @@ namespace mf_backend.Controllers
             {
                 if (profileModel.Email != null && profileModel.Email != account.Email)
                 {
-                    if (await _context.Accounts.AnyAsync(a => a.AccountID != id && a.Email == profileModel.Email))
+                    if (await _context.Accounts.AnyAsync(a => a.AccountId != id && a.Email == profileModel.Email))
                     {
                         return StatusCode(StatusCodes.Status401Unauthorized, "Email already exists for another account");
                     }
@@ -63,10 +64,14 @@ namespace mf_backend.Controllers
                     isUpdated = true;
                 }
 
-                if (profileModel.AvatarUrl != null)
+                if (profileModel.Avatar != null)
                 {
-                    var imageUrls = await SaveImages(profileModel.AvatarUrl);
-                    account.AvatarUrl = string.Join(",", imageUrls);
+                    var imageUrl = await SaveImage(profileModel.Avatar);
+                    if (imageUrl.Equals(string.Empty))
+                    {
+                        return StatusCode(StatusCodes.Status405MethodNotAllowed, "Invalid image format.Valid format (png, jpg, gif or jpeg)");
+                    }
+                    account.Avatar = imageUrl;
                     isUpdated = true;
                 }
             }
@@ -83,9 +88,9 @@ namespace mf_backend.Controllers
             }
         }
 
-        private async Task<string[]> SaveImages(IFormFile avatar)
+        private async Task<string> SaveImage(IFormFile avatar)
         {
-            string[] imageUrls;
+            string imageUrls;
             string avatarFileName = $"{Path.GetRandomFileName()}{Path.GetExtension(avatar.FileName)}";
             string avatarDirectoryPath = Path.Combine(_environment.WebRootPath, "Images");
             string avatarFilePath = Path.Combine(avatarDirectoryPath, avatarFileName);
@@ -100,7 +105,15 @@ namespace mf_backend.Controllers
                 await avatar.CopyToAsync(stream);
             }
 
-            imageUrls = new string[] { avatarFileName };
+            var allowedContentTypes = new[] { "image/jpeg", "image/png", "image/gif", "image/jpg" };
+            var contentType = avatar.ContentType.ToLower();
+
+            if (!allowedContentTypes.Contains(contentType))
+            {
+                return string.Empty;
+            }
+
+            imageUrls = avatarFileName;
             return imageUrls;
         }
     }

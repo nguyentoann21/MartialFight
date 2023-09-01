@@ -56,22 +56,21 @@ namespace mf_backend.Controllers
             var skill = new Skill
             {
                 SkillName = skillModel.SkillName,
-                SkillDescription = skillModel.SkillDescription,
-                SkillType = skillModel.SkillType,
-                HealthValue = skillModel.HealthValue,
-                ManaValue = skillModel.ManaValue,
-                AttackValue = skillModel.AttackValue,
-                DefenseValue = skillModel.DefenseValue,
-                SpeedValue = skillModel.SpeedValue,
-                IntellectValue = skillModel.IntellectValue,
-                PhysicalValue = skillModel.PhysicalValue
+                BriefDescription = skillModel.BriefDescription,
+                DetailDescription = skillModel.DetailDescription,
+                Type = skillModel.Type,
+                Cooldown = skillModel.Cooldown
 
             };
 
-            if (skillModel.Image != null)
+            if (skillModel.ImagePath != null)
             {
-                var imageUrl = await SaveImage(skillModel.Image);
-                skill.Image = imageUrl;
+                var imageUrl = await SaveImage(skillModel.ImagePath);
+                if (imageUrl.Equals(string.Empty))
+                {
+                    return StatusCode(StatusCodes.Status405MethodNotAllowed, "Invalid image format.Valid format (png, jpg, gif or jpeg)");
+                }
+                skill.ImagePath = imageUrl;
             }
 
             _context.Skills.Add(skill);
@@ -95,20 +94,19 @@ namespace mf_backend.Controllers
             }
 
             skill.SkillName = skillModel.SkillName;
-            skill.SkillDescription = skillModel.SkillDescription;
-            skill.SkillType = skillModel.SkillType;
-            skill.HealthValue = skillModel.HealthValue;
-            skill.ManaValue = skillModel.ManaValue;
-            skill.AttackValue = skillModel.AttackValue;
-            skill.DefenseValue = skillModel.DefenseValue;
-            skill.SpeedValue = skillModel.SpeedValue;
-            skill.IntellectValue = skillModel.IntellectValue;
-            skill.PhysicalValue = skillModel.PhysicalValue;
+            skill.BriefDescription = skillModel.BriefDescription;
+            skill.DetailDescription = skillModel.DetailDescription;
+            skill.Type = skillModel.Type;
+            skill.Cooldown = skillModel.Cooldown;
 
-            if (skillModel.Image != null)
+            if (skillModel.ImagePath != null)
             {
-                var imageUrl = await SaveImage(skillModel.Image);
-                skill.Image = imageUrl;
+                var imageUrl = await SaveImage(skillModel.ImagePath);
+                if (imageUrl.Equals(string.Empty))
+                {
+                    return StatusCode(StatusCodes.Status405MethodNotAllowed, "Invalid image format.Valid format (png, jpg, gif or jpeg)");
+                }
+                skill.ImagePath = imageUrl;
             }
 
             _context.Entry(skill).State = EntityState.Modified;
@@ -128,6 +126,13 @@ namespace mf_backend.Controllers
                 return NotFound();
             }
 
+            bool isReferenced = await _context.CharacterSkills.AnyAsync(i => i.SkillId == id);
+
+            if (isReferenced)
+            {
+                return StatusCode(StatusCodes.Status409Conflict, "Cannot delete the skill because it is referenced by character");
+            }
+
             _context.Skills.Remove(skill);
             await _context.SaveChangesAsync();
             return Ok("Delete successful");
@@ -135,19 +140,25 @@ namespace mf_backend.Controllers
 
         private async Task<string> SaveImage(IFormFile image)
         {
-            var skillImagesDirectory = Path.Combine(_environment.WebRootPath, "Skills");
-            if (!Directory.Exists(skillImagesDirectory))
+            var imagesDirectory = Path.Combine(_environment.WebRootPath, "Images");
+            Directory.CreateDirectory(imagesDirectory);
+
+            var allowedContentTypes = new[] { "image/jpeg", "image/png", "image/gif", "image/jpg" };
+            var contentType = image.ContentType.ToLower();
+
+            if (!allowedContentTypes.Contains(contentType))
             {
-                Directory.CreateDirectory(skillImagesDirectory);
+                return string.Empty;
             }
-            var imageFileName = $"{Guid.NewGuid()}{Path.GetExtension(image.FileName)}";
-            var imagePath = Path.Combine(skillImagesDirectory, imageFileName);
+
+            var extension = Path.GetExtension(image.FileName).ToLower();
+            var imageFileName = $"{Guid.NewGuid()}{extension}";
+            var imagePath = Path.Combine(imagesDirectory, imageFileName);
 
             using (var stream = new FileStream(imagePath, FileMode.Create))
-            {
                 await image.CopyToAsync(stream);
-            }
-            return Path.Combine("Skills", imageFileName);
+
+            return imageFileName;
         }
     }
 }

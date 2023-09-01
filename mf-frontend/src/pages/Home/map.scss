@@ -72,6 +72,17 @@
                     margin: 0 !important;
                     overflow-wrap: break-word;
                 }
+
+                h5 {
+                    max-width: 660px;
+                    font-weight: 600;
+                    padding: 0 0 0 20px !important;
+                    margin: 0 !important;
+                    overflow-wrap: break-word;
+                    color: #ff0;
+                    font-style: italic;
+                    font-size: 15px;
+                }
             }
         }
     }

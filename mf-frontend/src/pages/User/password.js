@@ -81,7 +81,7 @@ const ChangePassword = () => {
     try {
       const response = await axios.post(
         'https://localhost:7052/api/mf/change-password',
-        { ...formData, accountID: account.accountID },
+        { ...formData, accountId: account.accountId },
         {
           headers: {
             'Content-Type': 'application/json',

@@ -2,7 +2,7 @@ import React from 'react';
 import { FaFacebookSquare, FaYoutube } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { MdEmail, MdPhone, MdHome } from 'react-icons/md';
-import { ReactComponent as LogoGame } from '../../../../logo.svg';
+
 import './footer.scss';
 
 function Footer() {
@@ -10,17 +10,17 @@ function Footer() {
     <div className="footer">
       <div className="footer-container">
         <div className="footer-logo">
-          <div className='footer-logo-content'><LogoGame className='logo-image-footer' /></div>
+          <div className='footer-logo-content'><img src="/assets/images/logo.jpg" alt="Logo"  className='logo-image-footer' /></div>
           <span>Martial Fight</span>
         </div>
         <div className="footer-links">
           <h3>Contact Us</h3>
           <ul>
             <li>
-                <MdEmail /> Email: mplkingofworld@gmail.com
+                <MdEmail /> Email: toannvce150811@fpt.edu.vn
             </li>
             <li>
-                <MdPhone /> Phone: 0762871115
+                <MdPhone /> Phone: (+84) 292 730 3636
             </li>
             <li>
                 <MdHome /> Address: 600 extended Nguyen Van Cu street, An Binh ward, Ninh Kieu district, Can Tho city
@@ -31,12 +31,12 @@ function Footer() {
           <h3>Follow Us</h3>
           <ul>
             <li>
-                <Link to='https://www.youtube.com/' className='items-to'>
+                <Link to='/' className='items-to'>
                     <FaYoutube className='youtube-icon' /> Youtube
                 </Link>
             </li>
             <li>
-                <Link to='https://www.facebook.com/' className='items-to'>
+                <Link to='/' className='items-to'>
                     <FaFacebookSquare className='facebook-icon' /> Facebook
                 </Link>
             </li>
@@ -55,7 +55,7 @@ function Footer() {
         </div>
       </div>
       <div className='footer-mark'>
-        <p>&copy;Copyright 2023 That D5 Man Company</p>
+        <p>&copy;Copyright 2023 Brother of Snake company</p>
       </div>
     </div>
   );

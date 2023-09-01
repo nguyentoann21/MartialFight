@@ -6,24 +6,13 @@ namespace mf_backend.Models
     {
         public string SkillName { get; set; }
 
-        public string SkillDescription { get; set; }
+        public string BriefDescription { get; set; }
+        public string DetailDescription { get; set; }
 
-        public string SkillType { get; set; }
+        public bool Type { get; set; }
 
-        public int HealthValue { get; set; }
+        public IFormFile? ImagePath { get; set; }
 
-        public int ManaValue { get; set; }
-
-        public int AttackValue { get; set; }
-
-        public int DefenseValue { get; set; }
-
-        public int SpeedValue { get; set; }
-
-        public int IntellectValue { get; set; }
-
-        public int PhysicalValue { get; set; }
-
-        public IFormFile? Image { get; set; }
+        public int Cooldown { get; set; }
     }
 }

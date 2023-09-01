@@ -3,6 +3,7 @@ using mf_backend.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Net.NetworkInformation;
 
 namespace mf_backend.Controllers
 {
@@ -51,13 +52,17 @@ namespace mf_backend.Controllers
             var category = new CategoryItem
             {
                 CategoryName = categoryModel.CategoryName,
-                CategoryDescription = categoryModel.CategoryDescription,
+                Description = categoryModel.Description,
             };
 
-            if (categoryModel.Image != null)
+            if (categoryModel.ImagePath != null)
             {
-                var imageUrl = await SaveImage(categoryModel.Image);
-                category.Image = imageUrl;
+                var imageUrl = await SaveImage(categoryModel.ImagePath);
+                if (imageUrl.Equals(string.Empty))
+                {
+                    return StatusCode(StatusCodes.Status405MethodNotAllowed, "Invalid image format.Valid format (png, jpg, gif or jpeg)");
+                }
+                category.ImagePath = imageUrl;
             }
 
             _context.CategoryItems.Add(category);
@@ -82,12 +87,16 @@ namespace mf_backend.Controllers
             }
 
             category.CategoryName = categoryModel.CategoryName;
-            category.CategoryDescription = categoryModel.CategoryDescription;
+            category.Description = categoryModel.Description;
 
-            if (categoryModel.Image != null)
+            if (categoryModel.ImagePath != null)
             {
-                var imageUrl = await SaveImage(categoryModel.Image);
-                category.Image = imageUrl;
+                var imageUrl = await SaveImage(categoryModel.ImagePath);
+                if(imageUrl.Equals(string.Empty))
+                {
+                    return StatusCode(StatusCodes.Status405MethodNotAllowed, "Invalid image format.Valid format (png, jpg, gif or jpeg)");
+                }
+                category.ImagePath = imageUrl;
             }
 
             _context.Entry(category).State = EntityState.Modified;
@@ -106,7 +115,7 @@ namespace mf_backend.Controllers
                 return NotFound();
             }
 
-            bool isReferenced = await _context.Items.AnyAsync(item => item.CategoryID == id);
+            bool isReferenced = await _context.Items.AnyAsync(item => item.CategoryId == id);
 
             if (isReferenced)
             {
@@ -121,19 +130,25 @@ namespace mf_backend.Controllers
 
         private async Task<string> SaveImage(IFormFile image)
         {
-            var categoryImagesDirectory = Path.Combine(_environment.WebRootPath, "CategoryItems");
-            if (!Directory.Exists(categoryImagesDirectory))
+            var imagesDirectory = Path.Combine(_environment.WebRootPath, "Images");
+            Directory.CreateDirectory(imagesDirectory);
+
+            var allowedContentTypes = new[] { "image/jpeg", "image/png", "image/gif", "image/jpg" };
+            var contentType = image.ContentType.ToLower();
+
+            if (!allowedContentTypes.Contains(contentType))
             {
-                Directory.CreateDirectory(categoryImagesDirectory);
+                return string.Empty;
             }
-            var imageFileName = $"{Guid.NewGuid()}{Path.GetExtension(image.FileName)}";
-            var imagePath = Path.Combine(categoryImagesDirectory, imageFileName);
+
+            var extension = Path.GetExtension(image.FileName).ToLower();
+            var imageFileName = $"{Guid.NewGuid()}{extension}";
+            var imagePath = Path.Combine(imagesDirectory, imageFileName);
 
             using (var stream = new FileStream(imagePath, FileMode.Create))
-            {
                 await image.CopyToAsync(stream);
-            }
-            return Path.Combine("CategoryItems", imageFileName);
+
+            return imageFileName;
         }
     }
 }

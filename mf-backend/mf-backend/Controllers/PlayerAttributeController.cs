@@ -20,7 +20,7 @@ namespace mf_backend.Controllers
         public ActionResult<IEnumerable<PlayerAttribute>> GetPlayerAttributesByAccount(int id)
         {
             var playerAttributes = _context.PlayerAttributes
-                .Where(pa => pa.AccountID == id)
+                .Where(pa => pa.AccountId == id)
                 .ToList();
 
             return Ok(playerAttributes);

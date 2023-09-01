@@ -29,7 +29,7 @@ const MainCharacter = () => {
         response.data.map((character) => {
           return {
             ...character,
-            image: character.image ? character.image : null,
+            imagePath: character.imagePath ? character.imagePath : null,
           };
         })
       );
@@ -68,9 +68,9 @@ const MainCharacter = () => {
           currentIndex >= 0 &&
           currentIndex < characters.length
         ) {
-          const currentCharacterID = characters[currentIndex].characterID;
+          const currentCharacterId = characters[currentIndex].characterId;
           const response = await axios.get(
-            `https://localhost:7052/api/mf/character-skill/${currentCharacterID}/skills`
+            `https://localhost:7052/api/mf/character-skill/${currentCharacterId}/skills`
           );
           setCharacterSkill(response.data);
         }
@@ -134,14 +134,14 @@ const MainCharacter = () => {
                       {characters[currentIndex]?.characterName}
                     </h1>
                     <div className="character-description">
-                      <p>{characters[currentIndex]?.characterDescription}</p>
+                      <p>{characters[currentIndex]?.description}</p>
                     </div>
                     <ul className="properties">
                       {characterSkill.map((skill) => (
-                        <li key={skill.skillID} className="character-skill">
+                        <li key={skill.skillId} className="character-skill">
                           <span className="character-icon">
                             <img
-                              src={`https://localhost:7052/${skill.image}`}
+                              src={`https://localhost:7052/Images/${skill.imagePath}`}
                               alt="skill-img"
                             />
                           </span>
@@ -170,7 +170,7 @@ const MainCharacter = () => {
                       >
                         <div className="item-image">
                           <img
-                            src={`https://localhost:7052/${character.image}`}
+                            src={`https://localhost:7052/Images/${character.imagePath}`}
                             alt={character.characterName}
                           />
                         </div>
@@ -189,9 +189,9 @@ const MainCharacter = () => {
                   <div className="dialog-view-main">
                     <div className="dialog-main-top">
                       <div className="dialog-view-images">
-                        {selectedCharacter.image && (
+                        {selectedCharacter.imagePath && (
                           <img
-                            src={`https://localhost:7052/${selectedCharacter.image}`}
+                            src={`https://localhost:7052/Images/${selectedCharacter.imagePath}`}
                             alt="character-img"
                           />
                         )}
@@ -200,32 +200,31 @@ const MainCharacter = () => {
                         <h4>
                           <span>{selectedCharacter.characterName}</span>
                         </h4>
+                        <p>{selectedCharacter.gender === 0 ? "Female": "Male"}</p>
                         <p>
                           Sect -{" "}
-                          {selectedCharacter.sectID && (
+                          {selectedCharacter.sectId && (
                             <span>
                               {sects.find(
                                 (sect) =>
-                                  sect.sectID === selectedCharacter.sectID
+                                  sect.sectId === selectedCharacter.sectId
                               )?.sectName || ""}
                             </span>
                           )}
                         </p>
-                        <h5>
-                          <span> {selectedCharacter.characterDescription}</span>
-                        </h5>
+                        <h5>{selectedCharacter.description}</h5>
                       </div>
                     </div>
                     <div className="dialog-main-bottom">
                       {characterSkill.map((skill) => (
-                        <div className="dialog-main-skill" key={skill.skillID}>
+                        <div className="dialog-main-skill" key={skill.skillId}>
                           <img
-                            src={`https://localhost:7052/${skill.image}`}
+                            src={`https://localhost:7052/Images/${skill.imagePath}`}
                             alt="skill-img"
                           />
                           <div className="skill-main">
                             <h6>{skill.skillName}</h6>
-                            <span>{skill.skillDescription}</span>
+                            <span>{skill.description}</span>
                           </div>
                         </div>
                       ))}

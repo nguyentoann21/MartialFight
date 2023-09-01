@@ -7,7 +7,7 @@ namespace mf_backend.Models
         public string? Email { get; set; }
         public string? Fullname { get; set; }
         public string? Gender { get; set; }
-        public IFormFile? AvatarUrl { get; set; }
+        public IFormFile? Avatar { get; set; }
     }
 
 }

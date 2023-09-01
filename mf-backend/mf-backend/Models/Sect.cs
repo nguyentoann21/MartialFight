@@ -6,19 +6,16 @@ namespace mf_backend.Models
     public class Sect
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int SectID { get; set; }
+        public int SectId { get; set; }
 
         [Required]
         public string SectName { get; set; }
 
         [Required]
-        public string  SectDescription { get; set; }
+        public string  Description { get; set; }
 
-        public string Image { get; set; }
+        public string ImagePath { get; set; }
 
-        [ForeignKey(nameof(Character))]
-        public int CharacterID { get; set; }
-
-        public ICollection<Character> SectCharacters { get; set; }
+        public ICollection<Character> Characters { get; set; }
     }
 }

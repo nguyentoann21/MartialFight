@@ -6,7 +6,7 @@ namespace mf_backend.Models
     public class Account
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int AccountID { get; set; }
+        public int AccountId { get; set; }
 
         [Required]
         public string Username { get; set; }
@@ -14,7 +14,7 @@ namespace mf_backend.Models
         [Required]
         public string Password { get; set; }
 
-        public string AvatarUrl { get; set; }
+        public string Avatar { get; set; }
 
         [Required, EmailAddress]
         public string Email { get; set; }
@@ -25,7 +25,7 @@ namespace mf_backend.Models
 
         [Required]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime Created_at { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         public bool Active { get; set; } = true;
         public int Role { get; set; } = 0;

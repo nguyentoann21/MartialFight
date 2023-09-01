@@ -33,7 +33,7 @@ const News = () => {
       const filteredNews = originalNews.filter(
         (news) =>
           news.newsTitle.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          news.newsContent.toLowerCase().includes(searchTerm.toLowerCase())
+          news.description.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setNewsData(filteredNews);
     }
@@ -41,13 +41,13 @@ const News = () => {
 
   const handleNews = (news) => {
     const copyNews = JSON.parse(JSON.stringify(news));
-    if (copyNews.images && typeof copyNews.images === 'string') {
-      const imageArray = copyNews.images
+    if (copyNews.imagePath && typeof copyNews.imagePath === 'string') {
+      const imageArray = copyNews.imagePath
         .split(',')
         .map((imageUrl) => imageUrl.trim());
-      copyNews.images = imageArray;
+      copyNews.imagePath = imageArray;
     } else {
-      copyNews.images = [];
+      copyNews.imagePath = [];
     }
 
     setSelectedNews(copyNews);
@@ -122,7 +122,7 @@ const News = () => {
                   <ul className='news-list'>
                     {newsData.map((news) => (
                       <li
-                        key={news.newsID}
+                        key={news.newsId}
                         className='news-item'
                         onClick={() => handleNews(news)}
                       >
@@ -130,7 +130,7 @@ const News = () => {
                         <h4>
                           <TimeDisplay dateTime={news.postAt} />
                         </h4>
-                        <h5>{news.newsContent}</h5>
+                        <h5>{news.description}</h5>
                       </li>
                     ))}
                   </ul>
@@ -144,19 +144,19 @@ const News = () => {
                           <h4>
                             <TimeDisplay dateTime={selectedNews.postAt} />
                           </h4>
-                          <p>{selectedNews.newsContent}</p>
-                          {Array.isArray(selectedNews.images) &&
-                          selectedNews.images.length > 0 ? (
+                          <p>{selectedNews.description}</p>
+                          {Array.isArray(selectedNews.imagePath) &&
+                          selectedNews.imagePath.length > 0 ? (
                             <div className='slideshow-container'>
                               <div className='slideshow-slide'>
-                                {selectedNews.images.map((image, index) => (
+                                {selectedNews.imagePath.map((image, index) => (
                                   <div className='images-fields'>
                                     <p className='image-figure'>
                                       Figure {index + 1}
                                     </p>
                                     <img
                                       key={index}
-                                      src={`https://localhost:7052/${image}`}
+                                      src={`https://localhost:7052/Images/${image}`}
                                       alt={`img ${index}`}
                                       className='slideshow-image'
                                     />

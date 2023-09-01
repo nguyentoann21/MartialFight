@@ -6,8 +6,8 @@ namespace mf_backend.Models
     {
         public string? NewsTitle { get; set; }
 
-        public string? NewsContent { get; set; }
+        public string? Description { get; set; }
 
-        public List<IFormFile>? Images { get; set; }
+        public List<IFormFile>? ImagePath { get; set; }
     }
 }

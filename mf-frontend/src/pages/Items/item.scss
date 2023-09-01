@@ -1,40 +1,38 @@
 .item-page {
-    padding: 20px 40px;
+    padding: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
 
     .items-page-container {
-        margin: 0 30px;
         display: flex;
-        width: 1000px;
+        width: 1100px;
         min-height: 900px;
         justify-content: flex-start;
         align-items: center;
         flex-direction: column;
-        background-image: url('../../../public/assets/images/member-card.png');
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
+        background-color: #222;
         color: #fff;
-        border-radius: 10px;
-        padding-bottom: 30px;
+        border-radius: 20px;
+        padding: 0 40px;
 
         h2 {
             font-size: 50px;
             padding: 0 !important;
             margin: 70px 0 0 0 !important;
+            color: #ff0;
         }
     
         .item-filter {
-            width: 70%;
+            width: 100%;
             display: flex;
             align-items: flex-end;
             justify-content: center;
             flex-direction: column;
-            margin: 20px 30% 20px 30%;
+            padding: 20px 7% 20px 0;
 
             label {
-                width: 30%;
+                width: 20%;
                 margin-bottom: 5px;
                 font-size: 18px;
                 font-weight: 500;
@@ -47,7 +45,7 @@
                 background-color: green;
                 color: #fff;
                 padding: 5px 10px;
-                width: 30%;
+                width: 20%;
                 border: none !important;
                 border-radius: 5px;
                 cursor: pointer;
@@ -84,15 +82,15 @@
                 justify-content: center;
                 align-items: center;
                 flex-direction: column;
-                margin: 10px;
-                padding: 50px 10px 40px 30px;
+                padding: 50px 10px 40px 15px;
                 color: #fff;
                 background-image: url('../../../public/assets/images/item-card.png');
                 background-repeat: no-repeat;
                 background-size: 100% 100%;
                 border-radius: 10px;
-                width: 37%;
+                width: 30%;
                 cursor: pointer;
+                height: 250px;
 
                 .card-top {
                     display: flex;
@@ -110,7 +108,7 @@
                             width: 100%;
                             max-width: 120px;
                             height: 100%;
-                            object-fit: cover;
+                            object-fit: contain;
                             border-radius: 10px;
                             filter: drop-shadow(0 0 3px #ffff00) drop-shadow(0 0 4px #ffff00);
                         }
@@ -123,8 +121,11 @@
                         flex-direction: column;
                         justify-content: center;
                         align-items: flex-start;
+                        word-wrap: break-word;
 
                         h3, h5 {
+                            max-width: 90%;
+                            word-wrap: break-word;
                             margin: 0 !important;
                             padding: 0 !important;
                         }
@@ -139,6 +140,21 @@
                             margin: 3px 0 !important;
                             font-size: 16px !important;
                         }
+
+                        .type-item {
+                            display: flex !important;
+                            justify-content: center !important;
+                            align-items: center !important;
+                            margin: 3px 0 !important;
+                            font-size: 16px !important;
+                            font-weight: 600;
+
+                            svg {
+                                margin-left: 3px !important;
+                                font-size: 15px;
+                                color: #ff0;
+                            }
+                        }
                     }
                 }
 
@@ -147,7 +163,6 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    gap: 2%;
                     margin: 15px 0 0 0;
 
                     .card-bottom-left {
@@ -177,7 +192,6 @@
 
                     .card-bottom-right {
                         width: 40%;
-                        margin-left: 6%;
 
                         label {
                             display: flex;

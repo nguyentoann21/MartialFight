@@ -53,7 +53,7 @@ namespace mf_backend.Controllers
                 return BadRequest(ModelState);
             }
 
-            if(newsModel.NewsTitle == null || newsModel.NewsContent == null || newsModel.Images == null)
+            if(newsModel.NewsTitle == null || newsModel.Description == null || newsModel.ImagePath == null)
             {
                 return StatusCode(StatusCodes.Status403Forbidden, "Please fill in all the required fields");
             }
@@ -61,15 +61,25 @@ namespace mf_backend.Controllers
             var news = new News
             {
                 NewsTitle = newsModel.NewsTitle,
-                NewsContent = newsModel.NewsContent,
+                Description = newsModel.Description,
                 PostAt = DateTime.Now
             };
 
-            if (newsModel.Images != null && newsModel.Images.Count > 0)
+            if (newsModel.ImagePath != null && newsModel.ImagePath.Count > 0)
             {
-                var imageUrls = await SaveImages(newsModel.Images);
-                news.Images = string.Join(",", imageUrls);
+                var imageUrls = await SaveImages(newsModel.ImagePath);
+
+                if (imageUrls.Length == 1 && imageUrls[0] == "Invalid")
+                {
+                    return StatusCode(StatusCodes.Status405MethodNotAllowed, "One or more image formats are invalid. Valid format (png, jpg, gif, or jpeg)");
+                }
+                if (imageUrls.Length == 1 && imageUrls[0] == "OverSize")
+                {
+                    return StatusCode(StatusCodes.Status413PayloadTooLarge, "Image(s) size is too large. Image(s) size limit is 24MB");
+                }
+                news.ImagePath = string.Join(",", imageUrls);
             }
+
 
             _context.News.Add(news);
             await _context.SaveChangesAsync();
@@ -86,7 +96,7 @@ namespace mf_backend.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (newsModel.NewsTitle == null || newsModel.NewsContent == null || newsModel.Images == null)
+            if (newsModel.NewsTitle == null || newsModel.Description == null || newsModel.ImagePath == null)
             {
                 return StatusCode(StatusCodes.Status403Forbidden, "Please fill in all the required fields");
             }
@@ -97,22 +107,56 @@ namespace mf_backend.Controllers
                 return NotFound();
             }
 
-            news.NewsTitle = newsModel.NewsTitle;
-            news.NewsContent = newsModel.NewsContent;
+            bool isChanged = false;
 
-            if (newsModel.Images != null && newsModel.Images.Count > 0)
+            if (news.NewsTitle != newsModel.NewsTitle)
             {
-                var imageUrls = await SaveImages(newsModel.Images);
-                news.Images = string.Join(",", imageUrls);
+                news.NewsTitle = newsModel.NewsTitle;
+                isChanged = true;
             }
 
-            news.PostAt = DateTime.Now;
+            if (news.Description != newsModel.Description)
+            {
+                news.Description = newsModel.Description;
+                isChanged = true;
+            }
 
-            _context.Entry(news).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            if (newsModel.ImagePath != null && newsModel.ImagePath.Count > 0)
+            {
+                var imageUrls = await SaveImages(newsModel.ImagePath);
 
-            return StatusCode(StatusCodes.Status200OK);
+                if (imageUrls.Length == 1 && imageUrls[0] == "Invalid")
+                {
+                    return StatusCode(StatusCodes.Status405MethodNotAllowed, "One or more image formats are invalid. Valid format (png, jpg, gif, or jpeg)");
+                }
+
+                if (imageUrls.Length == 1 && imageUrls[0] == "OverSize")
+                {
+                    return StatusCode(StatusCodes.Status413PayloadTooLarge, "Image(s) size is too large. Image(s) size limit is 24MB");
+                }
+
+                string newImagePaths = string.Join(",", imageUrls);
+
+                if (news.ImagePath != newImagePaths)
+                {
+                    news.ImagePath = newImagePaths;
+                    isChanged = true;
+                }
+            }
+
+            if (isChanged)
+            {
+                news.PostAt = DateTime.Now;
+                _context.Entry(news).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+                return StatusCode(StatusCodes.Status200OK);
+            }
+            else
+            {
+                return StatusCode(StatusCodes.Status406NotAcceptable, "Nothing to update");
+            }
         }
+
 
         // DELETE: api/mf/news/{id}
         [HttpDelete("{id}")]
@@ -132,29 +176,72 @@ namespace mf_backend.Controllers
 
         private async Task<string[]> SaveImages(List<IFormFile> images)
         {
-            var imageUrls = new string[images.Count];
-            var newsImagesDirectory = Path.Combine(_environment.WebRootPath, "News");
+            var imageUrls = new List<string>();
+            var imagesDirectory = Path.Combine(_environment.WebRootPath, "Images");
+            Directory.CreateDirectory(imagesDirectory);
 
-            if (!Directory.Exists(newsImagesDirectory))
-            {
-                Directory.CreateDirectory(newsImagesDirectory);
-            }
+            var allowedContentTypes = new[] { "image/jpeg", "image/png", "image/gif", "image/jpg" };
 
-            for (var i = 0; i < images.Count; i++)
+            var maxSize = 24 * 1024 * 1024; // 24 megabytes
+
+            long totalFileSize = 0;
+            bool isValid = true;
+            bool overSize = false;
+
+            foreach (var image in images)
             {
-                var imageFile = images[i];
-                var imageFileName = $"{Guid.NewGuid()}{Path.GetExtension(imageFile.FileName)}";
-                var imagePath = Path.Combine(newsImagesDirectory, imageFileName);
+                var contentType = image.ContentType.ToLower();
+
+                if (!allowedContentTypes.Contains(contentType))
+                {
+                    isValid = false;
+                    continue;
+                }
+
+                var extension = Path.GetExtension(image.FileName).ToLower();
+                var imageFileName = $"{Guid.NewGuid()}{extension}";
+                var imagePath = Path.Combine(imagesDirectory, imageFileName);
 
                 using (var stream = new FileStream(imagePath, FileMode.Create))
                 {
-                    await imageFile.CopyToAsync(stream);
+                    await image.CopyToAsync(stream);
                 }
 
-                imageUrls[i] = Path.Combine("News", imageFileName);
+                long fileSizeBytes = new FileInfo(imagePath).Length;
+                totalFileSize += fileSizeBytes;
+
+                if (fileSizeBytes > maxSize)
+                {
+                    overSize = true;
+                    System.IO.File.Delete(imagePath); 
+                    break;
+                }
+
+                imageUrls.Add(imageFileName);
             }
 
-            return imageUrls;
+            if (!isValid)
+            {
+                foreach (var imageUrl in imageUrls)
+                {
+                    var imagePath = Path.Combine(imagesDirectory, imageUrl);
+                    System.IO.File.Delete(imagePath);
+                }
+                return new string[] { "Invalid" };
+            }
+
+            if (overSize || totalFileSize > maxSize)
+            {
+                foreach (var imageUrl in imageUrls)
+                {
+                    var imagePath = Path.Combine(imagesDirectory, imageUrl);
+                    System.IO.File.Delete(imagePath);
+                }
+                return new string[] { "OverSize" };
+            }
+
+            return imageUrls.ToArray();
         }
+
     }
 }

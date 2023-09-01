@@ -7,11 +7,9 @@ const DownloadGame = () => {
   const [showCheckIcon, setShowCheckIcon] = useState(false);
 
   const handleDownload = () => {
-    // Simulating the download action
-    // URL of the image you want to download
     const downloadLink = document.createElement('a');
-    downloadLink.href = 'assets/images/dino.gif';
-    downloadLink.download = 'dino.gif';
+    downloadLink.href = 'assets/game/martialfight.exe';
+    downloadLink.download = 'martialfight.exe';
     document.body.appendChild(downloadLink);
     downloadLink.click();
     document.body.removeChild(downloadLink);

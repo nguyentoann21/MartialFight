@@ -58,13 +58,22 @@ namespace mf_backend.Controllers
                 MapName = mapModel.MapName,
                 Level = mapModel.Level,
                 LevelRequirement = mapModel.LevelRequirement,
-                MapDescription = mapModel.MapDescription
+                Description = mapModel.Description,
+                Type = mapModel.Type,
+                Exp = mapModel.Exp,
+                AmountItem = mapModel.AmountItem,
+                Silver = mapModel.Silver,
+                ItemId = mapModel.ItemId
             };
 
-            if (mapModel.Image != null)
+            if (mapModel.ImagePath != null)
             {
-                var imageUrl = await SaveImage(mapModel.Image);
-                map.Image = imageUrl;
+                var imageUrl = await SaveImage(mapModel.ImagePath);
+                if (imageUrl.Equals(string.Empty))
+                {
+                    return StatusCode(StatusCodes.Status405MethodNotAllowed, "Invalid image format.Valid format (png, jpg, gif or jpeg)");
+                }
+                map.ImagePath = imageUrl;
             }
 
             _context.Maps.Add(map);
@@ -91,12 +100,21 @@ namespace mf_backend.Controllers
             map.MapName = mapModel.MapName;
             map.Level = mapModel.Level;
             map.LevelRequirement = mapModel.LevelRequirement;
-            map.MapDescription = mapModel.MapDescription;
+            map.Description = mapModel.Description;
+            map.Type = mapModel.Type;
+            map.Exp = mapModel.Exp;
+            map.AmountItem = mapModel.AmountItem;
+            map.Silver = mapModel.Silver;
+            map.ItemId = mapModel.ItemId;
 
-            if (mapModel.Image != null)
+            if (mapModel.ImagePath != null)
             {
-                var imageUrl = await SaveImage(mapModel.Image);
-                map.Image = imageUrl;
+                var imageUrl = await SaveImage(mapModel.ImagePath);
+                if (imageUrl.Equals(string.Empty))
+                {
+                    return StatusCode(StatusCodes.Status405MethodNotAllowed, "Invalid image format.Valid format (png, jpg, gif or jpeg)");
+                }
+                map.ImagePath = imageUrl;
             }
 
             _context.Entry(map).State = EntityState.Modified;
@@ -123,19 +141,25 @@ namespace mf_backend.Controllers
 
         private async Task<string> SaveImage(IFormFile image)
         {
-            var mapImagesDirectory = Path.Combine(_environment.WebRootPath, "Maps");
-            if (!Directory.Exists(mapImagesDirectory))
+            var imagesDirectory = Path.Combine(_environment.WebRootPath, "Images");
+            Directory.CreateDirectory(imagesDirectory);
+
+            var allowedContentTypes = new[] { "image/jpeg", "image/png", "image/gif", "image/jpg" };
+            var contentType = image.ContentType.ToLower();
+
+            if (!allowedContentTypes.Contains(contentType))
             {
-                Directory.CreateDirectory(mapImagesDirectory);
+                return string.Empty;
             }
-            var imageFileName = $"{Guid.NewGuid()}{Path.GetExtension(image.FileName)}";
-            var imagePath = Path.Combine(mapImagesDirectory, imageFileName);
+
+            var extension = Path.GetExtension(image.FileName).ToLower();
+            var imageFileName = $"{Guid.NewGuid()}{extension}";
+            var imagePath = Path.Combine(imagesDirectory, imageFileName);
 
             using (var stream = new FileStream(imagePath, FileMode.Create))
-            {
                 await image.CopyToAsync(stream);
-            }
-            return Path.Combine("Maps", imageFileName);
+
+            return imageFileName;
         }
     }
 }

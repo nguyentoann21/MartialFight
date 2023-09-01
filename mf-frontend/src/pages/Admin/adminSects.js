@@ -27,14 +27,14 @@ const AdminSect = () => {
     }
   }, [account, history]);
 
-  const SECT_PER_PAGE = 2;
+  const SECT_PER_PAGE = 10;
   const [sects, setSects] = useState([]);
   const [dialogVisible, setDialogVisible] = useState(false);
   const [dialogMode, setDialogMode] = useState("create");
   const [currentSects, setCurrentSects] = useState({
     sectName: "",
-    sectDescription: "",
-    image: null,
+    description: "",
+    imagePath: null,
   });
 
   const [message, setMessage] = useState("");
@@ -67,11 +67,11 @@ const AdminSect = () => {
 
   useEffect(() => {
     return () => {
-      if (currentSects.image && currentSects.image[0]) {
-        window.URL.revokeObjectURL(currentSects.image[0]);
+      if (currentSects.imagePath && currentSects.imagePath[0]) {
+        window.URL.revokeObjectURL(currentSects.imagePath[0]);
       }
     };
-  }, [currentSects.image]);
+  }, [currentSects.imagePath]);
 
   const loadSects = async () => {
     try {
@@ -80,7 +80,7 @@ const AdminSect = () => {
         response.data.map((sect) => {
           return {
             ...sect,
-            image: sect.image ? sect.image : null,
+            imagePath: sect.imagePath ? sect.imagePath : null,
           };
         })
       );
@@ -88,7 +88,7 @@ const AdminSect = () => {
         response.data.map((sect) => {
           return {
             ...sect,
-            image: sect.image ? sect.image : null,
+            imagePath: sect.imagePath ? sect.imagePath : null,
           };
         })
       );
@@ -103,26 +103,26 @@ const AdminSect = () => {
 
   const actionSects = async () => {
     const formData = new FormData();
-    if (!currentSects.sectName || !currentSects.sectDescription) {
+    if (!currentSects.sectName || !currentSects.description) {
       setMessage("Please fill in all the required fields");
       return;
     }
 
     const original = originalSect.find(
-      (sect) => sect.sectID === currentSects.sectID
+      (sect) => sect.sectId === currentSects.sectId
     );
 
     if (dialogMode === "update") {
-      formData.append("sectID", currentSects.sectID);
+      formData.append("sectId", currentSects.sectId);
 
       if (
         currentSects.sectName !== original.sectName ||
-        currentSects.sectDescription !== original.sectDescription ||
-        (currentSects.image && currentSects.image !== original.image)
+        currentSects.description !== original.description ||
+        (currentSects.imagePath && currentSects.imagePath !== original.imagePath)
       ) {
         formData.append("sectName", currentSects.sectName);
-        formData.append("sectDescription", currentSects.sectDescription);
-        formData.append("image", currentSects.image);
+        formData.append("description", currentSects.description);
+        formData.append("imagePath", currentSects.imagePath);
       } else {
         setMessage("Nothing to update");
         return;
@@ -131,18 +131,18 @@ const AdminSect = () => {
       if (currentSects.sectName !== originalSect.sectName) {
         formData.append("sectName", currentSects.sectName);
       }
-      if (currentSects.sectDescription !== originalSect.sectDescription) {
-        formData.append("sectDescription", currentSects.sectDescription);
+      if (currentSects.description !== originalSect.description) {
+        formData.append("description", currentSects.description);
       }
-      if (currentSects.image && currentSects.image !== originalSect.image) {
-        formData.append("image", currentSects.image);
+      if (currentSects.imagePath && currentSects.imagePath !== originalSect.imagePath) {
+        formData.append("imagePath", currentSects.imagePath);
       }
     }
 
     const url =
       dialogMode === "create"
         ? "https://localhost:7052/api/mf/sects"
-        : `https://localhost:7052/api/mf/sects/${currentSects.sectID}`;
+        : `https://localhost:7052/api/mf/sects/${currentSects.sectId}`;
 
     try {
       let response;
@@ -170,7 +170,11 @@ const AdminSect = () => {
       }
     } catch (error) {
       console.error(error);
-      setMessage("Failed to save the sect");
+        if (error.response.status === 405) {
+          setMessage(error.response.data);
+        } else {
+          setMessage("Failed to save the sect");
+        }
     }
   };
 
@@ -178,7 +182,7 @@ const AdminSect = () => {
     if (sectRemoved) {
       try {
         await axios.delete(
-          `https://localhost:7052/api/mf/sects/${sectRemoved.sectID}`
+          `https://localhost:7052/api/mf/sects/${sectRemoved.sectId}`
         );
         setMessage("Sect deleted successfully");
         loadSects();
@@ -187,9 +191,7 @@ const AdminSect = () => {
         }
       } catch (error) {
         console.error(error);
-        if (error.response.status === 409) {
-          setMessage(error.response.data);
-        } else if (error.response.status === 406) {
+        if (error.response.status === 409 || error.response.status === 406) {
           setMessage(error.response.data);
         } else {
           setMessage("Failed to delete the category");
@@ -206,7 +208,7 @@ const AdminSect = () => {
     } else {
       setDialogMode(mode);
       if (mode === "create") {
-        setCurrentSects({ ...sect, image: null });
+        setCurrentSects({ ...sect, imagePath: null });
       } else if (mode === "update") {
         setCurrentSects({ ...currentSects, ...sect });
       }
@@ -238,7 +240,7 @@ const AdminSect = () => {
     const filteredSect = originalSect.filter(
       (sect) =>
         sect.sectName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        sect.sectDescription.toLowerCase().includes(searchTerm.toLowerCase())
+        sect.description.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setSects(filteredSect);
   };
@@ -337,18 +339,18 @@ const AdminSect = () => {
                         onChange={(e) =>
                           setCurrentSects({
                             ...currentSects,
-                            image: e.target.files[0],
+                            imagePath: e.target.files[0],
                           })
                         }
                         hidden
-                        required={!currentSects.sectID}
+                        required={!currentSects.sectId}
                       />
-                      {currentSects.image ? (
+                      {currentSects.imagePath ? (
                         <img
                           src={
-                            currentSects.image instanceof File
-                              ? window.URL.createObjectURL(currentSects.image)
-                              : `https://localhost:7052/${currentSects.image}`
+                            currentSects.imagePath instanceof File
+                              ? window.URL.createObjectURL(currentSects.imagePath)
+                              : `https://localhost:7052/Images/${currentSects.imagePath}`
                           }
                           alt="sect-img"
                         />
@@ -375,14 +377,14 @@ const AdminSect = () => {
                       />
                     </div>
                     <div className="dialog-empt-action-group">
-                      <label htmlFor="sectDescription">Description:</label>
+                      <label htmlFor="description">Description:</label>
                       <textarea
-                        id="sectDescription"
-                        value={currentSects.sectDescription || ""}
+                        id="description"
+                        value={currentSects.description || ""}
                         onChange={(e) =>
                           setCurrentSects({
                             ...currentSects,
-                            sectDescription: e.target.value,
+                            description: e.target.value,
                           })
                         }
                         placeholder="Please enter the sect description"
@@ -469,12 +471,12 @@ const AdminSect = () => {
                 </thead>
                 <tbody>
                   {currentSectPage.map((sects) => (
-                    <tr key={sects.sectID}>
+                    <tr key={sects.sectId}>
                       <td className="admin-sects-images">
                         <div className="image-container">
-                          {sects.image && (
+                          {sects.imagePath && (
                             <img
-                              src={`https://localhost:7052/${sects.image}`}
+                              src={`https://localhost:7052/Images/${sects.imagePath}`}
                               alt="sect-img"
                             />
                           )}
@@ -484,7 +486,7 @@ const AdminSect = () => {
                         <span>{sects.sectName}</span>
                       </td>
                       <td className="admin-sect-description">
-                        <span>{sects.sectDescription}</span>
+                        <span>{sects.description}</span>
                       </td>
                       <td className="admin-sects-actions">
                         <button onClick={() => handleDialogOpen("view", sects)}>
@@ -539,18 +541,18 @@ const AdminSect = () => {
                         onChange={(e) =>
                           setCurrentSects({
                             ...currentSects,
-                            image: e.target.files[0],
+                            imagePath: e.target.files[0],
                           })
                         }
                         hidden
-                        required={!currentSects.sectID}
+                        required={!currentSects.sectId}
                       />
-                      {currentSects.image ? (
+                      {currentSects.imagePath ? (
                         <img
                           src={
-                            currentSects.image instanceof File
-                              ? window.URL.createObjectURL(currentSects.image)
-                              : `https://localhost:7052/${currentSects.image}`
+                            currentSects.imagePath instanceof File
+                              ? window.URL.createObjectURL(currentSects.imagePath)
+                              : `https://localhost:7052/Images/${currentSects.imagePath}`
                           }
                           alt="sect-img"
                         />
@@ -577,14 +579,14 @@ const AdminSect = () => {
                       />
                     </div>
                     <div className="dialog-action-group">
-                      <label htmlFor="sectDescription">Description:</label>
+                      <label htmlFor="description">Description:</label>
                       <textarea
-                        id="sectDescription"
-                        value={currentSects.sectDescription || ""}
+                        id="description"
+                        value={currentSects.description || ""}
                         onChange={(e) =>
                           setCurrentSects({
                             ...currentSects,
-                            sectDescription: e.target.value,
+                            description: e.target.value,
                           })
                         }
                         placeholder="Please enter the sect description"
@@ -609,9 +611,9 @@ const AdminSect = () => {
                 <div className="dialog-view-content">
                   <h3>View {currentSects.sectName}</h3>
                   <div className="dialog-view-images">
-                    {currentSects.image && (
+                    {currentSects.imagePath && (
                       <img
-                        src={`https://localhost:7052/${currentSects.image}`}
+                        src={`https://localhost:7052/Images/${currentSects.imagePath}`}
                         alt="sect-img"
                         className="image-view-dialog"
                       />
@@ -622,7 +624,7 @@ const AdminSect = () => {
                       Sect Name: <span>{currentSects.sectName}</span>
                     </p>
                     <p>
-                      Description:<span> {currentSects.sectDescription}</span>
+                      Description:<span> {currentSects.description}</span>
                     </p>
                   </div>
                   <div className="dialog-view-button">

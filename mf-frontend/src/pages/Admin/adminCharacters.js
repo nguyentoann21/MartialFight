@@ -30,13 +30,13 @@ const AdminCharacter = () => {
     characterName: "",
     description: "",
     gender: "",
-    image: null,
+    imagePath: null,
     attackValue: "",
     defenseValue: "",
     speedValue: "",
     intellectValue: "",
     physicalValue: "",
-    sectID: "",
+    sectId: "",
   });
 
   const [viewDialogVisible, setViewDialogVisible] = useState(false);
@@ -56,11 +56,11 @@ const AdminCharacter = () => {
 
   useEffect(() => {
     return () => {
-      if (currentCharacter.image && currentCharacter.image[0]) {
-        window.URL.revokeObjectURL(currentCharacter.image[0]);
+      if (currentCharacter.imagePath && currentCharacter.imagePath[0]) {
+        window.URL.revokeObjectURL(currentCharacter.imagePath[0]);
       }
     };
-  }, [currentCharacter.image]);
+  }, [currentCharacter.imagePath]);
 
   const loadCharacter = async () => {
     try {
@@ -72,7 +72,7 @@ const AdminCharacter = () => {
         response.data.map((character) => {
           return {
             ...character,
-            image: character.image ? character.image : null,
+            imagePath: character.imagePath ? character.imagePath : null,
           };
         })
       );
@@ -80,7 +80,7 @@ const AdminCharacter = () => {
         response.data.map((character) => {
           return {
             ...character,
-            image: character.image ? character.image : null,
+            imagePath: character.imagePath ? character.imagePath : null,
           };
         })
       );
@@ -88,7 +88,7 @@ const AdminCharacter = () => {
         response.data.map((character) => {
           return {
             ...character,
-            image: character.image ? character.image : null,
+            imagePath: character.imagePath ? character.imagePath : null,
           };
         })
       );
@@ -132,7 +132,7 @@ const AdminCharacter = () => {
 
     try {
       const response = await axios.get(
-        `https://localhost:7052/api/mf/character-skill/${character.characterID}/skills`
+        `https://localhost:7052/api/mf/character-skill/${character.characterId}/skills`
       );
       setCharacterSkill(response.data);
       console.log(response.data);
@@ -177,7 +177,7 @@ const AdminCharacter = () => {
       loadCharacter();
     } else {
       const sortedCharacter = originalCharacter.filter((character) => {
-        return character.sectID === parseInt(sortType, 10);
+        return character.sectId === parseInt(sortType, 10);
       });
       setCharacters(sortedCharacter);
     }
@@ -284,7 +284,7 @@ const AdminCharacter = () => {
               <select value={sortType} onChange={handleSortChange}>
                 <option value="all">All</option>
                 {sects.map((sect) => (
-                  <option key={sect.sectID} value={sect.sectID}>
+                  <option key={sect.sectId} value={sect.sectId}>
                     {sect.sectName}
                   </option>
                 ))}
@@ -326,12 +326,12 @@ const AdminCharacter = () => {
                 </thead>
                 <tbody>
                   {currentCharacterPage.map((characters) => (
-                    <tr key={characters.characterID}>
+                    <tr key={characters.characterId}>
                       <td className="admin-characters-images">
                         <div className="image-container">
-                          {characters.image && (
+                          {characters.imagePath && (
                             <img
-                              src={`https://localhost:7052/${characters.image}`}
+                              src={`https://localhost:7052/Images/${characters.imagePath}`}
                               alt="character-img"
                             />
                           )}
@@ -341,16 +341,16 @@ const AdminCharacter = () => {
                         <span>{characters.characterName}</span>
                       </td>
                       <td className="admin-characters-sect">
-                        {characters.sectID && (
+                        {characters.sectId && (
                           <span>
                             {sects.find(
-                              (sect) => sect.sectID === characters.sectID
+                              (sect) => sect.sectId === characters.sectId
                             )?.sectName || ""}
                           </span>
                         )}
                       </td>
                       <td className="admin-character-description">
-                        <span>{characters.characterDescription}</span>
+                        <span>{characters.description}</span>
                       </td>
                       <td className="admin-characters-actions">
                         <button onClick={() => handleDialogOpen(characters)}>
@@ -371,9 +371,9 @@ const AdminCharacter = () => {
                   <div className="dialog-view-main">
                     <div className="dialog-main-top">
                       <div className="dialog-view-images">
-                        {currentCharacter.image && (
+                        {currentCharacter.imagePath && (
                           <img
-                            src={`https://localhost:7052/${currentCharacter.image}`}
+                            src={`https://localhost:7052/Images/${currentCharacter.imagePath}`}
                             alt="character-img"
                           />
                         )}
@@ -384,30 +384,30 @@ const AdminCharacter = () => {
                         </h4>
                         <p>
                           Sect -{" "}
-                          {currentCharacter.sectID && (
+                          {currentCharacter.sectId && (
                             <span>
                               {sects.find(
                                 (sect) =>
-                                  sect.sectID === currentCharacter.sectID
+                                  sect.sectId === currentCharacter.sectId
                               )?.sectName || ""}
                             </span>
                           )}
                         </p>
                         <h5>
-                          <span> {currentCharacter.characterDescription}</span>
+                          <span> {currentCharacter.description}</span>
                         </h5>
                       </div>
                     </div>
                     <div className="dialog-main-bottom">
                       {characterSkill.map((skill) => (
-                        <div className="dialog-main-skill" key={skill.skillID}>
+                        <div className="dialog-main-skill" key={skill.skillId}>
                           <img
-                            src={`https://localhost:7052/${skill.image}`}
+                            src={`https://localhost:7052/Images/${skill.imagePath}`}
                             alt="skill-img"
                           />
                           <div className="skill-main">
                             <h6>{skill.skillName}</h6>
-                            <span>{skill.skillDescription}</span>
+                            <span>{skill.description}</span>
                           </div>
                         </div>
                       ))}

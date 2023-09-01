@@ -4,7 +4,7 @@ namespace mf_backend.Models
 {
     public class ChangePasswordModel
     {
-        public int AccountID { get; set; }
+        public int AccountId { get; set; }
 
         [Required]
         public string CurrentPassword { get; set; }

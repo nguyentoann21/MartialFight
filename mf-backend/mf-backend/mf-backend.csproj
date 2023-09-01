@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\Blogs\**" />
+    <Content Remove="wwwroot\Blogs\**" />
+    <EmbeddedResource Remove="wwwroot\Blogs\**" />
+    <None Remove="wwwroot\Blogs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="MailKit" Version="4.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.9" />
@@ -18,14 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\CategoryItems\" />
     <Folder Include="wwwroot\Images\" />
-    <Folder Include="wwwroot\Blogs\" />
-    <Folder Include="wwwroot\Items\" />
-    <Folder Include="wwwroot\Maps\" />
-    <Folder Include="wwwroot\Characters\" />
-    <Folder Include="wwwroot\Skills\" />
-    <Folder Include="wwwroot\Sects\" />
   </ItemGroup>
 
 </Project>

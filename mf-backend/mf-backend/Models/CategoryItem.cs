@@ -5,12 +5,12 @@ namespace mf_backend.Models
     public class CategoryItem
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int CategoryID { get; set; }
+        public int CategoryId { get; set; }
 
         public string CategoryName { get; set; }
 
-        public string CategoryDescription { get; set; }
+        public string Description { get; set; }
 
-        public string Image { get; set; }
+        public string ImagePath { get; set; }
     }
 }

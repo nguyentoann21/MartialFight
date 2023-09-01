@@ -35,6 +35,11 @@ namespace mf_backend.Controllers
                 return StatusCode(StatusCodes.Status404NotFound, "Account does not exist");
             }
 
+            if (account.Role != 0)
+            {
+                return StatusCode(StatusCodes.Status403Forbidden, "You do not have permission to update this account's status");
+            }
+
             if (account.Active == isActive)
             {
                 return StatusCode(StatusCodes.Status403Forbidden, "The status does not change");

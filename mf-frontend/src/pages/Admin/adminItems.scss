@@ -413,6 +413,7 @@
                     padding: 2px 0;
                     width: 38px;
                     height: 38px;
+                    object-fit: contain;
                 }
             }
     
@@ -576,8 +577,8 @@
             }
   
             small {
-                max-width: 250px;
-                word-break: break-all;
+                max-width: 240px;
+                word-wrap: break-all;
                 margin: 0 0 10px 0;
                 color: #ff0;
                 font-style: italic;
@@ -786,7 +787,7 @@
             background-repeat: no-repeat;
             border-radius: 10px;
             text-align: center;
-            width: 500px;
+            min-width: 500px;
             height: 150px;
             display: flex;
             justify-content: center;
@@ -795,9 +796,10 @@
   
             p {
                 margin: 10px 0 !important;
-                padding: 0 !important;
+                padding: 0 30px !important;
                 font-size: 20px;
                 font-style: italic;
+                word-wrap: break-word;
             }
   
             button {
@@ -835,108 +837,98 @@
     
         .dialog-view-main-content {
             width: 1000px;
-            height: 500px;
+            height: 400px;
             background-image: url('../../../public/assets/images/horizontal-card.png');
-            background-repeat: no-repeat;
             background-size: 100% 95%;
+            background-repeat: no-repeat;
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             border-radius: 10px;
-            padding: 50px 0 100px 0;
-  
+            padding: 50px 0;
+
             .dialog-view-content {
                 position: relative;
                 width: 850px;
                 max-height: 400px;
-                text-align: start;
                 padding: 0 70px !important;
                 overflow: auto; 
                 scrollbar-width: none;
                 -ms-overflow-style: none;
-                margin: 40px 0 0 0 !important;
-    
-                h3 {
-                    margin: 0 !important;
-                    padding: 0 !important;
-                    color: #ff0;
-                    font-size: 36px;
-                    text-align: center;
-                }
+                margin: 0 !important;
+                display: flex;
+                justify-content: center;
+                align-items: center;
     
                 .dialog-view-main {
-                    width: 100%;
-                    text-align: left;
                     display: flex;
-                    
-                    .left-side-dialog, .center-side-dialog, .right-side-dialog {
-                      width: 33%;
-                      padding-left: 40px;
-  
-                      label {
-                          display: flex;
-                          justify-content: flex-start;
-                          align-items: center;
-                          margin: 10px;
-                          width: 100%;
-  
-                          p {
-                              margin: 0 !important;
-                              padding: 0 !important;
-                              color: #ff0;
-                              display: flex;
-                              width: 30%;
-                          }
-  
-                          span {
-                              width: 70%;
-                              color: #fff;
-                              flex-wrap: wrap;
-                              word-break: break-word;
-                          }
-                        }
-                      }
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-start;
+                    width: 450px;
     
-                    
+                    label {
+                        display: flex;
+                        width: 100%;
+
+                        p {
+                            margin: 0 10px 0 0 !important;
+                            padding: 0 !important;
+                            color: #ff0;
+                            display: flex;
+                            flex-direction: column;
+                        }
+
+                        span {
+                            width: 100%;
+                            color: #fff;
+                            font-style: italic;
+                            flex-wrap: wrap;
+                            word-break: break-word;
+                        }
+                    }
                 }
     
                 .dialog-view-images {
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    margin: 15px 0;
+                    margin: 15px 0 0 0;
+                    width: 400px;
                     
                     .image-view-dialog {
                         border-radius: 10px;
-                        width: 800px;
-                        height: 400px;
+                        width: 300px;
+                        height: 300px;
+                        filter: drop-shadow(0 0 3px #ff0)  drop-shadow(0 0 5px #ff0);
                     }
+                }  
+            }
+
+            .dialog-view-button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 15px 0;
+                
+                button {
+                    width: 150px;
+                    background-color: #080;
+                    font-size: 16px;
+                    font-weight: 600;
+                    padding: 5px 25px;
+                    border: none;
+                    color: #fff;
+                    border-radius: 5px;
+                    cursor: pointer;
                 }
-    
-                .dialog-view-button {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    margin: 15px 0;
-                    
-                    button {
-                        width: 150px;
-                        background-color: #080;
-                        font-size: 16px;
-                        font-weight: 600;
-                        padding: 5px 25px;
-                        border: none;
-                        color: #fff;
-                        border-radius: 5px;
-                        cursor: pointer;
-                    }
-    
-                    button:hover {
-                        background-color: #2665ee;
-                    }
+
+                button:hover {
+                    background-color: #2665ee;
                 }
             }
-  
+
             .dialog-view-content::-webkit-scrollbar {
                 display: none;
             }

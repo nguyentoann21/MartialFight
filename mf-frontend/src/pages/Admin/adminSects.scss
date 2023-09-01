@@ -648,7 +648,7 @@
             background-repeat: no-repeat;
             border-radius: 10px;
             text-align: center;
-            width: 500px;
+            min-width: 500px;
             height: 150px;
             display: flex;
             justify-content: center;
@@ -657,7 +657,7 @@
 
             p {
                 margin: 10px 0 !important;
-                padding: 0 !important;
+                padding: 0 30px !important;
                 font-size: 20px;
                 font-style: italic;
             }
@@ -728,8 +728,9 @@
     
                 .dialog-view-main {
                     width: 100%;
-                    text-align: left;
                     display: flex;
+                    justify-content: center;
+                    align-items: flex-start;
                     flex-direction: column;
     
                     p {

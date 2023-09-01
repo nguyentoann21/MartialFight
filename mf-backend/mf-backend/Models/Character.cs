@@ -6,18 +6,16 @@ namespace mf_backend.Models
     public class Character
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int CharacterID { get; set; }
+        public int CharacterId { get; set; }
 
         [Required]
         public string CharacterName { get; set; }
 
-        public string CharacterDescription { get; set; }
+        public string Description { get; set; }
 
-        public string Image { get; set; }
+        public string ImagePath { get; set; }
 
         public int AttackValue { get; set; }
-
-        public int HealthValue { get; set; }
 
         public int DefenseValue { get; set; }
 
@@ -27,10 +25,18 @@ namespace mf_backend.Models
 
         public int PhysicalValue { get; set; }
 
+        public Gender? Gender { get; set; }
+
         [ForeignKey(nameof(Sect))]
-        public int SectID { get; set; }
+        public int SectId { get; set; }
 
-        public Sect? CharacterSect { get; set; }
+        public Sect? Sect { get; set; }
 
+    }
+
+    public enum Gender
+    {
+        Female,
+        Male
     }
 }

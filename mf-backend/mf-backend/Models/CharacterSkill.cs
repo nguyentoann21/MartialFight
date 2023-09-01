@@ -7,8 +7,11 @@ namespace mf_backend.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CharacterSkillId { get; set; }
 
-        public int CharacterID { get; set; }
+        public int CharacterId { get; set; }
 
-        public int SkillID { get; set; }
+        public int SkillId { get; set; }
+
+        public Skill? Skill { get; set; }
+        public Character? Character { get; set; }
     }
 }
