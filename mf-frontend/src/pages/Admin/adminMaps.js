@@ -447,7 +447,7 @@ const AdminMap = () => {
                           alt="map-img"
                         />
                       ) : (
-                        <img src="/assets/images/map.png" alt="map-img" />
+                        <img src="/assets/images/map.jpg" alt="map-img" />
                       )}
                     </label>
                   </div>
@@ -785,7 +785,7 @@ const AdminMap = () => {
                           alt="map-img"
                         />
                       ) : (
-                        <img src="/assets/images/map.png" alt="map-img" />
+                        <img src="/assets/images/map.jpg" alt="map-img" />
                       )}
                     </label>
                   </div>

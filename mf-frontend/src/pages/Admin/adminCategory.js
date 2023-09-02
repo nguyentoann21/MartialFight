@@ -369,7 +369,7 @@ const AdminCategory = () => {
                           alt="category-img"
                         />
                       ) : (
-                        <img src="/assets/images/map.png" alt="category-img" />
+                        <img src="/assets/images/map.jpg" alt="category-img" />
                       )}
                     </label>
                   </div>
@@ -578,7 +578,7 @@ const AdminCategory = () => {
                           alt="category-img"
                         />
                       ) : (
-                        <img src="/assets/images/map.png" alt="category-img" />
+                        <img src="/assets/images/map.jpg" alt="category-img" />
                       )}
                     </label>
                   </div>

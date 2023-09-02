@@ -355,7 +355,7 @@ const AdminSect = () => {
                           alt="sect-img"
                         />
                       ) : (
-                        <img src="/assets/images/map.png" alt="sect-img" />
+                        <img src="/assets/images/map.jpg" alt="sect-img" />
                       )}
                     </label>
                   </div>
@@ -557,7 +557,7 @@ const AdminSect = () => {
                           alt="sect-img"
                         />
                       ) : (
-                        <img src="/assets/images/map.png" alt="sect-img" />
+                        <img src="/assets/images/map.jpg" alt="sect-img" />
                       )}
                     </label>
                   </div>

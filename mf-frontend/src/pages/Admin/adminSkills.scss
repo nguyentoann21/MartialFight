@@ -34,7 +34,7 @@
                 background-repeat: no-repeat;
                 border-radius: 10px;
                 text-align: center;
-                width: 950px;
+                width: 100px;
                 height: 580px;
                 display: flex;
                 justify-content: center;
@@ -72,7 +72,7 @@
                         flex-direction: column;
     
                         h2 {
-                            margin: 0 0 20px 0 !important;
+                            margin: 0 !important;
                             padding: 0 !important;
                             color: #ff0;
                             font-size: 40px;
@@ -91,17 +91,22 @@
                                     display: flex;
                                     flex-direction: column;
                                     width: 100%;
-                                    margin-bottom: 5px;
+                                    margin-bottom: 2px;
                 
                                     label {
                                         text-align: left;
                                         font-weight: 600;
-                                        margin-bottom: 3px;
+                                        margin-bottom: 0;
                                         color: #ff0;
                                     }
                 
                                     input[type="text"], input[type="number"], select {
                                         padding: 5px;
+                                    }
+
+                                    textarea {
+                                        padding: 5px;
+                                        height: 50px;
                                     }
                                 }
                             }
@@ -553,7 +558,7 @@
             background-repeat: no-repeat;
             border-radius: 10px;
             text-align: center;
-            width: 950px;
+            width: 1000px;
             height: 580px;
             display: flex;
             justify-content: center;
@@ -592,7 +597,7 @@
                     flex-direction: column;
 
                     h2 {
-                        margin: 0 0 20px 0 !important;
+                        margin: 0 !important;
                         padding: 0 !important;
                         color: #ff0;
                         font-size: 40px;
@@ -611,17 +616,22 @@
                                 display: flex;
                                 flex-direction: column;
                                 width: 100%;
-                                margin-bottom: 5px;
+                                margin-bottom: 2px;
             
                                 label {
                                     text-align: left;
                                     font-weight: 600;
-                                    margin-bottom: 3px;
+                                    margin-bottom: 0;
                                     color: #ff0;
                                 }
             
                                 input[type="text"], input[type="number"], select {
                                     padding: 5px;
+                                }
+
+                                textarea {
+                                    padding: 5px;
+                                    height: 50px;
                                 }
                             }
                         }

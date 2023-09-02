@@ -407,7 +407,7 @@ const AdminSkill = () => {
                           alt="skill-img"
                         />
                       ) : (
-                        <img src="/assets/images/map.png" alt="skill-img" />
+                        <img src="/assets/images/map.jpg" alt="skill-img" />
                       )}
                     </label>
                   </div>
@@ -438,7 +438,7 @@ const AdminSkill = () => {
                           <label htmlFor="briefDescription">
                             Brief Description:
                           </label>
-                          <input
+                          <textarea
                             className="briefDescription"
                             type="text"
                             id="briefDescription"
@@ -489,7 +489,7 @@ const AdminSkill = () => {
                           <label htmlFor="detailDescription">
                             Detail Description:
                           </label>
-                          <input
+                          <textarea
                             type="text"
                             id="detailDescription"
                             value={currentSkills.detailDescription || ""}
@@ -687,7 +687,7 @@ const AdminSkill = () => {
                           alt="skill-img"
                         />
                       ) : (
-                        <img src="/assets/images/map.png" alt="skill-img" />
+                        <img src="/assets/images/map.jpg" alt="skill-img" />
                       )}
                     </label>
                   </div>
@@ -718,7 +718,7 @@ const AdminSkill = () => {
                           <label htmlFor="briefDescription">
                             Brief Description:
                           </label>
-                          <input
+                          <textarea
                             className="briefDescription"
                             type="text"
                             id="briefDescription"
@@ -769,7 +769,7 @@ const AdminSkill = () => {
                           <label htmlFor="detailDescription">
                             Detail Description:
                           </label>
-                          <input
+                          <textarea
                             type="text"
                             id="detailDescription"
                             value={currentSkills.detailDescription || ""}

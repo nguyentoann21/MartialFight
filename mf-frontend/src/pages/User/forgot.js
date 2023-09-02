@@ -108,7 +108,7 @@ const ForgotPassword = () => {
         setMessage('Email does not found');
       } else {
         openMessageDialog();
-        setMessage('Server error');
+        setMessage('Verify code is required');
       }
     } catch (error) {
       openMessageDialog();

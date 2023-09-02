@@ -562,7 +562,7 @@ const AdminItem = () => {
                           alt="item-img"
                         />
                       ) : (
-                        <img src="/assets/images/map.png" alt="item-img" />
+                        <img src="/assets/images/map.jpg" alt="item-img" />
                       )}
                     </label>
                   </div>
@@ -1066,7 +1066,7 @@ const AdminItem = () => {
                           alt="item-img"
                         />
                       ) : (
-                        <img src="/assets/images/map.png" alt="item-img" />
+                        <img src="/assets/images/map.jpg" alt="item-img" />
                       )}
                     </label>
                   </div>

@@ -29,7 +29,7 @@ const AdminNews = () => {
     }
   }, [account, history]);
 
-  const NEWS_PER_PAGE = 1;
+  const NEWS_PER_PAGE = 10;
   const [listNews, setListNews] = useState([]);
   const [dialogVisible, setDialogVisible] = useState(false);
   const [dialogMode, setDialogMode] = useState("create");
