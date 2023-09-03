@@ -5,14 +5,13 @@
     padding: 30px;    
 
     .news-container {
-        background-image: url('../../../public/assets/images/member-card.png');
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
+        background-color: #222;
         color: #fff;
         width: 1000px !important;
         min-height: 900px;
-        border-radius: 10px;
+        border-radius: 50px;
         justify-content: center;
+        filter: drop-shadow(0 0 4px #ccc) drop-shadow(0 0 5px #ccc);
         
         .news-content {
             display: flex !important;
@@ -60,7 +59,7 @@
                     padding: 8px 10px 5px 10px;
                     background-color: #00f;
                     cursor: pointer;
-                    filter: drop-shadow(0 0 2px #000) drop-shadow(0 0 3px #000);
+                    filter: drop-shadow(0 0 2px #ccc) drop-shadow(0 0 3px #ccc);
 
                     svg {
                         font-size: 18px;

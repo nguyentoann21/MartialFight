@@ -80,7 +80,7 @@ const Ranking = () => {
       <div className="ranking-form">
         <div className="ranking-text">
           <img src="/assets/images/cups.png" alt="ranking" />
-          <h3>Leaderboard</h3>
+          <h3>Ranking Board</h3>
           <img src="/assets/images/cups.png" alt="ranking" />
         </div>
         <div className="tabs-container">

@@ -197,25 +197,6 @@ const MainCharacter = () => {
                         )}
                       </div>
                       <div className="dialog-view-main">
-                        <h4>
-                          <span>{selectedCharacter.characterName}</span>
-                        </h4>
-                        <p>{selectedCharacter.gender === 0 ? "Female": "Male"}</p>
-                        <p>
-                          Sect -{" "}
-                          {selectedCharacter.sectId && (
-                            <span>
-                              {sects.find(
-                                (sect) =>
-                                  sect.sectId === selectedCharacter.sectId
-                              )?.sectName || ""}
-                            </span>
-                          )}
-                        </p>
-                        <h5>{selectedCharacter.description}</h5>
-                      </div>
-                    </div>
-                    <div className="dialog-main-bottom">
                       {characterSkill.map((skill) => (
                         <div className="dialog-main-skill" key={skill.skillId}>
                           <img
@@ -228,6 +209,24 @@ const MainCharacter = () => {
                           </div>
                         </div>
                       ))}
+                      </div>
+                    </div>
+                    <div className="dialog-main-bottom">
+                    <h4>
+                          <span>{selectedCharacter.characterName}</span>
+                        </h4>
+                        <p>{selectedCharacter.gender === 0 ? "Female": "Male"} - {" "}
+                          {selectedCharacter.sectId && (
+                            <span>
+                              {sects.find(
+                                (sect) =>
+                                  sect.sectId === selectedCharacter.sectId
+                              )?.sectName || ""}
+                            </span>
+                          )}
+                        </p>
+                        <h5>{selectedCharacter.description}</h5>
+                      
                     </div>
                   </div>
                   <div className="dialog-view-button">

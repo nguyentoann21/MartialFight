@@ -524,7 +524,7 @@ const AdminMap = () => {
                       </div>
                       <div className="right-side">
                         <div className="dialog-action-group">
-                          <label htmlFor="type">Type:</label>
+                          <label htmlFor="type">Area:</label>
                           <input
                             className="type"
                             type="number"
@@ -862,7 +862,7 @@ const AdminMap = () => {
                       </div>
                       <div className="right-side">
                         <div className="dialog-action-group">
-                          <label htmlFor="type">Type:</label>
+                          <label htmlFor="type">Area:</label>
                           <input
                             className="type"
                             type="number"
@@ -991,7 +991,7 @@ const AdminMap = () => {
                       <span>{currentMaps.levelRequirement}</span>
                     </label>
                     <label>
-                      <p>Type:</p>
+                      <p>Area:</p>
                       <span>{currentMaps.type}</span>
                     </label>
                     <label>

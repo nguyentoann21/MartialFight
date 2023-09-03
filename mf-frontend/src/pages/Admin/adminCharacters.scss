@@ -322,101 +322,113 @@
                     justify-content: center;
                     align-items: center;
                     flex-direction: column;
-
+    
                     .dialog-main-top {
                         display: flex;
                         justify-content: center;
                         align-items: center;
                         width: 100%;
-                        margin-top: 30px;
-
+                        margin-top: 40px;
+    
                         .dialog-view-images {
-                            width: 50%;
+                            width: 40%;
+                            height: 400px;
                             display: flex;
                             justify-content: center;
                             align-items: center;
-
+    
                             img {
                                 padding: 20px 10px;
                                 width: 80%;
                                 height: 100%;
                                 border-radius: 20px;
                                 border: 2px solid #fff;
+                                object-fit: contain;
                                 filter: drop-shadow(0 0 2px #ff0) drop-shadow(0 0 3px #ff0);
                             }
                         }
-
+    
                         .dialog-view-main {
                             width: 50%;
-
-                            h4 {
-                                font-size: 30px;
-                                color: #ff0;
-                                margin: 0 !important;
-                                padding: 0 0 20px 0 !important;
-                            }
-
-                            p {
-                                color: #ff0;
-                                font-style: italic;
-                                font-size: 20px;
-                                margin: 0 !important;
-                                padding: 0 0 10px 0 !important;
-                            }
-
-                            h5 {
-                                font-style: italic;
-                                font-size: 16px;
-                                font-weight: 500;
-                            }
-                        }
-                    }
-
-                    .dialog-main-bottom {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        flex-wrap: wrap;
-                        margin: 20px 0;
-                        width: 100%;
-
-                        .dialog-main-skill {
                             display: flex;
-                            justify-content: flex-start;
-                            align-items: center;
-                            padding: 8px 20px;
-                            width: 100%;
-
-                            img {
-                                width: 50px;
-                                height: 50px;
-                                border-radius: 50%;
-                                object-fit: contain;
-                                margin-right: 30px;
-                            }
-
-                            .skill-main {
+                            justify-content: center;
+                            align-items: flex-start;
+                            flex-direction: column;
+                            flex-wrap: wrap;
+    
+                            .dialog-main-skill {
                                 display: flex;
                                 justify-content: flex-start;
                                 align-items: center;
-                                flex-direction: column;
-
-                                h6 {
-                                    width: 100%;
-                                    font-size: 16px;
-                                    color: #ff0;
-                                    margin: 0 !important;
-                                    padding: 0 0 5px 0 !important;
+                                padding: 8px 20px;
+                                width: 100%;
+        
+                                img {
+                                    width: 70px;
+                                    height: 70px;
+                                    border-radius: 50%;
+                                    object-fit: contain;
+                                    margin-right: 10px;
+                                    background-color: #fff;
+                                    filter: drop-shadow(0 0 1px #ff0) drop-shadow(0 0 2px #ff0);
                                 }
-
-                                span {
-                                    width: 100%;
-                                    font-size: 16px;
-                                    margin: 0 !important;
-                                    padding: 0 !important;
-                                    word-wrap: break-word;
+        
+                                .skill-main {
+                                    display: flex;
+                                    justify-content: flex-start;
+                                    align-items: center;
+                                    flex-direction: column;
+        
+                                    h6 {
+                                        width: 100%;
+                                        font-size: 20px;
+                                        color: #ff0;
+                                        margin: 0 !important;
+                                        padding: 0 0 5px 0 !important;
+                                    }
+        
+                                    span {
+                                        width: 100%;
+                                        font-size: 16px;
+                                        margin: 0 !important;
+                                        padding: 0 !important;
+                                        word-wrap: break-word;
+                                    }
                                 }
                             }
+                        }
+                    }
+    
+                    .dialog-main-bottom {
+                        display: flex;
+                        justify-content: flex-start;
+                        flex-direction: column;
+                        align-items: flex;
+                        flex-wrap: wrap;
+                        margin: 30px 0;
+                        width: 100%;                    
+    
+                        h4 {
+                            font-size: 36px;
+                            color: #ff0;
+                            margin: 0 !important;
+                            padding: 0 !important;
+                        }
+    
+                        p {
+                            color: #ff0;
+                            font-style: italic;
+                            font-size: 20px;
+                            margin: 0 !important;
+                            padding: 0 !important;
+                        }
+    
+                        h5 {
+                            font-style: italic;
+                            font-size: 16px;
+                            font-weight: 500;
+                            margin: 10px 0 !important;
+                            padding: 0 !important;
                         }
                     }
                 }

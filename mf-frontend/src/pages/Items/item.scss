@@ -13,8 +13,9 @@
         flex-direction: column;
         background-color: #222;
         color: #fff;
-        border-radius: 20px;
+        border-radius: 45px;
         padding: 0 40px;
+        filter: drop-shadow(0 0 4px #ccc) drop-shadow(0 0 5px #ccc);
 
         h2 {
             font-size: 50px;

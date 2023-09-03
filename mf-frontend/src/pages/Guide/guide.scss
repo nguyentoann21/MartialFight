@@ -8,41 +8,82 @@
     .guide-page-container {
         display: flex;
         flex-direction: column;
-        background-image: url('../../../public/assets/images/member-card.png');
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
+        background-color: #222;
         color: #fff;
-        padding: 80px 120px;
+        padding: 70px 100px;
+        border-radius: 50px;
+        filter: drop-shadow(0 0 4px #ccc) drop-shadow(0 0 5px #ccc);
         
         .guide-title {
-            font-size: 50px;
+            text-align: center;
+            font-size: 56px;
             font-weight: 700;
             margin: 0 !important;
             padding: 0 !important;
             color: #ff0;
+            filter: drop-shadow(0 0 .5px #ccc) drop-shadow(0 0 1px #ccc);
         }
 
-        .guide-introduction, .guide-how-to-play,
-        .guide-character, .guide-skill, .guide-advice {
-            font-size: 30px;
-            font-weight: 700;
-            color: #ff0;
-            margin: 0 !important;
-            padding: 0 !important;
-            margin: 20px 0 !important;
+        .guide-introduction, .guide-how-to-play, .guide-sign-up {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+            margin-top: 20px;
+
+            h2 {
+                color: #ff0;
+                font-size: 40px;
+                margin: 0 0 10px 0 !important;
+                padding: 0 !important;
+            }
+
+            p {
+                font-size: 16px;
+                margin: 0 !important;
+                padding: 0 !important;
+                font-weight: 500;
+            }
         }
 
-        .guide-introduction-content, .guide-how-to-play-content,
-        .guide-character-content, .guide-skill-content, .guide-advice-content {
-            font-size: 16px;
-            font-weight: 500;
-            color: #f0f0f0;
-            margin: 0 !important;
-            padding: 0 !important;
-        }
+        .guide-sign-in, .guide-select-character, .guide-set-name, 
+        .guide-gameplay, .guide-training, .guide-ranking-board, 
+        .guide-inventory, .guide-mission, .guide-shop, .guide-buy-item,
+        .guide-recharge, .guide-map, .guide-area, .guide-challenge {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+            margin-top: 20px;
 
-        ul {
-            list-style-type: none;
+            h2 {
+                color: #ff0;
+                font-size: 40px;
+                margin: 0 0 10px 0 !important;
+                padding: 0 !important;
+            }
+
+            p {
+                font-size: 16px;
+                margin: 0 0 10px 0 !important;
+                padding: 0 !important;
+                font-weight: 500;
+            }
+
+            .guide-image {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+
+                img {
+                    width: 90%;
+                    height: 90%;
+                    object-fit: contain;
+                }
+            }
         }
     }
 }

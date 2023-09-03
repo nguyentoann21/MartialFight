@@ -379,26 +379,6 @@ const AdminCharacter = () => {
                         )}
                       </div>
                       <div className="dialog-view-main">
-                        <h4>
-                          <span>{currentCharacter.characterName}</span>
-                        </h4>
-                        <p>
-                          Sect -{" "}
-                          {currentCharacter.sectId && (
-                            <span>
-                              {sects.find(
-                                (sect) =>
-                                  sect.sectId === currentCharacter.sectId
-                              )?.sectName || ""}
-                            </span>
-                          )}
-                        </p>
-                        <h5>
-                          <span> {currentCharacter.description}</span>
-                        </h5>
-                      </div>
-                    </div>
-                    <div className="dialog-main-bottom">
                       {characterSkill.map((skill) => (
                         <div className="dialog-main-skill" key={skill.skillId}>
                           <img
@@ -411,6 +391,24 @@ const AdminCharacter = () => {
                           </div>
                         </div>
                       ))}
+                      </div>
+                    </div>
+                    <div className="dialog-main-bottom">
+                    <h4>
+                          <span>{currentCharacter.characterName}</span>
+                        </h4>
+                        <p>{currentCharacter.gender === 0 ? "Female": "Male"} - {" "}
+                          {currentCharacter.sectId && (
+                            <span>
+                              {sects.find(
+                                (sect) =>
+                                  sect.sectId === currentCharacter.sectId
+                              )?.sectName || ""}
+                            </span>
+                          )}
+                        </p>
+                        <h5>{currentCharacter.description}</h5>
+                      
                     </div>
                   </div>
                   <div className="dialog-view-button">
