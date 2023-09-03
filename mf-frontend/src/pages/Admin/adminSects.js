@@ -118,7 +118,8 @@ const AdminSect = () => {
       if (
         currentSects.sectName !== original.sectName ||
         currentSects.description !== original.description ||
-        (currentSects.imagePath && currentSects.imagePath !== original.imagePath)
+        (currentSects.imagePath &&
+          currentSects.imagePath !== original.imagePath)
       ) {
         formData.append("sectName", currentSects.sectName);
         formData.append("description", currentSects.description);
@@ -134,7 +135,10 @@ const AdminSect = () => {
       if (currentSects.description !== originalSect.description) {
         formData.append("description", currentSects.description);
       }
-      if (currentSects.imagePath && currentSects.imagePath !== originalSect.imagePath) {
+      if (
+        currentSects.imagePath &&
+        currentSects.imagePath !== originalSect.imagePath
+      ) {
         formData.append("imagePath", currentSects.imagePath);
       }
     }
@@ -170,11 +174,11 @@ const AdminSect = () => {
       }
     } catch (error) {
       console.error(error);
-        if (error.response.status === 405) {
-          setMessage(error.response.data);
-        } else {
-          setMessage("Failed to save the sect");
-        }
+      if (error.response.status === 405 || error.response.status === 409) {
+        setMessage(error.response.data);
+      } else {
+        setMessage("Failed to save the sect");
+      }
     }
   };
 
@@ -349,7 +353,9 @@ const AdminSect = () => {
                         <img
                           src={
                             currentSects.imagePath instanceof File
-                              ? window.URL.createObjectURL(currentSects.imagePath)
+                              ? window.URL.createObjectURL(
+                                  currentSects.imagePath
+                                )
                               : `https://localhost:7052/Images/${currentSects.imagePath}`
                           }
                           alt="sect-img"
@@ -551,7 +557,9 @@ const AdminSect = () => {
                         <img
                           src={
                             currentSects.imagePath instanceof File
-                              ? window.URL.createObjectURL(currentSects.imagePath)
+                              ? window.URL.createObjectURL(
+                                  currentSects.imagePath
+                                )
                               : `https://localhost:7052/Images/${currentSects.imagePath}`
                           }
                           alt="sect-img"

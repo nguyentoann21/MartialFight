@@ -139,6 +139,7 @@ const AdminNews = () => {
     } catch (error) {
       if (
         error.response.status === 406 ||
+        error.response.status === 409 ||
         error.response.status === 405 ||
         error.response.status === 403 ||
         error.response.status === 413
@@ -458,9 +459,9 @@ const AdminNews = () => {
             </div>
             <div className="admin-news-filter">
               <select value={sortType} onChange={handleSortChange}>
-                <option value="normal">Normal time</option>
-                <option value="ascending">Long time ago</option>
-                <option value="descending">Recent time ago</option>
+                <option value="normal">Normal</option>
+                <option value="ascending">Oldest</option>
+                <option value="descending">Newest</option>
               </select>
             </div>
             <div className="admin-add-news">

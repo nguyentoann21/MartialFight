@@ -238,9 +238,11 @@ const AdminMap = () => {
         setMessage("Failed to save the map");
       }
     } catch (error) {
-      if (error.response.status === 403) {
-        setMessage(error.response.data);
-      } else if (error.response.status === 405) {
+      if (
+        error.response.status === 403 ||
+        error.response.status === 405 ||
+        error.response.status === 409
+      ) {
         setMessage(error.response.data);
       } else {
         setMessage("Failed to save the map");

@@ -53,7 +53,14 @@ namespace mf_backend.Controllers
                 return BadRequest(ModelState);
             }
 
-            if(newsModel.NewsTitle == null || newsModel.Description == null || newsModel.ImagePath == null)
+            var existed = await _context.News.FirstOrDefaultAsync(c => c.NewsTitle.ToLower() == newsModel.NewsTitle.ToLower());
+
+            if (existed != null)
+            {
+                return StatusCode(StatusCodes.Status409Conflict, "The news title already exists");
+            }
+
+            if (newsModel.NewsTitle == null || newsModel.Description == null || newsModel.ImagePath == null)
             {
                 return StatusCode(StatusCodes.Status403Forbidden, "Please fill in all the required fields");
             }
@@ -94,6 +101,13 @@ namespace mf_backend.Controllers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+
+            var existed = await _context.News.FirstOrDefaultAsync(c => c.NewsTitle.ToLower() == newsModel.NewsTitle.ToLower() && c.NewsId != id);
+
+            if (existed != null)
+            {
+                return StatusCode(StatusCodes.Status409Conflict, "The news title already exists");
             }
 
             if (newsModel.NewsTitle == null || newsModel.Description == null || newsModel.ImagePath == null)

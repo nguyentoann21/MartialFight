@@ -180,7 +180,7 @@ const AdminCategory = () => {
       }
     } catch (error) {
       console.error(error);
-      if (error.response.status === 405) {
+      if (error.response.status === 405 || error.response.status === 409) {
         setMessage(error.response.data);
       } else {
         setMessage("Failed to save the category");

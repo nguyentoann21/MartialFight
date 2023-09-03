@@ -48,6 +48,13 @@ namespace mf_backend.Controllers
                 return BadRequest(ModelState);
             }
 
+            var existed = await _context.Items.FirstOrDefaultAsync(c => c.ItemName.ToLower() == itemModel.ItemName.ToLower());
+
+            if (existed != null)
+            {
+                return StatusCode(StatusCodes.Status409Conflict, "Item Name already exists");
+            }
+
             var item = new Item
             {
                 ItemName = itemModel.ItemName,
@@ -89,6 +96,13 @@ namespace mf_backend.Controllers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+
+            var existed = await _context.Items.FirstOrDefaultAsync(c => c.ItemName.ToLower() == itemModel.ItemName.ToLower() && c.ItemId != id);
+
+            if (existed != null)
+            {
+                return StatusCode(StatusCodes.Status409Conflict, "Item Name already exists");
             }
 
             var item = await _context.Items.FindAsync(id);

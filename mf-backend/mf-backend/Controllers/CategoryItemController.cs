@@ -49,6 +49,13 @@ namespace mf_backend.Controllers
                 return BadRequest(ModelState);
             }
 
+            var existed = await _context.CategoryItems.FirstOrDefaultAsync(c => c.CategoryName.ToLower() == categoryModel.CategoryName.ToLower());
+
+            if (existed != null) 
+            {
+                return StatusCode(StatusCodes.Status409Conflict, "Category Name already exists");
+            }
+
             var category = new CategoryItem
             {
                 CategoryName = categoryModel.CategoryName,
@@ -78,6 +85,13 @@ namespace mf_backend.Controllers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+
+            var existed = await _context.CategoryItems.FirstOrDefaultAsync(c => c.CategoryName.ToLower() == categoryModel.CategoryName.ToLower() && c.CategoryId != id);
+
+            if (existed != null)
+            {
+                return StatusCode(StatusCodes.Status409Conflict, "Category Name already exists");
             }
 
             var category = await _context.CategoryItems.FindAsync(id);

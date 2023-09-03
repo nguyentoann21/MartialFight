@@ -43,7 +43,7 @@ namespace mf_backend.Controllers
             {
                 if (profileModel.Email != null && profileModel.Email != account.Email)
                 {
-                    if (await _context.Accounts.AnyAsync(a => a.AccountId != id && a.Email == profileModel.Email))
+                    if (await _context.Accounts.AnyAsync(a => a.AccountId != id && a.Email.ToLower() == profileModel.Email.ToLower()))
                     {
                         return StatusCode(StatusCodes.Status401Unauthorized, "Email already exists for another account");
                     }

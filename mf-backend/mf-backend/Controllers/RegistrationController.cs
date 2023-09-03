@@ -30,7 +30,7 @@ namespace mf_backend.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (_context.Accounts.Any(a => a.Username == account.Username) || _context.Accounts.Any(a => a.Email == account.Email))
+            if (_context.Accounts.Any(a => a.Username.ToLower() == account.Username.ToLower()) || _context.Accounts.Any(a => a.Email.ToLower() == account.Email.ToLower()))
             {
                 return StatusCode(StatusCodes.Status401Unauthorized, "Username or Email already existed");
             }

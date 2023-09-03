@@ -53,6 +53,13 @@ namespace mf_backend.Controllers
                 return BadRequest(ModelState);
             }
 
+            var existed = await _context.Maps.FirstOrDefaultAsync(c => c.MapName.ToLower() == mapModel.MapName.ToLower());
+
+            if (existed != null)
+            {
+                return StatusCode(StatusCodes.Status409Conflict, "Map Name already exists");
+            }
+
             var map = new Map
             {
                 MapName = mapModel.MapName,
@@ -89,6 +96,13 @@ namespace mf_backend.Controllers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+
+            var existed = await _context.Maps.FirstOrDefaultAsync(c => c.MapName.ToLower() == mapModel.MapName.ToLower() && c.MapId != id);
+
+            if (existed != null)
+            {
+                return StatusCode(StatusCodes.Status409Conflict, "Map Name already exists");
             }
 
             var map = await _context.Maps.FindAsync(id);

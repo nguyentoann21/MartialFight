@@ -53,6 +53,13 @@ namespace mf_backend.Controllers
                 return BadRequest(ModelState);
             }
 
+            var existed = await _context.Skills.FirstOrDefaultAsync(c => c.SkillName.ToLower() == skillModel.SkillName.ToLower());
+
+            if (existed != null)
+            {
+                return StatusCode(StatusCodes.Status409Conflict, "Skill Name already exists");
+            }
+
             var skill = new Skill
             {
                 SkillName = skillModel.SkillName,
@@ -85,6 +92,13 @@ namespace mf_backend.Controllers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+
+            var existed = await _context.Skills.FirstOrDefaultAsync(c => c.SkillName.ToLower() == skillModel.SkillName.ToLower() && c.SkillId != id);
+
+            if (existed != null)
+            {
+                return StatusCode(StatusCodes.Status409Conflict, "Skill Name already exists");
             }
 
             var skill = await _context.Skills.FindAsync(id);

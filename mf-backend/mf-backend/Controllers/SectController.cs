@@ -62,6 +62,13 @@ namespace mf_backend.Controllers
                 return BadRequest(ModelState);
             }
 
+            var existed = await _context.Sects.FirstOrDefaultAsync(c => c.SectName.ToLower() == sectModel.SectName.ToLower());
+
+            if (existed != null)
+            {
+                return StatusCode(StatusCodes.Status409Conflict, "Sect Name already exists");
+            }
+
             var sect = new Sect
             {
                 SectName = sectModel.SectName,
@@ -91,6 +98,13 @@ namespace mf_backend.Controllers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+
+            var existed = await _context.Sects.FirstOrDefaultAsync(c => c.SectName.ToLower() == sectModel.SectName.ToLower() && c.SectId != id);
+
+            if (existed != null)
+            {
+                return StatusCode(StatusCodes.Status409Conflict, "Sect Name already exists");
             }
 
             var sect = await _context.Sects.FindAsync(id);
