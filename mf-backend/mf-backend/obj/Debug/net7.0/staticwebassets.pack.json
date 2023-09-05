@@ -1,34 +1,6 @@
 {
   "Files": [
     {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\1ff9e7ba-c1d3-4b31-8048-64777d59d31e.png",
-      "PackagePath": "staticwebassets\\Images\\1ff9e7ba-c1d3-4b31-8048-64777d59d31e.png"
-    },
-    {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\248f26fb-c636-4d29-a4e9-815c8ea2049b.png",
-      "PackagePath": "staticwebassets\\Images\\248f26fb-c636-4d29-a4e9-815c8ea2049b.png"
-    },
-    {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\2a0ac281-54c8-42c8-934b-5e623550a41c.png",
-      "PackagePath": "staticwebassets\\Images\\2a0ac281-54c8-42c8-934b-5e623550a41c.png"
-    },
-    {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\38ec0870-8ca0-4971-ad45-0a92c2dd2045.png",
-      "PackagePath": "staticwebassets\\Images\\38ec0870-8ca0-4971-ad45-0a92c2dd2045.png"
-    },
-    {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\470f1172-7efd-4118-8a4c-3dca3e8a848c.jpg",
-      "PackagePath": "staticwebassets\\Images\\470f1172-7efd-4118-8a4c-3dca3e8a848c.jpg"
-    },
-    {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\4b09ac61-7e56-4868-83ff-5dac1ca76218.png",
-      "PackagePath": "staticwebassets\\Images\\4b09ac61-7e56-4868-83ff-5dac1ca76218.png"
-    },
-    {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\8350a92c-7363-4750-abb0-44edebc4f38a.jpg",
-      "PackagePath": "staticwebassets\\Images\\8350a92c-7363-4750-abb0-44edebc4f38a.jpg"
-    },
-    {
       "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\AdvancedArmor.png",
       "PackagePath": "staticwebassets\\Images\\AdvancedArmor.png"
     },
@@ -381,28 +353,16 @@
       "PackagePath": "staticwebassets\\Images\\YiJinJing.png"
     },
     {
+      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\api.png",
+      "PackagePath": "staticwebassets\\Images\\api.png"
+    },
+    {
       "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\bot1.png",
       "PackagePath": "staticwebassets\\Images\\bot1.png"
     },
     {
       "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\bot2.png",
       "PackagePath": "staticwebassets\\Images\\bot2.png"
-    },
-    {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\c70512ea-781f-46fc-a338-343cf7ffeca5.jpeg",
-      "PackagePath": "staticwebassets\\Images\\c70512ea-781f-46fc-a338-343cf7ffeca5.jpeg"
-    },
-    {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\db1949bd-1099-4d03-a034-bd8f19a9b314.png",
-      "PackagePath": "staticwebassets\\Images\\db1949bd-1099-4d03-a034-bd8f19a9b314.png"
-    },
-    {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\e2414501-2b92-4a29-853f-46a0fdaca43d.jpg",
-      "PackagePath": "staticwebassets\\Images\\e2414501-2b92-4a29-853f-46a0fdaca43d.jpg"
-    },
-    {
-      "Id": "G:\\martial-fight\\mf-backend\\mf-backend\\wwwroot\\Images\\f3df52e0-37c2-4b2c-8b6b-b374b83d68f2.jpg",
-      "PackagePath": "staticwebassets\\Images\\f3df52e0-37c2-4b2c-8b6b-b374b83d68f2.jpg"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.mf-backend.props",

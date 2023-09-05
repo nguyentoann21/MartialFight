@@ -57,6 +57,7 @@
                 overflow: hidden;
                 position: relative;
                 cursor: pointer;
+                filter: drop-shadow(0 0 1px #ff0) drop-shadow(0 0 1px #ff0);
 
                 img {
                     background-color: #fff;

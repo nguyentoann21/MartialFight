@@ -139,7 +139,7 @@ const Registration = () => {
             <img
               src={
                 avatar == null
-                  ? "https://t4.ftcdn.net/jpg/02/37/10/51/360_F_237105136_zFBiEfEg76oa1sOtoHPGDU3PRVqpoWOd.jpg"
+                  ? "/assets/images/map.jpg"
                   : window.URL.createObjectURL(avatar)
               }
               alt="avatar"
