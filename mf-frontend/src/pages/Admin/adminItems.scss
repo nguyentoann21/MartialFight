@@ -837,7 +837,7 @@
     
         .dialog-view-main-content {
             width: 1000px;
-            height: 400px;
+            height: 500px;
             background-image: url('../../../public/assets/images/horizontal-card.png');
             background-size: 100% 95%;
             background-repeat: no-repeat;
@@ -851,7 +851,7 @@
             .dialog-view-content {
                 position: relative;
                 width: 850px;
-                max-height: 400px;
+                max-height: 500px;
                 padding: 0 70px !important;
                 overflow: auto; 
                 scrollbar-width: none;
@@ -863,31 +863,70 @@
     
                 .dialog-view-main {
                     display: flex;
-                    flex-direction: column;
                     justify-content: center;
                     align-items: flex-start;
                     width: 450px;
-    
-                    label {
+
+                    .left-side-dialog {
                         display: flex;
-                        width: 100%;
+                        flex-direction: column;
+                        justify-content: center;
 
-                        p {
-                            margin: 0 10px 0 0 !important;
-                            padding: 0 !important;
-                            color: #ff0;
+                        label {
                             display: flex;
-                            flex-direction: column;
-                        }
-
-                        span {
                             width: 100%;
-                            color: #fff;
-                            font-style: italic;
-                            flex-wrap: wrap;
-                            word-break: break-word;
+
+                            p {
+                                margin: 0 10px 0 0 !important;
+                                padding: 0 !important;
+                                color: #ff0;
+                                display: flex;
+                                flex-direction: column;
+                            }
+
+                            span {
+                                width: 100%;
+                                color: #fff;
+                                font-style: italic;
+                                flex-wrap: wrap;
+                                word-break: break-word;
+                            }
                         }
                     }
+
+                    .right-side-dialog {
+                        display: flex;
+                        justify-content: center;
+                        gap: 50px;
+                        margin: 10px 0 0 0;
+                        
+                        .left-dialog, .right-dialog {
+                            display: flex;
+                            flex-direction: column;
+
+                            label {
+                                display: flex;
+                                width: 100%;
+    
+                                p {
+                                    margin: 0 10px 0 0 !important;
+                                    padding: 0 !important;
+                                    color: #ff0;
+                                    display: flex;
+                                    flex-direction: column;
+                                }
+    
+                                span {
+                                    width: 100%;
+                                    color: #fff;
+                                    font-style: italic;
+                                    flex-wrap: wrap;
+                                    word-break: break-word;
+                                }
+                            }
+                        }
+                    }
+                    
                 }
     
                 .dialog-view-images {

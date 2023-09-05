@@ -8,8 +8,8 @@ const DownloadGame = () => {
 
   const handleDownload = () => {
     const downloadLink = document.createElement('a');
-    downloadLink.href = 'assets/game/martialfight.exe';
-    downloadLink.download = 'martialfight.exe';
+    downloadLink.href = 'assets/game/martialfight.zip';
+    downloadLink.download = 'martialfight.zip';
     document.body.appendChild(downloadLink);
     downloadLink.click();
     document.body.removeChild(downloadLink);

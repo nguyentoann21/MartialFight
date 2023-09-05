@@ -992,7 +992,12 @@ const AdminMap = () => {
                     </label>
                     <label>
                       <p>Area:</p>
-                      <span>{currentMaps.type}</span>
+                      <span>
+                        {currentMaps.type === 1 && "Heaven and Saber"}
+                        {currentMaps.type === 2 && "Demi and Semi"}
+                        {currentMaps.type === 3 && "Smiling Proud Wanderer"}
+                        {currentMaps.type === 4 && "Legend Condor Heroes"}
+                      </span>
                     </label>
                     <label>
                       <p>Exp:</p>

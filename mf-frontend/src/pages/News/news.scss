@@ -7,7 +7,7 @@
     .news-container {
         background-color: #222;
         color: #fff;
-        width: 1000px !important;
+        width: 1200px !important;
         min-height: 900px;
         border-radius: 50px;
         justify-content: center;
@@ -144,7 +144,7 @@
                             padding: 0 !important;
                             text-overflow: ellipsis !important;
                             white-space: nowrap; 
-                            width: 600px; 
+                            width: 900px; 
                             overflow: hidden;
                         }
 
@@ -168,7 +168,7 @@
                     }
 
                     li {
-                        max-width: 600px !important;
+                        max-width: 1000px !important;
                         max-height: 110px !important;
                     }
 

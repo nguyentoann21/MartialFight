@@ -172,7 +172,7 @@ const AdminItem = () => {
 
   const actionItem = async () => {
     const formData = new FormData();
-    
+
     const original = originalItem.find(
       (item) => item.itemId === currentItem.itemId
     );
@@ -1402,95 +1402,80 @@ const AdminItem = () => {
                         <p>Description:</p>
                         <span> {currentItem.description}</span>
                       </label>
-                      <label>
-                        <p>Gold:</p>
-                        <span> {currentItem.gold}</span>
-                      </label>
-                      <label>
-                        <p>Silver:</p>
-                        <span> {currentItem.silver}</span>
-                      </label>
                     </div>
-                    <div className="center-side-dialog">
-                      <label>
-                        <p>Type:</p>
-                        <span>
-                          {" "}
-                          level {currentItem.type > 0 ? "0" : currentItem.type}
-                        </span>
-                      </label>
-                      {currentItem.manaValue > 0 && (
+                    <div className="right-side-dialog">
+                      <div className="left-dialog">
+                        <label>
+                          <p>Gold:</p>
+                          <span> {currentItem.gold}</span>
+                        </label>
+                        <label>
+                          <p>Silver:</p>
+                          <span> {currentItem.silver}</span>
+                        </label>
+                        <label>
+                          <p>Type:</p>
+                          <span> Level {currentItem.type}</span>
+                        </label>
                         <label>
                           <p>Mana:</p>
                           <span> {currentItem.manaValue}</span>
                         </label>
-                      )}
-                      <label>
-                        <p>isEquipped:</p>
-                        <span>
-                          {" "}
-                          {currentItem.equipped ? "Equipped" : "None"}
-                        </span>
-                      </label>
-                      <label>
-                        <p>Sect:</p>
-                        {currentItem.sectId && (
+                        <label>
+                          <p>isEquipped:</p>
                           <span>
-                            {sects.find(
-                              (sect) => sect.sectId === currentItem.sectId
-                            )?.sectName || ""}
+                            {" "}
+                            {currentItem.equipped ? "Equipped" : "None"}
                           </span>
-                        )}
-                      </label>
-                      <label>
-                        <p>Category:</p>
-                        {currentItem.categoryId && (
-                          <span>
-                            {categories.find(
-                              (category) =>
-                                category.categoryId === currentItem.categoryId
-                            )?.categoryName || ""}
-                          </span>
-                        )}
-                      </label>
-                    </div>
-                    <div className="right-side-dialog">
-                      {currentItem.attackValue > 0 && (
+                        </label>
+                        <label>
+                          <p>Sect:</p>
+                          {currentItem.sectId && (
+                            <span>
+                              {sects.find(
+                                (sect) => sect.sectId === currentItem.sectId
+                              )?.sectName || ""}
+                            </span>
+                          )}
+                        </label>
+                        <label>
+                          <p>Category:</p>
+                          {currentItem.categoryId && (
+                            <span>
+                              {categories.find(
+                                (category) =>
+                                  category.categoryId === currentItem.categoryId
+                              )?.categoryName || ""}
+                            </span>
+                          )}
+                        </label>
+                      </div>
+                      <div className="right-dialog">
                         <label>
                           <p>Attack:</p>
                           <span> {currentItem.attackValue}</span>
                         </label>
-                      )}
-                      {currentItem.healthValue > 0 && (
                         <label>
                           <p>Health:</p>
                           <span> {currentItem.healthValue}</span>
                         </label>
-                      )}
-                      {currentItem.defenseValue > 0 && (
                         <label>
                           <p>Defense:</p>
                           <span> {currentItem.defenseValue}</span>
                         </label>
-                      )}
-                      {currentItem.speedValue > 0 && (
                         <label>
                           <p>Speed:</p>
                           <span> {currentItem.speedValue}</span>
                         </label>
-                      )}
-                      {currentItem.intellectValue > 0 && (
                         <label>
                           <p>Intellect:</p>
                           <span> {currentItem.intellectValue}</span>
                         </label>
-                      )}
-                      {currentItem.physicalValue > 0 && (
                         <label>
                           <p>Physical</p>
                           <span> {currentItem.physicalValue}</span>
                         </label>
-                      )}
+                      </div>
                     </div>
                   </div>
                 </div>

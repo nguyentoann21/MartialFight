@@ -60,7 +60,7 @@ const Dashboard = () => {
 
     const fetchSect = async () => {
       try {
-        const response = await axios.get("https://localhost:7052/api/mf/sects");
+        const response = await axios.get("https://localhost:7052/api/mf/sects/sect");
         setSects(response.data);
       } catch (error) {
         console.error(error);

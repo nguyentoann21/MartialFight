@@ -5,7 +5,7 @@ const members = [
     name: "Nguyen Van Toan",
     role: "Website Developer - Member",
     lang: "C#, JavaScript, ReactJs and Sass",
-    image: "/assets/images/nguyenvantoan.jpg",
+    image: "/assets/images/nguyenvantoan.png",
     facebook: "",
   },
   {
@@ -19,14 +19,14 @@ const members = [
     name: "Huynh Minh Nhat",
     role: "Game Developer - Member",
     lang: "C#, Unity",
-    image: "/assets/images/huynhminhnhat.jpg",
+    image: "/assets/images/huynhminhnhat.png",
     facebook: "",
   },
   {
     name: "Tran Thanh Liem",
     role: "Game Developer - Member",
     lang: "C#, Unity",
-    image: "/assets/images/tranthanhliem.jpg",
+    image: "/assets/images/tranthanhliem.png",
     facebook: "",
   },
   {

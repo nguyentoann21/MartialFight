@@ -65,7 +65,7 @@ const Guide = () => {
             the game along with the avatar and level.
           </p>
           <div className="guide-image">
-            <img src="/assets/guide/set-name.png" alt="guide-set-name" />
+            <img src="/assets/guide/set-name.jpg" alt="guide-set-name" />
           </div>
         </div>
         <div className="guide-gameplay">
@@ -85,7 +85,7 @@ const Guide = () => {
             practice with the bot.
           </p>
           <div className="guide-image">
-            <img src="/assets/guide/training.png" alt="guide-training" />
+            <img src="/assets/guide/training.jpg" alt="guide-training" />
           </div>
         </div>
         <div className="guide-ranking-board">
