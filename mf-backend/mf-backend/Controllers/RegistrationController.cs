@@ -48,6 +48,11 @@ namespace mf_backend.Controllers
                     return StatusCode(StatusCodes.Status406NotAcceptable, "Password must be from 6-32 characters");
                 }
 
+                if (account.Password.StartsWith(" ") || account.Password.EndsWith(" "))
+                {
+                    return StatusCode(StatusCodes.Status406NotAcceptable, "Password must not start or end with whitespace");
+                }
+
                 string avatarFileName = $"{Guid.NewGuid()}{Path.GetExtension(account.Avatar.FileName)}";
                 string avatarDirectoryPath = Path.Combine(_environment.WebRootPath, "Images");
                 string avatarFilePath = Path.Combine(avatarDirectoryPath, avatarFileName);

@@ -29,7 +29,7 @@ namespace mf_backend.Controllers
             {
                 string EMAIL_SEND = "toannvce150811@fpt.edu.vn";
                 string PASSWORD_SEND = "ekpnpruomnfjknvq";
-                var account = await _context.Accounts.FirstOrDefaultAsync(a => a.Email == email);
+                var account = await _context.Accounts.FirstOrDefaultAsync(a => a.Email.ToLower() == email.ToLower());
                 if (account == null)
                 {
                     return NotFound("Email does not found");
@@ -67,7 +67,7 @@ namespace mf_backend.Controllers
         {
             try
             {
-                var account = await _context.Accounts.FirstOrDefaultAsync(a => a.Email == email);
+                var account = await _context.Accounts.FirstOrDefaultAsync(a => a.Email.ToLower() == email.ToLower());
                 if (account == null)
                 {
                     return NotFound("Email does not found");
@@ -98,7 +98,12 @@ namespace mf_backend.Controllers
                     return StatusCode(StatusCodes.Status400BadRequest, "New password must be from 6 to 32 characters");
                 }
 
-                var account = await _context.Accounts.FirstOrDefaultAsync(a => a.Email == email);
+if (newPassword.StartsWith(" ") || newPassword.EndsWith(" "))
+        {
+            return StatusCode(StatusCodes.Status400BadRequest, "New password must not start or end with whitespace");
+        }
+
+                var account = await _context.Accounts.FirstOrDefaultAsync(a => a.Email.ToLower() == email.ToLower());
                 if (account == null)
                 {
                     return StatusCode(StatusCodes.Status404NotFound, "Email does not found");

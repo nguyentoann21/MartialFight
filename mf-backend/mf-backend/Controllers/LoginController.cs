@@ -29,6 +29,11 @@ namespace mf_backend.Controllers
                 return NotFound("Account does not existed");
             }
 
+            if (request.Password.Length < 6 || request.Password.Length >32)
+            {
+                return StatusCode(StatusCodes.Status403Forbidden, "The password can be from 6 to 32 characters");
+            }
+
             if (!account.Active)
             {
                 return StatusCode(StatusCodes.Status403Forbidden, "Your account is banned");

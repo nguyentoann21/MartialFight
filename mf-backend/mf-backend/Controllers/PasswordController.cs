@@ -43,6 +43,11 @@ namespace mf_backend.Controllers
                 return StatusCode(StatusCodes.Status411LengthRequired, "The password length must be from 6-32 characters");
             }
 
+if (requestChange.NewPassword.StartsWith(" ") || requestChange.NewPassword.EndsWith(" "))
+    {
+        return StatusCode(StatusCodes.Status406NotAcceptable, "New password must not start or end with whitespace");
+    }
+
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(requestChange.NewPassword);
             account.Password = hashedPassword;
 
