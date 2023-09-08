@@ -2,12 +2,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 80px;
-    padding: 0 20px;
+    height: 5.86vw;
+    padding: 0 1.5vw;
     background-color: #222;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 .15vw .3vw rgba(0,0,0,0.1);
 
-    .logo{
+    .logo {
         font-weight: bold;
         cursor: pointer;
 
@@ -18,32 +18,33 @@
             align-items: center;
 
             .image-logo {
-                width: 50px;
-                height: 50px;
+                width: 3.67vw;
+                height: 3.67vw;
                 border-radius: 50%;
-                margin-right: 5px;
+                margin-right: .367vw;
                 opacity: .8;
             }
 
             .image-logo:hover {
                 transition: color 0.2s;
-                filter: drop-shadow(0 0 10px #ffff00) drop-shadow(0 0 50px #ffff00);
+                filter: drop-shadow(0 0 .75vw #ff0) drop-shadow(0 0 3.67vw #ff0);
                 transform-origin: top;
             }
 
             .logo-text {
                 color: #1E90FF;
-                font-size: 1.5rem;
+                font-size: 1.76vw;
             }
 
             .logo-text:hover {
                 color: chartreuse;
                 transition: color 0.2s;
-                filter: drop-shadow(0 0 10px #fec603) drop-shadow(0 0 50px #fec603);
+                filter: drop-shadow(0 0 .75vw #fec603) drop-shadow(0 0 3.67vw #fec603);
                 transform-origin: top;
             }
         }
     }
+
     .nav {
         display: flex;
         list-style: none;
@@ -55,22 +56,22 @@
 
             .nav-item {
                 position: relative;
-                font-size: 16px;
+                font-size: 1.18vw;
                 font-weight: bold;
-                margin: 0 20px;
+                margin: 0 1.5vw;
                 cursor: pointer;
                 transition: color 0.2s;
                 color: #fff;
             }
   
             .nav-item:hover {
-                color: #ffff00;
+                color: #ff0;
             }
 
             .nav-item.active {
-                color: #ffff00;
+                color: #ff0;
                 transition: color 0.2s;
-                filter: drop-shadow(0 0 10px #fec603) drop-shadow(0 0 50px #fec603);
+                filter: drop-shadow(0 0 .75vw #fec603) drop-shadow(0 0 3.67vw #fec603);
                 transform-origin: top;
             }
 
@@ -80,8 +81,8 @@
                 bottom: 0;
                 left: 50%;
                 width: 0;
-                height: 2px;
-                background-color: #ffff00;
+                height: .15vw;
+                background-color: #ff0;
                 transition: width 0.2s, left 0.2s;
                 transform: translateX(0%);
             }
@@ -108,15 +109,15 @@
             justify-content: center;
             align-items: center;
             color: #fff;
-            padding: 0 20px 0 0;
+            padding: 0 1.5vw 0 0;
 
             a {
                 text-decoration: none;
                 color: #fff;
 
                 .nav-welcome-text {
-                    font-size: 16px;
-                    margin-right: 8px;
+                    font-size: 1.18vw;
+                    margin-right: .59vw;
                     cursor: pointer;
     
                     span {
@@ -133,24 +134,25 @@
 
             .nav-logout {
                 cursor: pointer;
-                font-size: 20px;
+                font-size: 1.5vw;
             }
 
             .nav-logout:hover {
                 color: #ff0;
-                filter: drop-shadow(0 0 3px #fec603) drop-shadow(0 0 50px #fec603);
+                filter: drop-shadow(0 0 .22vw #fec603) drop-shadow(0 0 3.67vw #fec603);
             }
         }
 
         .btn-sign-in,
         .btn-sign-up {
-            width: 100px;
-            height: 30px;
-            margin-left: 10px;
+            width: 7.33vw;
+            height: 2.2vw;
+            margin-left: .75vw;
             border: none;
-            font-size: 16px;
+            padding: 0 .75vw;
+            font-size: 1.18vw;
             font-weight: bold;
-            border-radius: 20px;
+            border-radius: 1.5vw;
             cursor: pointer;
             transition: background-color 0.2s, color 0.2s;
         }
@@ -179,14 +181,14 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 35px;
-            height: 35px;
+            width: 2.57vw;
+            height: 2.57vw;
             cursor: pointer;
 
             .icon-lang {
-                margin-left: 10px;
+                margin-left: .75vw;
                 color: #fff;
-                font-size: 1.5rem;
+                font-size: 1.76vw;
                 width: 100%;
                 height: 100%;
             }
@@ -198,7 +200,7 @@
 
         .language:hover {
             transition: color 0.2s;
-            filter: drop-shadow(0 0 10px #ffff00) drop-shadow(0 0 50px #ffff00);
+            filter: drop-shadow(0 0 .75vw #ff0) drop-shadow(0 0 3.67vw #ff0);
             transform-origin: top;
         }
     }

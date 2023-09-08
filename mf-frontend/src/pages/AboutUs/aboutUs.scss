@@ -1,5 +1,5 @@
 .about-us-page {
-    padding: 30px 20px;
+    padding: 2.2vw 1.5vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,33 +10,35 @@
         align-items: center;
         background-color: #222;
         color: #fff;
-        border-radius: 50px;
+        border-radius: 3.67vw;
         transition: transform 0.3s;
         font-weight: 700 !important;
-        padding: 60px 0;
-        width: 1200px;
-        filter: drop-shadow(0 0 4px #ccc) drop-shadow(0 0 5px #ccc);
+        padding: 4.4vw 0;
+        width: 90%;
+        max-width: 1200px;
+        filter: drop-shadow(0 0 .3vw #ccc) drop-shadow(0 0 .367vw #ccc);
 
     
         h1 {
-            font-size: 50px;
+            font-size: 3.67vw;
             font-weight: 700;
-            margin-bottom: 30px;
+            margin-bottom: 2.2vw;
             color: #ff0;
         }
     
         .team-introduction {
-            max-width: 1000px;
+            max-width: 73.25vw;
             word-wrap: break-word;
-            padding: 0 50px 20px 50px !important;
+            padding: 0 3.67vw 1.5vw 3.67vw !important;
+            font-size: 1.18vw;
         }
     
         .members {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
-            margin-bottom: 50px;
+            gap: 1.5vw;
+            margin-bottom: 3.67vw;
             
             .member {
                 display: flex;
@@ -44,35 +46,35 @@
                 align-items: center;
                 cursor: pointer;
                 transition: all 0.3s ease;
-                width: 250px;
+                width: 18.35vw;
                 background-image: url('../../../public/assets/images/member-card.png');
                 background-repeat: no-repeat;
                 background-size: 100% 100%;
-                padding: 60px 30px;
-                border-radius: 15px;
+                padding: 4.4vw 2.2vw;
+                border-radius: 1.18vw;
                 color: #fff;
-                gap: 30px;
+                gap: 2.2vw;
     
                 img {
-                    width: 150px;
-                    height: 150px;
+                    width: 11vw;
+                    height: 11vw;
                     object-fit: fill;
-                    margin-bottom: 10px;
+                    margin-bottom: .75vw;
                 }
        
                 .info {
                     text-align: center;
 
                     h3 {
-                        font-size: 18px;
+                        font-size: 1.32vw;
                     }
 
                     h4 {
-                        font-size: 16px;
+                        font-size: 1.18vw;
                     }
 
                     span {
-                        font-size: 16px;
+                        font-size: 1.18vw;
                     }
                 }
             }
@@ -81,12 +83,75 @@
                 transform: scale(1.05);
                 color: #ff0;
                 transition: 0.4s;
-                filter: drop-shadow(0 0 2px #009) drop-shadow(0 0 3px #009);
+                filter: drop-shadow(0 0 .15vw #009) drop-shadow(0 0 .22vw #009);
             }
     
             .active {
-                border: 5px solid #fff000;
+                border: .367vw solid #ff0;
             }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .about-us {
+            width: 95%;
+            max-width: 600px;
+        }
+    }
+
+    @media screen and (max-width: 1024px) {
+        .about-us {
+            width: 95%;
+            max-width: 800px;
+        }
+    }
+
+    @media screen and (max-width: 1365px) {
+        .about-us {
+            width: 95%;
+            max-width: 1024px;
+        }
+    }
+
+    @media screen and (min-width: 1600px) and (min-height: 900px) {
+        .about-us {
+            width: 85%;
+            max-width: 1440px;
+        }
+    }
+
+    @media screen and (min-width: 1920px) and (min-height: 1080px) {
+        .about-us {
+            width: 80%;
+            max-width: 1600px;
+        }
+    }
+
+    @media screen and (min-width: 2560px) and (min-height: 1440px) {
+        .about-us {
+            width: 75%;
+            max-width: 1920px;
+        }
+    }
+
+    @media screen and (min-width: 3840px) and (min-height: 2160px) {
+        .about-us {
+            width: 70%;
+            max-width: 2560px;
+        }
+    }
+
+    @media screen and (min-width: 5120px) and (min-height: 2880px) {
+        .about-us {
+            width: 60%;
+            max-width: 3840px;
+        }
+    }
+
+    @media screen and (min-width: 7680px) and (min-height: 4320px) {
+        .about-us {
+            width: 50%;
+            max-width: 3840px;
         }
     }
 }

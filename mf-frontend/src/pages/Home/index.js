@@ -2,8 +2,10 @@ import DownloadGame from './download';
 import Trailer from './trailer';
 import Map from './map';
 import Sect from './sect';
+import React from 'react';
 
 function Home() {
+
     return(
         <>
             <Trailer /> 

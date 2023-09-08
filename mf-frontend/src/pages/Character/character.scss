@@ -2,7 +2,6 @@
     font-size: 20px;
     color: #ff0;
     height: 500px;
-    width: 1200px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -11,6 +10,9 @@
         margin-top: 40px;
         font-size: 30px;
         font-style: italic;
+        padding: 30px 100px;
+        border-radius: 30px;
+        border: 1px solid #ff0;
     }
 }
 
@@ -169,7 +171,7 @@
 
                     .character-name {
                         font-weight: 700;
-                        font-size: 36px;
+                        font-size: 50px;
                         margin: 0 !important;
                         padding: 0 !important;
                     }

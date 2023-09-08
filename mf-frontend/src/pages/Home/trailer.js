@@ -50,10 +50,10 @@ const Trailer = () => {
     return (
         <div className='trailer-container'>
             <div className='trailer-content'>
-                <div className='prev-trailer' onClick={prevSlide}><FaChevronLeft /></div>
                 <video ref={videoRef} controls autoPlay muted onEnded={handleVideoEnd}>
                     <source src={slides[currentSlide].trailerUrl} type='video/mp4'/>
-                </video> 
+                </video>
+                <div className='prev-trailer' onClick={prevSlide}><FaChevronLeft /></div> 
                 <div className='next-trailer' onClick={nextSlide}><FaChevronRight /></div>
             </div>
         </div>

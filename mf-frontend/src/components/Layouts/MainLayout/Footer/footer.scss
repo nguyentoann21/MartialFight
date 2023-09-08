@@ -1,7 +1,7 @@
 .footer {
     background-color: #222;
     color: #fff;
-    padding: 20px;
+    padding: 1.5vw;
     font-weight: bold;
 
     .footer-container {
@@ -12,6 +12,7 @@
         .footer-logo {
             display: grid;
             align-items: center;
+            cursor: pointer;
             
             .footer-logo-content {
                 display: flex;
@@ -19,13 +20,15 @@
                 align-items: center;
 
                 .logo-image-footer {
-                    height: 100px;
-                    width: 100px;
+                    border-radius: 5%;
+                    height: 7.4vw;
+                    width: 7.4vw;
+                    filter: drop-shadow(0 0 .15vw #808080) drop-shadow(0 0 .22vw #808080);
                 }
             }
 
             span {
-                font-size: 1.5rem;
+                font-size: 1.76vw;
                 color: #1E90FF;
             }
         }
@@ -33,13 +36,14 @@
         .footer-links {
 
             svg {
-                margin-right: 10px;
+                font-size: 1.32vw;
+                margin-right: .367vw;
             }
 
             h3 {
-                font-size: 16px;
-                margin-bottom: 20px;
-                color: #ffff00;
+                font-size: 1.18vw;
+                margin-bottom: 1.5vw;
+                color: #ff0;
             }
 
             ul {
@@ -48,7 +52,14 @@
                 padding: 0;
 
                 li {
-                    margin-bottom: 10px;
+                    display: flex;
+                    margin-bottom: .75vw;
+
+                    h5 {
+                        font-size: 1.18vw;
+                        margin: 0 !important;
+                        padding: 0 !important;
+                    }
 
                     .items-to {
                         color: #fff;
@@ -57,19 +68,29 @@
                         text-decoration: none;
 
                         .youtube-icon:hover {
-                            color:  #ff0000;
+                            color:  #f00;
                         }
 
                         .facebook-icon:hover {
                             color:  #3b5998;
                         }
+
+                        h5 {
+                            font-size: 1.18vw;
+                            margin: 0 !important;
+                            padding: 0 !important;
+                        }
                     }
 
                     .items-to:hover {
-                        color: #ffff00;
+                        color: #ff0;
 
-                        svg {
-                            transform: translateX(5px);
+                        .youtube-icon {
+                            color:  #f00;
+                        }
+
+                        .facebook-icon {
+                            color:  #3b5998;
                         }
                     }
                 } 
@@ -80,5 +101,9 @@
     .footer-mark {
         text-align: center;
         color: #fa0;
+
+        p {
+            font-size: 1.18vw;
+        }
     }
 }

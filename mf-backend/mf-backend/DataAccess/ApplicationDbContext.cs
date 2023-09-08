@@ -5,9 +5,9 @@ namespace mf_backend.DataAccess
 {
     public class ApplicationDbContext : DbContext
     {
-        //private static readonly string SQL_CONNECTION = "Server=(local);uid=sa;pwd=123456;Database=MF_V35;Trusted_Connection=true;Encrypt=false";
+        private static readonly string SQL_CONNECTION = "Server=(local);uid=sa;pwd=123456;Database=MF_V35;Trusted_Connection=true;Encrypt=false";
 
-        private static readonly string SQL_CONNECTION = "Data Source=database-martarilfight.cbmr4jk2hmdz.ap-southeast-1.rds.amazonaws.com,1433;Initial Catalog= DB_Server_MartarilFight;User ID=admin;Password=admin123456;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+        //private static readonly string SQL_CONNECTION = "Data Source=database-martarilfight.cbmr4jk2hmdz.ap-southeast-1.rds.amazonaws.com,1433;Initial Catalog= DB_Server_MartarilFight;User ID=admin;Password=admin123456;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
         public ApplicationDbContext() { }
 
         public DbSet<Account> Accounts { get; set; }

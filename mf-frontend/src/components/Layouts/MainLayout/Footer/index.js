@@ -6,10 +6,18 @@ import { MdEmail, MdPhone, MdHome } from 'react-icons/md';
 import './footer.scss';
 
 function Footer() {
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <div className="footer">
       <div className="footer-container">
-        <div className="footer-logo">
+        <div className="footer-logo" onClick={scrollToTop}>
           <div className='footer-logo-content'><img src="/assets/images/logo.jpg" alt="Logo"  className='logo-image-footer' /></div>
           <span>Martial Fight</span>
         </div>
@@ -17,13 +25,13 @@ function Footer() {
           <h3>Contact Us</h3>
           <ul>
             <li>
-                <MdEmail /> Email: toannvce150811@fpt.edu.vn
+                <MdEmail /> <h5>Email: toannvce150811@fpt.edu.vn</h5>
             </li>
             <li>
-                <MdPhone /> Phone: (+84) 292 730 3636
+                <MdPhone /> <h5>Phone: (+84) 292 730 3636</h5>
             </li>
             <li>
-                <MdHome /> Address: 600 extended Nguyen Van Cu street, An Binh ward, Ninh Kieu district, Can Tho city
+                <MdHome /> <h5>Address: 600 extended Nguyen Van Cu street, An Binh ward, Ninh Kieu district, Can Tho city</h5>
             </li>
           </ul>
         </div>
@@ -32,12 +40,12 @@ function Footer() {
           <ul>
             <li>
                 <Link to='/' className='items-to'>
-                    <FaYoutube className='youtube-icon' /> Youtube
+                    <FaYoutube className='youtube-icon' /> <h5>Youtube</h5>
                 </Link>
             </li>
             <li>
                 <Link to='/' className='items-to'>
-                    <FaFacebookSquare className='facebook-icon' /> Facebook
+                    <FaFacebookSquare className='facebook-icon' /> <h5>Facebook</h5>
                 </Link>
             </li>
           </ul>
@@ -46,10 +54,10 @@ function Footer() {
           <h3>Legal</h3>
           <ul>
             <li>
-                <Link to='/privacy-policy' className='items-to'>Privacy Policy</Link>
+                <Link to='/privacy-policy' className='items-to'><h5>Privacy Policy</h5></Link>
             </li>
             <li>
-                <Link to='/terms-condition' className='items-to'>Terms &amp; Conditions</Link>
+                <Link to='/terms-condition' className='items-to'><h5>Terms &amp; Conditions</h5></Link>
             </li>
           </ul>
         </div>

@@ -2,10 +2,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px 0;
+    margin: 1.5vw 0;
     
     .map-main {
-        width: 1200px;
+        width: 90%;
+        max-width: 1200px;
+        height: auto;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -17,15 +19,16 @@
             justify-content: center;
             align-items: center;
             background-color: #808080;
-            border-radius: 50px;
-            filter: drop-shadow(0 0 2px #ffff00) drop-shadow(0 0 3px #ffff00);
+            border-radius: 3.7vw;
+            filter: drop-shadow(0 0 .15vw #ff0) drop-shadow(0 0 .22vw #ff0);
+            margin-bottom: 1.5vw;
 
             h1 {
-                font-size: 56px !important;
+                font-size: 4.1vw !important;
                 margin: 0 !important;
-                padding: 0 0 10px 0 !important;
+                padding: 0 0 .8vw 0 !important;
                 color: #fff;
-                filter: drop-shadow(0 0 2px #000) drop-shadow(0 0 3px #000);
+                filter: drop-shadow(0 0 .15vw #000) drop-shadow(0 0 .22vw #000);
             }
         }
 
@@ -34,56 +37,121 @@
             justify-content: center;
             align-items: center;
             width: 100%;
-            padding: 20px 0;
+            padding: 1.5vw 0;
 
             .main-left {
                 width: 45%;
-                max-width: 540px;
+                max-width: 39.55vw;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                margin-right: 2.2vw;
 
                 img {
                     width: 100%;
                     height: 100%;
-                    max-height: 300px;
-                    max-width: 520px;
-                    border-radius: 20px;
-                    filter: drop-shadow(0 0 3px #ffff00) drop-shadow(0 0 5px #ffff00);
+                    max-height: 22.7vw;
+                    max-width: 38.1vw;
+                    border-radius: 1.5vw;
+                    filter: drop-shadow(0 0 .22vw #ff0) drop-shadow(0 0 .367vw #ff0);
                 }
             }
 
             .main-right {
                 width: 55%;
-                max-width: 660px;
+                max-width: 48.5vw;
 
                 h3 {
                     color: #ff0;
-                    font-size: 40px;
+                    font-size: 2.95vw;
                     text-align: center;
                     padding: 0 !important;
-                    margin: 0 0 20px 0 !important;
+                    margin: 0 0 1.5vw 0 !important;
                 }
 
                 h4 {
-                    max-width: 660px;
+                    max-width: 44vw;
                     font-weight: normal;
-                    padding: 0 0 0 20px !important;
+                    font-size: 1.18vw;
+                    padding: 0 .75vw !important;
                     margin: 0 !important;
                     overflow-wrap: break-word;
                 }
 
                 h5 {
-                    max-width: 660px;
+                    max-width: 44vw;
                     font-weight: 600;
-                    padding: 0 0 0 20px !important;
+                    padding: 0 0 0 1vw !important;
                     margin: 0 !important;
                     overflow-wrap: break-word;
                     color: #ff0;
                     font-style: italic;
-                    font-size: 15px;
+                    font-size: 1.18vw;
                 }
             }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .map-main {
+            width: 95%;
+            max-width: 600px;
+        }
+    }
+
+    @media screen and (max-width: 1024px) {
+        .map-main {
+            width: 95%;
+            max-width: 800px;
+        }
+    }
+
+    @media screen and (max-width: 1365px) {
+        .map-main {
+            width: 95%;
+            max-width: 1024px;
+        }
+    }
+
+    @media screen and (min-width: 1600px) and (min-height: 900px) {
+        .map-main {
+            width: 85%;
+            max-width: 1440px;
+        }
+    }
+
+    @media screen and (min-width: 1920px) and (min-height: 1080px) {
+        .map-main {
+            width: 80%;
+            max-width: 1600px;
+        }
+    }
+
+    @media screen and (min-width: 2560px) and (min-height: 1440px) {
+        .map-main {
+            width: 75%;
+            max-width: 1920px;
+        }
+    }
+
+    @media screen and (min-width: 3840px) and (min-height: 2160px) {
+        .map-main {
+            width: 70%;
+            max-width: 2560px;
+        }
+    }
+
+    @media screen and (min-width: 5120px) and (min-height: 2880px) {
+        .map-main {
+            width: 60%;
+            max-width: 3840px;
+        }
+    }
+
+    @media screen and (min-width: 7680px) and (min-height: 4320px) {
+        .map-main {
+            width: 50%;
+            max-width: 3840px;
         }
     }
 }

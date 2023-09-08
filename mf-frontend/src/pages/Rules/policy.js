@@ -47,11 +47,13 @@ const Policy = () => {
         significant importance on safeguarding your personal information and
         ensuring a safe and enjoyable gaming experience.
       </p>
-      <button>
-        <Link to="/">
-          <FaHome />
-        </Link>
-      </button>
+      <div className="button-privacy">
+        <button>
+          <Link to="/">
+            <FaHome />
+          </Link>
+        </button>
+      </div>
     </div>
   );
 };

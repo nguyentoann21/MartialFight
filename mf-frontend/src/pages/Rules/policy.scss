@@ -1,63 +1,65 @@
 .privacy-policy-container {
-    background-image: url('../../../public/assets/images/item-card.png');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    max-width: 750px !important;
-    padding: 60px !important;
-    border-radius: 10px;
-    justify-content: center;
+    background-color: #222;
+    width: 90%;
+    max-width: 73.25vw !important;
+    padding: 3.67vw 5.86vw !important;
+    border-radius: 2.2vw;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin: 40px 0;
+    margin: 2.2vw 0;
+    filter: drop-shadow(0 0 .15vw #808080) drop-shadow(0 0 .22vw #808080);
 
     h1 {
         text-align: center;
         font-weight: bold;
-        font-size: 40px;
-        margin: 20px 0 !important;
+        font-size: 3.67vw;
+        margin: 1.5vw 0 !important; 
         padding: 0 !important;
         color: #ff0;
     }
-
+    
     p {
-        max-width: 700px;
-        word-wrap: break-word;
-        padding: 0 50px !important;
-        font-weight: 500;
         color: #fff;
-        margin: 5px 0 !important;
+        padding: 0 3.67vw !important;
+        font-weight: 500;
+        font-size: 1.18vw;
+        margin: 0 0 1.5vw 0 !important;
     }
 
-    button {
-        background-color: #808080;
-        border: none !important;
-        border-radius: 50%;
-        margin: 10px 0;
-        cursor: pointer;
+    .button-privacy {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        margin: 1.5vw 0 .75vw 0;
 
-        a {
-            text-decoration: none;
-    
-            svg {
-                font-size: 60px;
-                padding: 15px;
-                color: #fff;
+        button {
+            background-color: #808080;
+            border: none !important;
+            border-radius: 50%;
+            cursor: pointer;
+
+            a {
+                text-decoration: none;
+        
+                svg {
+                    font-size: 4.4vw;
+                    padding: 1.1vw;
+                    color: #fff;
+                }
             }
         }
-    }
 
-    button:hover {
-        background-color: #fa0;
-
-        a {
-            text-decoration: none;
-    
-            svg {
-                font-size: 60px;
-                padding: 15px;
-                color: #222;
+        button:hover {
+            background-color: #fa0;
+            a {
+                text-decoration: none;
+        
+                svg {
+                    font-size: 4.4vw;
+                    padding: 1.1vw;
+                    color: #222;
+                }
             }
         }
-    }
+   }
 }

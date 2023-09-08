@@ -3,26 +3,27 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 30px 0 !important;
+    padding: 2.2vw 0 !important;
 
     .guide-page-container {
         display: flex;
         flex-direction: column;
         background-color: #222;
         color: #fff;
-        padding: 70px 100px;
-        border-radius: 50px;
-        width: 1000px;
-        filter: drop-shadow(0 0 4px #ccc) drop-shadow(0 0 5px #ccc);
+        padding: 5.13vw 7.34vw;
+        border-radius: 3.67vw;
+        width: 90%;
+        max-width: 73.25vw;
+        filter: drop-shadow(0 0 .3vw #ccc) drop-shadow(0 0 .367vw #ccc);
         
         .guide-title {
             text-align: center;
-            font-size: 56px;
+            font-size: 3.67vw;
             font-weight: 700;
             margin: 0 !important;
             padding: 0 !important;
             color: #ff0;
-            filter: drop-shadow(0 0 .5px #ccc) drop-shadow(0 0 1px #ccc);
+            filter: drop-shadow(0 0 .0367vw #ccc) drop-shadow(0 0 .075vw #ccc);
         }
 
         .guide-introduction, .guide-how-to-play, .guide-sign-up {
@@ -31,17 +32,17 @@
             justify-content: center;
             align-items: flex-start;
             flex-direction: column;
-            margin-top: 20px;
+            margin-top: 1.5vw;
 
             h2 {
                 color: #ff0;
-                font-size: 40px;
-                margin: 0 0 10px 0 !important;
+                font-size: 3vw;
+                margin: 0 0 .75vw 0 !important;
                 padding: 0 !important;
             }
 
             p {
-                font-size: 16px;
+                font-size: 1.18vw;
                 margin: 0 !important;
                 padding: 0 !important;
                 font-weight: 500;
@@ -57,18 +58,18 @@
             justify-content: center;
             align-items: flex-start;
             flex-direction: column;
-            margin-top: 20px;
+            margin-top: 1.5vw;
 
             h2 {
                 color: #ff0;
-                font-size: 40px;
-                margin: 0 0 10px 0 !important;
+                font-size: 3vw;
+                margin: 0 0 .75vw 0 !important;
                 padding: 0 !important;
             }
 
             p {
-                font-size: 16px;
-                margin: 0 0 10px 0 !important;
+                font-size: 1.18vw;
+                margin: 0 0 .75vw 0 !important;
                 padding: 0 !important;
                 font-weight: 500;
             }
@@ -85,6 +86,69 @@
                     object-fit: contain;
                 }
             }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .guide-page-container {
+            width: 95%;
+            max-width: 600px;
+        }
+    }
+
+    @media screen and (max-width: 1024px) {
+        .guide-page-container {
+            width: 95%;
+            max-width: 800px;
+        }
+    }
+
+    @media screen and (max-width: 1365px) {
+        .guide-page-container {
+            width: 95%;
+            max-width: 1024px;
+        }
+    }
+
+    @media screen and (min-width: 1600px) and (min-height: 900px) {
+        .guide-page-container {
+            width: 85%;
+            max-width: 1440px;
+        }
+    }
+
+    @media screen and (min-width: 1920px) and (min-height: 1080px) {
+        .guide-page-container {
+            width: 80%;
+            max-width: 1600px;
+        }
+    }
+
+    @media screen and (min-width: 2560px) and (min-height: 1440px) {
+        .guide-page-container {
+            width: 75%;
+            max-width: 1920px;
+        }
+    }
+
+    @media screen and (min-width: 3840px) and (min-height: 2160px) {
+        .guide-page-container {
+            width: 70%;
+            max-width: 2560px;
+        }
+    }
+
+    @media screen and (min-width: 5120px) and (min-height: 2880px) {
+        .guide-page-container {
+            width: 60%;
+            max-width: 3840px;
+        }
+    }
+
+    @media screen and (min-width: 7680px) and (min-height: 4320px) {
+        .guide-page-container {
+            width: 50%;
+            max-width: 3840px;
         }
     }
 }

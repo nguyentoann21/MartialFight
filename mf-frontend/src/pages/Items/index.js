@@ -101,17 +101,19 @@ const Items = () => {
     <div className="item-page">
       <div className="items-page-container">
         <h2>Items in game</h2>
-        <div className="item-filter">
-          <label htmlFor="category">Filter by category</label>
-          <select id="category" value={sortType} onChange={handleSortChange}>
-            <option value="all">All</option>
-            {categories.map((category) => (
-              <option key={category.categoryId} value={category.categoryId}>
-                {category.categoryName}
-              </option>
-            ))}
-          </select>
-        </div>
+        {items.length > 0 && (
+          <div className="item-filter">
+            <label htmlFor="category">Filter by category</label>
+            <select id="category" value={sortType} onChange={handleSortChange}>
+              <option value="all">All</option>
+              {categories.map((category) => (
+                <option key={category.categoryId} value={category.categoryId}>
+                  {category.categoryName}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
         <div className="item-container">
           {items.length === 0 ? (
             <h1>No data was found</h1>
@@ -142,7 +144,9 @@ const Items = () => {
                         )?.categoryName || ""}
                       </h5>
                     )}
-                      <div className="type-item">Level {item.type} <FaStar /></div>
+                    <div className="type-item">
+                      Level {item.type} <FaStar />
+                    </div>
                   </div>
                 </div>
                 <div className="card-bottom">

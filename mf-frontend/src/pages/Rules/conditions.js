@@ -84,12 +84,12 @@ const TermsAndConditions = () => {
         law principles. By accessing and using the game, you acknowledge that
         you have read, understood, and agreed to these Terms and Conditions.
       </p>
-      <div className='button-terms'>
-      <button>
-        <Link to="/">
-          <FaHome />
-        </Link>
-      </button>
+      <div className="button-terms">
+        <button>
+          <Link to="/">
+            <FaHome />
+          </Link>
+        </button>
       </div>
     </div>
   );
