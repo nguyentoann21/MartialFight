@@ -13,7 +13,7 @@
         border-radius: 3.67vw;
         transition: transform 0.3s;
         font-weight: 700 !important;
-        padding: 4.4vw 0;
+        padding: 2.2vw 0 4.4vw 0;
         width: 90%;
         max-width: 1200px;
         filter: drop-shadow(0 0 .3vw #ccc) drop-shadow(0 0 .367vw #ccc);
@@ -24,6 +24,7 @@
             font-weight: 700;
             margin-bottom: 2.2vw;
             color: #ff0;
+            filter: drop-shadow(0 0 .0367vw #ccc) drop-shadow(0 0 .075vw #ccc);
         }
     
         .team-introduction {
@@ -129,29 +130,29 @@
 
     @media screen and (min-width: 2560px) and (min-height: 1440px) {
         .about-us {
-            width: 75%;
-            max-width: 1920px;
+            width: 80%;
+            max-width: 2000px;
         }
     }
 
     @media screen and (min-width: 3840px) and (min-height: 2160px) {
         .about-us {
-            width: 70%;
-            max-width: 2560px;
+            width: 80%;
+            max-width: 3000px;
         }
     }
 
     @media screen and (min-width: 5120px) and (min-height: 2880px) {
         .about-us {
-            width: 60%;
-            max-width: 3840px;
+            width: 80%;
+            max-width: 4000px;
         }
     }
 
     @media screen and (min-width: 7680px) and (min-height: 4320px) {
         .about-us {
-            width: 50%;
-            max-width: 3840px;
+            width: 80%;
+            max-width: 6000px;
         }
     }
 }

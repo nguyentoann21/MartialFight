@@ -71,7 +71,7 @@ const NavbarAdmin = () => {
       </div>
       <Link to='/admin-profile'>
         <img
-          src={admin ? `https://localhost:7052/Images/${admin.avatar}`:'/assets/images/admin-image.avif'}
+          src={admin ? `https://localhost:7052/Images/${admin.avatar}`:'/assets/images/map.jpg'}
           alt='avatar'
           className={`navbar-dashboard ${
             activeItem === 'Profile' ? 'active' : ''

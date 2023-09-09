@@ -12,24 +12,20 @@
         background-repeat: no-repeat;
         background-size: 100% 100%;
         color: #f0f0f0;
-        padding: 40px 10px 50px 10px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        padding: 4vw 5vw;
+        border-radius: .75vw;
         transition: transform 0.3s;
-        width: 400px;
+        width: 29.3vw;
         font-weight: 500 !important;
-        margin: 6.3% 0 !important;
-        max-width: 1366px;
-        max-height: 768px;
 
         .close-login {
             position: relative;
-            margin-left: 70%;
+            margin-left: 90%;
             transition: all 0.3s ease-in-out;
 
             .close-icons {
                 color: #a10 !important;
-                font-size: 40px !important;
+                font-size: 3vw !important;
             }
         }
 
@@ -45,41 +41,47 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 20px;
-            margin: 20px 0;
+            height: 1.5vw;
+            margin: 1.5vw 0;
 
             p {
-                font-size: 16px;
+                font-size: 1.18vw;
                 color: red;
                 background-color: rgb(235, 235, 69);
-                padding: 2px 10px 4px 10px;
-                border-radius: 10px;
+                padding: .15vw .75vw .3vw .75vw;
+                border-radius: .75vw;
             }
         }
 
         h2 {
             margin: 0;
+            font-size: 3vw;
+            color: #ff0;
         }
 
         .form-group-login {
             display: flex;
             flex-direction: column; 
-            width: 300px;
+            width: 100%;
+            margin-top: 1%;
 
             label {
                 font-weight: 700;
-                margin-bottom: 2px;
+                margin-bottom: .15vw;
+                font-size: 1.18vw;
             }
 
             span {
                 color: red;
+                font-size: 1.18vw;
             }
 
             input {
-                border-radius: 5px;
-                border: 1px solid #ced4da;
-                padding: 10px 40px 10px 10px;
+                border-radius: .367vw;
+                border: .075vw solid #ced4da;
+                padding: .75vw 3vw .75vw .75vw;
                 transition: transform 0.3s;
+                font-size: 1.18vw;
             }
 
             input:hover {
@@ -89,17 +91,18 @@
             input:focus {
                 outline: none;
                 border-color: #fa0;
-                box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+                box-shadow: 0 0 0 .25vw rgba(0, 123, 255, 0.25);
             }
 
             button {
                 background-color: #007bff;
                 color: #fff;
                 border: none;
-                border-radius: 5px;
-                padding: 10px;
+                border-radius: .367vw;
+                padding: .75vw;
                 cursor: pointer;
                 transition: background-color 0.3s;
+                font-size: 1.18vw;
             }
 
             button:hover {
@@ -109,16 +112,19 @@
             .remember-me {
                 display: flex;
                 align-items: center;
+                color: #ff0;
 
-                input {
-                    margin-right: 5px;
+                input[type="checkbox"] {
+                    margin-right: .367vw;
+                    width: 1vw;
+                    height: 1vw;
                 }
             }
 
             #forgot-password-link {
-                font-size: 14px;
+                font-size: 1.1vw;
                 text-align: right;
-                margin-bottom: 5px;
+                margin-bottom: .367vw;
                 color: #fa0;
                 transition: color 0.3s;
             }
@@ -128,24 +134,27 @@
             }
             
             .password-icons {
-                width: 16px !important;
-                height: 21px !important;
-                position: relative;
-                margin: -28px 0 20px 90% !important;
+                position: absolute;
                 cursor: pointer;
-                color: #222;
+                right: 37%;
+                margin: 2.5% 0 0 0;
+
+                svg {
+                    font-size: 1.18vw;
+                    color: #222;
+                }
             }
         }
 
         .line-bottom {
             width: 65%;
-            border-bottom: 1px solid #222;
+            border-bottom: .075vw solid #222;
             margin-bottom: 0 !important;
         }
 
         .link-to-sign-up {
-            margin-top: 20px;
-            font-size: 16px;
+            margin-top: 1.5vw;
+            font-size: 1.18vw;
 
             a {
                 color: #fa0;

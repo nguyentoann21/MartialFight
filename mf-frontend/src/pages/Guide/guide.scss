@@ -10,10 +10,10 @@
         flex-direction: column;
         background-color: #222;
         color: #fff;
-        padding: 5.13vw 7.34vw;
+        padding: 5.13vw 0;
         border-radius: 3.67vw;
         width: 90%;
-        max-width: 73.25vw;
+        max-width: 1200px;
         filter: drop-shadow(0 0 .3vw #ccc) drop-shadow(0 0 .367vw #ccc);
         
         .guide-title {
@@ -27,12 +27,12 @@
         }
 
         .guide-introduction, .guide-how-to-play, .guide-sign-up {
-            width: 100%;
             display: flex;
             justify-content: center;
             align-items: flex-start;
             flex-direction: column;
             margin-top: 1.5vw;
+            padding: 0 7.34vw;
 
             h2 {
                 color: #ff0;
@@ -53,12 +53,12 @@
         .guide-gameplay, .guide-training, .guide-ranking-board, 
         .guide-inventory, .guide-mission, .guide-shop, .guide-buy-item,
         .guide-recharge, .guide-map, .guide-area, .guide-challenge {
-            width: 100%;
             display: flex;
             justify-content: center;
             align-items: flex-start;
             flex-direction: column;
             margin-top: 1.5vw;
+            padding: 0 7.34vw;
 
             h2 {
                 color: #ff0;
@@ -126,29 +126,29 @@
 
     @media screen and (min-width: 2560px) and (min-height: 1440px) {
         .guide-page-container {
-            width: 75%;
-            max-width: 1920px;
+            width: 80%;
+            max-width: 2000px;
         }
     }
 
     @media screen and (min-width: 3840px) and (min-height: 2160px) {
         .guide-page-container {
-            width: 70%;
-            max-width: 2560px;
+            width: 80%;
+            max-width: 3000px;
         }
     }
 
     @media screen and (min-width: 5120px) and (min-height: 2880px) {
         .guide-page-container {
-            width: 60%;
-            max-width: 3840px;
+            width: 80%;
+            max-width: 4000px;
         }
     }
 
     @media screen and (min-width: 7680px) and (min-height: 4320px) {
         .guide-page-container {
-            width: 50%;
-            max-width: 3840px;
+            width: 80%;
+            max-width: 6000px;
         }
     }
 }

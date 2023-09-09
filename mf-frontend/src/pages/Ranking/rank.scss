@@ -5,18 +5,18 @@
 
     .ranking-form {
         background-color: #222;
-        border-radius: 50px;
-        padding: 70px 100px;
+        border-radius: 3.67vw;
+        padding: 5.13vw 7.34vw;
         color: #fff;
         font-weight: 600;
-        width: 1000px;
-        height: 1000px;
+        width: 73.25vw;
+        height: 73.25vw;
         display: flex;
         justify-content: flex-start;
         align-items: center;
         flex-direction: column;
-        margin: 30px 0 !important;
-        filter: drop-shadow(0 0 4px #ccc) drop-shadow(0 0 5px #ccc);
+        margin: 2.2vw 0 !important;
+        filter: drop-shadow(0 0 .3vw #ccc) drop-shadow(0 0 .367vw #ccc);
 
         .ranking-text {
             display: flex;
@@ -25,16 +25,18 @@
             width: 100%;
 
             h3{
-                font-size: 50px;
+                font-size: 3.67vw;
                 text-align: center;
                 color: #ff0;
                 margin: 0 !important;
                 padding: 0 !important;
+                filter: drop-shadow(0 0 .0367vw #ccc) drop-shadow(0 0 .075vw #ccc);
             }
 
             img {
-                width: 80px !important;
-                height: 80px !important;
+                width: 5.86vw !important;
+                height: 5.85vw !important;
+                filter: drop-shadow(0 0 .0367vw #ccc) drop-shadow(0 0 .075vw #ccc);
             }
         }
 
@@ -42,20 +44,21 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 30px;
-            margin: 20px 0;
-            border-radius: 5px;
+            gap: 2.2vw;
+            margin: 1.5vw 0;
+            border-radius: .367vw;
             width: 100%;
+            filter: drop-shadow(0 0 .0367vw #222) drop-shadow(0 0 .075vw #222);
             
             .tab {
                 color: #000;
                 font-weight: 700;
-                border: 2px solid #fff;
-                background-color: #fff;
-                font-size: 16px;
-                border-radius: 5px;
-                padding: 5px 10px;
-                width: 150px;
+                border: .15vw solid #ccc;
+                background-color: #ccc;
+                font-size: 1.18vw;
+                border-radius: .367vw;
+                padding: .367vw .75vw;
+                width: 11vw;
                 cursor: pointer;
                 transition: color 0.2s ease-in-out;
             }
@@ -72,7 +75,7 @@
 
             .no-rank-list {
                 text-align: center;
-                font-size: 30px;
+                font-size: 2.2vw;
                 color: #ff0;
                 font-style: italic;
                 font-weight: 600;
@@ -81,9 +84,10 @@
             table {
                 border-collapse: collapse;
                 width: 100%;
+                font-size: 1.18vw;
 
                 th, td {
-                    padding: 7px 0;
+                    padding: .513vw 0;
                     text-align: left;
                     border: 1px solid #222;
                     background-color: #444;
@@ -97,96 +101,103 @@
                 }
                 
                 td:first-child {
-                    width: 80px;
-                    max-width: 80px;
+                    width: 5.9vw;
+                    max-width: 5.9vw;
                     text-align: center;
 
                     .gold {
                         color: gold;
-                        font-size: 30px;
-                        filter: drop-shadow(0 0 .5px gold) drop-shadow(0 0 .5px gold);
+                        font-size: 2.2vw;
+                        filter: drop-shadow(0 0 .0367vw gold) drop-shadow(0 0 .0367vw gold);
                     }
 
                     .silver {
                         color: silver;
-                        font-size: 30px;
-                        filter: drop-shadow(0 0 .5px silver) drop-shadow(0 0 .5px silver);
+                        font-size: 2.2vw;
+                        filter: drop-shadow(0 0 .0367vw silver) drop-shadow(0 0 .0367vw silver);
                     }
 
                     .bronze {
                         color: #cd7f32;
-                        font-size: 30px;
-                        filter: drop-shadow(0 0 .5px #cd7f32) drop-shadow(0 0 .5px #cd7f32);
+                        font-size: 2.2vw;
+                        filter: drop-shadow(0 0 .0367vw #cd7f32) drop-shadow(0 0 .0367vw #cd7f32);
                     }
 
                     .normal {
                         color: #fff;
-                        font-size: 28px;
+                        font-size: 2.05vw;
                         font-weight: 300;
                     }
                 }
 
                 td:nth-child(2) {
-                    width: 240px;
-                    max-width: 230px;
+                    width: 17.57vw;
+                    max-width: 16.85vw;
                     white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
 
                     span {
-                        max-width: 220px;
+                        max-width: 16.11vw;
                         white-space: nowrap;
                         overflow: hidden;
                         text-overflow: ellipsis;
-                        padding: 0 5px;
+                        padding: 0 .367vw;
                         text-transform: lowercase;
                     }
                 }
 
                 td:nth-child(3) {
-                    width: 320px;
-                    max-width: 320px;
+                    width: 23.43vw;
+                    max-width: 23.43vw;
                     white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
 
                     span {
-                        max-width: 300px;
+                        max-width: 22vw;
                         white-space: nowrap;
                         overflow: hidden;
                         text-overflow: ellipsis;
-                        padding: 0 5px;
+                        padding: 0 .367vw;
                     }
                 }
 
                 td:nth-child(4) {
                     text-align: center;
-                    width: 160px;
-                    max-width: 150px;
+                    width: 11.72vw;
+                    max-width: 11vw;
                     white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
 
                     span {
-                        max-width: 140px;
+                        max-width: 10.25vw;
                         white-space: nowrap;
                         overflow: hidden;
                         text-overflow: ellipsis;
-                        padding: 0 5px;
+                        padding: 0 .367vw;
                     }
                 }
             }
         }
+    }
+}
 
-        @media (max-width: 768px) {
-            .tabs-container {
-              flex-wrap: wrap;
-            }
-          
-            .tab {
-              margin-right: 0;
-              margin-bottom: 10px;
-            }
-        }
+.empty-ranking {
+    font-size: 1.5vw;
+    color: #ff0;
+    height: 36.61vw;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    span {
+        margin-top: 3vw;
+        font-size: 2.2vw;
+        font-style: italic;
+        padding: 2.2vw 7.34vw;
+        border-radius: 2.2vw;
+        border: .075vw solid #ff0;
     }
 }

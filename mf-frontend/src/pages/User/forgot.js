@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { FaTimes, FaEye, FaEyeSlash } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-import './forgot.scss';
+import React, { useState, useEffect } from "react";
+import { FaTimes, FaEye, FaEyeSlash } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import "./forgot.scss";
 
 const ForgotPassword = () => {
-  const [step, setStep] = useState('send-code');
-  const [email, setEmail] = useState('');
-  const [code, setCode] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [rePassword, setRePassword] = useState('');
-  const [message, setMessage] = useState('');
-  const [messageRedirect, setMessageRedirect] = useState('');
+  const [step, setStep] = useState("send-code");
+  const [email, setEmail] = useState("");
+  const [code, setCode] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [rePassword, setRePassword] = useState("");
+  const [message, setMessage] = useState("");
+  const [messageRedirect, setMessageRedirect] = useState("");
   const [emailValidated, setEmailValidated] = useState(false);
   const [checkValidate, setCheckValidate] = useState(false);
   const [verificationCodeSent, setVerificationCodeSent] = useState(false);
@@ -55,28 +55,28 @@ const ForgotPassword = () => {
         const response = await fetch(
           `https://localhost:7052/api/mf/send-code?email=${email}`,
           {
-            method: 'POST',
+            method: "POST",
             headers: {
-              'Content-Type': 'application/json',
+              "Content-Type": "application/json",
             },
             body: JSON.stringify({ email }),
           }
         );
         if (response.status === 202) {
           openMessageDialog();
-          setStep('verify-code');
-          setMessage('Reset password verification code sent successfully');
+          setStep("verify-code");
+          setMessage("Reset password verification code sent successfully");
           setVerificationCodeSent(true);
         } else if (response.status === 404) {
           openMessageDialog();
-          setMessage('Email does not found');
+          setMessage("Email does not found");
         } else {
           openMessageDialog();
-          setMessage('Server error');
+          setMessage("Server error");
         }
       } catch (error) {
         openMessageDialog();
-        setMessage('Error while send code');
+        setMessage("Error while send code");
       }
     } else {
       setCheckValidate(true);
@@ -88,9 +88,9 @@ const ForgotPassword = () => {
       const response = await fetch(
         `https://localhost:7052/api/mf/verify-code?email=${email}&code=${code}`,
         {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({ email, code }),
         }
@@ -98,65 +98,67 @@ const ForgotPassword = () => {
 
       if (response.status === 200) {
         openMessageDialog();
-        setStep('reset-password');
-        setMessage('Verification successful');
+        setStep("reset-password");
+        setMessage("Verification successful");
       } else if (response.status === 406) {
         openMessageDialog();
-        setMessage('Verify code is invalid');
+        setMessage("Verify code is invalid");
       } else if (response.status === 404) {
         openMessageDialog();
-        setMessage('Email does not found');
+        setMessage("Email does not found");
       } else {
         openMessageDialog();
-        setMessage('Verify code is required');
+        setMessage("Verify code is required");
       }
     } catch (error) {
       openMessageDialog();
-      setMessage('Error while verify code');
+      setMessage("Error while verify code");
     }
   };
 
   const handleResetPassword = async () => {
     if (newPassword !== rePassword) {
       openMessageDialog();
-      setMessage('Password and re-new password does not match');
+      setMessage("Password and re-new password does not match");
     } else {
       try {
         const response = await fetch(
           `https://localhost:7052/api/mf/reset-password?email=${email}&code=${code}&newPassword=${newPassword}`,
           {
-            method: 'POST',
+            method: "POST",
             headers: {
-              'Content-Type': 'application/json',
+              "Content-Type": "application/json",
             },
             body: JSON.stringify({ email, code, newPassword }),
           }
         );
 
         if (response.status === 200) {
-          setMessage('Password reset successfully');
+          setMessage("Password reset successfully");
           let countdown = 5;
           const countdownInterval = setInterval(() => {
-            setMessageRedirect(`Redirecting to sign-in page in ${countdown} seconds`);
+            setMessageRedirect(
+              `Redirecting to sign-in page in ${countdown} seconds`
+            );
             countdown -= 1;
             if (countdown === 0) {
               clearInterval(countdownInterval);
-              window.location.href = '/sign-in';
+              window.location.href = "/sign-in";
             }
           }, 1000);
           openMessageDialog();
         } else if (response.status === 400) {
           openMessageDialog();
-          setMessage('New password must be from 6 to 32 characters');
+          setMessage("New password must be from 6 to 32 characters");
         } else if (response.status === 404) {
           openMessageDialog();
-          setMessage('Email does not found');
+          setMessage("Email does not found");
         } else if (response.status === 409) {
           openMessageDialog();
-          setMessage('Invalid verification code');
+          setMessage("Invalid verification code");
         } else {
           openMessageDialog();
-          setMessage('Server error');
+          setMessage("Server error");
         }
       } catch (error) {
         openMessageDialog();
@@ -167,19 +169,19 @@ const ForgotPassword = () => {
 
   return (
     <>
-      <div className='forgot-password-page'>
+      <div className="forgot-password-page">
         {verificationCodeSent ? (
-          <div className='form-input-code-verify'>
-            {step === 'verify-code' && (
-              <div className='input-code-verify'>
-                <div className='input-code-verify-text'>
+          <div className="form-input-code-verify">
+            {step === "verify-code" && (
+              <div className="input-code-verify">
+                <div className="input-code-verify-text">
                   A verification code has been sent to <span>{email}</span>
                 </div>
-                <label htmlFor='verificationCode'>Verification Code:</label>
+                <label htmlFor="verificationCode">Verification Code:</label>
                 <input
-                  id='verificationCode'
-                  type='text'
-                  placeholder='Enter verification code'
+                  id="verificationCode"
+                  type="text"
+                  placeholder="Enter verification code"
                   value={code}
                   onChange={(e) => setCode(e.target.value)}
                   required
@@ -188,48 +190,50 @@ const ForgotPassword = () => {
               </div>
             )}
 
-            {step === 'reset-password' && (
-              <div className='form-input-reset-password'>
-                <div className='form-reset-password'>
-                  <div className='reset-password-input'>
+            {step === "reset-password" && (
+              <div className="form-input-reset-password">
+                <div className="form-reset-password">
+                  <div className="reset-password-input">
                     <h3>Reset Password</h3>
-                    <label htmlFor='new-password'>New Password</label>
+                  </div>
+                  <div className="reset-password-input">
+                    <label htmlFor="new-password">New Password</label>
                     <input
-                      type={showNew ? 'text' : 'password'}
-                      id='new-password'
-                      placeholder='Enter new password'
+                      type={showNew ? "text" : "password"}
+                      id="new-password"
+                      placeholder="Enter new password"
                       value={newPassword}
                       onChange={(e) => setNewPassword(e.target.value)}
                       required
                     />
                     <div
-                      className='password-icons'
-                      type='button'
+                      className="password-icons"
+                      type="button"
                       onClick={handleShowNew}
                     >
                       {showNew ? <FaEyeSlash /> : <FaEye />}
                     </div>
                   </div>
-                  <div className='reset-password-input'>
-                    <label htmlFor='re-password'>Re-Password</label>
+                  <div className="reset-password-input">
+                    <label htmlFor="re-password">Re-Password</label>
                     <input
-                      type={showReNew ? 'text' : 'password'}
-                      id='re-password'
-                      name='re-password'
+                      type={showReNew ? "text" : "password"}
+                      id="re-password"
+                      name="re-password"
                       value={rePassword}
                       onChange={(event) => setRePassword(event.target.value)}
-                      placeholder='Enter your re-password'
+                      placeholder="Enter your re-password"
                       required
                     />
                     <div
-                      className='password-icons'
-                      type='button'
+                      className="password-icons"
+                      type="button"
                       onClick={handleShowReNew}
                     >
                       {showReNew ? <FaEyeSlash /> : <FaEye />}
                     </div>
                   </div>
-                  <div className='input-reset-password-button'>
+                  <div className="input-reset-password-button">
                     <button onClick={handleResetPassword}>
                       Reset Password
                     </button>
@@ -239,20 +243,20 @@ const ForgotPassword = () => {
             )}
           </div>
         ) : (
-          <div className='form-input-email-verify'>
-            <div className='close-forgot'>
-              <Link to='/sign-in' className='close-icons'>
+          <div className="form-input-email-verify">
+            <div className="close-forgot">
+              <Link to="/sign-in" className="close-icons">
                 <FaTimes />
               </Link>
             </div>
             <h2>Email Verify</h2>
-            <label htmlFor='email'>Email:</label>
+            <label htmlFor="email">Email:</label>
             <input
-              type='email'
-              id='email'
+              type="email"
+              id="email"
               value={email}
               onChange={handleForgotInputChange}
-              placeholder='Enter your email address'
+              placeholder="Enter your email address"
               required
             />
             {checkValidate && <span>Please input correct email</span>}
@@ -261,12 +265,14 @@ const ForgotPassword = () => {
         )}
       </div>
       {showMessageDialog && (
-        <div className='message-dialog'>
-          <div className='message-content'>
+        <div className="message-dialog">
+          <div className="message-content">
             <p>{message}</p>
             {messageRedirect && <h3>{messageRedirect}</h3>}
-            <div className='button-handle'>
-              <button onClick={closeMessageDialog}>{messageRedirect ? 'OK':'Close'}</button>
+            <div className="button-handle">
+              <button onClick={closeMessageDialog}>
+                {messageRedirect ? "OK" : "Close"}
+              </button>
             </div>
           </div>
         </div>

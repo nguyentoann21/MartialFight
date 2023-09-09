@@ -205,7 +205,7 @@ const MainCharacter = () => {
                           />
                           <div className="skill-main">
                             <h6>{skill.skillName}</h6>
-                            <span>{skill.description}</span>
+                            <span>{skill.detailDescription}</span>
                           </div>
                         </div>
                       ))}

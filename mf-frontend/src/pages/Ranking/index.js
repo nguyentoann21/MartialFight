@@ -76,99 +76,110 @@ const Ranking = () => {
   };
 
   return (
-    <div className="ranking-container">
-      <div className="ranking-form">
-        <div className="ranking-text">
-          <img src="/assets/images/cups.png" alt="ranking" />
-          <h3>Ranking Board</h3>
-          <img src="/assets/images/cups.png" alt="ranking" />
+    <>
+      {top15ByChallenge.length === 0 &&
+      top15ByScore.length === 0 &&
+      top15ByScore.length === 0 ? (
+        <div className="empty-ranking">
+          <span>No ranking was found</span>
         </div>
-        <div className="tabs-container">
-          <button
-            className={`tab ${activeTab === "levels" ? "active" : ""}`}
-            onClick={() => handleTabChange("levels")}
-          >
-            Level
-          </button>
-          <button
-            className={`tab ${activeTab === "rankings" ? "active" : ""}`}
-            onClick={() => handleTabChange("rankings")}
-          >
-            Score
-          </button>
-          <button
-            className={`tab ${activeTab === "challenges" ? "active" : ""}`}
-            onClick={() => handleTabChange("challenges")}
-          >
-            Challenge
-          </button>
+      ) : (
+        <div className="ranking-container">
+          <div className="ranking-form">
+            <div className="ranking-text">
+              <img src="/assets/images/cups.png" alt="ranking" />
+              <h3>Ranking Board</h3>
+              <img src="/assets/images/cups.png" alt="ranking" />
+            </div>
+            <div className="tabs-container">
+              <button
+                className={`tab ${activeTab === "levels" ? "active" : ""}`}
+                onClick={() => handleTabChange("levels")}
+              >
+                Level
+              </button>
+              <button
+                className={`tab ${activeTab === "rankings" ? "active" : ""}`}
+                onClick={() => handleTabChange("rankings")}
+              >
+                Score
+              </button>
+              <button
+                className={`tab ${activeTab === "challenges" ? "active" : ""}`}
+                onClick={() => handleTabChange("challenges")}
+              >
+                Challenge
+              </button>
+            </div>
+            <div className="table-container">
+              {getRankData().length === 0 ? (
+                <div className="no-rank-list">No ranking was found</div>
+              ) : (
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Rank</th>
+                      <th>Username</th>
+                      <th>Name in Game</th>
+                      <th>
+                        {activeTab === "levels"
+                          ? "Level"
+                          : activeTab === "rankings"
+                          ? "Score"
+                          : "Challenge"}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {getRankData().map((item, index) => (
+                      <tr key={item.accountId}>
+                        <td>
+                          {index === 0 ? (
+                            <FaMedal className="gold" />
+                          ) : index === 1 ? (
+                            <FaMedal className="silver" />
+                          ) : index === 2 ? (
+                            <FaMedal className="bronze" />
+                          ) : (
+                            <span className="normal">{index + 1}</span>
+                          )}
+                        </td>
+                        <td>
+                          {item.accountId && (
+                            <span>
+                              {account.find(
+                                (account) =>
+                                  account.accountId === item.accountId
+                              )?.username || ""}
+                            </span>
+                          )}
+                        </td>
+                        <td>
+                          <span>{item.playerName}</span>
+                        </td>
+                        <td>
+                          <span>
+                            {
+                              item[
+                                activeTab === "levels"
+                                  ? "level"
+                                  : activeTab === "rankings"
+                                  ? "scorePvP"
+                                  : "numberOfMaps"
+                              ]
+                            }
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+            </div>
+          </div>
         </div>
-        <div className="table-container">
-          {getRankData().length === 0 ? (
-            <div className="no-rank-list">No ranking was found</div>
-          ) : (
-            <table>
-              <thead>
-                <tr>
-                  <th>Rank</th>
-                  <th>Username</th>
-                  <th>Name in Game</th>
-                  <th>
-                    {activeTab === "levels"
-                      ? "Level"
-                      : activeTab === "rankings"
-                      ? "Score"
-                      : "Challenge"}
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {getRankData().map((item, index) => (
-                  <tr key={item.accountId}>
-                    <td>
-                      {index === 0 ? (
-                        <FaMedal className="gold" />
-                      ) : index === 1 ? (
-                        <FaMedal className="silver" />
-                      ) : index === 2 ? (
-                        <FaMedal className="bronze" />
-                      ) : (
-                        <span className="normal">{index + 1}</span>
-                      )}
-                    </td>
-                    <td>
-                      {item.accountId && (
-                        <span>
-                          {account.find(
-                            (account) => account.accountId === item.accountId
-                          )?.username || ""}
-                        </span>
-                      )}
-                    </td>
-                    <td>
-                      <span>{item.playerName}</span>
-                    </td>
-                    <td>
-                      <span>
-                        {
-                          item[
-                            activeTab === "levels"
-                              ? "level"
-                              : activeTab === "rankings"
-                              ? "scorePvP"
-                              : "numberOfMaps"
-                          ]
-                        }
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
-        </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 

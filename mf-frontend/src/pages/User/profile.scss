@@ -3,16 +3,16 @@
     align-items: center;
     justify-content: center;
     color: #fff;
+    font-size: 1.18vw;
 
     .profile-form {
         background-image: url('../../../public/assets/images/item-card.png');
         background-repeat: no-repeat;
         background-size: 100% 100%;
-        padding: 60px 80px;
-        border-radius: 10px;
+        padding: 4.4vw 5.9vw;
+        border-radius: .75vw;
         transition: transform 0.3s;
-        width: 800px;
-        margin: 2% 0;
+        width: 60vw;
 
         .close-profile {
             display: flex;
@@ -25,7 +25,7 @@
     
             .close-icons {
                 color: #fff !important;
-                font-size: 40px !important;
+                font-size: 3vw !important;
             }
         }
     
@@ -43,12 +43,13 @@
     
             label {
                 display: inline-block;
-                width: 200px;
-                height: 200px;
+                width: 14.65vw;
+                height: 14.65vw;
                 border-radius: 50%;
                 overflow: hidden;
                 position: relative;
                 cursor: pointer;
+                filter: drop-shadow(0 0 .15vw #ff0) drop-shadow(0 0 .15vw #ff0);
     
                 img {
                     width: 100%;
@@ -65,23 +66,23 @@
                 display: flex;
                 flex-direction: column;
                 width: 30%;
-                padding: 0px 25px;
+                padding: 0 1.84vw;
                 justify-content: center;
     
                 .static-content {
                     display: flex;
                     justify-content: flex-start;
                     align-items: center;
-                    border-radius: 5px;
-                    border: 2px solid #ced4da;
-                    margin: 7px 0px;
-                    padding: 5px;
+                    border-radius: .367vw;
+                    border: .15vw solid #ced4da;
+                    margin: .513vw 0px;
+                    padding: .367vw;
                     background-color: rgb(113, 232, 236);
             
                     .static-label {
-                        min-width: 100px;
+                        min-width: 7.34vw;
                         font-weight: 700;
-                        margin-left: 30px;
+                        margin-left: 2.2vw;
                         color: #000;
                     }
             
@@ -90,17 +91,18 @@
                         color: #008;
                         margin: 0 !important;
                         padding: 0 !important;
+                        font-size: 1.18vw;
                     }
                 }
             }
         
             .details-container {
                 width: 70%;
-                padding: 15px;
+                padding: 1.1vw;
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                gap: 5px;
-                margin-bottom: 20px;
+                gap: .367vw;
+                margin-bottom: 1.5vw;
                 justify-content: center;
                 align-items: center;
 
@@ -114,25 +116,27 @@
 
                     .details-value {
                         color: #e91818;
+
                         input {
                             width: 85%;
-                            border-radius: 5px;
-                            border: 1px solid #ced4da;
-                            padding: 10px;
+                            border-radius: .367vw;
+                            border: .075vw solid #ced4da;
+                            padding: .75vw;
                             transition: transform 0.3s;
+                            font-size: 1.18vw;
                         }
             
                         input:focus {
                             outline: none;
                             border-color: #007bff;
-                            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+                            box-shadow: 0 0 0 .25vw rgba(0, 123, 255, 0.25);
                         }
 
                         #select {
                             width: 85%;
-                            border-radius: 5px;
-                            border: 1px solid #ced4da;
-                            padding: 10px;
+                            border-radius: .367vw;
+                            border: .075vw solid #ced4da;
+                            padding: .75vw;
                             transition: transform 0.3s;
                             text-transform: capitalize;
                         }
@@ -149,14 +153,15 @@
             .actions-content {
 
                 .update-profile, .change-password, .logout {
-                    padding: 7px 15px;
-                    margin: 0 5px;
-                    border-radius: 5px;
+                    padding: .513vw 1.1vw;
+                    margin: 0 .367vw;
+                    border-radius: .367vw;
                     font-weight: 700;
                     color: #fff;
-                    border: 1px solid #ced4da;
-                    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+                    border: .075vw solid #ced4da;
+                    box-shadow: .075vw .075vw .15vw rgba(0, 0, 0, 0.6);
                     cursor: pointer;
+                    font-size: 1.18vw;
                 }
 
                 .update-profile {

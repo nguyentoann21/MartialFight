@@ -1,27 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import './updateProfile.scss';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import "./updateProfile.scss";
 
 const UpdateProfile = () => {
   const [formData, setFormData] = useState({
-    email: '',
-    fullname: '',
-    gender: '',
+    email: "",
+    fullname: "",
+    gender: "",
     avatar: null,
   });
 
-  const [statusMessage, setStatusMessage] = useState('');
+  const [statusMessage, setStatusMessage] = useState("");
   const [accountDataLoaded, setAccountDataLoaded] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [avatarPreviewUrl, setAvatarPreviewUrl] = useState(null);
 
-  const account = JSON.parse(localStorage.getItem('ACCOUNT_DATA'));
+  const account = JSON.parse(localStorage.getItem("ACCOUNT_DATA"));
 
   const history = useNavigate();
   useEffect(() => {
-    if(!account) {
-      history('/');
+    if (!account) {
+      history("/");
     }
   }, [account, history]);
 
@@ -39,9 +39,7 @@ const UpdateProfile = () => {
 
   useEffect(() => {
     if (formData.avatar) {
-      setAvatarPreviewUrl(
-        `https://localhost:7052/Images/${formData.avatar}`
-      );
+      setAvatarPreviewUrl(`https://localhost:7052/Images/${formData.avatar}`);
     }
   }, [formData.avatar]);
 
@@ -69,17 +67,17 @@ const UpdateProfile = () => {
 
   const closeDialogAndNavigate = () => {
     setDialogOpen(false);
-    setStatusMessage('');
+    setStatusMessage("");
 
-    if (statusMessage === 'Profile updated successfully!') {
-      history('/');
+    if (statusMessage === "Profile updated successfully!") {
+      history("/");
       handleLogout();
     }
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('ACCOUNT_DATA');
-    history('/');
+    localStorage.removeItem("ACCOUNT_DATA");
+    history("/");
   };
 
   const handleSubmit = async (e) => {
@@ -88,19 +86,19 @@ const UpdateProfile = () => {
     const formDataObj = new FormData();
 
     if (selectedImage) {
-      formDataObj.append('Avatar', selectedImage);
+      formDataObj.append("Avatar", selectedImage);
     }
 
     if (formData.email !== account?.email) {
-      formDataObj.append('Email', formData.email);
+      formDataObj.append("Email", formData.email);
     }
 
     if (formData.fullname !== account?.fullname) {
-      formDataObj.append('Fullname', formData.fullname);
+      formDataObj.append("Fullname", formData.fullname);
     }
 
     if (formData.gender !== account?.gender) {
-      formDataObj.append('Gender', formData.gender);
+      formDataObj.append("Gender", formData.gender);
     }
 
     try {
@@ -110,43 +108,43 @@ const UpdateProfile = () => {
           formDataObj,
           {
             headers: {
-              'Content-Type': 'multipart/form-data',
+              "Content-Type": "multipart/form-data",
             },
           }
         );
       }
 
-      setStatusMessage('Profile updated successfully!');
+      setStatusMessage("Profile updated successfully!");
       openDialog();
     } catch (error) {
       if (error.response.status === 409 || error.response.status === 405) {
         setStatusMessage(error.response.data);
       } else {
-        setStatusMessage('Error occurred during update');
+        setStatusMessage("Error occurred during update");
       }
       openDialog();
     }
   };
 
   return (
-    <div className='update-profile-page'>
-      <div className='update-profile-form'>
+    <div className="update-profile-page">
+      <div className="update-profile-form">
         <h2>Update Profile</h2>
-        {statusMessage && typeof statusMessage === 'string' ? (
+        {statusMessage && typeof statusMessage === "string" ? (
           <div>{statusMessage}</div>
         ) : null}
         <form onSubmit={handleSubmit}>
-          <div className='update-avatar'>
+          <div className="update-avatar">
             <label>
               <input
-                type='file'
-                accept='image/*'
+                type="file"
+                accept="image/*"
                 hidden
                 onChange={handleImageChange}
               />
               {avatarPreviewUrl ? (
                 <img
-                  alt='avatar'
+                  alt="avatar"
                   src={avatarPreviewUrl}
                   width={100}
                   height={100}
@@ -154,37 +152,37 @@ const UpdateProfile = () => {
               ) : null}
             </label>
           </div>
-          <div className='update-email'>
-            <label htmlFor='email'>Email:</label>
+          <div className="update-email">
+            <label htmlFor="email">Email:</label>
             <input
-              type='email'
-              id='email'
-              name='email'
+              type="email"
+              id="email"
+              name="email"
               value={formData.email}
               onChange={handleChange}
               required
             />
           </div>
-          <div className='update-fullname'>
-            <label htmlFor='fullname'>Full Name:</label>
+          <div className="update-fullname">
+            <label htmlFor="fullname">Full Name:</label>
             <input
-              type='text'
-              id='fullname'
-              name='fullname'
+              type="text"
+              id="fullname"
+              name="fullname"
               value={formData.fullname}
               onChange={handleChange}
               required
             />
           </div>
-          <div className='update-gender'>
+          <div className="update-gender">
             <label>Gender:</label>
             <div>
               <label>
                 <input
-                  type='radio'
-                  name='gender'
-                  value='male'
-                  checked={formData.gender.toLocaleLowerCase() === 'male'}
+                  type="radio"
+                  name="gender"
+                  value="male"
+                  checked={formData.gender.toLocaleLowerCase() === "male"}
                   onChange={handleChange}
                   required
                 />
@@ -192,10 +190,10 @@ const UpdateProfile = () => {
               </label>
               <label>
                 <input
-                  type='radio'
-                  name='gender'
-                  value='female'
-                  checked={formData.gender.toLocaleLowerCase() === 'female'}
+                  type="radio"
+                  name="gender"
+                  value="female"
+                  checked={formData.gender.toLocaleLowerCase() === "female"}
                   onChange={handleChange}
                   required
                 />
@@ -203,10 +201,10 @@ const UpdateProfile = () => {
               </label>
               <label>
                 <input
-                  type='radio'
-                  name='gender'
-                  value='other'
-                  checked={formData.gender.toLocaleLowerCase() === 'other'}
+                  type="radio"
+                  name="gender"
+                  value="other"
+                  checked={formData.gender.toLocaleLowerCase() === "other"}
                   onChange={handleChange}
                   required
                 />
@@ -214,29 +212,29 @@ const UpdateProfile = () => {
               </label>
             </div>
           </div>
-          <div className='update-buttons'>
-            <button className='update-button-action' type='submit'>
+          <div className="update-buttons">
+            <button className="update-button-action" type="submit">
               Update
             </button>
             <button
-              className='update-button-cancel'
-              type='submit'
-              onClick={() => history('/profile')}
+              className="update-button-cancel"
+              type="submit"
+              onClick={() => history("/profile")}
             >
               Cancel
             </button>
           </div>
         </form>
-        {isDialogOpen && (
-          <div className='dialog-update-profile'>
-            <div className='dialog-update-profile-container'>
-            <h3>Update Status</h3>
-            <div className='dialog-update-profile-content'>{statusMessage}</div>
-            <button onClick={closeDialogAndNavigate}>OK</button>
-            </div>
-          </div>
-        )}
       </div>
+      {isDialogOpen && (
+        <div className="dialog-update-profile">
+          <div className="dialog-update-profile-container">
+            <h3>Update Status</h3>
+            <div className="dialog-update-profile-content">{statusMessage}</div>
+            <button onClick={closeDialogAndNavigate}>OK</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

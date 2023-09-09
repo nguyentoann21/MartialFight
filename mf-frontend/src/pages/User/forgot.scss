@@ -5,19 +5,15 @@
     font-weight: 500;
 
     .form-input-email-verify {
-        padding: 40px 70px 50px 70px;
+        padding: 3vw 5.13vw 3.67vw 5.13vw;
         background-image: url('../../../public/assets/images/layout-card.png');
         background-repeat: no-repeat;
         background-size: 100% 100%;
         color: #fff;
         display: flex;
         flex-direction: column;
-        border-radius: 10px;
-        margin: 10.81% 0 !important;
-        max-width: 1366px;
-        max-height: 768px;
-        width: 400px;
-        height: 235px;
+        border-radius: .75vw;
+        width: 30vw;
 
         .close-forgot {
             position: relative;
@@ -26,8 +22,7 @@
 
             .close-icons {
                 color: #fa0 !important;
-                font-size: 40px !important;
-                
+                font-size: 3vw !important;
             }
         }
 
@@ -41,22 +36,24 @@
 
         h2 {
             text-align: center;
-            font-size: 30px;
+            font-size: 2.2vw;
             margin: 0 !important;
-            margin: 0 0 20px 0 !important;
+            margin: 0 0 1.5vw 0 !important;
             color: #f7f7f7;
         }
 
         label {
             font-weight: 700;
-            margin-bottom: 2px;
+            margin-bottom: .15vw;
+            font-size: 1.18vw;
         }
 
         input {
-            border-radius: 5px;
-            border: 1px solid #ced4da;
-            padding: 10px 40px 10px 10px;
+            border-radius: .367vw;
+            border: .075vw solid #ced4da;
+            padding: .75vw 3vw .75vw .75vw;
             transition: transform 0.3s;
+            font-size: 1.18vw;
         }
 
         input:hover {
@@ -66,23 +63,25 @@
         input:focus {
             outline: none;
             border-color: #007bff;
-            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+            box-shadow: 0 0 0 .25vw rgba(0, 123, 255, 0.25);
         }
 
         span {
             color: red;
             font-style: italic;
+            font-size: 1.1vw;
         }
 
         button {
-            margin-top: 10px;
-            padding: 7px;
+            margin-top: .75vw;
+            padding: .513vw;
             background-color: #007bff;
-            border-radius: 5px;
-            border: 1px solid #ced4da;
+            border-radius: .367vw;
+            border: .075vw solid #ced4da;
             color: #fff;
-            box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+            box-shadow: .075vw .075vw .15vw rgba(0, 0, 0, 0.6);
             font-weight: 600;
+            font-size: 1.18vw;
         }
 
         button:hover {
@@ -98,41 +97,43 @@
         background-repeat: no-repeat;
         background-size: 100% 100%;
         color: #fff;
-        border-radius: 10px;
-        margin: 13.98% 0 !important;
-        max-width: 1366px;
-        max-height: 768px;
-        width: 700px;
-        height: 240px;
+        border-radius: .75vw;
+        width: 50vw;
+
 
         .input-code-verify {
             display: flex;
             flex-direction: column;
-            padding: 50px 40px 30px 40px;
+            padding: 3.67vw 3vw 2.2vw 3vw;
+            font-size: 1.32vw;
 
             .input-code-verify-text {
                 color: #fff;
                 text-align: center !important;
-                margin: 0 0 5px 0 !important;
+                margin: 0 0 .367vw 0 !important;
+                font-size: 1.32vw;
 
                 span{
                     color: #ff0 !important;
                     margin: 0 !important;
                     font-style: normal !important;
+                    font-size: 1.32vw;
                 }
             }
 
             label {
                 color: #fff;
-                margin: 0 0 5px 12%;
+                margin: 0 0 .367vw 12%;
+                font-size: 1.18vw;
             }
 
             input {
-                border-radius: 5px;
-                border: 1px solid #ced4da;
-                padding: 10px 40px 10px 10px;
+                border-radius: .367vw;
+                border: .075vw solid #ced4da;
+                padding: .75vw 3vw .75vw .75vw;
                 transition: transform 0.3s;
-                margin: 0 70px;
+                margin: 0 5.13vw;
+                font-size: 1.18vw;
             }
     
             input:hover {
@@ -142,24 +143,26 @@
             input:focus {
                 outline: none;
                 border-color: #007bff;
-                box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+                box-shadow: 0 0 0 .25vw rgba(0, 123, 255, 0.25);
             }
 
             span {
                 color: red;
                 font-style: italic;
-                margin-left: 70px;
+                margin-left: 5.13vw;
+                font-size: 1.18vw;
             }
     
             button {
-                margin: 10px 70px;
-                padding: 7px;
+                margin: .75vw 5.13vw;
+                padding: .513vw;
                 background-color: #8cd448;
-                border-radius: 5px;
-                border: 1px solid #ced4da;
+                border-radius: .367vw;
+                border: .075vw solid #ced4da;
                 color: #000;
-                box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+                box-shadow: .075vw .075vw .15vw rgba(0, 0, 0, 0.6);
                 font-weight: 600;
+                font-size: 1.18vw;
             }
     
             button:hover {
@@ -173,14 +176,12 @@
     }
 
     .form-input-reset-password {
-        max-width: 1366px;
-        max-height: 768px;
         background-image: url('../../../public/assets/images/layout-card.png');
         background-repeat: no-repeat;
         background-size: 100% 100%;
         color: #fff;
-        margin-top: -5% !important;
-        border-radius: 10px;
+        border-radius: .75vw;
+        width: 52vw;
         
         .form-reset-password {
             width: 100%;
@@ -189,7 +190,8 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 20px 0;
+            padding: 1.5vw 0;
+            font-size: 1.18vw;
 
             .reset-password-input{
                 display: flex;
@@ -197,23 +199,26 @@
                 width: 60%;
                 margin: 0 20% !important;
                 height: 100%;
+                font-size: 1.18vw;
 
                 h3 {
-                    font-size: 30px;
+                    font-size: 3.67vw;
                     text-align: center !important;
                     color: #ff0;
                 }
     
                 label {
                     color: #ff0;
-                    margin-bottom: 2px;
+                    margin-bottom: .15vw;
+                    font-size: 1.18vw;
                 }
     
                 input {
-                    border-radius: 5px;
-                    border: 1px solid #ced4da;
-                    padding: 10px 15px 10px 10px;
+                    border-radius: .367vw;
+                    border: .075vw solid #ced4da;
+                    padding: .75vw 1.1vw .75vw .75vw;
                     transition: transform 0.3s;
+                    font-size: 1.18vw;
                 }
         
                 input:hover {
@@ -223,17 +228,18 @@
                 input:focus {
                     outline: none;
                     border-color: #007bff;
-                    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+                    box-shadow: 0 0 0 0.25vw rgba(0, 123, 255, 0.25);
                 }
 
                 .password-icons {
-                    position: relative;
-                    margin: -28px 0 20px 92% !important;
+                    position: absolute;
                     cursor: pointer;
-                    color: #000;
-                    
+                    right: 35%;
+                    margin: 2.5% 0 0 0;
+    
                     svg {
-                        font-size: 20px !important;
+                        font-size: 1.18vw;
+                        color: #222;
                     }
                 }
             }
@@ -242,15 +248,17 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                margin-bottom: 40px;
+                margin: 1vw 0 3vw 0;
+            
 
                 button {
-                    padding: 7px;
+                    font-size: 1.18vw;
+                    padding: .513vw 1.5vw;
                     background-color: #8cd448;
-                    border-radius: 5px;
-                    border: 1px solid #ced4da;
+                    border-radius: .367vw;
+                    border: .075vw solid #ced4da;
                     color: #000;
-                    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+                    box-shadow: .075vw .075vw .15vw rgba(0, 0, 0, 0.6);
                     font-weight: 600;
                 }
         
@@ -274,7 +282,7 @@
     align-items: center;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(.59vw);
     color: #fff;
     z-index: 999;
 
@@ -283,24 +291,24 @@
         background-repeat: no-repeat;
         background-size: 100% 100%;
         display: flex;
-        width: 500px;
-        height: 180px;
+        width: 38vw;
+        height: 13.2vw;
         justify-content: center;
         align-items: center;
         flex-direction: column;
 
         p {
             color: #ff0;
-            font-size: 20px;
+            font-size: 1.5vw;
             font-style: italic;
-            margin: 0 0 20px 0 !important;
+            margin: 0 0 1.5vw 0 !important;
             padding:  0 !important;
         }
 
         h3 {
-            font-size: 18px;
+            font-size: 1.32vw;
             font-style: italic;
-            margin: 10px 0 !important;
+            margin: .75vw 0 !important;
             padding:  0 !important;
         }
 
@@ -310,10 +318,10 @@
             align-items: center;
 
             button {
-                width: 120px;
-                font-size: 16px;
-                padding: 5px 10px;
-                border-radius: 10px;
+                width: 8.8vw;
+                font-size: 1.18vw;
+                padding: .367vw .75vw;
+                border-radius: .75vw;
                 border: none;
                 color: #fff;
                 background-color: #1f9dcf;
