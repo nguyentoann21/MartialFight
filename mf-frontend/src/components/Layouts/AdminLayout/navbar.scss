@@ -5,10 +5,10 @@
     justify-content: center;
     align-items: center;
     flex-direction: column !important;
-    padding: 0 15px;
-    border-radius: 10px;
+    padding: 0 1.1vw;
+    border-radius: .75vw;
     margin: 0 !important;
-    min-height: 800px;
+    min-height: 58.6vw;
     height: 100%;
 
     .navbar-top {
@@ -26,10 +26,11 @@
                 font-weight: 600 !important;
                 background-color: #f3e9e9 !important;
                 color: #333;
-                padding: 3px 20px 5px 20px !important;
-                border-radius: 10px !important;
-                font-size: 26px;
-                margin: 0 0 20px 0 !important;
+                padding: .22vw 1.5vw .367vw 1.5vw !important;
+                border-radius: .75vw !important;
+                font-size: 1.91vw;
+                margin: 0 0 1.5vw 0 !important;
+                filter: drop-shadow(0 0 .075vw #ff0) drop-shadow(0 0 .15vw #ff0);
             }
             
             h3:hover {
@@ -41,18 +42,19 @@
 
 
     img {
-        width: 150px;
-        height: 150px;
+        width: 11vw;
+        height: 11vw;
         object-fit: cover;
         border-radius: 50%;
         cursor: pointer;
+        filter: drop-shadow(0 0 .075vw #808080) drop-shadow(0 0 .15vw #808080);
     }
 
     h4 {
         font-weight: 600;
-        font-size: 20px;
+        font-size: 1.5vw;
         font-style: italic;
-        margin: 7px 0 !important;
+        margin: .513vw 0 !important;
     }
 
     .navbar-main {
@@ -69,20 +71,20 @@
 
             .navbar-dashboard, .navbar-categories, .navbar-characters, .navbar-news, .navbar-maps, .navbar-sects, .navbar-skills, .navbar-items, .navbar-players, .navbar-profile, .navbar-logout {
                 font-weight: 500;
-                border: 2px solid #fff;
-                border-radius: 10px;
-                padding: 5px 15px;
-                margin-top: 5px !important;
+                border: .15vw solid #fff;
+                border-radius: .75vw;
+                padding: .367vw 1.1vw;
+                margin-top: .367vw !important;
                 display: flex !important;
                 align-items: center !important;
     
                 svg {
-                    font-size: 22px !important;
-                    margin-right: 10px !important;
+                    font-size: 1.62vw !important;
+                    margin-right: .75vw !important;
                 }
     
                 span {
-                    font-size: 18px !important;
+                    font-size: 1.32vw !important;
                 }
             }
     
@@ -100,7 +102,7 @@
                 background-color: rgb(222, 227, 231);
                 color: #222;
                 transform: scale(1.05);
-                border: 2px solid #222;
+                border: .15vw solid #222;
                 transition: 0.3s;
             }
     
@@ -108,7 +110,7 @@
                 background-color: #ff0 !important;
                 color: #333 !important;
                 transform: scale(1.05) !important;
-                border: 2px solid #333 !important;
+                border: .15vw solid #333 !important;
                 transition: 0.3s !important;
             }
     
@@ -116,7 +118,7 @@
                 background-color: #fa0 !important;
                 color: #222 !important;
                 transform: scale(1.05) !important;
-                border: 2px solid #222 !important;
+                border: .15vw solid #222 !important;
                 transition: 0.3s !important;
             }
         }

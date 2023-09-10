@@ -3,7 +3,8 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    max-width: 800px;
+    max-width: 58.6vw;
+    font-size: 1.18vw;
 
     .admin-profile-update {
         width: 100%;
@@ -12,11 +13,11 @@
         align-items: center;
 
         button {
-            padding: 5px 10px;
-            margin: 0 25px 10px 0;
-            border-radius: 5px;
+            padding: .367vw .75vw;
+            margin: 0 1.86vw .75vw 0;
+            border-radius: .367vw;
             border: none;
-            font-size: 16px;
+            font-size: 1.18vw;
             font-weight: 600;
             color: #fff;
             cursor: pointer;
@@ -34,7 +35,7 @@
             align-items: center;
             width: 100%;
             height: 100%;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(.59vw);
             color: #fff;
             z-index: 999;
           
@@ -42,13 +43,13 @@
                 background-image: url('../../../public/assets/images/item-card.png');
                 background-repeat: no-repeat;
                 background-size: 100% 100%;
-                padding: 50px 60px;
-                border-radius: 5px;
-                width: 400px;
+                padding: 3.67vw 4.4vw;
+                border-radius: .367vw;
+                width: 30vw;
                 margin: 1.25% 0;
           
                 h2 {
-                    margin-bottom: 20px;
+                    margin-bottom: 1.5vw;
                     text-align: center;
                     text-transform: uppercase;
                 }
@@ -61,14 +62,14 @@
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                        margin-bottom: 20px;
+                        margin-bottom: 1.5vw;
                         width: 100%;
-                        height: 150px;
+                        height: 11vw;
         
                         label {
                             display: inline-block;
-                            width: 150px;
-                            height: 150px;
+                            width: 11vw;
+                            height: 11vw;
                             border-radius: 50%;
                             overflow: hidden;
                             position: relative;
@@ -87,29 +88,36 @@
                     .admin-update-gender {
                         display: flex;
                         flex-direction: column;
-                        margin-bottom: 15px;
+                        margin-bottom: 1.1vw;
           
                         label {
-                            margin-bottom: 5px;
+                            margin-bottom: .367vw;
                             font-weight: 500;
                         }
           
                         input {
-                            padding: 5px 10px;
-                            border: 1px solid #ccc;
-                            border-radius: 3px;
+                            padding: .367vw .75vw;
+                            border: .075vw solid #ccc;
+                            border-radius: .22vw;
                             outline: none;
+                            font-size: 1.18vw;
                 
                             &:focus {
                                 border-color: #007bff;
                             }
+                        }
+
+                        input[type="radio"] {
+                            width: 1.1vw;
+                            height: 1.1vw;
+                            margin-right: .15vw;
                         }
                     }
           
                     .admin-update-gender {
                         label {
                         display: block;
-                        margin-bottom: 10px;
+                        margin-bottom: .75vw;
                         font-weight: 500;
                         cursor: pointer;
                         }
@@ -119,7 +127,7 @@
                             align-items: center;
                 
                             label {
-                                margin-right: 10px;
+                                margin-right: .75vw;
                             }
                         }
                     }
@@ -129,9 +137,9 @@
                         justify-content: space-between;
           
                         button {
-                            padding: 8px 15px;
+                            padding: .59vw 1.1vw;
                             border: none;
-                            border-radius: 5px;
+                            border-radius: .367vw;
                             cursor: pointer;
                             background-image: none;
                         }
@@ -166,7 +174,7 @@
                 align-items: center;
                 width: 100%;
                 height: 100%;
-                backdrop-filter: blur(8px);
+                backdrop-filter: blur(.59vw);
                 color: #fff;
                 z-index: 999;
         
@@ -175,8 +183,8 @@
                     background-repeat: no-repeat;
                     background-size: 100% 100%;
                     display: flex;
-                    width: 400px;
-                    height: 200px;
+                    width: 30vw;
+                    height: 14.65vw;
                     justify-content: center;
                     align-items: center;
                     flex-direction: column;
@@ -184,19 +192,19 @@
                     h3 {
                         margin: 0 !important;
                         text-align: center;
-                        font-size: 28px;
+                        font-size: 2.05vw;
                     }
         
                     .dialog-admin-update-profile-content {
                         color: #ff0;
-                        margin: 10px 0;
-                        font-size: 18px;
+                        margin: .75vw 0;
+                        font-size: 1.32vw;
                     }
               
                     button {
-                        padding: 7px 30px;
+                        padding: .513vw 2.2vw;
                         border: none;
-                        border-radius: 5px;
+                        border-radius: .367vw;
                         cursor: pointer;
                         background-color: #007bff;
                         color: #fff;
@@ -212,33 +220,33 @@
     }
 
     .admin-change-password {
-        max-width: 800px;
+        max-width: 58.6vw;
         margin: 0 auto;
-        padding: 50px 90px 100px 90px;
+        padding: 3.67vw 6.6vw 7.34vw 6.6vw;
         background-image: url('../../../public/assets/images/member-card.png');
         background-size: 100% 100%;
         background-repeat: no-repeat;
     
         h1 {
-            font-size: 36px;
+            font-size: 2.64vw;
             font-weight: 700;
             text-align: center;
         }
     
         .admin-change-password-status {
-            width: 360px;
-            height: 42px;
-            margin-bottom: 20px;
+            width: 26.4vw;
+            height: 3.08vw;
+            margin-bottom: 1.5vw;
     
             .success-dialog, .error-dialog {
-                padding: 10px;
-                margin-bottom: 10px;
+                padding: .75vw;
+                margin-bottom: .75vw;
                 color: #fff;
                 font-weight: bold;
                 text-align: center;
                 cursor: pointer;
                 border: none;
-                border-radius: 10px;
+                border-radius: .75vw;
             }
         
             .success-dialog {
@@ -251,12 +259,12 @@
         }
     
         .form-group {
-            margin-bottom: 15px;
-            width: 350px;
+            margin-bottom: 1.1vw;
+            width: 25.65vw;
     
             label {
                 display: block;
-                margin-bottom: 5px;
+                margin-bottom: .367vw;
             }
     
             .password-input {
@@ -264,21 +272,22 @@
     
                 input {
                     width: 100%;
-                    padding: 8px;
-                    border: 1px solid #ccc;
-                    border-radius: 4px;
+                    padding: .59vw;
+                    border: .075vw solid #ccc;
+                    border-radius: .3vw;
+                    font-size: 1.18vw;
                 }
     
                 .password-icon {
                     position: absolute;
                     top: 50%;
-                    right: 10px;
+                    right: .75vw;
                     transform: translateY(-50%);
                     cursor: pointer;
     
                     svg {
                         color: #222;
-                        font-size: 20px;
+                        font-size: 1.5vw;
                     }
                 }
             }
@@ -288,14 +297,14 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 30px !important;
+            margin-top: 2.2vw !important;
     
             button {
-                padding: 10px 20px;
+                padding: .75vw 1.5vw;
                 border: none;
-                border-radius: 10px;
+                border-radius: .75vw;
                 cursor: pointer;
-                font-size: 16px;
+                font-size: 1.18vw;
                 font-weight: 500;
             }
     
@@ -303,14 +312,14 @@
                 width: 40%;
                 background-color: #ccc;
                 color: #222;
-                margin: 0 10px;
+                margin: 0 .75vw;
             }
     
             .button-reset:hover {
                 width: 40%;
                 background-color: #555;
                 color: #ccc;
-                margin: 0 10px;
+                margin: 0 .75vw;
             }
     
             .button-submit-change {

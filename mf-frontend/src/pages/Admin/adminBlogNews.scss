@@ -1,850 +1,859 @@
 .admin-news-container {
-    width: 800px;
-    height: 700px;
+    width: 58.6vw;
+    height: 51.3vw;
     margin: 0 !important;
-
+    font-size: 1.18vw;
+  
     h1 {
-        font-size: 36px;
-        font-weight: 700;
-        text-align: center;
+      font-size: 2.64vw;
+      font-weight: 700;
+      text-align: center;
     }
-
+  
     .admin-news-nodata {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
+      width: 58.6vw;
+      height: 36.65vw;
+  
+      .dialog-empt-action-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         display: flex;
-        justify-content: flex-start;
+        align-items: center;
+        backdrop-filter: blur(.59vw);
+        justify-content: center;
+      
+        .dialog-empt-action-content {
+          background-image: url('../../../public/assets/images/member-card.png');
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          border-radius: .75vw;
+          text-align: center;
+          width: 36.65vw;
+          height: 36.65vw;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+    
+          h2 {
+            margin: 0 !important;
+            padding: 0 !important;
+            color: #ff0;
+            font-size: 2.2vw;
+          }
+    
+          .dialog-empt-action-main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 1.5vw;
+            width: 30vw;
+    
+            .dialog-empt-action-group {
+              display: flex;
+              flex-direction: column;
+              width: 90%;
+              margin-bottom: .367vw;
+    
+              label {
+                text-align: left;
+                font-weight: 600;
+                color: #ff0;
+              }
+  
+              input[type="text"], input[type="file"] {
+                padding: .22vw .367vw;
+                font-size: 1.18vw;
+              }
+  
+              textarea {
+                height: 11vw;
+                padding: 0 .22vw;
+                font-size: 1.18vw;
+              }
+            }
+    
+            .dialog-empt-action-handle {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: .75vw;
+              margin-top: .367vw;
+    
+              button {
+                border-radius: .367vw;
+                border: none;
+                padding: .367vw 1.1vw;
+                cursor: pointer;
+                width: 11vw;
+                font-size: 1.18vw;
+                font-weight: 500;
+              }
+    
+              #actions-empt {
+                color: #fff;
+                background-color: green;
+              }
+    
+              #actions-empt:hover {
+                color: #000;
+                background-color: rgb(29, 164, 243);
+              }
+    
+              #cancel-actions-empt {
+                color: #fff;
+                background-color: rgb(250, 31, 31);
+              }
+    
+              #cancel-actions-empt:hover {
+                color: #000;
+                background-color: rgb(247, 204, 17);
+              }
+            }
+          }
+        }
+      }
+  
+      .admin-news-empty {
+        font-size: 2.2vw;
+        color: #ff0;
+      }
+  
+      .admin-add-news-empty {
+        button {
+          cursor: pointer;
+          border-radius: 50%;
+          border: none;
+  
+          svg {
+            font-size: 3.67vw;
+          }
+        }
+  
+        button:hover {
+          background-color: #ff0;
+          color: #009;
+        }
+      }
+    }
+  
+    .admin-news-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  
+      .admin-search-bar {
+        display: flex !important;
+        justify-content: flex-start !important;
+        align-items: center;
+    
+        input {
+          padding: .44vw 1.1vw;
+          border-radius: .75vw;
+          border: .075vw solid #333;
+          min-width: 22vw !important;
+          color: #222;
+          font-weight: 600;
+          font-size: 1.18vw;
+        }
+    
+        .admin-search-icons {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #009;
+          cursor: pointer;
+          background-color: transparent;
+          border: none;
+          margin-right: .75vw;
+    
+          svg {
+            font-size: 1.32vw;
+            position: absolute;
+            margin-right: 4% !important ;
+          }
+        }
+  
+        .admin-search-reload {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #009;
+          cursor: pointer;
+          background-color: #fff;
+          width: 2.2vw;
+          height: 2.2vw;
+          border-radius: 50%;
+          border: none;
+    
+          svg {
+            font-size: 1.32vw;
+            position: absolute;
+          }
+        }
+  
+        .admin-search-reload:hover {
+          background-color: #009;
+          color: #fff;
+        }
+      }
+  
+      .admin-news-filter {
+        select {
+          width: 14.65vw;
+          padding: .367vw;
+          border-radius:  .75vw;
+          background-color: green;
+          color: #fff;
+          font-weight: 600;
+          cursor: pointer;
+          font-size: 1.18vw;
+  
+          option {
+            background-color: #fff;
+            color: #000;
+            font-weight: 600;
+            font-size: 1.18vw;
+          }
+        }
+      }
+  
+      .admin-add-news {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #fff;
+          color: #009;
+          border-radius: .75vw;
+          border: none;
+          padding: .367vw 1.1vw;
+          font-size: 1.18vw;
+          font-weight: 600;
+          cursor: pointer;
+  
+          svg {
+            font-size: 1.32vw;
+            color: #009;
+          }
+        }
+  
+        button:hover {
+          background-color: #009;
+          color: #fff;
+  
+          svg {
+            color: #fff;
+          }
+        }
+      }
+    }
+  
+    .error-message {
+      height: 1.5vw;
+      color:#ff0;
+      margin:  .75vw 0;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+    }
+  
+    .none-display {
+      height: 1.5vw;
+      color:#fff;
+      margin:  .75vw 0;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+    }
+  
+    #none {
+      visibility: hidden;
+    }
+  
+    .admin-news-table {
+      width: 58.6vw;
+      height: 36.65vw;
+      color: #000;
+  
+      table {
+        background-color: #fff;
+        width: 58.6vw;
+        border-collapse: collapse;
+    
+        th {
+          background-color: #333;
+          color: #fff;
+          border: .075vw solid #000;
+        }
+    
+        td {
+          border: .075vw solid #000;
+          text-align: left;
+          max-height: 3vw !important;
+    
+          img {
+            padding: .15vw 0;
+            width: 2.79vw;
+            height: 2.79vw;
+          }
+        }
+    
+        .admin-news-title {
+          width: 13.2vw !important;
+          max-width: 12.5vw;
+          white-space: nowrap !important;
+          overflow: hidden !important;
+          text-overflow: ellipsis !important;
+    
+          span {
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            padding: 0 .367vw !important;
+          }
+        }
+    
+        .admin-news-content {
+          width: 14.65vw !important;
+          max-width: 14vw;
+          white-space: nowrap !important;
+          overflow: hidden !important;
+          text-overflow: ellipsis !important;
+    
+          span {
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            padding: 0 .367vw !important;
+          }
+        }
+    
+        .admin-news-date {
+          width: 9.55vw !important;
+          max-width: 8.8vw;
+          white-space: nowrap !important;
+          overflow: hidden !important;
+          text-overflow: ellipsis !important;
+    
+          span {
+            padding: 0 .367vw !important;
+    
+            div {
+              text-align: center;
+              max-width: 8.8vw !important;
+              white-space: nowrap !important;
+              overflow: hidden !important;
+              text-overflow: ellipsis !important;
+              padding: 0 !important;
+              margin: 0 !important;
+            }
+          }
+        }
+    
+        .admin-news-images {
+          width: 14.65vw !important;
+          max-width: 14vw;
+    
+          .image-container {
+            width: 14vw !important;
+            max-width: 14vw !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: .22vw;
+          }
+        }
+    
+        .admin-news-actions {
+          width: 8.8vw !important;
+          max-width: 8.1vw;
+          text-align: center;
+    
+          button {
+            background-color: #009;
+            border: none;
+            border-radius: .367vw;
+            padding: .22vw .367vw .075vw .367vw;
+            color: #ff0;
+            margin: 0 .075vw;
+            cursor: pointer;
+    
+            svg {
+              font-size: 1.18vw;
+            }
+          }
+    
+          button:hover {
+            background-color: #333;
+            color: #fff;
+          }
+        }
+      }
+    }
+  
+    .pagination-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: .75vw;
+    
+      .footer-page { 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #222;
+        font-size: 1.18vw;
+        font-weight: 500;
+        padding: .22vw  .75vw;
+        border-radius: .367vw;
+    
+        button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: .367vw;
+          border-radius: 50%;
+          border: none;
+          background-color: #cfabab;
+          margin: 0 .15vw;
+          cursor: pointer;
+    
+          svg {
+            font-size: 1.32vw;
+          }
+        }
+    
+        .page-number {
+          margin: 0 .367vw;
+          font-size: 1.18vw;
+          font-weight: 500;
+          color: #fff;
+        }
+      }
+    }
+  
+    .dialog-remove-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      backdrop-filter: blur(.59vw);
+      justify-content: center;
+    
+      .dialog-remove-content {
+        background-image: url('../../../public/assets/images/horizontal-card.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        border-radius:  .75vw;
+        text-align: center;
+        width: 30vw;
+        height: 14.65vw;
+        display: flex;
+        justify-content: center;
         align-items: center;
         flex-direction: column;
-        width: 800px;
-        height: 500px;
-
-        .dialog-empt-action-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            backdrop-filter: blur(8px);
-            justify-content: center;
-        
-            .dialog-empt-action-content {
-                background-image: url('../../../public/assets/images/member-card.png');
-                background-size: 100% 100%;
-                background-repeat: no-repeat;
-                border-radius: 10px;
-                text-align: center;
-                width: 500px;
-                height: 500px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-    
-                h2 {
-                    margin: 0 !important;
-                    padding: 0 !important;
-                    color: #ff0;
-                    font-size: 30px;
-                }
-    
-                .dialog-empt-action-main {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    flex-direction: column;
-                    margin-top: 20px;
-                    width: 400px;
-    
-                    .dialog-empt-action-group {
-                        display: flex;
-                        flex-direction: column;
-                        width: 90%;
-                        margin-bottom: 5px;
-    
-                        label {
-                            text-align: left;
-                            font-weight: 600;
-                            color: #ff0;
-                        }
-
-                        input[type="text"] {
-                            padding: 3px 5px;
-                        }
-
-                        textarea {
-                            height: 150px;
-                            padding: 0 3px;
-                        }
-                    }
-    
-                    .dialog-empt-action-handle {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        gap: 10px;
-                        margin-top: 5px;
-    
-                        button {
-                            border-radius: 5px;
-                            border: none;
-                            padding: 5px 15px;
-                            cursor: pointer;
-                            width: 150px;
-                            font-size: 16px;
-                            font-weight: 500;
-                        }
-    
-                        #actions-empt {
-                            color: #fff;
-                            background-color: green;
-                        }
-    
-                        #actions-empt:hover {
-                            color: #000;
-                            background-color: rgb(29, 164, 243);
-                        }
-    
-                        #cancel-actions-empt {
-                            color: #fff;
-                            background-color: rgb(250, 31, 31);
-                        }
-    
-                        #cancel-actions-empt:hover {
-                            color: #000;
-                            background-color: rgb(247, 204, 17);
-                        }
-                    }
-                }
-            }
+  
+        h3 {
+          margin: 0 !important;
+          padding: 0 !important;
+          color: #ff0;
         }
-
-        .admin-news-empty {
-            font-size: 30px;
-            color: #ff0;
+  
+        p {
+          margin:  .75vw 0 !important;
+          padding: 0 !important;
         }
-
-        .admin-add-news-empty {
-            button {
-                cursor: pointer;
-                border-radius: 50%;
-                border: none;
-
-                svg {
-                    font-size: 50px;
-                }
-            }
-
-            button:hover {
-                background-color: #ff0;
-                color: #009;
-            }
+  
+        .dialog-remove-buttons {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 1.5vw;
+  
+          button {
+            border: none;
+            padding: .22vw 1.1vw .075vw 1.1vw;
+            border-radius: .367vw;
+            font-size: 1.18vw;
+            cursor: pointer;
+            width: 7.34vw;
+          }
+  
+          #removed {
+            background-color: rgb(3, 163, 3);
+            color: #fff;
+          }
+  
+          #removed:hover {
+            background-color: rgb(38, 110, 243);
+            color: #fff;
+          }
+  
+          #cancel-removed {
+            background-color: rgb(194, 31, 10);
+            color: #fff;
+          }
+  
+          #cancel-removed:hover {
+            background-color: rgb(102, 255, 14);
+            color: #000;
+          }
         }
+      }
     }
-
-    .admin-news-top {
+  
+    .dialog-action-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      backdrop-filter: blur(.59vw);
+      justify-content: center;
+    
+      .dialog-action-content {
+        background-image: url('../../../public/assets/images/member-card.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        border-radius:  .75vw;
+        text-align: center;
+        width: 36.65vw;
+        height: 36.65vw;
         display: flex;
+        justify-content: center;
         align-items: center;
-        justify-content: space-between;
-
-        .admin-search-bar {
-            display: flex !important;
-            justify-content: flex-start !important;
+        flex-direction: column;
+  
+        h2 {
+          margin: 0 !important;
+          padding: 0 !important;
+          color: #ff0;
+          font-size: 2.2vw;
+        }
+  
+        .dialog-action-main {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          margin-top: 2.2vw;
+          width: 30vw;
+  
+          .dialog-action-group {
+            display: flex;
+            flex-direction: column;
+            width: 90%;
+            margin-bottom: .367vw;
+  
+            label {
+              text-align: left;
+              font-weight: 600;
+              color: #ff0;
+            }
+  
+            input[type="text"], input[type="file"] {
+              padding: .22vw .367vw;
+              font-size: 1.18vw;
+            }
+  
+            textarea {
+              height: 11vw;
+              padding: 0 .22vw;
+              font-size: 1.18vw;
+            }
+          }
+  
+          .dialog-action-handle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap:  .75vw;
+            margin-top: .367vw;
+  
+            button {
+              border-radius: .367vw;
+              border: none;
+              padding: .367vw 1.1vw;
+              cursor: pointer;
+              font-size: 1.18vw;
+              font-weight: 500;
+              width: 11vw;
+            }
+  
+            #actions {
+              color: #fff;
+              background-color: green;
+            }
+  
+            #actions:hover {
+              color: #000;
+              background-color: rgb(29, 164, 243);
+            }
+  
+            #cancel-actions {
+              color: #fff;
+              background-color: rgb(250, 31, 31);
+            }
+  
+            #cancel-actions:hover {
+              color: #000;
+              background-color: rgb(247, 204, 17);
+            }
+          }
+        }
+      }
+    }
+  
+    .dialog-message-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      backdrop-filter: blur(.59vw);
+      justify-content: center;
+    
+      .dialog-message-content {
+        background-image: url('../../../public/assets/images/horizontal-card.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        border-radius:  .75vw;
+        text-align: center;
+        width: 36.65vw;
+        height: 11vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+  
+        p {
+          margin:  .75vw 0 !important;
+          padding: 0 !important;
+          font-size: 1.5vw;
+        }
+  
+        button {
+          border: none;
+          padding: .367vw 1.5vw .22vw 1.5vw;
+          border-radius: .367vw;
+          font-size: 1.18vw;
+          cursor: pointer;
+          color: #fff; 
+          background-color: green; 
+          font-weight: 600;
+        }
+  
+        button:hover {
+          color: #ff0; 
+          background-color: rgb(26, 38, 201); 
+        }
+      }
+    }
+  
+    .dialog-view-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(.59vw);
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      overflow: hidden;
+    
+      .dialog-view-main-content {
+        width: 73.21vw;
+        height: 36.65vw;
+        background-image: url('../../../public/assets/images/horizontal-card.png');
+        background-repeat: no-repeat;
+        background-size: 100% 95%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius:  .75vw;
+        padding: 7.34vw 2.2vw;
+  
+        .dialog-view-content {
+          position: relative;
+          width: 59.3vw;
+          height: 33vw;
+          text-align: start;
+          padding: 0 5.13vw !important;
+          overflow: auto; 
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+          margin: 0 !important;
+    
+          h3 {
+            margin: 0 !important;
+            padding: 0 !important;
+            color: #ff0;
+            font-size: 2.64vw;
+            text-align: center;
+          }
+    
+          .dialog-view-main {
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            flex-direction: column;
+    
+            p {
+              margin:  .75vw 0 !important;
+              padding: 0 !important;
+              color: #ff0;
+              display: flex;
+              flex-direction: column;
+  
+              span {
+                width: 100%;
+                color: #fff;
+                flex-wrap: wrap;
+                word-break: break-word;
+              }
+            }
+          }
+    
+          .dialog-view-images {
+            display: flex;
+            justify-content: center;
             align-items: center;
     
-            input {
-                padding: 6px 15px;
-                border-radius: 10px;
-                border: 1px solid #333;
-                min-width: 300px !important;
-                color: #222;
-                font-weight: 600;
-            }
+            .slideshow-container {
+              position: relative;
+              margin-bottom: 1.5vw;
+              overflow: hidden;
+              width: 100%;
     
-            .admin-search-icons {
+              .slideshow-slide {
+                display: flex;
+                width: 59.3vw;
+                gap: .367vw;
+    
+                .slideshow-image {
+                  max-width: 100%;
+                  width: calc(100% / 3);
+                }
+  
+                .slideshow-twice {
+                  max-width: 100%;
+                  width: calc(100% / 2);
+                }
+    
+                img {
+                  width: 14.65vw;
+                  height: 14.65vw;
+                }
+              }
+    
+              .slideshow-image-none {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                color: #009;
-                cursor: pointer;
+                gap: .367vw;
+    
+                .slideshow-twice {
+                  max-width: 100%;
+                  width: calc(100% / 2);
+                }
+  
+                .slideshow-image {
+                  width: 100%;
+                  height: 100%;
+                }
+  
+                img {
+                  width: 14.65vw;
+                  height: 11vw;
+                }
+              }
+    
+              .prev-button {
+                left:  .75vw;
+              }
+              
+              .next-button {
+                right: 1.1vw;
+              }
+    
+              .prev-button,
+              .next-button {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
                 background-color: transparent;
                 border: none;
-    
-                svg {
-                    font-size: 18px;
-                    position: absolute;
-                    margin-right: 4% !important ;
-                }
-            }
-
-            .admin-search-reload {
+                color: #009;
+                font-size: 1.32vw;
+                padding:  .75vw;
+                cursor: pointer;
+                border-radius: 50%;
+                background-color: #a0be4c;
+                filter: drop-shadow(0 0 .15vw #000) drop-shadow(0 0 .22vw #000);
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                color: #009;
-                cursor: pointer;
-                background-color: #fff;
-                width: 30px;
-                height: 30px;
-                border-radius: 50%;
-                border: none;
+              }
+            }
+          }
     
-                svg {
-                    font-size: 18px;
-                    position: absolute;
-                }
-            }
-
-            .admin-search-reload:hover {
-                background-color: #009;
-                color: #fff;
-            }
-        }
-
-        .admin-news-filter {
-            select {
-                width: 200px;
-                padding: 5px;
-                border-radius: 10px;
-                background-color: green;
-                color: #fff;
-                font-weight: 600;
-                cursor: pointer;
-
-                option {
-                    background-color: #fff;
-                    color: #000;
-                    font-weight: 600;
-                }
-            }
-        }
-
-        .admin-add-news {
+          .dialog-view-button {
             display: flex;
             justify-content: center;
             align-items: center;
             
             button {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                background-color: #fff;
-                color: #009;
-                border-radius: 10px;
-                border: none;
-                padding: 5px 15px;
-                font-size: 16px;
-                font-weight: 600;
-                cursor: pointer;
-
-                svg {
-                    font-size: 18px;
-                    color: #009;
-                }
+              width: 11vw;
+              background-color: #080;
+              font-size: 1.18vw;
+              font-weight: 600;
+              padding: .367vw 1.84vw;
+              border: none;
+              color: #fff;
+              border-radius: .367vw;
+              cursor: pointer;
             }
-
+    
             button:hover {
-                background-color: #009;
-                color: #fff;
-
-                svg {
-                    color: #fff;
-                }
+              background-color: #2665ee;
             }
+          }
         }
-    }
-
-    .error-message {
-        height: 20px;
-        color:#ff0;
-        margin: 10px 0;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        width: 100%;
-    }
-
-    .none-display {
-        height: 20px;
-        color:#fff;
-        margin: 10px 0;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        width: 100%;
-    }
-
-    #none {
-        visibility: hidden;
-    }
-
-    .admin-news-table {
-        width: 800px;
-        height: 500px;
-        color: #000;
-
-        table {
-            background-color: #fff;
-            width: 800px;
-            border-collapse: collapse;
-    
-            th {
-                background-color: #333;
-                color: #fff;
-                border: 1px solid #000;
-            }
-    
-            td {
-                border: 1px solid #000;
-                text-align: left;
-                max-height: 40px !important;
-    
-                img {
-                    padding: 2px 0;
-                    width: 38px;
-                    height: 38px;
-                }
-            }
-    
-            .admin-news-title {
-                width: 180px !important;
-                max-width: 170px;
-                white-space: nowrap !important;
-                overflow: hidden !important;
-                text-overflow: ellipsis !important;
-    
-                span {
-                    white-space: nowrap !important;
-                    overflow: hidden !important;
-                    text-overflow: ellipsis !important;
-                    padding: 0 5px !important;
-                }
-            }
-    
-            .admin-news-content {
-                width: 200px !important;
-                max-width: 190px;
-                white-space: nowrap !important;
-                overflow: hidden !important;
-                text-overflow: ellipsis !important;
-    
-                span {
-                    white-space: nowrap !important;
-                    overflow: hidden !important;
-                    text-overflow: ellipsis !important;
-                    padding: 0 5px !important;
-                }
-            }
-    
-            .admin-news-date {
-                width: 130px !important;
-                max-width: 120px;
-                white-space: nowrap !important;
-                overflow: hidden !important;
-                text-overflow: ellipsis !important;
-    
-                span {
-                    padding: 0 5px !important;
-    
-                    div {
-                        text-align: center;
-                        max-width: 120px !important;
-                        white-space: nowrap !important;
-                        overflow: hidden !important;
-                        text-overflow: ellipsis !important;
-                        padding:  0 !important;
-                        margin: 0 !important;
-                    }
-                }
-            }
-    
-            .admin-news-images {
-                width: 200px !important;
-                max-width: 190px;
-    
-                .image-container {
-                    width: 190px !important;
-                    max-width: 190px !important;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    gap: 3px;
-                }
-            }
-    
-            .admin-news-actions {
-                width: 120px !important;
-                max-width: 110px;
-                text-align: center;
-    
-                button {
-                    background-color: #009;
-                    border: none;
-                    border-radius: 5px;
-                    padding: 3px 5px 1px 5px;
-                    color: #ff0;
-                    margin: 0 1px;
-                    cursor: pointer;
-    
-                    svg {
-                        font-size: 16px;
-                    }
-                }
-    
-                button:hover {
-                    background-color: #333;
-                    color: #fff;
-                }
-            }
+  
+        .dialog-view-content::-webkit-scrollbar {
+          display: none;
         }
+         
+        .dialog-view-content {
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }   
+      }
     }
-
-    .pagination-buttons {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 10px;
-    
-        .footer-page {  
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #222;
-            font-size: 16px;
-            font-weight: 500;
-            padding: 3px 10px;
-            border-radius: 5px;
-    
-            button {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                padding: 5px;
-                border-radius: 50%;
-                border: none;
-                background-color: #cfabab;
-                margin: 0 2px;
-                cursor: pointer;
-    
-                svg {
-                    font-size: 18px;
-                }
-            }
-    
-            .page-number {
-                margin: 0 5px;
-                font-size: 16px;
-                font-weight: 500;
-                color: #fff;
-            }
-        }
-    }
-
-    .dialog-remove-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        backdrop-filter: blur(8px);
-        justify-content: center;
-    
-        .dialog-remove-content {
-            background-image: url('../../../public/assets/images/horizontal-card.png');
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-            border-radius: 10px;
-            text-align: center;
-            width: 400px;
-            height: 200px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-
-            h3 {
-                margin: 0 !important;
-                padding: 0 !important;
-                color: #ff0;
-            }
-
-            p {
-                margin: 10px 0 !important;
-                padding: 0 !important;
-            }
-
-            .dialog-remove-buttons {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 20px;
-
-                button {
-                    border: none;
-                    padding: 3px 15px 1px 15px;
-                    border-radius: 5px;
-                    font-size: 16px;
-                    cursor: pointer;
-                    width: 100px;
-                }
-
-                #removed {
-                    background-color: rgb(3, 163, 3);
-                    color: #fff;
-                }
-
-                #removed:hover {
-                    background-color: rgb(38, 110, 243);
-                    color: #fff;
-                }
-
-                #cancel-removed {
-                    background-color: rgb(194, 31, 10);
-                    color: #fff;
-                }
-
-                #cancel-removed:hover {
-                    background-color: rgb(102, 255, 14);
-                    color: #000;
-                }
-            }
-        }
-    }
-
-    .dialog-action-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        backdrop-filter: blur(8px);
-        justify-content: center;
-    
-        .dialog-action-content {
-            background-image: url('../../../public/assets/images/member-card.png');
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-            border-radius: 10px;
-            text-align: center;
-            width: 500px;
-            height: 500px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-
-            h2 {
-                margin: 0 !important;
-                padding: 0 !important;
-                color: #ff0;
-                font-size: 30px;
-            }
-
-            .dialog-action-main {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-                margin-top: 30px;
-                width: 400px;
-
-                .dialog-action-group {
-                    display: flex;
-                    flex-direction: column;
-                    width: 90%;
-                    margin-bottom: 5px;
-
-                    label {
-                        text-align: left;
-                        font-weight: 600;
-                        color: #ff0;
-                    }
-
-                    input[type="text"] {
-                        padding: 3px 5px;
-                    }
-
-                    textarea {
-                        height: 150px;
-                        padding: 0 3px;
-                    }
-                }
-
-                .dialog-action-handle {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    gap: 10px;
-                    margin-top: 5px;
-
-                    button {
-                        border-radius: 5px;
-                        border: none;
-                        padding: 5px 15px;
-                        cursor: pointer;
-                        font-size: 16px;
-                        font-weight: 500;
-                        width: 150px;
-                    }
-
-                    #actions {
-                        color: #fff;
-                        background-color: green;
-                    }
-
-                    #actions:hover {
-                        color: #000;
-                        background-color: rgb(29, 164, 243);
-                    }
-
-                    #cancel-actions {
-                        color: #fff;
-                        background-color: rgb(250, 31, 31);
-                    }
-
-                    #cancel-actions:hover {
-                        color: #000;
-                        background-color: rgb(247, 204, 17);
-                    }
-                }
-            }
-        }
-    }
-
-    .dialog-message-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        backdrop-filter: blur(8px);
-        justify-content: center;
-    
-        .dialog-message-content {
-            background-image: url('../../../public/assets/images/horizontal-card.png');
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-            border-radius: 10px;
-            text-align: center;
-            width: 500px;
-            height: 150px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-
-            p {
-                margin: 10px 0 !important;
-                padding: 0 !important;
-                font-size: 20px;
-            }
-
-            button {
-                border: none;
-                padding: 5px 20px 3px 20px;
-                border-radius: 5px;
-                font-size: 16px;
-                cursor: pointer;
-                color: #fff;  
-                background-color: green; 
-                font-weight: 600;
-            }
-
-            button:hover {
-                color: #ff0;  
-                background-color: rgb(26, 38, 201); 
-            }
-        }
-    }
-
-    .dialog-view-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        backdrop-filter: blur(8px);
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 999;
-        overflow: hidden;
-    
-        .dialog-view-main-content {
-            width: 1000px;
-            height: 500px;
-            background-image: url('../../../public/assets/images/horizontal-card.png');
-            background-repeat: no-repeat;
-            background-size: 100% 95%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 10px;
-            padding: 100px 30px;
-
-            .dialog-view-content {
-                position: relative;
-                width: 810px;
-                height: 450px;
-                text-align: start;
-                padding: 0 70px !important;
-                overflow: auto; 
-                scrollbar-width: none;
-                -ms-overflow-style: none;
-                margin: 0 !important;
-    
-                h3 {
-                    margin: 0 !important;
-                    padding: 0 !important;
-                    color: #ff0;
-                    font-size: 36px;
-                    text-align: center;
-                }
-    
-                .dialog-view-main {
-                    width: 100%;
-                    display: flex;
-                    align-items: flex-start;
-                    justify-content: center;
-                    flex-direction: column;
-    
-                    p {
-                        margin: 10px 0 !important;
-                        padding: 0 !important;
-                        color: #ff0;
-                        display: flex;
-                        flex-direction: column;
-
-                        span {
-                            width: 100%;
-                            color: #fff;
-                            flex-wrap: wrap;
-                            word-break: break-word;
-                        }
-                    }
-                }
-    
-                .dialog-view-images {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-    
-                    .slideshow-container {
-                        position: relative;
-                        margin-bottom: 20px;
-                        overflow: hidden;
-                        width: 100%;
-    
-                        .slideshow-slide {
-                            display: flex;
-                            width: 810px;
-                            gap: 5px;
-    
-                            .slideshow-image {
-                                max-width: 100%;
-                                width: calc(100% / 3);
-                            }
-
-                            .slideshow-twice {
-                                max-width: 100%;
-                                width: calc(100% / 2);
-                            }
-    
-                            img {
-                                width: 200px;
-                                height: 200px;
-                            }
-                        }
-    
-                        .slideshow-image-none {
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            gap: 5px;
-    
-                            .slideshow-twice {
-                                max-width: 100%;
-                                width: calc(100% / 2);
-                            }
-
-                            .slideshow-image {
-                                width: 100%;
-                                height: 100%;
-                            }
-
-                            img {
-                                width: 200px;
-                                height: 150px;
-                            }
-                        }
-    
-                        .prev-button {
-                            left: 10px;
-                        }
-                        
-                        .next-button {
-                            right: 15px;
-                        }
-    
-                        .prev-button,
-                        .next-button {
-                            position: absolute;
-                            top: 50%;
-                            transform: translateY(-50%);
-                            background-color: transparent;
-                            border: none;
-                            color: #009;
-                            font-size: 18px;
-                            padding: 10px;
-                            cursor: pointer;
-                            border-radius: 50%;
-                            background-color: #a0be4c;
-                            filter: drop-shadow(0 0 2px #000) drop-shadow(0 0 3px #000);
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                        }
-                    }
-                }
-    
-                .dialog-view-button {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    
-                    button {
-                        width: 150px;
-                        background-color: #080;
-                        font-size: 16px;
-                        font-weight: 600;
-                        padding: 5px 25px;
-                        border: none;
-                        color: #fff;
-                        border-radius: 5px;
-                        cursor: pointer;
-                    }
-    
-                    button:hover {
-                        background-color: #2665ee;
-                    }
-                }
-            }
-
-            .dialog-view-content::-webkit-scrollbar {
-                display: none;
-            }
-              
-            .dialog-view-content {
-                scrollbar-width: none;
-                -ms-overflow-style: none;
-            }     
-        }
-    }
-}
+  }

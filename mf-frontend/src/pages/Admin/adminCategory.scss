@@ -1,10 +1,11 @@
 .admin-category-container {
-    width: 800px;
-    height: 700px;
+    width: 58.6vw;
+    height: 51.3vw;
     margin: 0 !important;
+    font-size: 1.18vw;
 
     h1 {
-        font-size: 36px;
+        font-size: 2.64vw;
         font-weight: 700;
         text-align: center;
     }
@@ -14,8 +15,8 @@
         justify-content: flex-start;
         align-items: center;
         flex-direction: column;
-        width: 800px;
-        height: 500px;
+        width: 58.6vw;
+        height: 36.65vw;
 
         .dialog-empt-action-container {
             position: fixed;
@@ -25,28 +26,28 @@
             height: 100%;
             display: flex;
             align-items: center;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(.59vw);
             justify-content: center;
         
             .dialog-empt-action-content {
                 background-image: url('../../../public/assets/images/horizontal-card.png');
                 background-size: 100% 95%;
                 background-repeat: no-repeat;
-                border-radius: 10px;
+                border-radius: .75vw;
                 text-align: center;
-                width: 900px;
-                height: 500px;
+                width: 66vw;
+                height: 36.65vw;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 flex-direction: column;
-                padding-bottom: 20px;
+                padding-bottom: 1.5vw;
 
             h2 {
-                margin: 0 0 30px 0 !important;
+                margin: 0 0 2.2vw 0 !important;
                 padding: 0 !important;
                 color: #ff0;
-                font-size: 40px;
+                font-size: 3vw;
             }
     
                 .dialog-empt-action-main {
@@ -58,16 +59,16 @@
                         display: flex;
                         justify-content: center;
                         cursor: pointer;
-                        width: 300px !important;
-                        height: 250px !important;
-                        border-radius: 10px;
-                        margin-right: 30px;
-                        filter: drop-shadow(0 0 3px #ffff00) drop-shadow(0 0 4px #ffff00);
+                        width: 22vw !important;
+                        height:  18.34vw !important;
+                        border-radius: .75vw;
+                        margin-right: 2.2vw;
+                        filter: drop-shadow(0 0 .22vw #ffff00) drop-shadow(0 0 .3vw #ffff00);
     
                         img {
-                            width: 300px !important;
-                            height: 250px !important;
-                            border-radius: 10px;
+                            width: 22vw !important;
+                            height:  18.34vw !important;
+                            border-radius: .75vw;
                         }
                     }
     
@@ -81,7 +82,7 @@
                             display: flex;
                             flex-direction: column;
                             width: 100%;
-                            margin-bottom: 5px;
+                            margin-bottom: .367vw;
         
                             label {
                                 text-align: left;
@@ -90,12 +91,14 @@
                             }
         
                             input[type="text"], input[type="number"] {
-                                padding: 3px 5px;
+                                padding: .22vw .367vw;
+                                font-size: 1.18vw;
                             }
         
                             textarea {
-                                height: 150px;
-                                padding: 0 3px;
+                                height: 11vw;
+                                padding: 0 .22vw;
+                                font-size: 1.18vw;
                             }
                         }
         
@@ -103,16 +106,16 @@
                             display: flex;
                             justify-content: center;
                             align-items: center;
-                            gap: 10px;
-                            margin-top: 5px;
+                            gap: .75vw;
+                            margin-top: .367vw;
         
                             button {
-                                width: 200px;
-                                border-radius: 5px;
+                                width: 14.65vw;
+                                border-radius: .367vw;
                                 border: none;
-                                padding: 5px 15px;
+                                padding: .367vw 1.1vw;
                                 cursor: pointer;
-                                font-size: 16px;
+                                font-size: 1.18vw;
                                 font-weight: 500;
                             }
         
@@ -142,7 +145,7 @@
         }
 
         .admin-category-empty {
-            font-size: 30px;
+            font-size: 2.2vw;
             color: #ff0;
         }
 
@@ -153,7 +156,7 @@
                 border: none;
 
                 svg {
-                    font-size: 50px;
+                    font-size: 3.67vw;
                 }
             }
 
@@ -175,12 +178,13 @@
             align-items: center;
     
             input {
-                padding: 6px 15px;
-                border-radius: 10px;
-                border: 1px solid #333;
-                min-width: 300px !important;
+                padding: .44vw 1.1vw;
+                border-radius: .75vw;
+                border: .075vw solid #333;
+                min-width: 22vw !important;
                 color: #222;
                 font-weight: 600;
+                font-size: 1.18vw;
             }
     
             .admin-search-icons {
@@ -191,9 +195,10 @@
                 cursor: pointer;
                 background-color: transparent;
                 border: none;
+                margin-right: .75vw;
     
                 svg {
-                    font-size: 18px;
+                    font-size: 1.32vw;
                     position: absolute;
                     margin-right: 4% !important ;
                 }
@@ -206,13 +211,13 @@
                 color: #009;
                 cursor: pointer;
                 background-color: #fff;
-                width: 30px;
-                height: 30px;
+                width: 2.2vw;
+                height: 2.2vw;
                 border-radius: 50%;
                 border: none;
     
                 svg {
-                    font-size: 18px;
+                    font-size: 1.32vw;
                     position: absolute;
                 }
             }
@@ -234,15 +239,15 @@
                 align-items: center;
                 background-color: #fff;
                 color: #009;
-                border-radius: 10px;
+                border-radius: .75vw;
                 border: none;
-                padding: 5px 15px;
-                font-size: 16px;
+                padding: .367vw 1.1vw;
+                font-size: 1.18vw;
                 font-weight: 600;
                 cursor: pointer;
 
                 svg {
-                    font-size: 18px;
+                    font-size: 1.32vw;
                     color: #009;
                 }
             }
@@ -259,9 +264,9 @@
     }
 
     .error-message {
-        height: 20px;
+        height: 1.5vw;
         color:#ff0;
-        margin: 10px 0;
+        margin: .75vw 0;
         display: flex;
         justify-content: flex-start;
         align-items: center;
@@ -269,9 +274,9 @@
     }
 
     .none-display {
-        height: 20px;
+        height: 1.5vw;
         color:#fff;
-        margin: 10px 0;
+        margin: .75vw 0;
         display: flex;
         justify-content: flex-start;
         align-items: center;
@@ -283,36 +288,36 @@
     }
 
     .admin-categories-table {
-        width: 800px;
-        height: 500px;
+        width: 58.6vw;
+        height: 36.65vw;
         color: #000;
 
         table {
             background-color: #fff;
-            width: 800px;
+            width: 58.6vw;
             border-collapse: collapse;
     
             th {
                 background-color: #333;
                 color: #fff;
-                border: 1px solid #000;
+                border: .075vw solid #000;
             }
     
             td {
-                border: 1px solid #000;
+                border: .075vw solid #000;
                 text-align: left;
-                max-height: 40px !important;
+                max-height: 3vw !important;
     
                 img {
-                    padding: 2px 0;
-                    width: 38px;
-                    height: 38px;
+                    padding: .15vw 0;
+                    width: 2.79vw;
+                    height: 2.79vw;
                 }
             }
     
             .admin-category-name {
-                width: 200px !important;
-                max-width: 190px;
+                width: 14.65vw !important;
+                max-width: 14vw;
                 white-space: nowrap !important;
                 overflow: hidden !important;
                 text-overflow: ellipsis !important;
@@ -321,13 +326,13 @@
                     white-space: nowrap !important;
                     overflow: hidden !important;
                     text-overflow: ellipsis !important;
-                    padding: 0 5px !important;
+                    padding: 0 .367vw !important;
                 }
             }
     
             .admin-category-description {
-                width: 330px !important;
-                max-width: 320px;
+                width:  24.2vw !important;
+                max-width: 23.45vw;
                 white-space: nowrap !important;
                 overflow: hidden !important;
                 text-overflow: ellipsis !important;
@@ -336,40 +341,40 @@
                     white-space: nowrap !important;
                     overflow: hidden !important;
                     text-overflow: ellipsis !important;
-                    padding: 0 5px !important;
+                    padding: 0 .367vw !important;
                 }
             }
     
             .admin-categories-images {
-                width: 150px !important;
-                max-width: 150px;
+                width: 11vw !important;
+                max-width: 11vw;
     
                 .image-container {
-                    width: 150px !important;
-                    max-width: 150px !important;
+                    width: 11vw !important;
+                    max-width: 11vw !important;
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    gap: 3px;
+                    gap: .22vw;
                 }
             }
     
             .admin-categories-actions {
-                width: 120px !important;
-                max-width: 110px;
+                width: 8.8vw !important;
+                max-width: 8.06vw;
                 text-align: center;
     
                 button {
                     background-color: #009;
                     border: none;
-                    border-radius: 5px;
-                    padding: 3px 5px 1px 5px;
+                    border-radius: .367vw;
+                    padding: .22vw .367vw .075vw .367vw;
                     color: #ff0;
-                    margin: 0 1px;
+                    margin: 0 .075vw;
                     cursor: pointer;
     
                     svg {
-                        font-size: 16px;
+                        font-size: 1.18vw;
                     }
                 }
     
@@ -385,37 +390,37 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 10px;
+        margin-top: .75vw;
     
         .footer-page {  
             display: flex;
             justify-content: center;
             align-items: center;
             color: #222;
-            font-size: 16px;
+            font-size: 1.18vw;
             font-weight: 500;
-            padding: 3px 10px;
-            border-radius: 5px;
+            padding: .22vw .75vw;
+            border-radius: .367vw;
     
             button {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                padding: 5px;
+                padding: .367vw;
                 border-radius: 50%;
                 border: none;
                 background-color: #cfabab;
-                margin: 0 2px;
+                margin: 0 .15vw;
                 cursor: pointer;
     
                 svg {
-                    font-size: 18px;
+                    font-size: 1.32vw;
                 }
             }
     
             .page-number {
-                margin: 0 5px;
-                font-size: 16px;
+                margin: 0 .367vw;
+                font-size: 1.18vw;
                 font-weight: 500;
                 color: #fff;
             }
@@ -428,7 +433,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        backdrop-filter: blur(8px);
+        backdrop-filter: blur(.59vw);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -437,10 +442,10 @@
             background-image: url('../../../public/assets/images/horizontal-card.png');
             background-size: 100% 100%;
             background-repeat: no-repeat;
-            border-radius: 10px;
+            border-radius: .75vw;
             text-align: center;
-            width: 450px;
-            height: 250px;
+            width: 33vw;
+            height:  18.34vw;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -453,14 +458,14 @@
             }
 
             p {
-                margin: 10px 0 !important;
+                margin: .75vw 0 !important;
                 padding: 0 !important;
             }
 
             small {
-                max-width: 250px;
+                max-width:  18.34vw;
                 word-wrap: break-word;
-                margin: 0 0 10px 0;
+                margin: 0 0 .75vw 0;
                 color: #ff0;
                 font-style: italic;
             }
@@ -469,15 +474,15 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                gap: 20px;
+                gap: 1.5vw;
 
                 button {
                     border: none;
-                    padding: 3px 15px 1px 15px;
-                    border-radius: 5px;
-                    font-size: 16px;
+                    padding: .22vw 1.1vw .075vw 1.1vw;
+                    border-radius: .367vw;
+                    font-size: 1.18vw;
                     cursor: pointer;
-                    width: 100px;
+                    width:7.34vw;
                 }
 
                 #removed {
@@ -511,28 +516,28 @@
         height: 100%;
         display: flex;
         align-items: center;
-        backdrop-filter: blur(8px);
+        backdrop-filter: blur(.59vw);
         justify-content: center;
     
         .dialog-action-content {
             background-image: url('../../../public/assets/images/horizontal-card.png');
             background-size: 100% 95%;
             background-repeat: no-repeat;
-            border-radius: 10px;
+            border-radius: .75vw;
             text-align: center;
-            width: 900px;
-            height: 500px;
+            width: 66vw;
+            height: 36.65vw;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            padding-bottom: 20px;
+            padding-bottom: 1.5vw;
 
             h2 {
-                margin: 0 0 30px 0 !important;
+                margin: 0 0 2.2vw 0 !important;
                 padding: 0 !important;
                 color: #ff0;
-                font-size: 40px;
+                font-size: 3vw;
             }
 
             .dialog-action-main {
@@ -544,16 +549,16 @@
                     display: flex;
                     justify-content: center;
                     cursor: pointer;
-                    width: 300px !important;
-                    height: 250px !important;
-                    border-radius: 10px;
-                    margin-right: 30px;
-                    filter: drop-shadow(0 0 3px #ffff00) drop-shadow(0 0 4px #ffff00);
+                    width: 22vw !important;
+                    height:  18.34vw !important;
+                    border-radius: .75vw;
+                    margin-right: 2.2vw;
+                    filter: drop-shadow(0 0 .22vw #ffff00) drop-shadow(0 0 .3vw #ffff00);
 
                     img {
-                        width: 300px !important;
-                        height: 250px !important;
-                        border-radius: 10px;
+                        width: 22vw !important;
+                        height:  18.34vw !important;
+                        border-radius: .75vw;
                     }
                 }
 
@@ -567,7 +572,7 @@
                         display: flex;
                         flex-direction: column;
                         width: 100%;
-                        margin-bottom: 5px;
+                        margin-bottom: .367vw;
     
                         label {
                             text-align: left;
@@ -576,12 +581,14 @@
                         }
     
                         input[type="text"], input[type="number"] {
-                            padding: 3px 5px;
+                            padding: .22vw .367vw;
+                            font-size: 1.18vw;
                         }
     
                         textarea {
-                            height: 150px;
-                            padding: 0 3px;
+                            height: 11vw;
+                            padding: 0 .22vw;
+                            font-size: 1.18vw;
                         }
                     }
     
@@ -589,16 +596,16 @@
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                        gap: 10px;
-                        margin-top: 5px;
+                        gap: .75vw;
+                        margin-top: .367vw;
     
                         button {
-                            width: 200px;
-                            border-radius: 5px;
+                            width: 14.65vw;
+                            border-radius: .367vw;
                             border: none;
-                            padding: 5px 15px;
+                            padding: .367vw 1.1vw;
                             cursor: pointer;
-                            font-size: 16px;
+                            font-size: 1.18vw;
                             font-weight: 500;
                         }
     
@@ -635,39 +642,39 @@
         height: 100%;
         display: flex;
         align-items: center;
-        backdrop-filter: blur(8px);
+        backdrop-filter: blur(.59vw);
         justify-content: center;
     
         .dialog-message-content {
             background-image: url('../../../public/assets/images/horizontal-card.png');
             background-size: 100% 100%;
             background-repeat: no-repeat;
-            border-radius: 10px;
+            border-radius: .75vw;
             text-align: center;
-            min-width: 500px;
-            height: 150px;
+            min-width: 36.65vw;
+            height: 11vw;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
 
             p {
-                margin: 10px 0 !important;
-                padding: 0 30px !important;
-                font-size: 20px;
+                margin: .75vw 0 !important;
+                padding: 0 2.2vw !important;
+                font-size: 1.5vw;
                 font-style: italic;
             }
 
             button {
                 border: none;
-                padding: 5px 20px 3px 20px;
-                border-radius: 5px;
-                font-size: 16px;
+                padding: .367vw 1.5vw .22vw 1.5vw;
+                border-radius: .367vw;
+                font-size: 1.18vw;
                 cursor: pointer;
                 color: #fff;  
                 background-color: green; 
                 font-weight: 600;
-                width: 100px;
+                width:7.34vw;
             }
 
             button:hover {
@@ -686,14 +693,14 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        backdrop-filter: blur(8px);
+        backdrop-filter: blur(.59vw);
         background-color: rgba(0, 0, 0, 0.5);
         z-index: 999;
         overflow: hidden;
     
         .dialog-view-main-content {
-            width: 1000px;
-            height: 500px;
+            width: 73.21vw;
+            height: 36.65vw;
             background-image: url('../../../public/assets/images/horizontal-card.png');
             background-size: 100% 95%;
             background-repeat: no-repeat;
@@ -701,14 +708,14 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            border-radius: 10px;
-            padding: 50px 0;
+            border-radius: .75vw;
+            padding: 3.67vw 0;
 
             .dialog-view-content {
                 position: relative;
-                width: 850px;
-                max-height: 400px;
-                padding: 0 70px !important;
+                width: 62.25vw;
+                max-height: 30vw;
+                padding: 0 5.13vw !important;
                 overflow: auto; 
                 scrollbar-width: none;
                 -ms-overflow-style: none;
@@ -722,11 +729,11 @@
                     flex-direction: column;
                     justify-content: center;
                     align-items: flex-start;
-                    width: 450px;
+                    width: 33vw;
     
                     p {
-                        margin: 10px 0 !important;
-                        padding: 0 20px !important;
+                        margin: .75vw 0 !important;
+                        padding: 0 1.5vw !important;
                         color: #ff0;
                         display: flex;
                         flex-direction: column;
@@ -744,13 +751,13 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    margin: 15px 0;
-                    width: 400px;
+                    margin: 1.1vw 0;
+                    width: 30vw;
                     
                     .image-view-dialog {
-                        border-radius: 10px;
-                        width: 300px;
-                        height: 300px;
+                        border-radius: .75vw;
+                        width: 22vw;
+                        height: 22vw;
                     }
                 }  
             }
@@ -759,17 +766,17 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                margin: 15px 0;
+                margin: 1.1vw 0;
                 
                 button {
-                    width: 150px;
+                    width: 11vw;
                     background-color: #080;
-                    font-size: 16px;
+                    font-size: 1.18vw;
                     font-weight: 600;
-                    padding: 5px 25px;
+                    padding: .367vw 1.84vw;
                     border: none;
                     color: #fff;
-                    border-radius: 5px;
+                    border-radius: .367vw;
                     cursor: pointer;
                 }
 

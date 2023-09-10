@@ -292,6 +292,7 @@ const AdminPlayer = () => {
             <div className='admin-player-status-dialog'>
               <div className='admin-player-status-dialog-container'>
                 <div className='admin-player-status-dialog-content'>
+                  <h2>Update Status</h2>
                   <div className='admin-player-status-dialog-message'>
                     {dialogMessage}
                   </div>

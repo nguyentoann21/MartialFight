@@ -2,11 +2,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 800px;
-    height: 700px;
+    width: 58.6vw;
+    height: 51.3vw;
+    font-size: 1.18vw;
 
     h1 {
-        font-size: 36px;
+        font-size: 2.64vw;
         font-weight: 700;
         text-align: center;
     }
@@ -23,12 +24,13 @@
             align-items: center;
     
             input {
-                padding: 7px 15px;
-                border-radius: 10px;
-                border: 2px solid #333;
-                min-width: 400px !important;
+                padding: .513vw 1.1vw;
+                border-radius: .75vw;
+                border: .15vw solid #333;
+                min-width: 30vw !important;
                 color: #222;
                 font-weight: 600;
+                font-size: 1.18vw;
             }
     
             .admin-search-icons {
@@ -43,7 +45,7 @@
                 svg {
                     position: absolute;
                     margin-right: 4% !important ;
-                    font-size: 20px;
+                    font-size: 1.5vw;
                 }
             }
         }
@@ -58,15 +60,15 @@
                 justify-content: flex-end;
                 align-items: center;
                 background-color: #fff;
-                border-radius: 10px;
+                border-radius: .75vw;
                 border: none;
-                padding: 6px 15px;
-                font-size: 16px;
+                padding: .44vw 1.1vw;
+                font-size: 1.18vw;
                 font-weight: 600;
                 cursor: pointer;
       
                 svg {
-                    font-size: 20px;
+                    font-size: 1.5vw;
                 }
             }
 
@@ -78,9 +80,9 @@
     }
 
     .error-message {
-        height: 20px;
+        height: 1.5vw;
         color:#ff0;
-        margin: 10px 0;
+        margin: .75vw 0;
         display: flex;
         justify-content: flex-start;
         align-items: center;
@@ -88,9 +90,9 @@
     }
 
     .none-display {
-        height: 20px;
+        height: 1.5vw;
         color:#fff;
-        margin: 10px 0;
+        margin: .75vw 0;
         display: flex;
         justify-content: flex-start;
         align-items: center;
@@ -111,30 +113,30 @@
             justify-content: center;
             align-items: center;
             color: #222;
-            font-size: 16px;
+            font-size: 1.18vw;
             font-weight: 500;
-            padding: 3px 10px;
-            border-radius: 5px;
+            padding: .22vw .75vw;
+            border-radius: .367vw;
     
             button {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                padding: 5px;
+                padding: .367vw;
                 border-radius: 50%;
                 border: none;
                 background-color: #cfabab;
-                margin: 0 2px;
+                margin: 0 .15vw;
                 cursor: pointer;
     
                 svg {
-                    font-size: 18px;
+                    font-size: 1.32vw;
                 }
             }
     
             .page-number {
-                margin: 0 5px;
-                font-size: 16px;
+                margin: 0 .367vw;
+                font-size: 1.18vw;
                 font-weight: 500;
                 color: #fff;
             }
@@ -148,10 +150,10 @@
       align-items: flex-start;
       font-weight: 700;
       font-style: italic;
-      font-size: 30px;
+      font-size: 2.2vw;
       color: #ff0;
-      width: 800px;
-      height: 500px;
+      width: 58.6vw;
+      height: 36.65vw;
     }
   
     .admin-player-dialog {
@@ -162,7 +164,7 @@
       height: 100%;
       display: flex;
       align-items: center;
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(.59vw);
       justify-content: center;
       background-color: rgba(0, 0, 0, 0.5);
   
@@ -170,11 +172,11 @@
         background-image: url('../../../public/assets/images/member-card.png');
         background-size: 100% 100%;
         background-repeat: no-repeat;
-        padding: 20px;
-        border-radius: 10px;
+        padding: 1.5vw;
+        border-radius: .75vw;
         text-align: center;
-        width: 400px;
-        height: 400px;
+        width: 30vw;
+        height: 30vw;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -189,16 +191,16 @@
             height: 100%;
 
             img {
-                width: 150px;
-                height: 150px;
+                width: 11vw;
+                height: 11vw;
                 border-radius: 50%;
-                margin-bottom: 20px;
+                margin-bottom: 1.5vw;
             }
 
             .admin-player-dialog-details {
                 
-                margin-left: 10px;
-                max-width: 300px;
+                margin-left: .75vw;
+                max-width: 22vw;
 
                 p {
                     white-space: nowrap;
@@ -209,11 +211,11 @@
                     padding: 0;
                     color: #ff0;
                     font-style: italic;
-                    font-size: 16px;
+                    font-size: 1.18vw;
 
                     span {
                         color:#ccc;
-                        margin-left: 10px;
+                        margin-left: .75vw;
                         font-style: normal;
                     }
                 }
@@ -221,17 +223,17 @@
         }
   
         .admin-player-dialog-buttons {
-          margin-bottom: 20px;
+          margin-bottom: 1.5vw;
   
           button {
-            padding: 5px 20px;
+            padding: .367vw 1.5vw;
             background-color: #ccc;
             color: #222;
             font-weight: 600;
             border: none;
-            border-radius: 10px;
+            border-radius: .75vw;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 1.18vw;
           }
 
           button:hover {
@@ -243,36 +245,36 @@
     }
 
     .admin-player-table-none {
-        width: 800px;
-        height: 500px;
+        width: 58.6vw;
+        height: 36.65vw;
     }
 
     .admin-player-table {
         color: #000;
-        width: 800px;
-        height: 500px;
+        width: 58.6vw;
+        height: 36.65vw;
 
         table {
             background-color: #fff;
-            width: 800px;
+            width: 58.6vw;
             border-collapse: collapse;
 
             th {
                 background-color: #999;
                 color: #009;
-                border: 1px solid #000;
+                border: .075vw solid #000;
             }
 
             td {
-                border: 1px solid #000;
+                border: .075vw solid #000;
                 text-align: left;
-                padding: 0 5px;
-                height: 40px;
+                padding: 0 .367vw;
+                height: 3vw;
 
                 img {
-                    padding-top: 3px;
-                    width: 38px;
-                    height: 38px;
+                    padding-top: .22vw;
+                    width: 2.79vw;
+                    height: 2.79vw;
                     border-radius: 50%;
                 }
 
@@ -280,12 +282,14 @@
                     background-color: #00f;
                     color: #fff;
                     cursor: pointer;
-                    border-radius: 3px;
-                    padding: 0 5px;
+                    border-radius: .22vw;
+                    padding: 0 .367vw;
+                    font-size: 1.18vw;
 
                     option {
                         background-color: #fff;
                         color: #000;
+                        font-size: 1.18vw;
                     }
                 }
             }
@@ -295,11 +299,11 @@
             }
 
             .admin-player-avatar {
-                max-width: 50px;
+                max-width: 3.67vw;
             }
 
             .admin-player-username {
-                max-width: 130px !important;
+                max-width: 9.55vw !important;
                 white-space: nowrap !important;
                 overflow: hidden !important;
                 text-overflow: ellipsis !important;
@@ -308,12 +312,12 @@
                     white-space: nowrap !important;
                     overflow: hidden !important;
                     text-overflow: ellipsis !important;
-                    padding: 0 10px !important;
+                    padding: 0 .75vw !important;
                 }
             }
 
             .admin-player-fullname {
-                max-width: 170px !important;
+                max-width: 12.5vw !important;
                 white-space: nowrap !important;
                 overflow: hidden !important;
                 text-overflow: ellipsis !important;
@@ -322,12 +326,12 @@
                     white-space: nowrap !important;
                     overflow: hidden !important;
                     text-overflow: ellipsis !important;
-                    padding: 0 10px !important;
+                    padding: 0 .75vw !important;
                 }
             }
 
             .admin-player-email {
-                max-width: 200px !important;
+                max-width: 14.65vw !important;
                 white-space: nowrap !important;
                 overflow: hidden !important;
                 text-overflow: ellipsis !important;
@@ -336,28 +340,28 @@
                     white-space: nowrap !important;
                     overflow: hidden !important;
                     text-overflow: ellipsis !important;
-                    padding: 0 10px !important;
+                    padding: 0 .75vw !important;
                 }
             }
 
             .admin-player-status {
-                width: 90px !important;
+                width: 6.6vw !important;
             }
 
             .admin-player-action {
-                width: 80px !important;
+                width: 5.86vw !important;
 
                 button {
                     background-color: #8fe032;
                     cursor: pointer;
-                    border-radius: 3px;
+                    border-radius: .22vw;
                     border: none;
                     color: #009;
-                    margin: 0 2px;
-                    padding: 2px 5px .5px 5px !important;
+                    margin: 0 .15vw;
+                    padding: .15vw .367vw .0367vw .367vw !important;
 
                     svg {
-                        font-size: 16px;
+                        font-size: 1.18vw;
                     }
                 }
 
@@ -368,7 +372,7 @@
             }
 
             .admin-player-email {
-                height: 40px;
+                height: 3vw;
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;;
@@ -377,7 +381,7 @@
                     white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
-                    padding: 0 10px;
+                    padding: 0 .75vw;
                 }
             }
         }
@@ -391,7 +395,7 @@
         height: 100%;
         display: flex;
         align-items: center;
-        backdrop-filter: blur(8px);
+        backdrop-filter: blur(.59vw);
         justify-content: center;
         background-color: rgba(0, 0, 0, 0.5);
 
@@ -399,11 +403,11 @@
             background-image: url('../../../public/assets/images/item-card.png');
             background-size: 100% 100%;
             background-repeat: no-repeat;
-            padding: 20px;
-            border-radius: 10px;
+            padding: 1.5vw;
+            border-radius: .75vw;
             text-align: center;
-            width: 300px;
-            height: 150px;
+            width: 22vw;
+            height: 11vw;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -417,26 +421,32 @@
                 width: 100%;
                 height: 100%;
 
+                h2 {
+                    font-size: 1.84vw;
+                    margin: 0 !important;
+                    padding: 0 !important;
+                }
+
                 .admin-player-status-dialog-message {
                     text-align: center;
                     margin: 0;
                     padding: 0;
                     color: #ff0;
                     font-style: italic;
-                    font-size: 20px;
+                    font-size: 1.5vw;
                 }
 
                 .admin-player-status-dialog-action {
-                    margin-top: 10px;
+                    margin-top: .75vw;
                     
                     button {
                         background-color: rgb(64, 64, 247);
                         color: #fff;
                         border: none;
-                        border-radius: 5px;
-                        padding: 5px 15px;
+                        border-radius: .367vw;
+                        padding: .367vw 1.1vw;
                         cursor: pointer;
-                        font-size: 16px;
+                        font-size: 1.18vw;
                     }
 
                     button:hover {
