@@ -520,7 +520,7 @@ const AdminSect = () => {
                 <p>Are you sure you want to delete this sect?</p>
                 <small>
                   If you delete that sect, all characters and items in this sect
-                  will be removed as well.
+                  will be affected.
                 </small>
                 <div className="dialog-remove-buttons">
                   <button onClick={removeSect} id="removed">

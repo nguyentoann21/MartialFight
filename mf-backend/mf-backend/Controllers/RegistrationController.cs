@@ -2,8 +2,6 @@
 using mf_backend.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using BCrypt.Net;
-using static System.Net.Mime.MediaTypeNames;
 
 
 namespace mf_backend.Controllers
@@ -37,6 +35,10 @@ namespace mf_backend.Controllers
 
             if (account != null && account.Username != null && account.Password != null && account.Avatar != null && account.Email != null && account.Fullname != null)
             {
+                if (char.IsDigit(account.Username[0]))
+                {
+                    return StatusCode(StatusCodes.Status405MethodNotAllowed, "Username must not start with a digit");
+                }
 
                 if (account.Username.Length < 5 || account.Username.Length > 16)
                 {

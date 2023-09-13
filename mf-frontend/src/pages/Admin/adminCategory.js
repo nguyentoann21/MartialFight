@@ -531,7 +531,7 @@ const AdminCategory = () => {
                 <p>Are you sure you want to delete this category?</p>
                 <small>
                   If you delete that category, all items in this category will
-                  be removed as well.
+                  be affected.
                 </small>
                 <div className="dialog-remove-buttons">
                   <button onClick={removeCategory} id="removed">

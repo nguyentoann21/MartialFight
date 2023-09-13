@@ -510,6 +510,14 @@
                 padding: 0 !important;
             }
 
+            small {
+                max-width: 18.35vw;
+                word-wrap: break-all;
+                margin: 0 0 .75vw 0;
+                color: #ff0;
+                font-style: italic;
+            }
+
             .dialog-remove-buttons {
                 display: flex;
                 justify-content: center;

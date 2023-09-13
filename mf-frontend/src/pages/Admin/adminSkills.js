@@ -649,6 +649,10 @@ const AdminSkill = () => {
               <div className="dialog-remove-content">
                 <h3>Remove Message Confirm</h3>
                 <p>Are you sure you want to delete this skill?</p>
+                <small>
+                  If you delete that skill, all characters in this skill will be
+                  affected.
+                </small>
                 <div className="dialog-remove-buttons">
                   <button onClick={removeSkill} id="removed">
                     <FaCheck />
